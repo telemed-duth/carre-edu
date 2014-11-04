@@ -377,7 +377,7 @@ module.exports = function (grunt) {
         connectCommits: false,
         message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%'
       },
-      production:{
+      deploy:{
         options: {
             remote: 'production-server',
             branch: 'master'
