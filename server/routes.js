@@ -9,6 +9,9 @@ var errors = require('./components/errors');
 module.exports = function(app) {
 
   // Insert routes below
+  app.use('/api/bioportal', require('./api/bioportal'));
+  app.use('/api/dbpedia', require('./api/dbpedia'));
+  app.use('/api/medlineplus', require('./api/medlineplus'));
   app.use('/api/things', require('./api/thing'));
   app.use('/api/users', require('./api/user'));
 

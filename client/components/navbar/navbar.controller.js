@@ -5,6 +5,22 @@ angular.module('edumaterialApp')
     $scope.menu = [{
       'title': 'Home',
       'link': '/'
+    },{
+      'title': 'MedlinePLUS',
+      'link': '/medlineplus'
+    },{
+      'title': 'BioPortal',
+      'link': '/bioportal'
+    },{
+      'title': 'Pubmed',
+      'link': '/pubmed'
+    },{
+      'title': 'DBpedia',
+      'link': '/dbpedia'
+    },{
+      'title': 'Sources',
+      'admin':true,
+      'link': '/sources'
     }];
 
     $scope.isCollapsed = true;
