@@ -61,15 +61,17 @@ angular.module('edumaterialApp')
         };
         
         function ontologies(){
-          var url='/api/bioportal/ontologies';
-          if($rootScope.bioportalOntologies) return $rootScope.bioportalOntologies;
-          else $http.get(url).success(function(data){
-            $rootScope.bioportalOntologies=data;
-            return data;
-          }).error(function(error){
-            console.log(error);
-            return false;
-          });
+                   //construct url
+          var url=settings.apiurl+
+          '/ontologies/'+
+          '?apikey='+settings.apikey+
+          '&format='+settings.format+
+          '&include_views=false'+
+          '&include_context=false'+
+          '&include_links=false'+
+          '&include=name,acronym';
+          
+          return $http.get(url, {'cache':true});
         };
       
       return {

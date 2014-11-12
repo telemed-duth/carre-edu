@@ -7,14 +7,14 @@
         <form ng-submit="searchTerm()">
             <h3>Bioportal sparql explorer</h3>
             <div class="row">
-                <div class="col-md-8 input-group custom-search-form">
+                <div class="col-md-8 input-group" style="float: left;">
                     <input  ng-disabled="!ontology.selected" ng-model="queryTerm" type="text" placeholder="Type terms" class="form-control">
                     <span class="input-group-btn">
                         <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
                     </span>
                 </div>
-                <div class="col-md-4 input-group custom-search-form text-left">
-                  <ui-select ng-if="showSelector" ng-model="ontology.selected" theme="bootstrap" style="min-width: 300px;">
+                <div class="col-md-4">
+                  <ui-select ng-model="ontology.selected" theme="bootstrap" style="min-width: 300px;">
                     <ui-select-match placeholder="Select an ontology from the list..">{{$select.selected.name}}</ui-select-match>
                     <ui-select-choices repeat="ontology in ontologies | filter: $select.search | limitTo:20">
                       <div ng-bind-html="ontology.name | highlight: $select.search"></div>
@@ -23,7 +23,6 @@
                 </div>
             </div>
             
-        <p>Selected: {{ontology.selected}}</p>
         </form>
         
     </div>

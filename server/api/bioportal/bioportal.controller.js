@@ -52,8 +52,10 @@ exports.getOntologies = function(req, res) {
   //now run query
   request.get(
     {
-url:'http://sparql.bioontology.org/sparql/?query=PREFIX+omv%3A+%3Chttp%3A%2F%2Fomv.ontoware.org%2F2005%2F05%2Fontology%23%3E%0D%0A%0D%0ASELECT+DISTINCT+%3Facr+%3Fname%0D%0AWHERE+%7B%0D%0A%09%3Font+a+omv%3AOntology+.%0D%0A%09%3Font+omv%3Aacronym+%3Facr+.%0D%0A%09%3Font+omv%3Aname+%3Fname+.%0D%0A++++++++%0D%0A%7D+GROUP+BY+%3Facr%0D%0A++++++++&outputformat=json&kboption=ontologies&csrfmiddlewaretoken=53abe4fb6d2c806540016f405ad288b8',
-json:true
+      
+  url:'http://sparql.bioontology.org/sparql/'+
+  '?query=PREFIX+omv%3A+%3Chttp%3A%2F%2Fomv.ontoware.org%2F2005%2F05%2Fontology%23%3E%0D%0A%0D%0ASELECT+DISTINCT+%3Facr+%3Fname%0D%0AWHERE+%7B%0D%0A%09%3Font+a+omv%3AOntology+.%0D%0A%09%3Font+omv%3Aacronym+%3Facr+.%0D%0A%09%3Font+omv%3Aname+%3Fname+.%0D%0A++++++++%0D%0A%7D+GROUP+BY+%3Facr%0D%0A++++++++&outputformat=json&kboption=ontologies&csrfmiddlewaretoken=53abe4fb6d2c806540016f405ad288b8',
+  json:true
       
     },
     function (error, response, results) {
@@ -69,15 +71,11 @@ json:true
           // console.log(finalResults);
           //ok now do something with the results
           return res.json(200, finalResults);
-          
-        } else return res.json(200, {'message':'no_results','data':results});
+        }
       //process.stdout.write(util.inspect(arguments, null, 20, true)+"\n");
-      } else return res.json(200, {'message':'error','data':results});
-      
-    } else console.log(error);
-      
+      }
+    } else return res.json(500, {'message':'error','data':error});
   });
-
 };
 
 
