@@ -7,9 +7,9 @@ angular.module('edumaterialApp', [
   'btford.socket-io',
   'ui.router',
   'ui.bootstrap',
-  'angular-loading-bar'
-  // 'ui.utils',
-  // 'ui.select'
+  'angular-loading-bar',
+  'ui.utils',
+  'ui.select'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider

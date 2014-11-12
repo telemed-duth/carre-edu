@@ -2,55 +2,39 @@
 
 <header class="hero-unit" id="banner">
 
-  <!--<div class="container">-->
-  <!--    <div class="row">    -->
-  <!--        <div class="col-xs-8 col-xs-offset-2">-->
-  <!--		    <div class="input-group">-->
-  <!--                <div class="input-group-btn search-panel">-->
-  <!--                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">-->
-  <!--                    	<span id="search_concept">Filter by</span> <span class="caret"></span>-->
-  <!--                    </button>-->
-  <!--                    <ul class="dropdown-menu" role="menu">-->
-  <!--                      <li><a href="#contains">Contains</a></li>-->
-  <!--                      <li><a href="#its_equal">It's equal</a></li>-->
-  <!--                      <li><a href="#greather_than">Greather than ></a></li>-->
-  <!--                      <li><a href="#less_than">Less than < </a></li>-->
-  <!--                      <li class="divider"></li>-->
-  <!--                      <li><a href="#all">Anything</a></li>-->
-  <!--                    </ul>-->
-  <!--                </div>-->
-  <!--                <input type="text" ng-model="medlineTerm" placeholder="Type terms">         -->
-                      <!--<input type="text" ng-model="medlineTerm" placeholder="Locations loaded via $http" typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingLocations" class="form-control">-->
-  <!--                <span class="input-group-btn">-->
-  <!--                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>-->
-  <!--                </span>-->
-                      <!--<i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>-->
-  <!--            </div>-->
-  <!--        </div>-->
-  <!--	</div>-->
-  <!--</div>-->
-
-<div class="container">
-	<div class="row">
-	<form ng-submit="searchTerm()">
-       <div class="input-group custom-search-form">
-            <input ng-model="medlineTerm" type="text" placeholder="Type terms" class="form-control">
-            <span class="input-group-btn">
-            <button class="btn btn-default" type="submit">
-            <span class="glyphicon glyphicon-search"></span>
-           </button>
-           </span>
-           </div><!-- /input-group -->
-        </div>
-</form>
-</div>
+    <div class="container">
+    <div class="row">
+        <form ng-submit="searchTerm()">
+            <h3>Bioportal sparql explorer</h3>
+            <div class="row">
+                <div class="col-md-8 input-group custom-search-form">
+                    <input  ng-disabled="!ontology.selected" ng-model="queryTerm" type="text" placeholder="Type terms" class="form-control">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                    </span>
+                </div>
+                <div class="col-md-4 input-group custom-search-form text-left">
+                  <ui-select ng-if="showSelector" ng-model="ontology.selected" theme="bootstrap" style="min-width: 300px;">
+                    <ui-select-match placeholder="Select an ontology from the list..">{{$select.selected.name}}</ui-select-match>
+                    <ui-select-choices repeat="ontology in ontologies | filter: $select.search | limitTo:20">
+                      <div ng-bind-html="ontology.name | highlight: $select.search"></div>
+                    </ui-select-choices>
+                  </ui-select>
+                </div>
+            </div>
+            
+        <p>Selected: {{ontology.selected}}</p>
+        </form>
+        
+    </div>
+    </div>
 
 </header>
 
 <div class="container results">
 
     <hgroup ng-show="total>0" class="mb20">
-		<h1>Search Results : <strong class="text-danger">{{total}}</strong> results were found for the search for <strong class="text-danger">{{medlineTerm}}</strong></h1>					
+		<h1>Search Results : <strong class="text-danger">{{total}}</strong> results were found for the search for <strong class="text-danger">{{queryTerm}}</strong></h1>					
 	  </hgroup>
     <div class="alert alert-warning" ng-hide="total>0">No results yet...</div>
     <section class="col-xs-12 col-sm-6 col-md-12">

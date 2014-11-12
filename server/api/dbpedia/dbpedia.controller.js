@@ -62,6 +62,7 @@ exports.dbpediaQuery = function(req, res) {
   "FILTER (REGEX(STR(?label), \""+term+"\", \"i\"))"+
   "FILTER (lang(?label)=\"en\")"+
   "} ORDER BY ?label LIMIT 500";
+  
   var client = new SparqlClient(endpoint);
   //console.log("Query to " + endpoint);
   //console.log("Query: " + query);
@@ -72,9 +73,11 @@ exports.dbpediaQuery = function(req, res) {
     //.bind('city', '<http://dbpedia.org/resource/Vienna>')
     .execute(function(error, data) {
       if(error) console.log(error);
-      if(data.results.bindings.length>0){
-            return res.json(200, data.results.bindings);
-        } else return res.json(200, {'message':'no_results','data':data.results});
+      console.log(data);
+      if(data){
+          if(data.results.bindings.length>0) return res.json(200, data.results.bindings);
+          else return res.json(200, {'message':'no_results','data':data.results});
+      } else return res.json(200, {'message':'no_results','data':null});
   });
 
 

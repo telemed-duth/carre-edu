@@ -14,7 +14,7 @@ exports.medlineTerm = function(req, res) {
   
   //now run query
   request('http://wsearch.nlm.nih.gov/ws/query?db=healthTopics&term='+term+'&rettype=brief', function (error, response, body) {
-    if (!error && response.statusCode == 200) {
+    if (!error && response.statusCode === 200) {
       //now the body var holds results in xml
       parseString(body, function (err, result) {
         if(result.nlmSearchResult.count>0) {

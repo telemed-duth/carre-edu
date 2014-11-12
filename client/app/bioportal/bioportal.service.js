@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('edumaterialApp')
-  .factory('bioportal', function ($http) {
+  .factory('bioportal', function ($rootScope,$http) {
     // AngularJS will instantiate a singleton by calling "new" on this function
       
       //bioportal general settings
@@ -23,6 +23,7 @@ angular.module('edumaterialApp')
       
       //search api implementation
       function search(page,query,ontologies,cuis) {
+        
           
           var exact_match=false; // default = false
           var suggest=false; // default = false. Will perform a search specifically geared towards type-ahead suggestions.
@@ -41,13 +42,13 @@ angular.module('edumaterialApp')
           (cui?'&cui='+cui:'')+
           '&apikey='+settings.apikey+
           '&format='+settings.format+
-          '&include='+include+
           '&include_views='+settings.include_views+
           '&include_context='+settings.include_context+
           '&include_links='+settings.include_links+
           '&download_format='+settings.download_format+
-          '&page='+page+
           '&pagesize='+settings.pagesize+
+          '&include='+include+
+          '&page='+page+
           '&exact_match='+exact_match+
           '&suggest='+suggest+
           '&also_search_views='+also_search_views+
@@ -58,10 +59,23 @@ angular.module('edumaterialApp')
           return $http.get(url);
       
         };
+        
+        function ontologies(){
+          var url='/api/bioportal/ontologies';
+          if($rootScope.bioportalOntologies) return $rootScope.bioportalOntologies;
+          else $http.get(url).success(function(data){
+            $rootScope.bioportalOntologies=data;
+            return data;
+          }).error(function(error){
+            console.log(error);
+            return false;
+          });
+        };
       
       return {
         //return all the api functions
-        'search':search
+        'search':search,
+        'ontologies':ontologies
         
         
         
