@@ -1,0 +1,85 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<header class="hero-unit" id="banner">
+
+  <!--<div class="container">-->
+  <!--    <div class="row">    -->
+  <!--        <div class="col-xs-8 col-xs-offset-2">-->
+  <!--		    <div class="input-group">-->
+  <!--                <div class="input-group-btn search-panel">-->
+  <!--                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">-->
+  <!--                    	<span id="search_concept">Filter by</span> <span class="caret"></span>-->
+  <!--                    </button>-->
+  <!--                    <ul class="dropdown-menu" role="menu">-->
+  <!--                      <li><a href="#contains">Contains</a></li>-->
+  <!--                      <li><a href="#its_equal">It's equal</a></li>-->
+  <!--                      <li><a href="#greather_than">Greather than ></a></li>-->
+  <!--                      <li><a href="#less_than">Less than < </a></li>-->
+  <!--                      <li class="divider"></li>-->
+  <!--                      <li><a href="#all">Anything</a></li>-->
+  <!--                    </ul>-->
+  <!--                </div>-->
+  <!--                <input type="text" ng-model="medlineTerm" placeholder="Type terms">         -->
+                      <!--<input type="text" ng-model="medlineTerm" placeholder="Locations loaded via $http" typeahead="address for address in getLocation($viewValue)" typeahead-loading="loadingLocations" class="form-control">-->
+  <!--                <span class="input-group-btn">-->
+  <!--                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>-->
+  <!--                </span>-->
+                      <!--<i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>-->
+  <!--            </div>-->
+  <!--        </div>-->
+  <!--	</div>-->
+  <!--</div>-->
+
+<div class="container">
+	<div class="row">
+	<form ng-submit="searchTerm()">
+       <div class="input-group custom-search-form">
+            <input ng-model="medlineTerm" type="text" placeholder="Type terms" class="form-control">
+            <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">
+            <span class="glyphicon glyphicon-search"></span>
+           </button>
+           </span>
+           </div><!-- /input-group -->
+        </div>
+</form>
+</div>
+
+</header>
+
+<div class="container results">
+
+    <hgroup class="mb20">
+		<h1>Search Results : <strong class="text-danger">{{results.count[0]||results.results.bindings.count[0]}}</strong> results were found for the search for <strong class="text-danger">{{medlineTerm}}</strong></h1>					
+	  </hgroup>
+
+    <section class="col-xs-12 col-sm-6 col-md-12">
+  		
+  		<article class="search-result row" ng-repeat="doc in results.data">
+
+  		  <!--slide down info-->
+  		  <div>
+  		    <!--left column-->
+    			<div class="col-xs-12 col-sm-12 col-md-9">
+    				<h3 ng-bind-html="doc.label.value"></h3>
+    				
+    				<div ng-bind-html="doc.definition[0]"></div>
+    			</div>
+    			
+    			<!--right column-->
+    			<div class="col-xs-12 col-sm-12 col-md-3">
+    			    <h4><a target="_blank" ng-href="{{doc.u.value}}">link</a></h4>
+    				<ul class="meta-search">
+    				</ul>
+    			</div>
+    			
+  			</div>
+  			
+  			<span class="clearfix borda"></span>
+  			<hr border="2">
+		  </article>
+  		
+	  </section>
+</div>
+
+<div ng-include="'components/footer/footer.html'"></div>

@@ -10,13 +10,15 @@ angular.module('edumaterialApp')
       'link': '/medlineplus'
     },{
       'title': 'BioPortal',
+      'admin':false,
       'link': '/bioportal'
-    },{
-      'title': 'Pubmed',
-      'link': '/pubmed'
+
     },{
       'title': 'DBpedia',
       'link': '/dbpedia'
+    },{
+      'title': 'Compare',
+      'link': '/compare'
     },{
       'title': 'Sources',
       'admin':true,

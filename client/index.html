@@ -15,8 +15,11 @@
       <!-- bower:css -->
       <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
       <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+      <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
+      <link rel="stylesheet" href="bower_components/angular-ui-select/dist/select.css" />
       <!-- endbower -->
     <!-- endbuild -->
+    
     <!-- build:css({.tmp,client}) app/app.css -->
     <link rel="stylesheet" href="app/app.css">
       <!-- injector:css -->
@@ -24,10 +27,10 @@
       <link rel="stylesheet" href="app/admin/admin.css">
       <link rel="stylesheet" href="app/app.css">
       <link rel="stylesheet" href="app/bioportal/bioportal.css">
+      <link rel="stylesheet" href="app/compare/compare.css">
       <link rel="stylesheet" href="app/dbpedia/dbpedia.css">
       <link rel="stylesheet" href="app/main/main.css">
       <link rel="stylesheet" href="app/medlineplus/medlineplus.css">
-      <link rel="stylesheet" href="app/pubmed/pubmed.css">
       <link rel="stylesheet" href="components/modal/modal.css">
       <!-- endinjector -->
     <!-- endbuild -->
@@ -66,10 +69,14 @@
       <script src="bower_components/lodash/dist/lodash.compat.js"></script>
       <script src="bower_components/angular-socket-io/socket.js"></script>
       <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+      <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
+      <script src="bower_components/angular-ui-utils/ui-utils.js"></script>
+      <script src="bower_components/angular-ui-select/dist/select.js"></script>
       <!-- endbower -->
       <script src="socket.io-client/socket.io.js"></script>
     <!-- endbuild -->
-
+      
+        
         <!-- build:js({.tmp,client}) app/app.js -->
         <script src="app/app.js"></script>
           <!-- injector:js -->
@@ -81,14 +88,15 @@
           <script src="app/admin/admin.js"></script>
           <script src="app/bioportal/bioportal.controller.js"></script>
           <script src="app/bioportal/bioportal.js"></script>
+          <script src="app/bioportal/bioportal.service.js"></script>
+          <script src="app/compare/compare.controller.js"></script>
+          <script src="app/compare/compare.js"></script>
           <script src="app/dbpedia/dbpedia.controller.js"></script>
           <script src="app/dbpedia/dbpedia.js"></script>
           <script src="app/main/main.controller.js"></script>
           <script src="app/main/main.js"></script>
           <script src="app/medlineplus/medlineplus.controller.js"></script>
           <script src="app/medlineplus/medlineplus.js"></script>
-          <script src="app/pubmed/pubmed.controller.js"></script>
-          <script src="app/pubmed/pubmed.js"></script>
           <script src="components/auth/auth.service.js"></script>
           <script src="components/auth/user.service.js"></script>
           <script src="components/modal/modal.service.js"></script>
@@ -97,5 +105,6 @@
           <script src="components/socket/socket.service.js"></script>
           <!-- endinjector -->
         <!-- endbuild -->
+        
 </body>
 </html>
