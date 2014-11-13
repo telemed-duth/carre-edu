@@ -3,28 +3,36 @@
 angular.module('edumaterialApp')
   .controller('BioportalCtrl', function ($rootScope,$http,$scope,bioportal) {
     
-    
-    $scope.medlineURL = 'http://www.nlm.nih.gov/medlineplus/';
-    
+    //initialize setup vars
+    $scope.ontologies=[];
     $scope.ontology={};
-    $scope.ontology.selected={"name":"MedlinePlus Health Topics","acronym":"MEDLINEPLUS"};
     $scope.showSelector=false;
-    // bioportal.ontologies().success(function(data){
-    //   console.log('---Server Results----');
-    //   console.log(data);
-    // }).error(function(error){
-    //   console.log(error);
-    // });
+    $scope.results={};
+    $scope.results.page=1;
     
-
+    //serialize the array
+    $scope.selectedAcronyms=function(){
+      var arr=$scope.ontology.selected;
+      var str='';
+      for (var i = 0; i < arr.length; i++) {
+        str+=arr[i].acronym+(arr.length-1===i?'':',');
+      }
+      // console.log(str);
+      return str;
+    };
+    
+    
+    
+    //Query my own service and cache the result!
     bioportal.ontologies().success(function(data){
       $scope.ontologies=data;
     });
 
-    $scope.results={};
-    $scope.results.page=1;
+    //Actual search function wrapper for my service
     $scope.searchTerm=function() {
-      bioportal.search($scope.results.page,$scope.queryTerm,$scope.ontology.selected.acronym).then(function(response){
+    
+      //call the service
+      bioportal.search($scope.results.page,$scope.queryTerm,$scope.selectedAcronyms()).then(function(response){
         
         $scope.results=response.data;
         if(($scope.results.collection.length<10) && ($scope.results.page>1) ){

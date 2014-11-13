@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('edumaterialApp')
-  .factory('bioportal', function ($rootScope,$http) {
+  .factory('bioportal', function ($http) {
     // AngularJS will instantiate a singleton by calling "new" on this function
       
       //bioportal general settings

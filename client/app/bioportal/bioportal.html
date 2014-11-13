@@ -5,18 +5,22 @@
     <div class="container">
     <div class="row">
         <form ng-submit="searchTerm()">
-            <h3>Bioportal sparql explorer</h3>
+            <h2>Bioportal explorer</h2>
             <div class="row">
-                <div class="col-md-8 input-group" style="float: left;">
-                    <input  ng-disabled="!ontology.selected" ng-model="queryTerm" type="text" placeholder="Type terms" class="form-control">
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
-                    </span>
+                <div class="col-md-6">
+                    <h4>Search terms</h4>
+                    <div class="input-group" style="float: left;margin-bottom:10px;">
+                        <input  ng-disabled="!ontology.selected" ng-model="queryTerm" type="text" placeholder="Type terms" class="form-control">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                        </span>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                  <ui-select ng-model="ontology.selected" theme="bootstrap" style="min-width: 300px;">
-                    <ui-select-match placeholder="Select an ontology from the list..">{{$select.selected.name}}</ui-select-match>
-                    <ui-select-choices repeat="ontology in ontologies | filter: $select.search | limitTo:20">
+                <div class="col-md-6">
+                    <h4>Ontologies</h4>
+                  <ui-select multiple ng-model="ontology.selected" theme="bootstrap" reset-search-input="true" on-select="selectedAcronyms()">
+                    <ui-select-match placeholder="Select an ontology from the list..">{{$item.acronym}}</ui-select-match>
+                    <ui-select-choices repeat="ontology in ontologies | propsFilter: {name: $select.search, acronym: $select.search} | limitTo:40">
                       <div ng-bind-html="ontology.name | highlight: $select.search"></div>
                     </ui-select-choices>
                   </ui-select>
@@ -38,36 +42,43 @@
     <div class="alert alert-warning" ng-hide="total>0">No results yet...</div>
     <section class="col-xs-12 col-sm-6 col-md-12">
         
-		<pagination ng-show="results.pageCount>1" total-items="total" ng-model="results.page" ng-change="searchTerm()"></pagination>
+        <!--TOP Pagination-->
+        <div class="text-center">
+            <pagination ng-show="results.pageCount>1" total-items="total" ng-model="results.page" 
+            ng-change="searchTerm()" max-size="5" rotate="false"></pagination>
+        </div>
+		
   		<article class="search-result row" ng-repeat="doc in results.collection">
 
   		  <!--slide down info-->
   		  <div>
-  		      
-  		        <!--left column-->
-    			<div class="col-xs-12 col-sm-12 col-md-9">
-    				<h3 ng-bind-html="doc.properties['http://www.w3.org/2004/02/skos/core#prefLabel']"></h3>
-    				
-    				<div ng-bind-html="doc.properties['http://www.w3.org/2004/02/skos/core#definition']"></div>
-    			</div>
-    			
-    			<!--right column-->
-    			<div class="col-xs-12 col-sm-12 col-md-3">
-    			    <h4>UMLS : {{doc.properties['http://bioportal.bioontology.org/ontologies/umls/cui'][0]}}</h4>
-    			    <a target="_blank" ng-href="{{ doc['@id'] }}">Bioportal Technical info</a>
-    			    <h4 ng-show="doc.properties['http://www.w3.org/2004/02/skos/core#altLabel'].length>0">Synonyms</h4>
-    				<ul class="meta-search">
-    					<li ng-repeat="s in doc.properties['http://www.w3.org/2004/02/skos/core#altLabel']">{{s}}</li>
-    				</ul>
-    				
-    			</div>
-    			
-  			</div>
+  	        <!--left column-->
+			<div class="col-xs-12 col-sm-12 col-md-9">
+				<h3 ng-bind-html="doc.properties['http://www.w3.org/2004/02/skos/core#prefLabel']"></h3>
+				
+				<div ng-bind-html="doc.properties['http://www.w3.org/2004/02/skos/core#definition']"></div>
+			</div>
+			
+			<!--right column-->
+			<div class="col-xs-12 col-sm-12 col-md-3">
+			    <h4>UMLS : {{doc.properties['http://bioportal.bioontology.org/ontologies/umls/cui'][0]}}</h4>
+			    <a target="_blank" ng-href="{{ doc['@id'] }}">Bioportal Technical info</a>
+			    <h4 ng-show="doc.properties['http://www.w3.org/2004/02/skos/core#altLabel'].length>0">Synonyms</h4>
+				<ul class="meta-search">
+					<li ng-repeat="s in doc.properties['http://www.w3.org/2004/02/skos/core#altLabel']">{{s}}</li>
+				</ul>
+			</div>
+  		</div>
   			
   			<span class="clearfix borda"></span>
   			<hr border="2">
 		  </article>
-		<pagination ng-show="results.pageCount>1" total-items="total" ng-model="results.page" ng-change="searchTerm()"></pagination>
+		  
+        <!--BOTTOM Pagination-->
+        <div class="text-center">
+            <pagination ng-show="results.pageCount>1" total-items="total" ng-model="results.page" 
+            ng-change="searchTerm()" max-size="5" rotate="false"></pagination>
+        </div>
   		
 	  </section>
 </div>
