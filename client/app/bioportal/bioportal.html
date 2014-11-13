@@ -54,18 +54,18 @@
   		  <div>
   	        <!--left column-->
 			<div class="col-xs-12 col-sm-12 col-md-9">
-				<h3 ng-bind-html="doc.properties['http://www.w3.org/2004/02/skos/core#prefLabel']"></h3>
+				<h3 ng-bind-html="doc.prefLabel"></h3>
 				
-				<div ng-bind-html="doc.properties['http://www.w3.org/2004/02/skos/core#definition']"></div>
+				<div ng-bind-html="doc.definition[0]"></div>
 			</div>
 			
 			<!--right column-->
 			<div class="col-xs-12 col-sm-12 col-md-3">
-			    <h4>UMLS : {{doc.properties['http://bioportal.bioontology.org/ontologies/umls/cui'][0]}}</h4>
-			    <a target="_blank" ng-href="{{ doc['@id'] }}">Bioportal Technical info</a>
-			    <h4 ng-show="doc.properties['http://www.w3.org/2004/02/skos/core#altLabel'].length>0">Synonyms</h4>
+			    <h4 ng-show="doc.cui">UMLS : {{doc.cui[0]}}</h4>
+			    <h4><a target="_blank" ng-href="{{ doc['@id'] }}">{{ doc.links.ontology.substr(doc.links.ontology.lastIndexOf('/')+1) }}</a></h4>
+			    <h4 ng-show="doc.synonym.length>0">Synonyms</h4>
 				<ul class="meta-search">
-					<li ng-repeat="s in doc.properties['http://www.w3.org/2004/02/skos/core#altLabel']">{{s}}</li>
+					<li ng-repeat="s in doc.synonym">{{s}}</li>
 				</ul>
 			</div>
   		</div>

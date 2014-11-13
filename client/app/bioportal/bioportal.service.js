@@ -14,9 +14,9 @@ angular.module('edumaterialApp')
         'format':'json', //json, jsonp, xml
         'page':null, //the current page of results, call it from specific api function
         'pagesize':10, //count results per page
-        'include_views': false, //boolean representing whether or not to include ontology views (default is false)
+        'include_views': true, //boolean representing whether or not to include ontology views (default is false)
         'include_context': false, // true|false (defaults to true)
-        'include_links': false, //{true|false} (defaults to true)
+        'include_links': true, //{true|false} (defaults to true)
         'download_format':null, //{csv|rdf} (defaults to user-uploaded file format)
         
       };
@@ -29,11 +29,11 @@ angular.module('edumaterialApp')
           var suggest=false; // default = false. Will perform a search specifically geared towards type-ahead suggestions.
           var also_search_views=true; // default = false
           var require_definition=true; // default = false
-          var include_properties=true; // default = false
+          var include_properties=false; // default = false
           var include_obsolete=false; // default = false (exclude obsolete terms)
           var cui=cuis||null; // Allows restricting query by CUIs. default = null (no restriction)
           //var semantic_types={T023,T185,T061} // Allows restricting query by Semantic Types (TUI). default = null (no restriction)
-          var include='properties'; // default = (see Common Parameters section)
+          var include='prefLabel,synonym,definition,cui'; // prefLabel, synonym, definition, notation, cui
           
           //construct url
           var url=settings.apiurl+
