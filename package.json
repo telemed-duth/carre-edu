@@ -92,7 +92,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "start": "./node_modules/.bin/forever -m 5 server/app.js",
+    "start": "./node_modules/forever/bin/forever -m 5 server/app.js",
     "test": "grunt test",
     "update-webdriver": "node node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update"
   },
