@@ -1,0 +1,547 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'c:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'c:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.33
+4 verbose readDependencies using package.json deps
+5 verbose install where, deps [ 'c:\\myprojects\\carre-edu',
+5 verbose install   [ 'body-parser',
+5 verbose install     'composable-middleware',
+5 verbose install     'compression',
+5 verbose install     'connect-mongo',
+5 verbose install     'cookie-parser',
+5 verbose install     'ejs',
+5 verbose install     'errorhandler',
+5 verbose install     'express',
+5 verbose install     'express-jwt',
+5 verbose install     'express-session',
+5 verbose install     'jsonwebtoken',
+5 verbose install     'lodash',
+5 verbose install     'method-override',
+5 verbose install     'mongoose',
+5 verbose install     'morgan',
+5 verbose install     'passport',
+5 verbose install     'passport-facebook',
+5 verbose install     'passport-google-oauth',
+5 verbose install     'passport-local',
+5 verbose install     'passport-twitter',
+5 verbose install     'request',
+5 verbose install     'request-json',
+5 verbose install     'serve-favicon',
+5 verbose install     'socket.io',
+5 verbose install     'socket.io-client',
+5 verbose install     'socketio-jwt',
+5 verbose install     'sparql-client',
+5 verbose install     'util',
+5 verbose install     'xml2js',
+5 verbose install     'connect-livereload',
+5 verbose install     'grunt',
+5 verbose install     'grunt-angular-templates',
+5 verbose install     'grunt-asset-injector',
+5 verbose install     'grunt-autoprefixer',
+5 verbose install     'grunt-build-control',
+5 verbose install     'grunt-concurrent',
+5 verbose install     'grunt-contrib-clean',
+5 verbose install     'grunt-contrib-concat',
+5 verbose install     'grunt-contrib-copy',
+5 verbose install     'grunt-contrib-cssmin',
+5 verbose install     'grunt-contrib-htmlmin',
+5 verbose install     'grunt-contrib-imagemin',
+5 verbose install     'grunt-contrib-jshint',
+5 verbose install     'grunt-contrib-uglify',
+5 verbose install     'grunt-contrib-watch',
+5 verbose install     'grunt-dom-munger',
+5 verbose install     'grunt-env',
+5 verbose install     'grunt-express-server',
+5 verbose install     'grunt-google-cdn',
+5 verbose install     'grunt-karma',
+5 verbose install     'grunt-mocha-test',
+5 verbose install     'grunt-newer',
+5 verbose install     'grunt-ng-annotate',
+5 verbose install     'grunt-node-inspector',
+5 verbose install     'grunt-nodemon',
+5 verbose install     'grunt-open',
+5 verbose install     'grunt-protractor-runner',
+5 verbose install     'grunt-rev',
+5 verbose install     'grunt-svgmin',
+5 verbose install     'grunt-usemin',
+5 verbose install     'grunt-wiredep',
+5 verbose install     'jit-grunt',
+5 verbose install     'jshint-stylish',
+5 verbose install     'karma',
+5 verbose install     'karma-chrome-launcher',
+5 verbose install     'karma-coffee-preprocessor',
+5 verbose install     'karma-firefox-launcher',
+5 verbose install     'karma-html2js-preprocessor',
+5 verbose install     'karma-jade-preprocessor',
+5 verbose install     'karma-jasmine',
+5 verbose install     'karma-ng-html2js-preprocessor',
+5 verbose install     'karma-ng-jade2js-preprocessor',
+5 verbose install     'karma-ng-scenario',
+5 verbose install     'karma-phantomjs-launcher',
+5 verbose install     'karma-requirejs',
+5 verbose install     'karma-script-launcher',
+5 verbose install     'open',
+5 verbose install     'requirejs',
+5 verbose install     'should',
+5 verbose install     'supertest',
+5 verbose install     'time-grunt',
+5 verbose install     'forever' ] ]
+6 info preinstall edumaterial@0.0.0
+7 warn package.json karma-chrome-launcher@0.1.5 No README data
+8 warn package.json karma-coffee-preprocessor@0.2.1 No README data
+9 warn package.json karma-phantomjs-launcher@0.1.4 No README data
+10 warn package.json passport-local@0.1.6 No README data
+11 warn package.json util@0.10.3 util is also the name of a node core module.
+12 verbose readDependencies using package.json deps
+13 verbose cache add [ 'passport-google-oauth@latest', null ]
+14 verbose cache add name=undefined spec="passport-google-oauth@latest" args=["passport-google-oauth@latest",null]
+15 verbose parsed url { protocol: null,
+15 verbose parsed url   slashes: null,
+15 verbose parsed url   auth: null,
+15 verbose parsed url   host: null,
+15 verbose parsed url   port: null,
+15 verbose parsed url   hostname: null,
+15 verbose parsed url   hash: null,
+15 verbose parsed url   search: null,
+15 verbose parsed url   query: null,
+15 verbose parsed url   pathname: 'passport-google-oauth@latest',
+15 verbose parsed url   path: 'passport-google-oauth@latest',
+15 verbose parsed url   href: 'passport-google-oauth@latest' }
+16 verbose already installed skipping passport-local@~0.1.6 c:\myprojects\carre-edu
+17 verbose cache add [ 'passport-twitter@latest', null ]
+18 verbose cache add name=undefined spec="passport-twitter@latest" args=["passport-twitter@latest",null]
+19 verbose parsed url { protocol: null,
+19 verbose parsed url   slashes: null,
+19 verbose parsed url   auth: null,
+19 verbose parsed url   host: null,
+19 verbose parsed url   port: null,
+19 verbose parsed url   hostname: null,
+19 verbose parsed url   hash: null,
+19 verbose parsed url   search: null,
+19 verbose parsed url   query: null,
+19 verbose parsed url   pathname: 'passport-twitter@latest',
+19 verbose parsed url   path: 'passport-twitter@latest',
+19 verbose parsed url   href: 'passport-twitter@latest' }
+20 verbose already installed skipping request@^2.47.0 c:\myprojects\carre-edu
+21 verbose already installed skipping request-json@^0.5.0 c:\myprojects\carre-edu
+22 verbose already installed skipping serve-favicon@~2.0.1 c:\myprojects\carre-edu
+23 verbose already installed skipping socket.io@^1.0.6 c:\myprojects\carre-edu
+24 verbose already installed skipping socket.io-client@^1.0.6 c:\myprojects\carre-edu
+25 verbose already installed skipping socketio-jwt@^2.0.2 c:\myprojects\carre-edu
+26 verbose already installed skipping sparql-client@^0.1.0 c:\myprojects\carre-edu
+27 verbose already installed skipping util@^0.10.3 c:\myprojects\carre-edu
+28 verbose already installed skipping xml2js@^0.4.4 c:\myprojects\carre-edu
+29 verbose already installed skipping connect-livereload@~0.4.0 c:\myprojects\carre-edu
+30 verbose already installed skipping grunt@~0.4.4 c:\myprojects\carre-edu
+31 verbose already installed skipping grunt-angular-templates@^0.5.4 c:\myprojects\carre-edu
+32 verbose already installed skipping grunt-asset-injector@^0.1.0 c:\myprojects\carre-edu
+33 verbose cache add name="passport-google-oauth" spec="latest" args=["passport-google-oauth","latest"]
+34 verbose parsed url { protocol: null,
+34 verbose parsed url   slashes: null,
+34 verbose parsed url   auth: null,
+34 verbose parsed url   host: null,
+34 verbose parsed url   port: null,
+34 verbose parsed url   hostname: null,
+34 verbose parsed url   hash: null,
+34 verbose parsed url   search: null,
+34 verbose parsed url   query: null,
+34 verbose parsed url   pathname: 'latest',
+34 verbose parsed url   path: 'latest',
+34 verbose parsed url   href: 'latest' }
+35 verbose addNamed [ 'passport-google-oauth', 'latest' ]
+36 verbose addNamed [ null, null ]
+37 verbose cache add name="passport-twitter" spec="latest" args=["passport-twitter","latest"]
+38 verbose parsed url { protocol: null,
+38 verbose parsed url   slashes: null,
+38 verbose parsed url   auth: null,
+38 verbose parsed url   host: null,
+38 verbose parsed url   port: null,
+38 verbose parsed url   hostname: null,
+38 verbose parsed url   hash: null,
+38 verbose parsed url   search: null,
+38 verbose parsed url   query: null,
+38 verbose parsed url   pathname: 'latest',
+38 verbose parsed url   path: 'latest',
+38 verbose parsed url   href: 'latest' }
+39 verbose addNamed [ 'passport-twitter', 'latest' ]
+40 verbose addNamed [ null, null ]
+41 silly lockFile 2c491da3-passport-google-oauth-latest passport-google-oauth@latest
+42 verbose lock passport-google-oauth@latest C:\Users\NiCk\AppData\Roaming\npm-cache\2c491da3-passport-google-oauth-latest.lock
+43 silly lockFile d5de964c-passport-twitter-latest passport-twitter@latest
+44 verbose lock passport-twitter@latest C:\Users\NiCk\AppData\Roaming\npm-cache\d5de964c-passport-twitter-latest.lock
+45 info addNameTag [ 'passport-google-oauth', 'latest' ]
+46 info addNameTag [ 'passport-twitter', 'latest' ]
+47 verbose already installed skipping grunt-autoprefixer@~0.7.2 c:\myprojects\carre-edu
+48 verbose cache add [ 'grunt-build-control@git+https://github.com/DaftMonk/grunt-build-control',
+48 verbose cache add   null ]
+49 verbose cache add name=undefined spec="grunt-build-control@git+https://github.com/DaftMonk/grunt-build-control" args=["grunt-build-control@git+https://github.com/DaftMonk/grunt-build-control",null]
+50 verbose parsed url { protocol: null,
+50 verbose parsed url   slashes: null,
+50 verbose parsed url   auth: null,
+50 verbose parsed url   host: null,
+50 verbose parsed url   port: null,
+50 verbose parsed url   hostname: null,
+50 verbose parsed url   hash: null,
+50 verbose parsed url   search: null,
+50 verbose parsed url   query: null,
+50 verbose parsed url   pathname: 'grunt-build-control@git+https://github.com/DaftMonk/grunt-build-control',
+50 verbose parsed url   path: 'grunt-build-control@git+https://github.com/DaftMonk/grunt-build-control',
+50 verbose parsed url   href: 'grunt-build-control@git+https://github.com/DaftMonk/grunt-build-control' }
+51 verbose already installed skipping grunt-concurrent@~0.5.0 c:\myprojects\carre-edu
+52 verbose already installed skipping grunt-contrib-clean@~0.5.0 c:\myprojects\carre-edu
+53 verbose already installed skipping grunt-contrib-concat@~0.4.0 c:\myprojects\carre-edu
+54 verbose already installed skipping grunt-contrib-copy@~0.5.0 c:\myprojects\carre-edu
+55 verbose already installed skipping grunt-contrib-cssmin@~0.9.0 c:\myprojects\carre-edu
+56 verbose already installed skipping grunt-contrib-htmlmin@~0.2.0 c:\myprojects\carre-edu
+57 verbose already installed skipping grunt-contrib-imagemin@~0.7.1 c:\myprojects\carre-edu
+58 verbose already installed skipping grunt-contrib-jshint@~0.10.0 c:\myprojects\carre-edu
+59 verbose already installed skipping grunt-contrib-uglify@~0.4.0 c:\myprojects\carre-edu
+60 verbose already installed skipping grunt-contrib-watch@~0.6.1 c:\myprojects\carre-edu
+61 verbose already installed skipping grunt-dom-munger@^3.4.0 c:\myprojects\carre-edu
+62 verbose already installed skipping grunt-env@~0.4.1 c:\myprojects\carre-edu
+63 verbose already installed skipping grunt-express-server@~0.4.17 c:\myprojects\carre-edu
+64 verbose cache add name="grunt-build-control" spec="git+https://github.com/DaftMonk/grunt-build-control" args=["grunt-build-control","git+https://github.com/DaftMonk/grunt-build-control"]
+65 verbose parsed url { protocol: 'git+https:',
+65 verbose parsed url   slashes: true,
+65 verbose parsed url   auth: null,
+65 verbose parsed url   host: 'github.com',
+65 verbose parsed url   port: null,
+65 verbose parsed url   hostname: 'github.com',
+65 verbose parsed url   hash: null,
+65 verbose parsed url   search: null,
+65 verbose parsed url   query: null,
+65 verbose parsed url   pathname: '/DaftMonk/grunt-build-control',
+65 verbose parsed url   path: '/DaftMonk/grunt-build-control',
+65 verbose parsed url   href: 'git+https://github.com/DaftMonk/grunt-build-control' }
+66 silly lockFile 7e4d577b-com-DaftMonk-grunt-build-control https://github.com/DaftMonk/grunt-build-control
+67 verbose lock https://github.com/DaftMonk/grunt-build-control C:\Users\NiCk\AppData\Roaming\npm-cache\7e4d577b-com-DaftMonk-grunt-build-control.lock
+68 verbose request where is /passport-google-oauth
+69 verbose request registry https://registry.npmjs.org/
+70 verbose request id c0a483fe67691b9c
+71 verbose url raw /passport-google-oauth
+72 verbose url resolving [ 'https://registry.npmjs.org/', './passport-google-oauth' ]
+73 verbose url resolved https://registry.npmjs.org/passport-google-oauth
+74 verbose request where is https://registry.npmjs.org/passport-google-oauth
+75 info trying registry request attempt 1 at 14:49:58
+76 verbose etag "CNH1HR2EP7JOPTNOKQR95WBCR"
+77 http GET https://registry.npmjs.org/passport-google-oauth
+78 verbose already installed skipping grunt-google-cdn@~0.4.0 c:\myprojects\carre-edu
+79 verbose already installed skipping grunt-karma@~0.8.2 c:\myprojects\carre-edu
+80 verbose already installed skipping grunt-mocha-test@~0.10.2 c:\myprojects\carre-edu
+81 verbose already installed skipping grunt-newer@~0.7.0 c:\myprojects\carre-edu
+82 verbose already installed skipping grunt-ng-annotate@^0.2.3 c:\myprojects\carre-edu
+83 verbose already installed skipping grunt-node-inspector@~0.1.5 c:\myprojects\carre-edu
+84 verbose already installed skipping grunt-nodemon@~0.2.0 c:\myprojects\carre-edu
+85 verbose already installed skipping grunt-open@~0.2.3 c:\myprojects\carre-edu
+86 verbose already installed skipping grunt-protractor-runner@^1.1.0 c:\myprojects\carre-edu
+87 verbose already installed skipping grunt-rev@~0.1.0 c:\myprojects\carre-edu
+88 verbose already installed skipping grunt-svgmin@~0.4.0 c:\myprojects\carre-edu
+89 verbose already installed skipping grunt-usemin@~2.1.1 c:\myprojects\carre-edu
+90 verbose already installed skipping grunt-wiredep@^1.9.0 c:\myprojects\carre-edu
+91 verbose already installed skipping jit-grunt@^0.5.0 c:\myprojects\carre-edu
+92 verbose already installed skipping jshint-stylish@~0.1.5 c:\myprojects\carre-edu
+93 verbose already installed skipping karma@~0.12.9 c:\myprojects\carre-edu
+94 verbose request where is /passport-twitter
+95 verbose request registry https://registry.npmjs.org/
+96 verbose url raw /passport-twitter
+97 verbose url resolving [ 'https://registry.npmjs.org/', './passport-twitter' ]
+98 verbose url resolved https://registry.npmjs.org/passport-twitter
+99 verbose request where is https://registry.npmjs.org/passport-twitter
+100 info trying registry request attempt 1 at 14:49:58
+101 verbose etag "D6OXY6VP3GYN5QYO3PS9VCMKV"
+102 http GET https://registry.npmjs.org/passport-twitter
+103 verbose addRemoteGit [ 'https://github.com/DaftMonk/grunt-build-control', 'master' ]
+104 verbose already installed skipping karma-chrome-launcher@~0.1.3 c:\myprojects\carre-edu
+105 verbose already installed skipping karma-coffee-preprocessor@~0.2.1 c:\myprojects\carre-edu
+106 verbose already installed skipping karma-firefox-launcher@~0.1.3 c:\myprojects\carre-edu
+107 verbose already installed skipping karma-html2js-preprocessor@~0.1.0 c:\myprojects\carre-edu
+108 verbose already installed skipping karma-jade-preprocessor@0.0.11 c:\myprojects\carre-edu
+109 verbose already installed skipping karma-jasmine@~0.1.5 c:\myprojects\carre-edu
+110 verbose already installed skipping karma-ng-html2js-preprocessor@~0.1.0 c:\myprojects\carre-edu
+111 verbose already installed skipping karma-ng-jade2js-preprocessor@^0.1.2 c:\myprojects\carre-edu
+112 verbose already installed skipping karma-ng-scenario@~0.1.0 c:\myprojects\carre-edu
+113 verbose already installed skipping karma-phantomjs-launcher@~0.1.4 c:\myprojects\carre-edu
+114 verbose already installed skipping karma-requirejs@~0.2.1 c:\myprojects\carre-edu
+115 verbose already installed skipping karma-script-launcher@~0.1.0 c:\myprojects\carre-edu
+116 verbose already installed skipping open@~0.0.4 c:\myprojects\carre-edu
+117 verbose already installed skipping requirejs@~2.1.11 c:\myprojects\carre-edu
+118 verbose already installed skipping should@~3.3.1 c:\myprojects\carre-edu
+119 verbose already installed skipping supertest@~0.11.0 c:\myprojects\carre-edu
+120 verbose git remote.origin.url https://github.com/DaftMonk/grunt-build-control
+121 verbose already installed skipping time-grunt@~0.3.1 c:\myprojects\carre-edu
+122 verbose cache add [ 'forever@~0.11.0', null ]
+123 verbose cache add name=undefined spec="forever@~0.11.0" args=["forever@~0.11.0",null]
+124 verbose parsed url { protocol: null,
+124 verbose parsed url   slashes: null,
+124 verbose parsed url   auth: null,
+124 verbose parsed url   host: null,
+124 verbose parsed url   port: null,
+124 verbose parsed url   hostname: null,
+124 verbose parsed url   hash: null,
+124 verbose parsed url   search: null,
+124 verbose parsed url   query: null,
+124 verbose parsed url   pathname: 'forever@~0.11.0',
+124 verbose parsed url   path: 'forever@~0.11.0',
+124 verbose parsed url   href: 'forever@~0.11.0' }
+125 verbose cache add name="forever" spec="~0.11.0" args=["forever","~0.11.0"]
+126 verbose parsed url { protocol: null,
+126 verbose parsed url   slashes: null,
+126 verbose parsed url   auth: null,
+126 verbose parsed url   host: null,
+126 verbose parsed url   port: null,
+126 verbose parsed url   hostname: null,
+126 verbose parsed url   hash: null,
+126 verbose parsed url   search: null,
+126 verbose parsed url   query: null,
+126 verbose parsed url   pathname: '~0.11.0',
+126 verbose parsed url   path: '~0.11.0',
+126 verbose parsed url   href: '~0.11.0' }
+127 verbose addNamed [ 'forever', '~0.11.0' ]
+128 verbose addNamed [ null, '>=0.11.0-0 <0.12.0-0' ]
+129 silly lockFile 28a3b8c2-forever-0-11-0 forever@~0.11.0
+130 verbose lock forever@~0.11.0 C:\Users\NiCk\AppData\Roaming\npm-cache\28a3b8c2-forever-0-11-0.lock
+131 silly addNameRange { name: 'forever',
+131 silly addNameRange   range: '>=0.11.0-0 <0.12.0-0',
+131 silly addNameRange   hasData: false }
+132 verbose request where is /forever
+133 verbose request registry https://registry.npmjs.org/
+134 verbose url raw /forever
+135 verbose url resolving [ 'https://registry.npmjs.org/', './forever' ]
+136 verbose url resolved https://registry.npmjs.org/forever
+137 verbose request where is https://registry.npmjs.org/forever
+138 info trying registry request attempt 1 at 14:49:58
+139 http GET https://registry.npmjs.org/forever
+140 verbose already installed skipping body-parser@~1.5.0 c:\myprojects\carre-edu
+141 verbose already installed skipping composable-middleware@^0.3.0 c:\myprojects\carre-edu
+142 verbose already installed skipping compression@~1.0.1 c:\myprojects\carre-edu
+143 verbose already installed skipping connect-mongo@^0.4.1 c:\myprojects\carre-edu
+144 verbose already installed skipping cookie-parser@~1.0.1 c:\myprojects\carre-edu
+145 verbose already installed skipping ejs@~0.8.4 c:\myprojects\carre-edu
+146 verbose already installed skipping errorhandler@~1.0.0 c:\myprojects\carre-edu
+147 verbose already installed skipping express@~4.0.0 c:\myprojects\carre-edu
+148 verbose already installed skipping express-jwt@^0.1.3 c:\myprojects\carre-edu
+149 verbose already installed skipping express-session@~1.0.2 c:\myprojects\carre-edu
+150 verbose already installed skipping jsonwebtoken@^0.3.0 c:\myprojects\carre-edu
+151 verbose already installed skipping lodash@~2.4.1 c:\myprojects\carre-edu
+152 verbose already installed skipping method-override@~1.0.0 c:\myprojects\carre-edu
+153 verbose already installed skipping mongoose@~3.8.8 c:\myprojects\carre-edu
+154 verbose already installed skipping morgan@~1.0.0 c:\myprojects\carre-edu
+155 verbose already installed skipping passport@~0.2.0 c:\myprojects\carre-edu
+156 verbose cache add [ 'passport-facebook@latest', null ]
+157 verbose cache add name=undefined spec="passport-facebook@latest" args=["passport-facebook@latest",null]
+158 verbose parsed url { protocol: null,
+158 verbose parsed url   slashes: null,
+158 verbose parsed url   auth: null,
+158 verbose parsed url   host: null,
+158 verbose parsed url   port: null,
+158 verbose parsed url   hostname: null,
+158 verbose parsed url   hash: null,
+158 verbose parsed url   search: null,
+158 verbose parsed url   query: null,
+158 verbose parsed url   pathname: 'passport-facebook@latest',
+158 verbose parsed url   path: 'passport-facebook@latest',
+158 verbose parsed url   href: 'passport-facebook@latest' }
+159 verbose cache add name="passport-facebook" spec="latest" args=["passport-facebook","latest"]
+160 verbose parsed url { protocol: null,
+160 verbose parsed url   slashes: null,
+160 verbose parsed url   auth: null,
+160 verbose parsed url   host: null,
+160 verbose parsed url   port: null,
+160 verbose parsed url   hostname: null,
+160 verbose parsed url   hash: null,
+160 verbose parsed url   search: null,
+160 verbose parsed url   query: null,
+160 verbose parsed url   pathname: 'latest',
+160 verbose parsed url   path: 'latest',
+160 verbose parsed url   href: 'latest' }
+161 verbose addNamed [ 'passport-facebook', 'latest' ]
+162 verbose addNamed [ null, null ]
+163 silly lockFile 82ca5952-passport-facebook-latest passport-facebook@latest
+164 verbose lock passport-facebook@latest C:\Users\NiCk\AppData\Roaming\npm-cache\82ca5952-passport-facebook-latest.lock
+165 info addNameTag [ 'passport-facebook', 'latest' ]
+166 verbose request where is /passport-facebook
+167 verbose request registry https://registry.npmjs.org/
+168 verbose url raw /passport-facebook
+169 verbose url resolving [ 'https://registry.npmjs.org/', './passport-facebook' ]
+170 verbose url resolved https://registry.npmjs.org/passport-facebook
+171 verbose request where is https://registry.npmjs.org/passport-facebook
+172 info trying registry request attempt 1 at 14:49:58
+173 verbose etag "3X8OKKBLSLK9O9GPF6FZLB1XW"
+174 http GET https://registry.npmjs.org/passport-facebook
+175 http 304 https://registry.npmjs.org/passport-twitter
+176 silly registry.get cb [ 304,
+176 silly registry.get   { date: 'Thu, 13 Nov 2014 12:49:58 GMT',
+176 silly registry.get     server: 'Apache',
+176 silly registry.get     via: '1.1 varnish',
+176 silly registry.get     'last-modified': 'Thu, 13 Nov 2014 12:49:58 GMT',
+176 silly registry.get     'cache-control': 'max-age=60',
+176 silly registry.get     etag: '"D6OXY6VP3GYN5QYO3PS9VCMKV"',
+176 silly registry.get     age: '26',
+176 silly registry.get     'x-served-by': 'cache-fra1236-FRA',
+176 silly registry.get     'x-cache': 'HIT',
+176 silly registry.get     'x-cache-hits': '1',
+176 silly registry.get     'x-timer': 'S1415882998.788104,VS0,VE0',
+176 silly registry.get     vary: 'Accept',
+176 silly registry.get     'content-length': '0',
+176 silly registry.get     'keep-alive': 'timeout=10, max=50',
+176 silly registry.get     connection: 'Keep-Alive' } ]
+177 verbose etag https://registry.npmjs.org/passport-twitter from cache
+178 http 304 https://registry.npmjs.org/passport-google-oauth
+179 silly registry.get cb [ 304,
+179 silly registry.get   { date: 'Thu, 13 Nov 2014 12:49:58 GMT',
+179 silly registry.get     server: 'Apache',
+179 silly registry.get     via: '1.1 varnish',
+179 silly registry.get     'last-modified': 'Thu, 13 Nov 2014 12:49:58 GMT',
+179 silly registry.get     'cache-control': 'max-age=60',
+179 silly registry.get     etag: '"CNH1HR2EP7JOPTNOKQR95WBCR"',
+179 silly registry.get     age: '38',
+179 silly registry.get     'x-served-by': 'cache-fra1248-FRA',
+179 silly registry.get     'x-cache': 'HIT',
+179 silly registry.get     'x-cache-hits': '1',
+179 silly registry.get     'x-timer': 'S1415882998.789877,VS0,VE0',
+179 silly registry.get     vary: 'Accept',
+179 silly registry.get     'content-length': '0',
+179 silly registry.get     'keep-alive': 'timeout=10, max=50',
+179 silly registry.get     connection: 'Keep-Alive' } ]
+180 verbose etag https://registry.npmjs.org/passport-google-oauth from cache
+181 verbose addNamed [ 'passport-twitter', '1.0.2' ]
+182 verbose addNamed [ '1.0.2', '1.0.2' ]
+183 silly lockFile 50fcdf9c-passport-twitter-1-0-2 passport-twitter@1.0.2
+184 verbose lock passport-twitter@1.0.2 C:\Users\NiCk\AppData\Roaming\npm-cache\50fcdf9c-passport-twitter-1-0-2.lock
+185 verbose addNamed [ 'passport-google-oauth', '0.1.5' ]
+186 verbose addNamed [ '0.1.5', '0.1.5' ]
+187 silly lockFile 3fbba456-passport-google-oauth-0-1-5 passport-google-oauth@0.1.5
+188 verbose lock passport-google-oauth@0.1.5 C:\Users\NiCk\AppData\Roaming\npm-cache\3fbba456-passport-google-oauth-0-1-5.lock
+189 silly lockFile 3fbba456-passport-google-oauth-0-1-5 passport-google-oauth@0.1.5
+190 silly lockFile 3fbba456-passport-google-oauth-0-1-5 passport-google-oauth@0.1.5
+191 silly lockFile 50fcdf9c-passport-twitter-1-0-2 passport-twitter@1.0.2
+192 silly lockFile 50fcdf9c-passport-twitter-1-0-2 passport-twitter@1.0.2
+193 silly lockFile 2c491da3-passport-google-oauth-latest passport-google-oauth@latest
+194 silly lockFile 2c491da3-passport-google-oauth-latest passport-google-oauth@latest
+195 silly lockFile d5de964c-passport-twitter-latest passport-twitter@latest
+196 silly lockFile d5de964c-passport-twitter-latest passport-twitter@latest
+197 info already installed passport-google-oauth@0.1.5
+198 info already installed passport-twitter@1.0.2
+199 http 304 https://registry.npmjs.org/passport-facebook
+200 silly registry.get cb [ 304,
+200 silly registry.get   { date: 'Thu, 13 Nov 2014 12:49:58 GMT',
+200 silly registry.get     server: 'Apache',
+200 silly registry.get     via: '1.1 varnish',
+200 silly registry.get     'last-modified': 'Thu, 13 Nov 2014 12:49:58 GMT',
+200 silly registry.get     'cache-control': 'max-age=60',
+200 silly registry.get     etag: '"3X8OKKBLSLK9O9GPF6FZLB1XW"',
+200 silly registry.get     age: '38',
+200 silly registry.get     'x-served-by': 'cache-fra1220-FRA',
+200 silly registry.get     'x-cache': 'HIT',
+200 silly registry.get     'x-cache-hits': '1',
+200 silly registry.get     'x-timer': 'S1415882998.850814,VS0,VE0',
+200 silly registry.get     vary: 'Accept',
+200 silly registry.get     'content-length': '0',
+200 silly registry.get     'keep-alive': 'timeout=10, max=50',
+200 silly registry.get     connection: 'Keep-Alive' } ]
+201 verbose etag https://registry.npmjs.org/passport-facebook from cache
+202 verbose addNamed [ 'passport-facebook', '1.0.3' ]
+203 verbose addNamed [ '1.0.3', '1.0.3' ]
+204 silly lockFile 3e2a96bb-passport-facebook-1-0-3 passport-facebook@1.0.3
+205 verbose lock passport-facebook@1.0.3 C:\Users\NiCk\AppData\Roaming\npm-cache\3e2a96bb-passport-facebook-1-0-3.lock
+206 silly lockFile 3e2a96bb-passport-facebook-1-0-3 passport-facebook@1.0.3
+207 silly lockFile 3e2a96bb-passport-facebook-1-0-3 passport-facebook@1.0.3
+208 silly lockFile 82ca5952-passport-facebook-latest passport-facebook@latest
+209 silly lockFile 82ca5952-passport-facebook-latest passport-facebook@latest
+210 info already installed passport-facebook@1.0.3
+211 http 200 https://registry.npmjs.org/forever
+212 silly registry.get cb [ 200,
+212 silly registry.get   { date: 'Thu, 13 Nov 2014 12:49:58 GMT',
+212 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+212 silly registry.get     etag: '"2DHFCBV0AAS1FVX6YOW3O4EJ"',
+212 silly registry.get     'content-type': 'application/json',
+212 silly registry.get     'cache-control': 'max-age=60',
+212 silly registry.get     'content-length': '70777',
+212 silly registry.get     'accept-ranges': 'bytes',
+212 silly registry.get     via: '1.1 varnish',
+212 silly registry.get     age: '21',
+212 silly registry.get     'x-served-by': 'cache-fra1236-FRA',
+212 silly registry.get     'x-cache': 'HIT',
+212 silly registry.get     'x-cache-hits': '2',
+212 silly registry.get     'x-timer': 'S1415882998.817249,VS0,VE0',
+212 silly registry.get     vary: 'Accept',
+212 silly registry.get     'keep-alive': 'timeout=10, max=50',
+212 silly registry.get     connection: 'Keep-Alive' } ]
+213 silly addNameRange number 2 { name: 'forever', range: '>=0.11.0-0 <0.12.0-0', hasData: true }
+214 silly addNameRange versions [ 'forever',
+214 silly addNameRange   [ '0.6.0',
+214 silly addNameRange     '0.6.1',
+214 silly addNameRange     '0.6.2',
+214 silly addNameRange     '0.6.3',
+214 silly addNameRange     '0.6.4',
+214 silly addNameRange     '0.6.5',
+214 silly addNameRange     '0.6.6',
+214 silly addNameRange     '0.6.7',
+214 silly addNameRange     '0.6.8',
+214 silly addNameRange     '0.6.9',
+214 silly addNameRange     '0.7.0',
+214 silly addNameRange     '0.7.1',
+214 silly addNameRange     '0.7.2',
+214 silly addNameRange     '0.7.3',
+214 silly addNameRange     '0.7.4',
+214 silly addNameRange     '0.7.5',
+214 silly addNameRange     '0.8.0',
+214 silly addNameRange     '0.8.1',
+214 silly addNameRange     '0.8.2',
+214 silly addNameRange     '0.8.3',
+214 silly addNameRange     '0.8.4',
+214 silly addNameRange     '0.8.5',
+214 silly addNameRange     '0.9.0',
+214 silly addNameRange     '0.9.1',
+214 silly addNameRange     '0.9.2',
+214 silly addNameRange     '0.10.0',
+214 silly addNameRange     '0.10.5',
+214 silly addNameRange     '0.10.6',
+214 silly addNameRange     '0.10.7',
+214 silly addNameRange     '0.10.8',
+214 silly addNameRange     '0.10.9',
+214 silly addNameRange     '0.10.10',
+214 silly addNameRange     '0.10.11',
+214 silly addNameRange     '0.11.0',
+214 silly addNameRange     '0.11.1',
+214 silly addNameRange     '0.12.0',
+214 silly addNameRange     '0.13.0' ] ]
+215 verbose addNamed [ 'forever', '0.11.1' ]
+216 verbose addNamed [ '0.11.1', '0.11.1' ]
+217 silly lockFile 4466a206-forever-0-11-1 forever@0.11.1
+218 verbose lock forever@0.11.1 C:\Users\NiCk\AppData\Roaming\npm-cache\4466a206-forever-0-11-1.lock
+219 silly lockFile 10f1a948-s-org-forever-forever-0-11-1-tgz https://registry.npmjs.org/forever/-/forever-0.11.1.tgz
+220 verbose lock https://registry.npmjs.org/forever/-/forever-0.11.1.tgz C:\Users\NiCk\AppData\Roaming\npm-cache\10f1a948-s-org-forever-forever-0-11-1-tgz.lock
+221 verbose addRemoteTarball [ 'https://registry.npmjs.org/forever/-/forever-0.11.1.tgz',
+221 verbose addRemoteTarball   '50ac8744c0a6e0c266524c4746397f74d6b09c5b' ]
+222 info retry fetch attempt 1 at 14:49:59
+223 verbose fetch to= C:\Users\NiCk\AppData\Local\Temp\npm-4008-DLMiYXDZ\registry.npmjs.org\forever\-\forever-0.11.1.tgz
+224 http GET https://registry.npmjs.org/forever/-/forever-0.11.1.tgz
+225 http 200 https://registry.npmjs.org/forever/-/forever-0.11.1.tgz
+226 silly lockFile 10f1a948-s-org-forever-forever-0-11-1-tgz https://registry.npmjs.org/forever/-/forever-0.11.1.tgz
+227 silly lockFile 10f1a948-s-org-forever-forever-0-11-1-tgz https://registry.npmjs.org/forever/-/forever-0.11.1.tgz
+228 silly lockFile 4466a206-forever-0-11-1 forever@0.11.1
+229 silly lockFile 4466a206-forever-0-11-1 forever@0.11.1
+230 silly lockFile 28a3b8c2-forever-0-11-0 forever@~0.11.0
+231 silly lockFile 28a3b8c2-forever-0-11-0 forever@~0.11.0
+232 error git fetch -a origin (https://github.com/DaftMonk/grunt-build-control) fatal: unable to access 'https://github.com/DaftMonk/grunt-build-control/': Empty reply from server
+233 silly lockFile 7e4d577b-com-DaftMonk-grunt-build-control https://github.com/DaftMonk/grunt-build-control
+234 silly lockFile 7e4d577b-com-DaftMonk-grunt-build-control https://github.com/DaftMonk/grunt-build-control
+235 error Error: Command failed: fatal: unable to access 'https://github.com/DaftMonk/grunt-build-control/': Empty reply from server
+235 error
+235 error     at ChildProcess.exithandler (child_process.js:648:15)
+235 error     at ChildProcess.emit (events.js:98:17)
+235 error     at maybeClose (child_process.js:756:16)
+235 error     at Process.ChildProcess._handle.onexit (child_process.js:823:5)
+236 error If you need help, you may report this *entire* log,
+236 error including the npm and node versions, at:
+236 error     <http://github.com/npm/npm/issues>
+237 error System Windows_NT 6.2.9200
+238 error command "c:\\Program Files\\nodejs\\node.exe" "c:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install"
+239 error cwd c:\myprojects\carre-edu
+240 error node -v v0.10.33
+241 error npm -v 1.4.28
+242 error code 128
+243 verbose exit [ 1, true ]
