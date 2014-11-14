@@ -6,6 +6,9 @@
       <h1>Sign up</h1>
     </div>
     <div class="col-sm-12">
+      <h3>Local account</h3>
+      <div class="well">
+
       <form class="form" name="form" ng-submit="register(form)" novalidate>
 
         <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
@@ -62,21 +65,10 @@
             Login
           </a>
         </div>
-
-        <hr>
-        <div>
-          <a class="btn btn-facebook" href="" ng-click="loginOauth('facebook')">
-            <i class="fa fa-facebook"></i> Connect with Facebook
-          </a>
-          <a class="btn btn-google-plus" href="" ng-click="loginOauth('google')">
-            <i class="fa fa-google-plus"></i> Connect with Google+
-          </a>
-          <a class="btn btn-twitter" href="" ng-click="loginOauth('twitter')">
-            <i class="fa fa-twitter"></i> Connect with Twitter
-          </a>
-        </div>
       </form>
+      </div>
     </div>
   </div>
-  <hr>
 </div>
+
+<div ng-include="'components/footer/footer.html'"></div>
