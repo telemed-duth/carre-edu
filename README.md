@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/telemed-duth/carre-edu.svg?branch=master)](https://travis-ci.org/telemed-duth/carre-edu)
+
+
 carre-edu
 =========
 
