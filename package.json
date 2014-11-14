@@ -31,7 +31,8 @@
     "socketio-jwt": "^2.0.2",
     "sparql-client": "^0.1.0",
     "util": "^0.10.3",
-    "xml2js": "^0.4.4"
+    "xml2js": "^0.4.4",
+    "forever": "~0.11.0"
   },
   "devDependencies": {
     "connect-livereload": "~0.4.0",
@@ -85,14 +86,13 @@
     "requirejs": "~2.1.11",
     "should": "~3.3.1",
     "supertest": "~0.11.0",
-    "time-grunt": "~0.3.1",
-    "forever": "~0.11.0"
+    "time-grunt": "~0.3.1"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": "~0.10.0"
   },
   "scripts": {
-    "start": "node server/app.js",
+    "start": "./node_modules/forever/bin/forever -m 5 server/app.js",
     "test": "grunt test",
     "update-webdriver": "node node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update"
   },
