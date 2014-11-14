@@ -91,13 +91,8 @@
   "engines": {
     "node": ">=0.10.0"
   },
-  "bin": {
-    "forever": "./bin/forever",
-    "foreverd": "./bin/foreverd"
-  },
   "scripts": {
-    "start": "forever -m 5 server/app.js",
-    "postinstall": "npm install -g forever",
+    "start": "node server/app.js",
     "test": "grunt test",
     "update-webdriver": "node node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update"
   },
