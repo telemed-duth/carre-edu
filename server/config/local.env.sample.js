@@ -12,8 +12,8 @@ module.exports = {
   FACEBOOK_ID:      'app-id',
   FACEBOOK_SECRET:  'secret',
 
-  TWITTER_ID:       'app-id',
-  TWITTER_SECRET:   'secret',
+  TWITTER_ID:       'dSDhkSfBkULVM8uDk8oXSpFrX',
+  TWITTER_SECRET:   'ugKSfmFkvJr9yb4d1KlPaArqnqhIgM07emAaWtuZaXsfnfHgyV',
 
   GOOGLE_ID:        'app-id',
   GOOGLE_SECRET:    'secret',
