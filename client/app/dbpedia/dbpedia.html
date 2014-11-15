@@ -56,7 +56,7 @@
         
         <!--TOP Pagination-->
         <div class="text-center">
-            <pagination ng-show="pageCount>1" total-items="total" ng-model="currentPage" 
+            <pagination ng-show="total>itemsPerPage" total-items="total" ng-model="currentPage" 
             ng-change="searchTerm()" max-size="itemsPerPage" rotate="true"></pagination>
         </div>
 		
@@ -87,7 +87,7 @@
 		  
         <!--BOTTOM Pagination-->
         <div class="text-center">
-            <pagination ng-show="pageCount>1" total-items="total" ng-model="currentPage" 
+            <pagination ng-show="total>itemsPerPage" total-items="total" ng-model="currentPage" 
             ng-change="searchTerm()" max-size="itemsPerPage" rotate="true"></pagination>
         </div>
   		

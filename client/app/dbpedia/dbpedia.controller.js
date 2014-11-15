@@ -4,9 +4,10 @@ angular.module('edumaterialApp')
   .controller('DbpediaCtrl', function ($http,$scope) {
     
     //initialize setup vars
-    function init(){
+    
       $scope.itemsPerPage = 10
       $scope.currentPage = 1;
+    function init(){
       $scope.total=0;
       $scope.results=[];
       $scope.filteredResults=[];
@@ -16,7 +17,7 @@ angular.module('edumaterialApp')
     
     $scope.searchTerm=function() {
       init();
-      return $http.get('/api/dbpedia/term/'+encodeURI($scope.queryTerm)+'/en', {cache:true}).then(function(response){
+      $http.get('/api/dbpedia/term/'+encodeURI($scope.queryTerm)+'/en', {cache:true}).then(function(response){
         $scope.results = response.data;
         $scope.total = $scope.results.length;
         $scope.pageCount=Math.ceil($scope.total / $scope.itemsPerPage);
