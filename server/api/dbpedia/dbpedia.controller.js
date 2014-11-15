@@ -52,15 +52,19 @@ LIMIT 500
 // Get a single medline
 exports.dbpediaQuery = function(req, res) {
   var term=req.params.term;
-
+  var lang=req.params.lang;
+  
   
   var query=
-  "select distinct ?u ?label ?icd10 where { "+
+  "select distinct ?u ?abstract ?wikilink ?label ?icd10 where { "+
   "?u a dbpedia-owl:Disease ; "+
   "dbpedia-owl:icd10 ?icd10 ;"+
+  "dbpedia-owl:abstract ?abstract ;"+
+  "foaf:isPrimaryTopicOf ?wikilink ;"+
   "rdfs:label ?label ."+
   "FILTER (REGEX(STR(?label), \""+term+"\", \"i\"))"+
-  "FILTER (lang(?label)=\"en\")"+
+  (lang?"FILTER (lang(?label)=\""+lang+"\")":"")+
+  (lang?"FILTER (lang(?abstract)=\""+lang+"\")":"")+
   "} ORDER BY ?label LIMIT 500";
   
   var client = new SparqlClient(endpoint);
@@ -72,12 +76,15 @@ exports.dbpediaQuery = function(req, res) {
     //.bind('city', 'db:Casablanca')
     //.bind('city', '<http://dbpedia.org/resource/Vienna>')
     .execute(function(error, data) {
-      if(error) console.log(error);
-      console.log(data);
+      if(error) {
+        console.log(error);
+        res.json(500, {'message':'server_error','data':error});
+      }
+      // console.log(data);
       if(data){
           if(data.results.bindings.length>0) return res.json(200, data.results.bindings);
           else return res.json(200, {'message':'no_results','data':data.results});
-      } else return res.json(200, {'message':'no_results','data':null});
+      } else return res.json(404, {'message':'dbpedia_error','data':null});
   });
 
 

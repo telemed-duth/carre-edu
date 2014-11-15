@@ -5,7 +5,7 @@ var controller = require('./dbpedia.controller');
 
 var router = express.Router();
 
-router.get('/term/:term', controller.dbpediaQuery);
+router.get('/term/:term/:lang?', controller.dbpediaQuery);
 router.get('/', controller.index);
 router.get('/:id', controller.show);
 router.post('/', controller.create);
