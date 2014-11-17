@@ -56,12 +56,16 @@ exports.dbpediaQuery = function(req, res) {
   
   
   var query=
-  "select distinct ?u ?abstract ?wikilink ?label ?icd10 where { "+
+  "select distinct ?u ?abstract ?wordnet ?medlineplus ?thumbnail ?meshid ?wikilink ?label ?icd10 where { "+
   "?u a dbpedia-owl:Disease ; "+
   "dbpedia-owl:icd10 ?icd10 ;"+
   "dbpedia-owl:abstract ?abstract ;"+
   "foaf:isPrimaryTopicOf ?wikilink ;"+
   "rdfs:label ?label ."+
+  "OPTIONAL{?u dbpprop:wordnet_type ?wordnet }"+
+  "OPTIONAL{?u dbpedia-owl:medlineplus ?medlineplus }"+
+  "OPTIONAL{?u dbpprop:meshid ?meshid }"+
+  "OPTIONAL{?u dbpedia-owl:thumbnail ?thumbnail }"+
   "FILTER (REGEX(STR(?label), \""+term+"\", \"i\"))"+
   (lang?"FILTER (lang(?label)=\""+lang+"\")":"")+
   (lang?"FILTER (lang(?abstract)=\""+lang+"\")":"")+

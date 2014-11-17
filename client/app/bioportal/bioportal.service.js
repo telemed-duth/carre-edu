@@ -56,7 +56,7 @@ angular.module('edumaterialApp')
           '&include_obsolete='+include_obsolete+
           '&include_properties='+include_properties;
           
-          return $http.get(url);
+          return $http.get(url,{'cache':true});
       
         };
         
@@ -74,6 +74,7 @@ angular.module('edumaterialApp')
           return $http.get(url, {'cache':true});
         };
       
+      //Make public
       return {
         //return all the api functions
         'search':search,
@@ -81,5 +82,5 @@ angular.module('edumaterialApp')
         
         
         
-      }
+      };
   });

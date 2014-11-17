@@ -3,6 +3,7 @@
 angular.module('edumaterialApp')
   .controller('BioportalCtrl', function ($rootScope,$http,$scope,bioportal) {
     
+    
     //initialize setup vars
     $scope.ontologies=[];
     $scope.ontology={};
@@ -45,6 +46,6 @@ angular.module('edumaterialApp')
       });
       
     };
-
+    
     
   });
