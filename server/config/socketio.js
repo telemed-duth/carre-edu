@@ -18,6 +18,9 @@ function onConnect(socket) {
   });
 
   // Insert sockets below
+  require('../api/wikipedia/wikipedia.socket').register(socket);
+  require('../api/resource/resource.socket').register(socket);
+  require('../api/rating/rating.socket').register(socket);
   require('../api/bioportal/bioportal.socket').register(socket);
   require('../api/dbpedia/dbpedia.socket').register(socket);
   require('../api/medlineplus/medlineplus.socket').register(socket);
