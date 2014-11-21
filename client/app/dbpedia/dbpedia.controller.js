@@ -29,7 +29,8 @@ angular.module('edumaterialApp')
             var begin = (($scope.currentPage - 1) * $scope.itemsPerPage),
               end = begin + $scope.itemsPerPage;
             $scope.filteredResults = $scope.results.slice(begin, end);
-            $rootScope.dbpedia.filteredResults = $scope.filteredResults;
+            
+            // $rootScope.dbpedia.filteredResults = $scope.filteredResults;
           });
         } else {
           $scope.filteredResults=[];
