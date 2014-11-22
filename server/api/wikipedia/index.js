@@ -6,6 +6,7 @@ var controller = require('./wikipedia.controller');
 var router = express.Router();
 
 router.get('/', controller.index);
+router.get('/search/:term', controller.search);
 router.get('/autocomplete/:term', controller.autocomplete);
 router.get('/article/:title', controller.article);
 router.get('/:id', controller.show);

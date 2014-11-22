@@ -40,12 +40,12 @@ exports.autocomplete = function(req, res) {
 // search with terms
 exports.search = function(req, res) {
   
-    var title=req.params.title.split('%20').join('_');
-  
+    var term=req.params.term;
+    
     var queryParams={
-      'action': 'parse',
-      'page':title,
-      'prop':'displayTitle|text'
+      'action': 'query',
+      'srsearch':term,
+      'list':'search'
     };
     
     wiki.api.call( queryParams,function(data) {
