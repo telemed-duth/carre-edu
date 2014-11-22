@@ -31,6 +31,12 @@ angular.module('edumaterialApp')
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
+    $scope.user=$scope.getCurrentUser();
+        
+    //set image
+    if($scope.user.provider==='google') $scope.user.img=$scope.user.google.picture;
+    if($scope.user.provider==='twitter') $scope.user.img=$scope.user.twitter.profile_image_url;
+    console.log($scope.user);
 
     $scope.logout = function() {
       Auth.logout();
