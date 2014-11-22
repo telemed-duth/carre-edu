@@ -31,12 +31,15 @@ angular.module('edumaterialApp')
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
-    $scope.user=$scope.getCurrentUser();
-        
-    //set image
-    if($scope.user.provider==='google') $scope.user.img=$scope.user.google.picture;
-    if($scope.user.provider==='twitter') $scope.user.img=$scope.user.twitter.profile_image_url;
-    console.log($scope.user);
+    
+    $scope.getCurrentUser().$promise.then(function(user){
+      $scope.user=user;
+
+      //set image
+      if(user.provider==='google') $scope.user.img=user.google.picture;
+      if(user.provider==='twitter') $scope.user.img=user.twitter.profile_image_url;
+      
+    });
 
     $scope.logout = function() {
       Auth.logout();
