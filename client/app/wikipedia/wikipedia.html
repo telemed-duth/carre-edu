@@ -25,43 +25,37 @@
 <hgroup ng-show="total>0" class="mb20">
 		<h1>Search Results : <strong class="text-danger">{{total}}</strong> results were found for the search for <strong class="text-danger">{{queryTerm}}</strong></h1>					
 	  </hgroup>
+	  
+	<!-- Suggestions -->
+	<div ng-show="suggestion">
+        <h4>Did you mean <a href="" ng-click="searchTerm(suggestion)">{{suggestion}}</a>?</h4>
+        <hr>
+    </div>
+    
+    <!-- no results -->
     <div class="alert alert-warning" ng-hide="total>0">No results yet...</div>
+
     <section class="col-xs-12 col-sm-6 col-md-12">
         
         <!--TOP Pagination-->
         <div class="text-center">
             <pagination ng-show="total>itemsPerPage" total-items="total" ng-model="currentPage" 
-            ng-change="searchTerm()" max-size="itemsPerPage" rotate="true"></pagination>
+            ng-change="searchTerm()" max-size="5" rotate="false"></pagination>
         </div>
 		
-  		<article class="search-result row" ng-repeat="doc in filteredResults">
+  		<article class="search-result row" ng-repeat="doc in results">
 
   		  <!--slide down info-->
   		  <div>
   	        <!--left column-->
 			<div class="col-xs-12 col-sm-4 col-md-2">
-			    <div ng-show="doc.thumbnail" class="thumbnail"><img ng-src="{{doc.thumbnail.value}}"></div>
-			    <div ng-hide="doc.thumbnail" class="thumbnail"><img src="http://www.solid-run.com/wiki/images/7/75/No_image_available.png"></div>
+			    <h3 ng-bind-html="doc.title"></h3>
 			</div>
-  	        <!--middle column-->
-			<div class="col-xs-12 col-sm-8 col-md-7">
-				<h3 ng-bind-html="doc.label.value"></h3>
-				
-				<div ng-bind-html="doc.abstract.value"></div>
+  	        <!--right  column-->
+			<div class="col-xs-12 col-sm-8 col-md-10">
+				<div ng-bind-html="doc.snippet"></div>
 			</div>
 			
-			<!--right column-->
-			<div class="col-xs-12 col-sm-12 col-md-3">
-                <h4>Info</h4>
-                <div class="well-sm">
-                    <li ng-show="doc.icd10.value">ICD-10: {{doc.icd10.value}}</li>
-                    <li ng-show="doc.meshid.value">MESH: {{doc.meshid.value}}</li>
-                    <li ng-show="doc.wordnet.value"><a target="_blank" ng-href="{{doc.wordnet.value}}">WordNet</a></li>
-                    <li ng-show="doc.medlineplus.value"><a target="_blank" ng-href="http://www.nlm.nih.gov/medlineplus/ency/article/000913{{doc.medlineplus.value}}.htm">MedlinePLUS</a></li>
-                    <li ng-show="doc.u.value"><a target="_blank" ng-href="{{doc.u.value}}">DBpedia</a></li>
-                    <li ng-show="doc.wikilink.value"><a target="_blank" ng-href="{{doc.wikilink.value}}">WikiPedia</a></li>
-                </div>
-			</div>
   		</div>
   			
   			<span class="clearfix borda"></span>
@@ -71,7 +65,7 @@
         <!--BOTTOM Pagination-->
         <div class="text-center">
             <pagination ng-show="total>itemsPerPage" total-items="total" ng-model="currentPage" 
-            ng-change="searchTerm()" max-size="itemsPerPage" rotate="true"></pagination>
+            ng-change="searchTerm()" max-size="5" rotate="false"></pagination>
         </div>
   		
 	  </section>

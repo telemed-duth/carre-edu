@@ -7,16 +7,20 @@ angular.module('edumaterialApp')
       'link': '/'
     },{
       'title': 'MedlinePLUS',
-      'link': '/medlineplus'
+      'link': '/medlineplus',
+      'user':true
     },{
       'title': 'BioPortal',
-      'link': '/bioportal'
+      'link': '/bioportal',
+      'user':true
     },{
       'title': 'DBpedia',
-      'link': '/dbpedia'
+      'link': '/dbpedia',
+      'user':true
     },{
       'title': 'Wikipedia',
-      'link': '/wikipedia'
+      'link': '/wikipedia',
+      'user':true
     },{
       'title': 'Compare',
       'link': '/compare',
@@ -31,6 +35,8 @@ angular.module('edumaterialApp')
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
+    
+    //async process user before setting to scope
     if(Auth.isLoggedIn && Auth.getCurrentUser().hasOwnProperty('$promise')) {
       $scope.getCurrentUser().$promise.then(function(user){
         $scope.user=user;

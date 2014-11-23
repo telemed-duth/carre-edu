@@ -41,14 +41,18 @@ exports.autocomplete = function(req, res) {
 exports.search = function(req, res) {
   
     var term=req.params.term;
+    var offset=req.params.offset;
     
     var queryParams={
       'action': 'query',
       'srsearch':term,
-      'list':'search'
+      'list':'search',
+      'srlimit':20,
+      'sroffset':offset||0
     };
     
     wiki.api.call( queryParams,function(data) {
+      // console.log(queryParams);
       return res.status(200).send(data);
     });
 
