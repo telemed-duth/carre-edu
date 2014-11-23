@@ -8,7 +8,8 @@
 	<div class="row">
 	<form ng-submit="searchTerm()">
        <div class="input-group custom-search-form">
-            <input ng-model="queryTerm" type="text" placeholder="Type terms" class="form-control">
+           <input type="text" ng-model="queryTerm" placeholder="Type terms" typeahead="term for term in getSuggestions($viewValue)" 
+           typeahead-loading="loading" class="form-control">
             <span class="input-group-btn">
             <button class="btn btn-default" type="submit">
             <span class="glyphicon glyphicon-search"></span>
@@ -28,7 +29,7 @@
 	  
 	<!-- Suggestions -->
 	<div ng-show="suggestion">
-        <h4>Did you mean <a href="" ng-click="searchTerm(suggestion)">{{suggestion}}</a>?</h4>
+        <h4>Did you mean <a href="" ng-click="suggest(suggestion)">{{suggestion}}</a>?</h4>
         <hr>
     </div>
     
@@ -40,23 +41,28 @@
         <!--TOP Pagination-->
         <div class="text-center">
             <pagination ng-show="total>itemsPerPage" total-items="total" ng-model="currentPage" 
-            ng-change="searchTerm()" max-size="5" rotate="false"></pagination>
+            ng-change="searchTerm(true)" max-size="5" rotate="false"></pagination>
         </div>
 		
-  		<article class="search-result row" ng-repeat="doc in results">
+  		<article class="search-result row" ng-repeat="doc in results track by $index">
 
   		  <!--slide down info-->
-  		  <div>
+  		<div class="row">
   	        <!--left column-->
 			<div class="col-xs-12 col-sm-4 col-md-2">
+			    <a href="" ng-click="getArticle(doc.title,$index)">Show</a>
 			    <h3 ng-bind-html="doc.title"></h3>
 			</div>
   	        <!--right  column-->
 			<div class="col-xs-12 col-sm-8 col-md-10">
 				<div ng-bind-html="doc.snippet"></div>
 			</div>
-			
-  		</div>
+		</div>
+		
+  		<div class="row" collapse="doc.show">
+  		<hr>
+  	    <div ng-bind-unsafe="doc.fetched"></div>
+		</div>
   			
   			<span class="clearfix borda"></span>
   			<hr border="2">
@@ -65,7 +71,7 @@
         <!--BOTTOM Pagination-->
         <div class="text-center">
             <pagination ng-show="total>itemsPerPage" total-items="total" ng-model="currentPage" 
-            ng-change="searchTerm()" max-size="5" rotate="false"></pagination>
+            ng-change="searchTerm(true)" max-size="5" rotate="false"></pagination>
         </div>
   		
 	  </section>

@@ -23,7 +23,7 @@ exports.autocomplete = function(req, res) {
   var term=req.params.term;
   
   var params={
-    url:'http://en.wikipedia.org/w/api.php?action=opensearch&search='+term+'&limit=100&[[category:Diseases]]',
+    url:'http://en.wikipedia.org/w/api.php?action=opensearch&search='+term+'&limit=20&[[category:Diseases]]',
     json:true
   };
   
