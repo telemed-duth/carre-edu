@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('edumaterialApp')
-  .controller('NavbarCtrl', function ($scope, $location, Auth) {
+  .controller('NavbarCtrl', function ($scope, $location, Auth,$state) {
     $scope.menu = [{
       'title': 'Home',
       'link': '/'
@@ -35,6 +35,7 @@ angular.module('edumaterialApp')
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
+    $scope.query=Auth.searchQuery||'';
     
     //async process user before setting to scope
     if(Auth.isLoggedIn && Auth.getCurrentUser().hasOwnProperty('$promise')) {
@@ -58,6 +59,13 @@ angular.module('edumaterialApp')
       return route === $location.path();
     };
     
+    $scope.searchQuery=function(){
+      Auth.searchQuery=$scope.query;
+      $('.close').prev('input').val('').parents('.search-input').removeClass('open');
+      $location.path('/wikipedia');
+      $state.forceReload();
+      
+    };
     
     //jquery awesome search bar
     $(document).ready(function() {

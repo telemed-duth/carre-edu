@@ -18,10 +18,27 @@ angular.module('edumaterialApp', [
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');
   })
+  
+  //make loading bar not show for requests smaller than 500ms
   .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
     cfpLoadingBarProvider.latencyThreshold = 500;
   }])
-
+  
+  //make force reload function for ui-router
+  .config(function($provide) {
+    $provide.decorator('$state', function($delegate, $stateParams) {
+        $delegate.forceReload = function() {
+            return $delegate.go($delegate.current, $stateParams, {
+                reload: true,
+                inherit: false,
+                notify: true
+            });
+        };
+        return $delegate;
+    });
+  })
+  
+  //make web tokens interceptor
   .factory('authInterceptor', function ($rootScope, $q, $cookieStore, $location) {
     return {
       // Add authorization token to headers

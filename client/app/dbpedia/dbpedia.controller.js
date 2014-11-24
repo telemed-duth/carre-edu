@@ -1,20 +1,24 @@
 'use strict';
 
 angular.module('edumaterialApp')
-  .controller('DbpediaCtrl', function ($http,$scope) {
+  .controller('DbpediaCtrl', function ($http,$scope,Auth) {
     
     //initialize setup vars
       
       $scope.itemsPerPage = 10
       $scope.currentPage = 1;
+      
     function init(){
       //load from state or instantiate
       $scope.total=0;
       $scope.results=[];
       $scope.filteredResults=[];
+      
     }
-    init();
     
+    
+    //perform initialization
+    init();
     
     $scope.searchTerm=function() {
       init();
@@ -47,5 +51,12 @@ angular.module('edumaterialApp')
       
       });
     };
+    
+    
+      //check if global search term is present
+      if(Auth.searchQuery){
+        $scope.queryTerm=Auth.searchQuery;
+        $scope.searchTerm();
+      }
     
   });

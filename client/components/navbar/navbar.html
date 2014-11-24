@@ -1,15 +1,16 @@
-  
-  <div class="search-input search-input-unfold">
-      <form id="search-form" role="search">
-        <input autocomplete="off" autocorrect="off" id="search-input" placeholder="Search" type="text">
-        <div class="close">&times;</div>
-      </form>
-    </div>
+
 
 <div class="navbar navbar-default navbar-static-top" ng-controller="NavbarCtrl">
+  
+<!--top awesome search bar-->
+<div class="search-input search-input-unfold">
+  <form id="search-form" ng-submit="searchQuery()" role="search">
+    <input autocomplete="off" ng-model="query" autocorrect="off" id="search-input" placeholder="Search" type="text">
+    <div class="close">&times;</div>
+  </form>
+</div>
 
-  
-  
+<!--typical navbar-->
   <div class="container">
     <div class="navbar-header">
       <button class="navbar-toggle" type="button" ng-click="isCollapsed = !isCollapsed">
@@ -33,7 +34,8 @@
         
         <li ng-show="isLoggedIn()">
           <a class="btn-search" href="#">
-            Search terms <i class="glyphicon glyphicon-search"></i>
+            <span class="label label-lg label-default" ng-bind='query'></span> 
+            <span> <i class="glyphicon glyphicon-search"></i> </span>
           </a>
         </li>
         <li ng-show="isLoggedIn()" class="dropdown text-normal">

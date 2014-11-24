@@ -1,18 +1,22 @@
 'use strict';
 
 angular.module('edumaterialApp')
-  .controller('WikipediaCtrl', function ($scope,$http) {
+  .controller('WikipediaCtrl', function ($scope,$http,Auth) {
     
     //initialize setup vars
-      
       $scope.itemsPerPage = 20
       $scope.currentPage = 1;
     function init(){
       //load from state or instantiate
       $scope.total=0;
       $scope.results=[];
+      
+      //check if global search term is present
+      if(Auth.searchQuery){
+        $scope.queryTerm=Auth.searchQuery;
+        $scope.searchTerm();
+      }
     }
-    init();
     
     //did you mean? function
     $scope.suggest=function(suggestion){
@@ -73,5 +77,9 @@ angular.module('edumaterialApp')
       });
       
     };
+    
+    
+    //perform initialization
+    init();
     
   });

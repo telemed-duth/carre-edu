@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('edumaterialApp')
-  .controller('BioportalCtrl', function ($rootScope,$http,$scope,bioportal) {
+  .controller('BioportalCtrl', function ($rootScope,$http,$scope,bioportal,Auth) {
     
     
     //initialize setup vars
@@ -32,8 +32,10 @@ angular.module('edumaterialApp')
     //Actual search function wrapper for my service
     $scope.searchTerm=function() {
     
+    var acronyms=$scope.ontology.selected?$scope.selectedAcronyms():'';
+    
       //call the service
-      bioportal.search($scope.results.page,$scope.queryTerm,$scope.selectedAcronyms()).then(function(response){
+      bioportal.search($scope.results.page,$scope.queryTerm,acronyms).then(function(response){
         
         $scope.results=response.data;
         if(($scope.results.collection.length<10) && ($scope.results.page>1) ){
@@ -47,5 +49,10 @@ angular.module('edumaterialApp')
       
     };
     
+     //check if global search term is present
+    if(Auth.searchQuery){
+      $scope.queryTerm=Auth.searchQuery;
+      $scope.searchTerm();
+    }
     
   });

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('edumaterialApp')
-  .controller('MedlineplusCtrl', function ($http,$scope,medlineplus) {
+  .controller('MedlineplusCtrl', function ($http,$scope,medlineplus,Auth) {
 
       
     //initialize setup vars
@@ -27,7 +27,11 @@ angular.module('edumaterialApp')
       
     };
     
-
+     //check if global search term is present
+    if(Auth.searchQuery){
+      $scope.medlineTerm=Auth.searchQuery;
+      $scope.searchTerm();
+    }
     
     // $scope.searchTerm=function() {
     //   return $http.get('/api/medlineplus/term/'+encodeURI($scope.medlineTerm), {
