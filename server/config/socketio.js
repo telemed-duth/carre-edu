@@ -18,6 +18,7 @@ function onConnect(socket) {
   });
 
   // Insert sockets below
+  require('../api/riskelements/riskelements.socket').register(socket);
   require('../api/wikipedia/wikipedia.socket').register(socket);
   require('../api/resource/resource.socket').register(socket);
   require('../api/rating/rating.socket').register(socket);

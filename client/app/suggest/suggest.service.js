@@ -9,10 +9,17 @@ angular.module('edumaterialApp')
           if(response.data.length>1) return response.data; else return [];
         });
       } else return []; 
-    }
+    };    
+    
+    var sparqlRiskElements=function(){
+        return $http.get('/api/riskelements', {cache:true,ignoreLoadingBar: true}).then(function(response){
+          if(response.data.length>1) return response.data; else return [];
+        });
+    };
     
     // Public API here
     return {
-      'for': getSuggestions
+      'for': getSuggestions,
+      'riskelements': sparqlRiskElements
     };
   });

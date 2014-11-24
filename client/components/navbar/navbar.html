@@ -33,15 +33,15 @@ typeahead="term for term in getSuggestions($viewValue)" typeahead-loading="loadi
         </li>
         <li ng-show="isAdmin()" ng-class="{active: isActive('/admin')}"><a href="/admin">Admin</a></li>
       </ul>
-
       <ul class="nav navbar-nav navbar-right">
-        
+        <!--search functions-->
         <li ng-show="isLoggedIn()">
           <a class="btn-search" ng-click="showSearch=!showSearch" href="">
             <span class="label label-lg label-default" ng-bind='query'></span> 
             <span> <i class="glyphicon glyphicon-search"></i> </span>
           </a>
         </li>
+        <!--User functions-->
         <li ng-show="isLoggedIn()" class="dropdown text-normal">
           <a id="avatar" class="dropdown-toggle nav-profile" data-toggle="dropdown">
                   <span>{{ user.name }}</span>

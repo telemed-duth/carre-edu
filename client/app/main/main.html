@@ -2,8 +2,20 @@
 
 <header class="hero-unit" id="banner">
   <div class="container">
-    <h1>Knowledge aggregator</h1>
-    <p class="lead"></p>
+    <h2>Carre Risk Elements</h2>
+  	<div class="row">
+    	<form ng-submit="searchTerm()">
+           <div class="input-group custom-search-form">
+             <input type="text" ng-model="queryTerm" placeholder="Carre terms" typeahead="term for term in riskElements" 
+             class="form-control" typeahead-on-select="onComplete($label)">
+              <span class="input-group-btn">
+              <button class="btn btn-default" type="submit">
+              <span class="glyphicon glyphicon-search"></span>
+             </button>
+             </span>
+             </div><!-- /input-group -->
+      </form>
+    </div>
   </div>
 </header>
 

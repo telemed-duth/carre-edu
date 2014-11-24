@@ -58,7 +58,8 @@ angular.module('edumaterialApp')
     $scope.isActive = function(route) {
       return route === $location.path();
     };
-        //===autocomple helpers===//
+    
+    //===autocomple helpers===//
     $scope.getSuggestions=function(val) {
       return suggest.for(val);
     };
@@ -68,9 +69,9 @@ angular.module('edumaterialApp')
       $scope.showSearch=false;
       console.log($location.$$path);
       if($location.$$path!=='/home'&&$location.$$path!=='/') $state.forceReload();
-      else $location.path('/wikipedia');
+      else $location.path('/medlineplus');
       
     };
-
+    
 
   });
