@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('edumaterialApp')
-  .controller('NavbarCtrl', function ($scope, $location, Auth,$state) {
+  .controller('NavbarCtrl', function ($scope, $location, Auth,$state,suggest) {
     $scope.menu = [{
       'title': 'Home',
       'link': '/'
@@ -57,6 +57,10 @@ angular.module('edumaterialApp')
 
     $scope.isActive = function(route) {
       return route === $location.path();
+    };
+        //===autocomple helpers===//
+    $scope.getSuggestions=function(val) {
+      return suggest.for(val);
     };
     
     $scope.searchQuery=function(){

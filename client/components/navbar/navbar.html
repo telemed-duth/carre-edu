@@ -5,7 +5,9 @@
 <!--top awesome search bar-->
 <div class="search-input search-input-unfold">
   <form id="search-form" ng-submit="searchQuery()" role="search">
-    <input autocomplete="off" ng-model="query" autocorrect="off" id="search-input" placeholder="Search" type="text">
+    <input autocomplete="off" ng-model="query" typeahead="term for term in getSuggestions($viewValue)" 
+           typeahead-loading="loading" typeahead-on-select="searchQuery()"
+    autocorrect="off" id="search-input" placeholder="Search" type="text">
     <div class="close">&times;</div>
   </form>
 </div>
@@ -64,3 +66,7 @@
     </div>
   </div>
 </div>
+
+<script type="text/ng-template" id="customTemplate.html">
+  <a class="search-input-unfold">{{$label}}</a>
+</script>

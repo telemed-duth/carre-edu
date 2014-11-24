@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('edumaterialApp')
-  .controller('WikipediaCtrl', function ($scope,$http,Auth) {
+  .controller('WikipediaCtrl', function ($scope,$http,Auth,suggest) {
     
     //initialize setup vars
       $scope.itemsPerPage = 20
@@ -26,11 +26,7 @@ angular.module('edumaterialApp')
     
     //===autocomple helpers===//
     $scope.getSuggestions=function(val) {
-      if(val.length>2) {
-        return $http.get('/api/wikipedia/autocomplete/'+encodeURI(val), {cache:true,ignoreLoadingBar: true}).then(function(response){
-          if(response.data.length>1) return response.data; else return [];
-        });
-      } else return [];
+      return suggest.for(val);
     };
     $scope.onComplete=function(label){
       if(label) {
