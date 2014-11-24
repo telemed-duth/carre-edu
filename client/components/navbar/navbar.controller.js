@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('edumaterialApp')
-  .controller('NavbarCtrl', function ($scope, $location, Auth,$state,suggest) {
+  .controller('NavbarCtrl', function ($scope, $location, Auth,$state,suggest,$rootScope) {
     $scope.menu = [{
       'title': 'Home',
       'link': '/'
@@ -65,22 +65,12 @@ angular.module('edumaterialApp')
     
     $scope.searchQuery=function(){
       Auth.searchQuery=$scope.query;
-      $('.close').prev('input').val('').parents('.search-input').removeClass('open');
-      $location.path('/wikipedia');
-      $state.forceReload();
+      $scope.showSearch=false;
+      console.log($location.$$path);
+      if($location.$$path!=='/home'&&$location.$$path!=='/') $state.forceReload();
+      else $location.path('/wikipedia');
       
     };
-    
-    //jquery awesome search bar
-    $(document).ready(function() {
-      $('.btn-search').click(function() {
-        $('.search-input').toggleClass("open").find('input').focus();
-      });
-      
-      $('.close').click(function() {
-        $(this).prev('input').val('').parents('.search-input').removeClass('open');
-      });
-    });
 
 
   });

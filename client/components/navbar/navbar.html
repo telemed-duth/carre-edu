@@ -3,12 +3,14 @@
 <div class="navbar navbar-default navbar-static-top" ng-controller="NavbarCtrl">
   
 <!--top awesome search bar-->
-<div class="search-input search-input-unfold">
+<!--    
+typeahead="term for term in getSuggestions($viewValue)" typeahead-loading="loading" typeahead-on-select="searchQuery()" typeahead-template-url="customTemplate.html"
+-->
+<div class="search-input search-input-unfold" ng-class="{'open':showSearch}">
   <form id="search-form" ng-submit="searchQuery()" role="search">
-    <input autocomplete="off" ng-model="query" typeahead="term for term in getSuggestions($viewValue)" 
-           typeahead-loading="loading" typeahead-on-select="searchQuery()"
+    <input tabindex="0" autocomplete="off" ng-model="query" 
     autocorrect="off" id="search-input" placeholder="Search" type="text">
-    <div class="close">&times;</div>
+    <div ng-click="showSearch=!showSearch" class="close">&times;</div>
   </form>
 </div>
 
@@ -35,7 +37,7 @@
       <ul class="nav navbar-nav navbar-right">
         
         <li ng-show="isLoggedIn()">
-          <a class="btn-search" href="#">
+          <a class="btn-search" ng-click="showSearch=!showSearch" href="">
             <span class="label label-lg label-default" ng-bind='query'></span> 
             <span> <i class="glyphicon glyphicon-search"></i> </span>
           </a>
@@ -68,5 +70,7 @@
 </div>
 
 <script type="text/ng-template" id="customTemplate.html">
-  <a class="search-input-unfold">{{$label}}</a>
+  <a>
+      <span bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
+  </a>
 </script>
