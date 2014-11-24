@@ -14,11 +14,13 @@ angular.module('edumaterialApp')
     }
     init();
     
+    //did you mean? function
     $scope.suggest=function(suggestion){
       $scope.queryTerm=suggestion;
       $scope.searchTerm();
     };
     
+    //===autocomple helpers===//
     $scope.getSuggestions=function(val) {
       if(val.length>2) {
         return $http.get('/api/wikipedia/autocomplete/'+encodeURI(val), {cache:true,ignoreLoadingBar: true}).then(function(response){
@@ -26,16 +28,41 @@ angular.module('edumaterialApp')
         });
       } else return [];
     };
+    $scope.onComplete=function(label){
+      if(label) {
+        $scope.queryTerm=label;
+        $scope.searchTerm();
+      }
+    };
+
     
-    $scope.getArticle=function(title,i) {
-      if(title) {
-        return $http.get('/api/wikipedia/article/'+encodeURI(title), {cache:true}).then(function(response){
-          $scope.results[i].show=true;
-          $scope.results[i].fetched=response.data.text['*'];
-        });
-      } else return {};
+    //fetch whole article and rate it
+    $scope.toggleArticle=function(i) {
+      var doc=$scope.results[i];
+      var title=doc.title;
+      console.log(doc);
+      
+      if(!doc.fetched) {
+        //load the article
+        if(title) {
+          doc.loading=true;
+          $http.get('/api/wikipedia/article/'+encodeURI(title), {cache:true}).then(function(response){
+            doc.show=true;
+            doc.fetched=response.data.text['*'];
+            doc.loading=false;
+          });
+        }
+      } else {
+        //just toggle it
+        doc.show=!doc.show;
+        
+      }
+      
+      
+      
     };
     
+    //perform search
     $scope.searchTerm=function(page) {
       if(!page) $scope.currentPage = 1;
       $http.get('/api/wikipedia/search/'+encodeURI($scope.queryTerm)+'/'+($scope.currentPage-1)*$scope.itemsPerPage, {cache:true}).then(function(response){

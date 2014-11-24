@@ -1,6 +1,6 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
-<header class="hero-unit" id="banner">
+<header ui-scrollfix="+200" class="hero-unit" id="banner">
 
 
 <div class="container">
@@ -9,7 +9,7 @@
 	<form ng-submit="searchTerm()">
        <div class="input-group custom-search-form">
            <input type="text" ng-model="queryTerm" placeholder="Type terms" typeahead="term for term in getSuggestions($viewValue)" 
-           typeahead-loading="loading" class="form-control">
+           typeahead-loading="loading" class="form-control" typeahead-on-select="onComplete($label)">
             <span class="input-group-btn">
             <button class="btn btn-default" type="submit">
             <span class="glyphicon glyphicon-search"></span>
@@ -46,23 +46,36 @@
 		
   		<article class="search-result row" ng-repeat="doc in results track by $index">
 
-  		  <!--slide down info-->
-  		<div class="row">
-  	        <!--left column-->
-			<div class="col-xs-12 col-sm-4 col-md-2">
-			    <a href="" ng-click="getArticle(doc.title,$index)">Show</a>
-			    <h3 ng-bind-html="doc.title"></h3>
-			</div>
-  	        <!--right  column-->
-			<div class="col-xs-12 col-sm-8 col-md-10">
-				<div ng-bind-html="doc.snippet"></div>
-			</div>
-		</div>
-		
-  		<div class="row" collapse="doc.show">
-  		<hr>
-  	    <div ng-bind-unsafe="doc.fetched"></div>
-		</div>
+      		<div class="row">
+      		    
+    			<div class="page-header">
+    			    <h3>
+    			        {{doc.title}}
+        			    <a href="" ng-click="toggleArticle($index)">
+        			        <small>Details</small>
+        			    </a>
+    			    </h3>
+    			    
+    			    <!--loading-->
+    			    <div ng-show="doc.loading" class="spinner">
+                      <div class="bounce1"></div>
+                      <div class="bounce2"></div>
+                      <div class="bounce3"></div>
+                    </div>
+                    
+    			</div>
+    			<div class="container">
+    			    <div ng-hide="doc.show" ng-bind-html="doc.snippet"></div>
+    			</div>
+    		
+    		</div>
+    		
+      		<!--slide down info-->
+      		<div class="row" collapse="!doc.show">
+      		    
+                <!--loaded html-->
+          	    <div class="well" ng-bind-html="doc.fetched"></div>
+    		</div>
   			
   			<span class="clearfix borda"></span>
   			<hr border="2">
