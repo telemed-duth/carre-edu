@@ -51,8 +51,8 @@
     			<div class="page-header">
     			    <h3>
     			        {{doc.title}}
-        			    <a href="" ng-click="toggleArticle($index)">
-        			        <small>Details</small>
+        			        <button ng-click="toggleArticle($index)" type="button" 
+        			        class="btn btn-sm btn-default" ng-class="{'active':doc.show}">Details</button>
         			    </a>
     			    </h3>
     			    

@@ -1,4 +1,15 @@
+  
+  <div class="search-input search-input-unfold">
+      <form id="search-form" role="search">
+        <input autocomplete="off" autocorrect="off" id="search-input" placeholder="Search" type="text">
+        <div class="close">&times;</div>
+      </form>
+    </div>
+
 <div class="navbar navbar-default navbar-static-top" ng-controller="NavbarCtrl">
+
+  
+  
   <div class="container">
     <div class="navbar-header">
       <button class="navbar-toggle" type="button" ng-click="isCollapsed = !isCollapsed">
@@ -8,7 +19,7 @@
         <span class="icon-bar"></span>
       </button>
       <a href="/" class="navbar-brand">  <img style="margin-top:-9px" src="http://www.carre-project.eu/wp-content/uploads/2013/12/CARRE-FooterLogo.png" width="36" height="40" alt="CARRE">
-</a>
+      </a>
     </div>
     <div collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
       <ul class="nav navbar-nav">
@@ -19,26 +30,32 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-      <li ng-show="isLoggedIn()" class="dropdown text-normal">
-              <a id="avatar" class="dropdown-toggle nav-profile" data-toggle="dropdown">
-                      <span>{{ user.name }}</span>
-                  <img ng-src="{{user.img}}" class="img-circle">
-              </a>
-              <ul class="dropdown-menu with-arrow pull-right">
-                  <li>
-                      <a href="/settings">
-                          <i class="glyphicon glyphicon-cog"></i>
-                          <span>Settings</span>
-                      </a>
-                  </li>
-                  <li>
-                      <a href="" ng-click="logout()">
-                          <i class="glyphicon glyphicon-log-out"></i>
-                          <span>Log Out</span>
-                      </a>
-                  </li>
-              </ul>
-          </li>
+        
+        <li ng-show="isLoggedIn()">
+          <a class="btn-search" href="#">
+            Search terms <i class="glyphicon glyphicon-search"></i>
+          </a>
+        </li>
+        <li ng-show="isLoggedIn()" class="dropdown text-normal">
+          <a id="avatar" class="dropdown-toggle nav-profile" data-toggle="dropdown">
+                  <span>{{ user.name }}</span>
+              <img ng-src="{{user.img}}" class="img-circle">
+          </a>
+          <ul class="dropdown-menu with-arrow pull-right">
+              <li>
+                  <a href="/settings">
+                      <i class="glyphicon glyphicon-cog"></i>
+                      <span>Settings</span>
+                  </a>
+              </li>
+              <li>
+                  <a href="" ng-click="logout()">
+                      <i class="glyphicon glyphicon-log-out"></i>
+                      <span>Log Out</span>
+                  </a>
+              </li>
+          </ul>
+        </li>
         <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/signup')}"><a href="/signup">Sign up</a></li>
         <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/login')}"><a href="/login">Login</a></li>
       </ul>
