@@ -63,7 +63,7 @@ div#navbar-main > ul.nav.navbar-nav > li.active > a:focus {
 }
 
 .hero-unit{
-    position:relative;
+    /*position:relative;*/
 }
 .hero-unit.ui-scrollfix {
     position:fixed;
