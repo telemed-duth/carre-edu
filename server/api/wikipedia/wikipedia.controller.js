@@ -12,7 +12,7 @@ var wiki = new bot({
     "debug": false,                // is more verbose when set to true
     "username": "edu.carreproject",             // account to be used when logIn is called (optional)
     "password": "c@rr3pr0j3ct",             // password to be used when logIn is called (optional)
-    "userAgent": "Carre-project.eu Educational Aggregator", // define custom bot's user agent
+    "userAgent": "Api-User-Agent", // define custom bot's user agent
     "concurrency": 5              // how many API requests can be run in parallel (defaults to 3)
 });
 
@@ -45,7 +45,8 @@ exports.search = function(req, res) {
     
     var queryParams={
       'action': 'query',
-      'srsearch':term,
+      // 'query':'srsearch='+term+'&list=search&srlimit=20&sroffset='+(offset||0)+'&[[category:Diseases]]'
+      'srsearch':'intitle:'+term,
       'list':'search',
       'srlimit':20,
       'sroffset':offset||0

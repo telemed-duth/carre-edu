@@ -166,7 +166,7 @@ div#navbar-main > ul.nav.navbar-nav > li.active > a:focus {
   top:20px;
   left:25px;
   font-size:50px;
-  color:#e8e8e8
+  color:#cccccc
 }
 
 .search-input-unfold.open {
@@ -198,19 +198,19 @@ div#navbar-main > ul.nav.navbar-nav > li.active > a:focus {
 }
 
 .search-input-unfold input::-webkit-input-placeholder {
-  color:#e6e6e6
+  color:#cccccc
 }
 
 .search-input-unfold input::-moz-placeholder {
-  color:#e6e6e6
+  color:#cccccc
 }
 
 .search-input-unfold input:-moz-placeholder {
-  color:#e6e6e6
+  color:#cccccc
 }
 
 .search-input-unfold input:-ms-input-placeholder {
-  color:#e6e6e6
+  color:#cccccc
 }
 
 .search-input-unfold .close {

@@ -9,7 +9,7 @@ typeahead="term for term in getSuggestions($viewValue)" typeahead-loading="loadi
 <div class="search-input search-input-unfold" ng-class="{'open':showSearch}">
   <form id="search-form" ng-submit="searchQuery()" role="search">
     <input tabindex="0" autocomplete="off" ng-model="query" 
-    autocorrect="off" id="search-input" placeholder="Search" type="text">
+    autocorrect="off" id="search-input" placeholder="Search..." type="text">
     <div ng-click="showSearch=!showSearch" class="close">&times;</div>
   </form>
 </div>

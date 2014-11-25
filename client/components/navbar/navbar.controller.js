@@ -35,7 +35,7 @@ angular.module('edumaterialApp')
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
-    $scope.query=Auth.searchQuery||'';
+    $scope.query=Auth.searchQuery;
     
     //async process user before setting to scope
     if(Auth.isLoggedIn && Auth.getCurrentUser().hasOwnProperty('$promise')) {

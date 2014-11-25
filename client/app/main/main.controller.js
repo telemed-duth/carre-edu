@@ -3,7 +3,7 @@
 angular.module('edumaterialApp')
   .controller('MainCtrl', function ($scope, $http, socket,$location,suggest,Auth) {
     
-
+    $scope.isLoggedIn=Auth.isLoggedIn;
     
     $scope.searchQuery=function(){
       Auth.searchQuery=$scope.query;
