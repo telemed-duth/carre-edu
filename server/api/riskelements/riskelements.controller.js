@@ -11,6 +11,7 @@ var endpoint = 'http://carre.kmi.open.ac.uk/sparql';
 // Get a single medline
 exports.riskElements = function(req, res) {
   
+  
   var query=
   "SELECT DISTINCT ?title WHERE {"+
   "?h \"http://purl.org/dc/terms/title\" ?title ."+

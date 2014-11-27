@@ -1,6 +1,6 @@
 'use strict';
 
 angular.module('edumaterialApp')
-  .controller('CompareCtrl', function ($scope) {
+  .controller('CollectionCtrl', function ($scope) {
     $scope.message = 'Hello';
   });

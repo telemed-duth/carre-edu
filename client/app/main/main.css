@@ -28,3 +28,21 @@
     margin-top: 70px;
     border-top: 1px solid #E5E5E5;
 }
+
+.rating{
+    cursor: pointer;
+    float: right;
+}
+.meta-rating{
+    min-width:230px;
+    list-style: none;
+    padding:10px;
+    border-radius: 10px;
+    background-color:#F8F8F8;
+}
+.meta-info{
+    list-style: none;
+    padding:10px;
+    border-radius: 10px;
+    background-color:#F8F8F8;
+}

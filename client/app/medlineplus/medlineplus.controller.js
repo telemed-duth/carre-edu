@@ -6,21 +6,23 @@ angular.module('edumaterialApp')
       
     //initialize setup vars
     $scope.results={};
-    $scope.total=0;
-    $scope.curPage=1;
-    $scope.pageCount=0;
+    $scope.totalPagination=0;
+    $scope.curPagePagination=1;
+    $scope.pageCountPagination=0;
     $scope.maxPerPage=10;
+    $scope.maxPagination=4;
+    $scope.rotatePagination=false;
     
 
     //Actual search function wrapper for my service
     $scope.searchTerm=function() {
       //call the service
-      medlineplus.search($scope.curPage*$scope.maxPerPage,$scope.medlineTerm).then(function(response){
+      medlineplus.search(($scope.curPagePagination-1)*$scope.maxPerPage,$scope.medlineTerm).then(function(response){
         
         $scope.results=response.data;
-        $scope.total=Number($scope.results.count[0]);
-        $scope.pageCount=Math.ceil($scope.total/$scope.maxPerPage);
-        $scope.curPage=Number($scope.results.retstart[0]/$scope.maxPerPage);
+        $scope.totalPagination=Number($scope.results.count[0]);
+        $scope.pageCountPagination=Math.ceil($scope.totalPagination/$scope.maxPerPage);
+        $scope.curPagePagination=Math.ceil($scope.results.retstart[0]/$scope.maxPerPage)+1;
         
         
       });
@@ -32,6 +34,10 @@ angular.module('edumaterialApp')
       $scope.medlineTerm=Auth.searchQuery;
       $scope.searchTerm();
     }
+    
+    
+    $scope.max = 5;
+    
     
     // $scope.searchTerm=function() {
     //   return $http.get('/api/medlineplus/term/'+encodeURI($scope.medlineTerm), {

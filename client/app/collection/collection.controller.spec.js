@@ -1,16 +1,16 @@
 'use strict';
 
-describe('Controller: CompareCtrl', function () {
+describe('Controller: CollectionCtrl', function () {
 
   // load the controller's module
   beforeEach(module('edumaterialApp'));
 
-  var CompareCtrl, scope;
+  var CollectionCtrl, scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    CompareCtrl = $controller('CompareCtrl', {
+    CollectionCtrl = $controller('CollectionCtrl', {
       $scope: scope
     });
   }));

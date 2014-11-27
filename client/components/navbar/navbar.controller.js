@@ -12,23 +12,19 @@ angular.module('edumaterialApp')
     },{
       'title': 'BioPortal',
       'link': '/bioportal',
-      'user':true
+      'admin':true
     },{
       'title': 'DBpedia',
       'link': '/dbpedia',
-      'user':true
+      'admin':true
     },{
       'title': 'Wikipedia',
       'link': '/wikipedia',
       'user':true
     },{
-      'title': 'Compare',
-      'link': '/compare',
+      'title': 'Collection',
+      'link': '/collection',
       'admin':true
-    },{
-      'title': 'Sources',
-      'admin':true,
-      'link': '/sources'
     }];
 
     $scope.isCollapsed = true;
