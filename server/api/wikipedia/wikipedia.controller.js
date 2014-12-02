@@ -46,7 +46,7 @@ exports.search = function(req, res) {
     var queryParams={
       'action': 'query',
       // 'query':'srsearch='+term+'&list=search&srlimit=20&sroffset='+(offset||0)+'&[[category:Diseases]]'
-      'srsearch':'intitle:'+term,
+      'srsearch':term,
       'list':'search',
       'srlimit':20,
       'sroffset':offset||0
@@ -71,10 +71,16 @@ exports.article = function(req, res) {
     };
     
     wiki.api.call( queryParams,function(data) {
+      
       return res.status(200).send(data);
     });
+    
+    
+    
 
 };
+
+    
 
 // Get list of wikipedias
 exports.index = function(req, res) {

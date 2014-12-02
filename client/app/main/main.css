@@ -46,3 +46,202 @@
     border-radius: 10px;
     background-color:#F8F8F8;
 }
+
+/*=================Wikipedia=================*/
+.well.article .toc{
+    display:none;
+}
+.well.article .mw-editsection{
+    display:none;
+}
+.well.article .infobox{
+    display:none;
+}
+
+.well.article > div.reflist ~ *{
+    display:none;
+}
+
+.well.article > ol.references ~ *{
+    display:none;
+}
+
+
+
+/*Wikipedia*/
+
+.well.article div.floatright {
+    float: right;
+    clear: right;
+    position: relative;
+    margin: 0.5em 0 0.8em 1.4em;
+}
+
+.well.article div.floatright p {
+    font-style: italic;
+}
+
+.well.article div.floatleft {
+    float: left;
+    clear: left;
+    position: relative;
+    margin: 0.5em 1.4em 0.8em 0;
+}
+
+.well.article p {
+    line-height:22px;
+}
+
+.well.article ul > li {
+    line-height:15px;
+}
+
+
+.well.article div.center {
+    text-align: center;
+}
+
+.well.article div.thumb {
+    border: none;
+    width: auto;
+    margin-top: 0.5em;
+    margin-bottom: 0.8em;
+    background-color: transparent;
+}
+
+.well.article div.thumbinner {
+    border: 1px solid #cccccc;
+    padding: 3px !important;
+    background-color: White;
+    font-size: 94%;
+    text-align: center;
+    overflow: hidden;
+}
+
+.well.article .thumbimage {
+    border: 1px solid #cccccc;
+}
+
+.well.article .thumbcaption {
+    border: none;
+    text-align: left;
+    line-height: 1.4em;
+    padding: 3px !important;
+    font-size: 94%;
+}
+
+.well.article div.magnify {
+    display: none;
+}
+
+.well.article div.tright {
+    float: right;
+    clear: right;
+    margin: 0.5em 0 0.8em 1.4em;
+}
+
+.well.article div.tleft {
+    float: left;
+    clear: left;
+    margin: 0.5em 1.4em 0.8em 0;
+}
+
+.well.article img.thumbborder {
+    border: 1px solid #dddddd;
+}
+
+.well.article li.gallerybox {
+    vertical-align: top;
+    display: inline-block;
+}
+
+.well.article ul.gallery,li.gallerybox {
+    zoom: 1;
+    *display: inline;
+}
+
+.well.article ul.gallery {
+    margin: 2px;
+    padding: 2px;
+    display: block;
+}
+
+.well.article li.gallerycaption {
+    font-weight: bold;
+    text-align: center;
+    display: block;
+    word-wrap: break-word;
+}
+
+.well.article li.gallerybox div.thumb {
+    text-align: center;
+    border: 1px solid #ccc;
+    margin: 2px;
+}
+
+.well.article div.gallerytext {
+    overflow: hidden;
+    font-size: 94%;
+    padding: 2px 4px;
+    word-wrap: break-word;
+}
+
+.well.article table.wikitable,table.mw_metadata {
+    margin: 1em 0;
+    border: 1px #aaa solid;
+    background: white;
+    border-collapse: collapse;
+}
+
+.well.article table.wikitable > tr > th,table.wikitable > tr > td,table.wikitable > * > tr > th,table.wikitable > * > tr > td,.mw_metadata th,.mw_metadata td {
+    border: 1px #aaa solid;
+    padding: 0.2em;
+}
+
+.well.article table.wikitable > tr > th,table.wikitable > * > tr > th,.mw_metadata th {
+    text-align: center;
+    background: white;
+    font-weight: bold;
+}
+
+.well.article table.wikitable > caption,.mw_metadata caption {
+    font-weight: bold;
+}
+
+.well.article table.listing,table.listing td {
+    border: 1pt solid black;
+    border-collapse: collapse;
+}
+
+.well.article a.sortheader {
+    margin: 0 0.3em;
+}
+
+.well.article .catlinks ul {
+    display: inline;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    list-style-type: none;
+    list-style-image: none;
+    vertical-align: middle !ie;
+}
+
+.well.article .catlinks li {
+    display: inline-block;
+    line-height: 1.15em;
+    padding: 0 .4em;
+    border-left: 1px solid #AAA;
+    margin: 0.1em 0;
+    zoom: 1;
+    display: inline !ie;
+}
+
+.well.article .catlinks li:first-child {
+    padding-left: .2em;
+    border-left: none;
+}
+
+.well.article .printfooter {
+    padding: 1em 0 1em 0;
+}}

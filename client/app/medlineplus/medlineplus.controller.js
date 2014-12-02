@@ -13,6 +13,13 @@ angular.module('edumaterialApp')
     $scope.maxPagination=4;
     $scope.rotatePagination=false;
     
+    $scope.addResource=function(doc){
+      doc.inCollection=true;
+    };
+
+    $scope.removeResource=function(doc){
+      doc.inCollection=false;
+    };
 
     //Actual search function wrapper for my service
     $scope.searchTerm=function() {

@@ -40,7 +40,6 @@ angular.module('edumaterialApp')
     $scope.toggleArticle=function(i) {
       var doc=$scope.results[i];
       var title=doc.title;
-      console.log(doc);
       
       if(!doc.fetched) {
         //load the article

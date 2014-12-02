@@ -40,28 +40,35 @@
   		  <!--slide down info-->
   		  <div>
   		    <!--left column-->
-    			<div class="col-xs-12 col-sm-12 col-md-9">
+    			<div class="col-xs-12 col-sm-7 col-md-9">
     				<h3 ng-bind-html="doc.title"></h3>
-    				<div ng-bind-html="doc.FullSummary"></div>
+    				<!--<div ng-bind-html="doc.FullSummary"></div>-->
     			</div>
     			
     			<!--right column-->
-    			<div class="col-xs-12 col-sm-12 col-md-3">
-    			    <h4><u>Rating</u></h4>
-                        <ul class="meta-rating">
-    			            <li>Subject Coverage : <rating class="rating" ng-model="coverageRate" max="max"></rating></li>
-    			            <li>Information quality : <rating class="rating" ng-model="qualityRate" max="max"></rating></li>
-    			            <li>Omissions : <rating class="rating" ng-model="omissionsRate" max="max"></rating></li>
-    			            <li>Controversial : <rating class="rating" ng-model="controversialityRate" max="max"></rating></li>
-    			        </ul>
-                    <h4><u>Info</u></h4>
-    				<ul class="meta-info">
-    					<li><a ng-href="{{doc.url}}" target="_blank">Read on Medlineplus</a></li>
-    					<li><b>Organization</b> :<span ng-bind-html="doc.organizationName"></span></li>
-    					<li><b>Alternative title </b>:<span ng-bind-html="doc.altTitle"></span></li>
-    					<li><b>MESH term </b>:<span ng-bind-html="doc.mesh"></span></li>
-    					<li><b>Group </b>:<span ng-bind-html="doc.groupName"></span></li>
-    				</ul>
+    			<div class="col-xs-12 col-sm-5 col-md-3">
+    			    <div class="container" sticky offset="100">
+        			    <button ng-show="!doc.inCollection" class="btn btn-primary btn-lg" ng-click="addResource(doc)">Add resource</button>
+        			    <button ng-show="doc.inCollection" class="btn btn-danger btn-lg" ng-click="removeResource(doc)">Remove resource</button>
+        			    <hr>
+        			    <div collapse="!doc.inCollection">
+            			    <h4><u>Rating</u></h4>
+                                <ul class="meta-rating">
+            			            <li>Subject Coverage : <rating class="rating" ng-model="coverageRate" max="max"></rating></li>
+            			            <li>Information quality : <rating class="rating" ng-model="qualityRate" max="max"></rating></li>
+            			            <li>Omissions : <rating class="rating" ng-model="omissionsRate" max="max"></rating></li>
+            			            <li>Controversial : <rating class="rating" ng-model="controversialityRate" max="max"></rating></li>
+            			        </ul>
+                            <h4><u>Info</u></h4>
+            				<ul class="meta-info">
+            					<li><a ng-href="{{doc.url}}" target="_blank">Read on Medlineplus</a></li>
+            					<li><b>Organization</b> :<span ng-bind-html="doc.organizationName"></span></li>
+            					<li><b>Alternative title </b>:<span ng-bind-html="doc.altTitle"></span></li>
+            					<li><b>MESH term </b>:<span ng-bind-html="doc.mesh"></span></li>
+            					<li><b>Group </b>:<span ng-bind-html="doc.groupName"></span></li>
+            				</ul>
+            			</div>
+            		</div>
     			</div>
     			
   			</div>
