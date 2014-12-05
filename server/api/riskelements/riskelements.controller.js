@@ -5,13 +5,20 @@ var Riskelements = require('./riskelements.model');
 var SparqlClient = require('sparql-client');
 var util = require('util');
 var endpoint = 'http://carre.kmi.open.ac.uk/sparql';
-
+var ext_data=require('../../../ext_data/riskelements');
 
 
 // Get a single medline
 exports.riskElements = function(req, res) {
   
   
+/* file import of risk elements for demo purposes */
+  // console.log(ext_data.riskelements());
+  return res.status(200).json(ext_data.riskelements());
+
+/*  
+  //  sparql query  to get the riskelements
+
   var query=
   "SELECT DISTINCT ?title WHERE {"+
   "?h \"http://purl.org/dc/terms/title\" ?title ."+
@@ -54,11 +61,10 @@ exports.riskElements = function(req, res) {
   });
 
 
+*/
+
 
 };
-
-
-
 
 // Get list of riskelementss
 exports.index = function(req, res) {
@@ -113,4 +119,4 @@ exports.destroy = function(req, res) {
 
 function handleError(res, err) {
   return res.send(500, err);
-}
+};
