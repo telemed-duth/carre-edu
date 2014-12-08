@@ -13,19 +13,11 @@ angular.module('edumaterialApp')
     $scope.maxPagination=4;
     $scope.rotatePagination=false;
     
-    $scope.addResource=function(doc){
-      doc.inCollection=true;
-    };
-
-    $scope.removeResource=function(doc){
-      doc.inCollection=false;
-    };
-
     //Actual search function wrapper for my service
     $scope.searchTerm=function() {
       //call the service
       medlineplus.search(($scope.curPagePagination-1)*$scope.maxPerPage,$scope.medlineTerm).then(function(response){
-        
+        console.log(response.data);
         $scope.results=response.data;
         $scope.totalPagination=Number($scope.results.count[0]);
         $scope.pageCountPagination=Math.ceil($scope.totalPagination/$scope.maxPerPage);

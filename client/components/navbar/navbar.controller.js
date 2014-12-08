@@ -12,11 +12,11 @@ angular.module('edumaterialApp')
     },{
       'title': 'BioPortal',
       'link': '/bioportal',
-      'admin':true
+      'user':true
     },{
       'title': 'DBpedia',
       'link': '/dbpedia',
-      'admin':true
+      'user':true
     },{
       'title': 'Wikipedia',
       'link': '/wikipedia',
