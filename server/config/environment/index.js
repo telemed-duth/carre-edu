@@ -53,6 +53,15 @@ var all = {
     callbackURL:  (process.env.DOMAIN || '') + '/auth/twitter/callback'
   },
 
+  carre: {
+    userAuthorizationURL:  process.env.CARRE_USER_AUTHORIZATION_URL||'',
+    accessTokenURL:  process.env.CARRE_ACCESS_TOKEN_URL||'',
+    requestTokenURL:  process.env.CARRE_REQUEST_TOKEN_URL||'',
+    clientID:     process.env.CARRE_ID || 'id',
+    clientSecret: process.env.CARRE_SECRET || 'secret',
+    callbackURL:  (process.env.DOMAIN || '') + '/auth/carre/callback'
+  },
+
   google: {
     clientID:     process.env.GOOGLE_ID || 'id',
     clientSecret: process.env.GOOGLE_SECRET || 'secret',

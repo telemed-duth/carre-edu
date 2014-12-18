@@ -29,8 +29,11 @@
 
 }
 .btn-local-login {
-  color: #fff;
-  background-color: #A32D2E;
+  background-color: #fafafa;
+  border-color: #ccc;
+  color: #000000;
   margin:10px;
 
 }
+
+

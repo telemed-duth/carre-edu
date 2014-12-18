@@ -3,7 +3,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var crypto = require('crypto');
-var authTypes = ['github', 'twitter', 'facebook', 'google'];
+var authTypes = ['github', 'twitter', 'facebook', 'google','carre'];
 
 var UserSchema = new Schema({
   name: String,
@@ -17,6 +17,7 @@ var UserSchema = new Schema({
   salt: String,
   facebook: {},
   twitter: {},
+  carre: {},
   google: {},
   github: {}
 });

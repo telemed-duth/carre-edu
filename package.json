@@ -25,6 +25,7 @@
     "passport-google-oauth": "latest",
     "passport-http": "^0.2.2",
     "passport-local": "~0.1.6",
+    "passport-oauth1": "^1.0.1",
     "passport-twitter": "latest",
     "request": "^2.47.0",
     "request-json": "^0.5.0",
