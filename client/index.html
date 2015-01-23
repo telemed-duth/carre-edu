@@ -42,39 +42,11 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-          <div>
-            <div id="wrapper" ng-class="{'active':toggle_sidebar}">
+      <div ng-include="'components/navbar/navbar.html'"></div>
+      
+      <div ui-view=""></div>
             
-            <div id="sidebar-wrapper">
-              <nav id="spy">
-                <ul class="sidebar-nav nav">
-                  <li class="sidebar-brand">
-                    <a href="#home"><span class="fa fa-home solo">Home</span></a>
-                  </li>
-                  <li>
-                    <a href="#anch1" data-scroll>
-                      <span class="fa fa-anchor solo">Anchor 1</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#anch2" data-scroll>
-                      <span class="fa fa-anchor solo">Anchor 2</span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-            
-            <div id="page-content-wrapper">        
-              <!--<div class="content-header"></div>-->
-              <div class="page-content" ui-view=""></div>
-            </div>
-            
-            
-          </div>
-        </div>
-    </div>
-    
+      <div ng-include="'components/footer/footer.html'"></div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>
