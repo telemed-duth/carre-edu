@@ -70,7 +70,5 @@ typeahead="term for term in getSuggestions($viewValue)" typeahead-loading="loadi
 </div>
 
 <script type="text/ng-template" id="customTemplate.html">
-  <a>
-      <span bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
-  </a>
+  <a><span bind-html-unsafe="match.label | typeaheadHighlight:query"></span></a>
 </script>
