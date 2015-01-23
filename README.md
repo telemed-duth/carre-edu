@@ -6,7 +6,7 @@ carre-edu
 
 Educational material for carre-project ontology
 
-development demo => http://carre-edu-c9-portokallidis.c9.io
+development demo => http://beta.edu.carre-project.eu:8080
 
 production demo => http://edu.carre-project.eu
 
