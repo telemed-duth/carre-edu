@@ -1,9 +1,11 @@
 'use strict';
 
 angular.module('edumaterialApp')
-  .controller('MainCtrl', function ($scope, $http, socket,$location,suggest,Auth) {
+  .controller('MainCtrl', function ($scope, $http, socket,$location,suggest,Auth,$rootScope) {
     
     $scope.isLoggedIn=Auth.isLoggedIn;
+    
+    $rootScope.toggle_sidebar=true;
     
     $scope.searchQuery=function(){
       Auth.searchQuery=$scope.query;

@@ -17,6 +17,7 @@
       <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
       <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
       <link rel="stylesheet" href="bower_components/angular-ui-select/dist/select.css" />
+      <link rel="stylesheet" href="bower_components/simple-line-icons/css/simple-line-icons.css" />
       <!-- endbower -->
     <!-- endbuild -->
     
@@ -27,7 +28,6 @@
       <link rel="stylesheet" href="app/admin/admin.css">
       <link rel="stylesheet" href="app/app.css">
       <link rel="stylesheet" href="app/bioportal/bioportal.css">
-      <link rel="stylesheet" href="app/collection/collection.css">
       <link rel="stylesheet" href="app/dbpedia/dbpedia.css">
       <link rel="stylesheet" href="app/main/main.css">
       <link rel="stylesheet" href="app/medlineplus/medlineplus.css">
@@ -42,7 +42,39 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div ui-view=""></div>
+          <div>
+            <div id="wrapper" ng-class="{'active':toggle_sidebar}">
+            
+            <div id="sidebar-wrapper">
+              <nav id="spy">
+                <ul class="sidebar-nav nav">
+                  <li class="sidebar-brand">
+                    <a href="#home"><span class="fa fa-home solo">Home</span></a>
+                  </li>
+                  <li>
+                    <a href="#anch1" data-scroll>
+                      <span class="fa fa-anchor solo">Anchor 1</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#anch2" data-scroll>
+                      <span class="fa fa-anchor solo">Anchor 2</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+            
+            <div id="page-content-wrapper">        
+              <!--<div class="content-header"></div>-->
+              <div class="page-content" ui-view=""></div>
+            </div>
+            
+            
+          </div>
+        </div>
+    </div>
+    
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>
@@ -61,6 +93,7 @@
     <![endif]-->
     <!-- build:js({client,node_modules}) app/vendor.js -->
       <!-- bower:js -->
+      <script src="bower_components/modernizr/modernizr.js"></script>
       <script src="bower_components/jquery/dist/jquery.js"></script>
       <script src="bower_components/angular/angular.js"></script>
       <script src="bower_components/angular-resource/angular-resource.js"></script>
@@ -73,6 +106,8 @@
       <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
       <script src="bower_components/angular-ui-utils/ui-utils.js"></script>
       <script src="bower_components/angular-ui-select/dist/select.js"></script>
+      <script src="bower_components/angular-animate/angular-animate.js"></script>
+      <script src="bower_components/ngstorage/ngStorage.js"></script>
       <!-- endbower -->
       <script src="socket.io-client/socket.io.js"></script>
     <!-- endbuild -->
@@ -90,8 +125,6 @@
           <script src="app/bioportal/bioportal.controller.js"></script>
           <script src="app/bioportal/bioportal.js"></script>
           <script src="app/bioportal/bioportal.service.js"></script>
-          <script src="app/collection/collection.controller.js"></script>
-          <script src="app/collection/collection.js"></script>
           <script src="app/dbpedia/dbpedia.controller.js"></script>
           <script src="app/dbpedia/dbpedia.js"></script>
           <script src="app/main/main.controller.js"></script>

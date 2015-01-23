@@ -21,12 +21,11 @@ angular.module('edumaterialApp')
       'title': 'Wikipedia',
       'link': '/wikipedia',
       'user':true
-    },{
-      'title': 'Collection',
-      'link': '/collection',
-      'admin':true
     }];
 
+    $scope.togglesidebar=function(){
+      $rootScope.toggle_sidebar=!$rootScope.toggle_sidebar;
+    };
     $scope.isCollapsed = true;
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.isAdmin = Auth.isAdmin;
