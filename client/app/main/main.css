@@ -46,3 +46,6 @@
     border-radius: 10px;
     background-color:#F8F8F8;
 }
+.pagination > li.active > a{
+    z-index:inherit;
+}

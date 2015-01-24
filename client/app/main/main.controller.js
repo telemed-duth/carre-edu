@@ -5,13 +5,11 @@ angular.module('edumaterialApp')
     
     $scope.isLoggedIn=Auth.isLoggedIn;
     
-    $rootScope.toggle_sidebar=true;
-    
     $scope.searchQuery=function(){
       Auth.searchQuery=$scope.query;
       $scope.showSearch=false;
-      console.log($location.$$path);
-      if($location.$$path!=='/home'&&$location.$$path!=='/') $state.forceReload();
+      // console.log($location.$$path);
+      if($location.$$path!=='/home'&&$location.$$path!=='/'&&$location.$$path!=='/article') $state.forceReload();
       else $location.path('/medlineplus');
       
     };

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('edumaterialApp')
-  .controller('WikipediaCtrl', function ($scope,$http,Auth,suggest) {
+  .controller('WikipediaCtrl', function ($scope,$http,Auth,suggest,$location,$sce) {
     
     //initialize setup vars
       $scope.itemsPerPage = 20
@@ -28,6 +28,7 @@ angular.module('edumaterialApp')
     $scope.getSuggestions=function(val) {
       return suggest.for(val);
     };
+    
     $scope.onComplete=function(label){
       if(label) {
         $scope.queryTerm=label;
@@ -38,29 +39,35 @@ angular.module('edumaterialApp')
     
     //fetch whole article and rate it
     $scope.toggleArticle=function(i) {
-      var doc=$scope.results[i];
-      var title=doc.title;
-      console.log(doc);
       
-      if(!doc.fetched) {
-        //load the article
-        if(title) {
-          doc.loading=true;
+      if(!$scope.showArticle&&$scope.results[i].title){
+       $scope.doc=$scope.results[i];
+       var title=$scope.doc.title;
+          //load the article
+          $scope.showArticle=true;
+          $scope.doc.iframe=htmlSafe('http://en.wikipedia.org/wiki/'+encodeURI(title).split('%20').join('_'),true);
+          
           $http.get('/api/wikipedia/article/'+encodeURI(title), {cache:true}).then(function(response){
-            doc.show=true;
-            doc.fetched=response.data.text['*'];
-            doc.loading=false;
+            //http://www.nlm.nih.gov/medlineplus
+            $scope.doc.fetched=response.data.text['*'];
           });
-        }
       } else {
-        //just toggle it
-        doc.show=!doc.show;
-        
+        $scope.showArticle=false;
       }
-      
-      
+      var style= document.querySelector('body').style.overflowY;
+      console.log(style);
+      document.querySelector('body').style.overflowY=$scope.showArticle?'hidden':'visible';
       
     };
+    
+    var htmlSafe = function (data,iframe) {
+        var sandbox='';
+        if(iframe){
+            if(data.search("medlineplus")>0) sandbox='sandbox="allow-same-origin"';
+            data='<iframe style="width:100%;" class="embed-responsive-item" src="'+data+'"'+sandbox+'></iframe>';
+        }
+        return $sce.trustAsHtml(data);
+    }
     
     //perform search
     $scope.searchTerm=function(page) {
@@ -79,3 +86,4 @@ angular.module('edumaterialApp')
     init();
     
   });
+ 
