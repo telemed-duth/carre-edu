@@ -1,4 +1,9 @@
-
+.carre-btn {
+	color: #aaaaaa;
+}
+.carre-btn:hover{
+	color:#4393B9;
+}
 
 
 /* Overlay style */
@@ -7,68 +12,41 @@
 	width: 100%;
 	height: 100%;
 	top: 0;
-	left: 0;
 	background: rgb(248, 248, 248);
 }
 
 /* Overlay closing cross */
 .overlay .overlay-close {
-	width: 80px;
-	height: 80px;
+	width: auto;
+	height:auto;
 	position: absolute;
-	right: 40px;
-	top: 10px;
+	visibility: visible;
+	left: 10px;
 	overflow: hidden;
 	border: none;
-	font-size:4em;
-	/*background: url(../img/cross.png) no-repeat center center;*/
+	font-size:3em;
+	background-color: transparent;
 	/*text-indent: 200%;*/
-	color: #4393B9;
 	outline: none;
 	z-index: 1100;
 }
 
-/* Menu style */
-.overlay nav {
-	text-align: center;
-	position: relative;
-	top: 50%;
-	height: 60%;
-	-webkit-transform: translateY(-50%);
-	transform: translateY(-50%);
+/* Overlay closing cross */
+.overlay .overlay-edit {
+	width: auto;
+	height:auto;
+	position: absolute;
+	visibility: visible;
+	right: 10px;
+	overflow: hidden;
+	border: none;
+	font-size:3em;
+	background-color: transparent;
+	/*text-indent: 200%;*/
+	outline: none;
+	z-index: 1100;
 }
 
-.overlay ul {
-	list-style: none;
-	padding: 0;
-	margin: 0 auto;
-	display: inline-block;
-	height: 100%;
-	position: relative;
-}
-
-.overlay ul li {
-	display: block;
-	height: 20%;
-	height: calc(100% / 5);
-	min-height: 54px;
-	-webkit-backface-visibility: hidden;
-	backface-visibility: hidden;
-}
-
-.overlay ul li a {
-	font-size: 54px;
-	font-weight: 300;
-	display: block;
-	color: #fff;
-	-webkit-transition: color 0.2s;
-	transition: color 0.2s;
-}
-
-.overlay ul li a:hover,
-.overlay ul li a:focus {
-	color: #f0f0f0;
-}
 
 /* Effects */
 .overlay-door {
@@ -95,16 +73,38 @@
 	transition: opacity 0.3s 0.5s;
 }
 
-.overlay-door.open .overlay-close {
+.overlay-door.open .overlay-close{
 	opacity: 1;
 	-webkit-transition-delay: 0.5s;
 	transition-delay: 0.5s;
 }
 
-.overlay-door.close .overlay-close {
+.overlay-door.close .overlay-close{
+	opacity: 0;
+	-webkit-transition-delay: 0s;
+	transition-delay: 0s;
+}
+
+.overlay-door .overlay-edit {
+	opacity: 0;
+	-webkit-transition: opacity 0.3s 0.5s;
+	transition: opacity 0.3s 0.5s;
+}
+
+.overlay-door.open .overlay-edit{
+	opacity: 1;
+	-webkit-transition-delay: 0.5s;
+	transition-delay: 0.5s;
+}
+
+.overlay-door.close .overlay-edit{
+	opacity: 0;
 	-webkit-transition-delay: 0s;
 	transition-delay: 0s;
 }
 @media screen and (max-height: 30.5em) {
     
+}
+.overlay-door.close {
+	opacity:1;
 }

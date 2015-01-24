@@ -49,3 +49,7 @@
 .pagination > li.active > a{
     z-index:inherit;
 }
+
+.navbar.navbar-default.navbar-static-top{
+    z-index: inherit;
+}

@@ -80,8 +80,17 @@
 </div>
 
 <div class="overlay overlay-door" ng-class="{'open':showArticle,'close':!showArticle}">
-    <button type="button" ng-click="toggleArticle()" class="overlay overlay-close"><span class="glyphicon glyphicon-circle-arrow-left"></span></button>
-        <div style="top:100px;height:100%" class="embed-responsive embed-responsive-4by3" ng-bind-html="doc.iframe"></div>
+    
+    <div class="well" style="height:50px; margin-bottom:0; width:100%;">
+        <button type="button" ng-click="toggleArticle()" class="overlay overlay-close carre-btn">
+            <span class="glyphicon glyphicon-circle-arrow-left"></span>
+        </button>
+        <button type="button" ng-click="toggleSidebar()" class="overlay overlay-edit carre-btn">
+            <span class="glyphicon glyphicon-edit"></span>
+        </button>
+    </div>
+    <div style="height:100%" class="embed-responsive embed-responsive-4by3" ng-bind-html="doc.iframe"></div>
+
     
     
 </div>
