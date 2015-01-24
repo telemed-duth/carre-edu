@@ -1,3 +1,4 @@
+
 <header class="hero-unit" id="banner">
 
 
@@ -79,18 +80,61 @@
 
 </div>
 
-<div class="overlay overlay-door" ng-class="{'open':showArticle,'close':!showArticle}">
-    
-    <div class="well" style="height:50px; margin-bottom:0; width:100%;">
-        <button type="button" ng-click="toggleArticle()" class="overlay overlay-close carre-btn">
-            <span class="glyphicon glyphicon-circle-arrow-left"></span>
-        </button>
-        <button type="button" ng-click="toggleSidebar()" class="overlay overlay-edit carre-btn">
-            <span class="glyphicon glyphicon-edit"></span>
-        </button>
+    <div class="overlay overlay-door" ng-class="{'open':showArticle,'close':!showArticle}">
+        <div class="well" style="height:auto; margin-bottom:0; width:100%;">
+            <button type="button" ng-click="toggleArticle()" class="overlay overlay-close carre-btn">
+                <span class="glyphicon glyphicon-circle-arrow-left"></span>
+            </button>
+            <a ng-click="isCollapsed=!isCollapsed" class="overlay overlay-edit carre-btn">
+                <span class="glyphicon glyphicon-edit"></span>
+            </a>
+            <div collapse="!isCollapsed">
+                
+                <div class="panel panel-default bootcards-summary">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Summary Card Heading</h3>
+                  </div>
+                  <div class="panel-body">
+                    <div class="row">
+                      <div class="col-xs-6 col-sm-4">
+                        <a class="bootcards-summary-item" href="#">
+                          <i class="fa fa-3x fa-users"></i>
+                          <h4>Contacts <span class="label label-info">432</span></h4>
+                        </a>
+                      </div>
+                      <div class="col-xs-6 col-sm-4">
+                        <a class="bootcards-summary-item" href="#">
+                          <i class="fa fa-3x fa-building-o"></i>
+                          <h4>Companies <span class="label label-info">98</span></h4>
+                        </a>
+                      </div>
+                      <div class="col-xs-6 col-sm-4">
+                        <a class="bootcards-summary-item" href="#">
+                          <i class="fa fa-3x fa-clipboard"></i>
+                          <h4>Notes <span class="label label-danger">54</span></h4>
+                        </a>
+                      </div>
+                      <div class="col-xs-6 col-sm-4">
+                        <a class="bootcards-summary-item" href="#">
+                          <i class="fa fa-3x fa-files-o"></i>
+                          <h4>Files <span class="label label-info">65</span></h4>
+                        </a>
+                      </div>
+                      <div class="col-xs-6 col-sm-4">
+                        <a class="bootcards-summary-item" href="#">
+                          <i class="fa fa-3x fa-check-square-o"></i>
+                          <h4>Tasks <span class="label label-warning">109</span></h4>
+                        </a>
+                      </div>      
+                    </div>
+                  </div>
+                  <div class="panel-footer">
+                    <small>Built with Bootcards - Summary Card</small>
+                  </div>
+                </div>
+                
+            </div>
+            
+        </div>
+        <div style="height:100%" class="embed-responsive embed-responsive-4by3" ng-bind-html="doc.iframe"></div>
     </div>
-    <div style="height:100%" class="embed-responsive embed-responsive-4by3" ng-bind-html="doc.iframe"></div>
-
-    
-    
-</div>

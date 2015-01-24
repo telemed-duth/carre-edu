@@ -36,6 +36,14 @@ angular.module('edumaterialApp')
         $scope.searchTerm();
       }
     };
+    // $scope.previewPanel='small';
+    // $scope.togglePanel=function(){
+    //   var height='400px';
+    //   if($scope.previewPanel==='big') height='50px';
+      
+      
+    //     document.querySelector('#document-preview').style.height = height;
+    // };
 
 
     //fetch whole article and rate it
@@ -68,6 +76,7 @@ angular.module('edumaterialApp')
       else {
         $scope.doc.iframe = htmlSafe('', false);
         $scope.showArticle = false;
+        $scope.isCollapsed=false;
         $timeout(function() {
 
           // var style = document.querySelector('body').style.overflowY;
