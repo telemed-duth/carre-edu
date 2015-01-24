@@ -6,7 +6,7 @@ carre-edu
 
 Educational material for carre-project ontology
 
-development demo => http://beta.edu.carre-project.eu:8080
+development demo => http://beta.carre-project.eu:8080
 
 production demo => http://edu.carre-project.eu
 
