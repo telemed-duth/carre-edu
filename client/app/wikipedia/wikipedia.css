@@ -1,10 +1,29 @@
 .carre-btn {
 	color: #aaaaaa;
+	cursor:pointer;
 }
 .carre-btn:hover{
 	color:#4393B9;
 }
+.carre-btn.active{
+	color:#4393B9;
+}
 
+.preview-container{
+	height:auto;
+	min-height:50px;
+	margin-bottom:0; 
+	padding:0; 
+	width:100%;
+}
+.row.rating-container{
+	padding:10px;
+	margin-left:40px;
+	margin-right:40px;
+}
+.row.rating-container>div>.panel{
+	margin:5px;
+}
 
 /* Overlay style */
 .overlay {

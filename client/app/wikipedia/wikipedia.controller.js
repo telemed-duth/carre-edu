@@ -6,6 +6,20 @@ angular.module('edumaterialApp')
     //initialize setup vars
     $scope.itemsPerPage = 20
     $scope.currentPage = 1;
+    
+    $scope.rating=[{
+      name:'Depth of Coverage',value:0
+    },{
+      name:'Comprehensiveness',value:0
+    },{
+      name:'Relevancy',value:0
+    },{
+      name:'Accuracy',value:0
+    },{
+      name:'Educational level',value:0
+    },{
+      name:'Validity',value:0
+    }];
 
     function init() {
       //load from state or instantiate
@@ -49,17 +63,19 @@ angular.module('edumaterialApp')
     //fetch whole article and rate it
     $scope.toggleArticle = function(i) {
 
-      if (!$scope.showArticle && $scope.results[i].title) {
+      if (i>-1) {
 
         $scope.showArticle = true;
         $scope.doc = $scope.results[i];
+        $scope.doc.iframe='';
+        $scope.doc.rating=$scope.doc.rating||[];
         var title = $scope.doc.title;
         $timeout(function() {
           
           $scope.doc.iframe = htmlSafe('http://en.wikipedia.org/wiki/' + encodeURI(title).split('%20').join('_'), true);
           document.querySelector('body').style.overflowY = $scope.showArticle ? 'hidden' : 'visible';
 
-        }, 500);
+        }, 900);
 
         //load the article
         $http.get('/api/wikipedia/article/' + encodeURI(title), {
@@ -70,10 +86,10 @@ angular.module('edumaterialApp')
 
 
         }).then(function() {
-
         });
       }
       else {
+        $scope.doc={};
         $scope.doc.iframe = htmlSafe('', false);
         $scope.showArticle = false;
         $scope.isCollapsed=false;

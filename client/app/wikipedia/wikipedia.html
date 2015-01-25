@@ -52,7 +52,7 @@
 
         <!--TOP Pagination-->
         <div class="text-center">
-            <pagination ng-show="total>itemsPerPage" style="z-index: inherit;" total-items="total" ng-model="currentPage" ng-change="searchTerm(true)" max-size="5" rotate="false"></pagination>
+            <pagination ng-show="total>itemsPerPage" items-per-page="itemsPerPage" style="z-index: inherit;" total-items="total" ng-model="currentPage" ng-change="searchTerm(true)" max-size="5" rotate="false"></pagination>
         </div>
 
 
@@ -72,7 +72,7 @@
 
         <!--BOTTOM Pagination-->
         <div class="text-center">
-            <pagination ng-show="total>itemsPerPage" total-items="total" ng-model="currentPage" ng-change="searchTerm(true)" max-size="5" rotate="false"></pagination>
+            <pagination ng-show="total>itemsPerPage" items-per-page="itemsPerPage" total-items="total" ng-model="currentPage" ng-change="searchTerm(true)" max-size="5" rotate="false"></pagination>
         </div>
 
     </section>
@@ -81,57 +81,51 @@
 </div>
 
     <div class="overlay overlay-door" ng-class="{'open':showArticle,'close':!showArticle}">
-        <div class="well" style="height:auto; margin-bottom:0; width:100%;">
-            <button type="button" ng-click="toggleArticle()" class="overlay overlay-close carre-btn">
+        <div class="well preview-container">
+            <div>
+            <button type="button" ng-click="toggleArticle(-1)" class="overlay overlay-close carre-btn">
                 <span class="glyphicon glyphicon-circle-arrow-left"></span>
             </button>
-            <a ng-click="isCollapsed=!isCollapsed" class="overlay overlay-edit carre-btn">
+            <button type="button" ng-click="isCollapsed=!isCollapsed" ng-class="{'active':isCollapsed}"class="overlay overlay-edit carre-btn">
                 <span class="glyphicon glyphicon-edit"></span>
-            </a>
-            <div collapse="!isCollapsed">
-                
-                <div class="panel panel-default bootcards-summary">
+            </button>
+            </div>
+            <div class="clearfix row rating-container" collapse="!isCollapsed">
+              
+              <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="panel panel-default">
                   <div class="panel-heading">
-                    <h3 class="panel-title">Summary Card Heading</h3>
+                    <h3 class="panel-title">Extra Information</h3>
+                  </div>
+                  <div class="panel-body">
+                    <h4>Coming soon!</h4>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-8">
+
+                <div ng-if="isCollapsed" class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Article Rating</h3>
                   </div>
                   <div class="panel-body">
                     <div class="row">
-                      <div class="col-xs-6 col-sm-4">
-                        <a class="bootcards-summary-item" href="#">
-                          <i class="fa fa-3x fa-users"></i>
-                          <h4>Contacts <span class="label label-info">432</span></h4>
-                        </a>
+                      
+                      <div class="col-sm-4" ng-repeat="rate in rating track by $index">
+                        
+                        {{rate.name}} :  <rating class="rating" ng-model="doc.rating[$index].value" max="5"></rating>
+                        
                       </div>
-                      <div class="col-xs-6 col-sm-4">
-                        <a class="bootcards-summary-item" href="#">
-                          <i class="fa fa-3x fa-building-o"></i>
-                          <h4>Companies <span class="label label-info">98</span></h4>
-                        </a>
-                      </div>
-                      <div class="col-xs-6 col-sm-4">
-                        <a class="bootcards-summary-item" href="#">
-                          <i class="fa fa-3x fa-clipboard"></i>
-                          <h4>Notes <span class="label label-danger">54</span></h4>
-                        </a>
-                      </div>
-                      <div class="col-xs-6 col-sm-4">
-                        <a class="bootcards-summary-item" href="#">
-                          <i class="fa fa-3x fa-files-o"></i>
-                          <h4>Files <span class="label label-info">65</span></h4>
-                        </a>
-                      </div>
-                      <div class="col-xs-6 col-sm-4">
-                        <a class="bootcards-summary-item" href="#">
-                          <i class="fa fa-3x fa-check-square-o"></i>
-                          <h4>Tasks <span class="label label-warning">109</span></h4>
-                        </a>
-                      </div>      
+                            
                     </div>
                   </div>
-                  <div class="panel-footer">
-                    <small>Built with Bootcards - Summary Card</small>
-                  </div>
+                  <!--<div class="panel-footer">-->
+                  <!--  <small>Built with Bootcards - Summary Card</small>-->
+                  <!--</div>-->
                 </div>
+                
+              </div>
+                
                 
             </div>
             
