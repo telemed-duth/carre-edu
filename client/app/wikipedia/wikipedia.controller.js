@@ -70,11 +70,11 @@ angular.module('edumaterialApp')
         $scope.doc.iframe='';
         $scope.doc.rating=$scope.doc.rating||[];
         var title = $scope.doc.title;
+        
+        // animation & double scrollbar fix
         $timeout(function() {
-          
           $scope.doc.iframe = htmlSafe('http://en.wikipedia.org/wiki/' + encodeURI(title).split('%20').join('_'), true);
           document.querySelector('body').style.overflowY = $scope.showArticle ? 'hidden' : 'visible';
-
         }, 900);
 
         //load the article
@@ -89,15 +89,15 @@ angular.module('edumaterialApp')
         });
       }
       else {
+        $scope.isCollapsed=false;
         $scope.doc={};
         $scope.doc.iframe = htmlSafe('', false);
         $scope.showArticle = false;
-        $scope.isCollapsed=false;
+        
+        // double scrollbar fix
         $timeout(function() {
-
           // var style = document.querySelector('body').style.overflowY;
           document.querySelector('body').style.overflowY = $scope.showArticle ? 'hidden' : 'visible';
-
         }, 100);
 
       }

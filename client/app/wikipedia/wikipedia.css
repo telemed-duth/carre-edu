@@ -1,6 +1,7 @@
 .carre-btn {
 	color: #aaaaaa;
 	cursor:pointer;
+	font-size:2em;
 }
 .carre-btn:hover{
 	color:#4393B9;
@@ -15,6 +16,10 @@
 	margin-bottom:0; 
 	padding:0; 
 	width:100%;
+}
+.preview-status{
+	top:10px;
+	position:relative;
 }
 .row.rating-container{
 	padding:10px;
@@ -34,16 +39,16 @@
 	background: rgb(248, 248, 248);
 }
 
+
 /* Overlay closing cross */
 .overlay .overlay-close {
 	width: auto;
 	height:auto;
-	position: absolute;
 	visibility: visible;
-	left: 10px;
+	top:10px;
+	left: 15px;
 	overflow: hidden;
 	border: none;
-	font-size:3em;
 	background-color: transparent;
 	/*text-indent: 200%;*/
 	outline: none;
@@ -54,12 +59,11 @@
 .overlay .overlay-edit {
 	width: auto;
 	height:auto;
-	position: absolute;
 	visibility: visible;
-	right: 10px;
+	top:10px;
+	right: 15px;
 	overflow: hidden;
 	border: none;
-	font-size:3em;
 	background-color: transparent;
 	/*text-indent: 200%;*/
 	outline: none;
