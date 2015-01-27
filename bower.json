@@ -1,5 +1,5 @@
 {
-  "name": "edumaterial",
+  "name": "carre-edu",
   "version": "0.0.2",
   "dependencies": {
     "angular": ">=1.3.*",

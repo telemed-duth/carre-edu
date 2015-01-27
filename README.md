@@ -24,7 +24,29 @@ Technology stack
     
     Workflow : gruntjs,yeoman fullstack generator, plato
     
-    
+
+
+
+Try your self!
+--------------
+The deployment is supported only on a unix* like machine (linux , Mac) and requires the following libraries to installed on your computer : 
+
+* NodeJS application sever
+* MongoDB database server
+* Git version control system
+
+Next you should clone the repository at github, install all dependencies and run the build script.
+
+    The commands for the above steps are self-explanatory :
+            
+    $ git clone https://github.com/telemed-duth/carre-edu.git
+    $ npm install && bower install
+    $ grunt serve
+            
+	
+Now the system is running on the default port 8080 and can be accessed at http://localhost:8080 through a supported web browser. 
+
+
     
 [MIT License (MIT)](https://raw.githubusercontent.com/telemed-duth/carre-edu/master/LICENSE.txt)
 ------------
