@@ -1,0 +1,5 @@
+#!/bin/bash          
+echo "Updating code metrics using plato...";
+./node_modules/plato/bin/plato -r -d report -x client/bower_components/*.* -n -t "CARRE Educational Aggregator" client/ server/
+echo "start code metrics server";
+./node_modules/http-server/bin/http-server report/ -p 9999

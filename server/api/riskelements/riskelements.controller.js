@@ -14,16 +14,16 @@ exports.riskElements = function(req, res) {
   
 /* file import of risk elements for demo purposes */
   // console.log(ext_data.riskelements());
-  return res.status(200).json(ext_data.riskelements());
+  // return res.status(200).json(ext_data.riskelements());
 
-/*  
+
   //  sparql query  to get the riskelements
 
   var query=
-  "SELECT DISTINCT ?title WHERE {"+
-  "?h \"http://purl.org/dc/terms/title\" ?title ."+
-  "  ?h \"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\" \"http://rdfs.org/sioc/ns#Item\" ."+
-  "  ?h \"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\" \"http://xmlns.com/foaf/0.1/Document\" ."+
+  "SELECT DISTINCT * WHERE {"+
+  "?uri \"http://purl.org/dc/terms/title\" ?title ."+
+  "  ?uri \"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\" \"http://rdfs.org/sioc/ns#Item\" ."+
+  "  ?uri \"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\" \"http://xmlns.com/foaf/0.1/Document\" ."+
   "} LIMIT 500";
   var results=[];
   var client = new SparqlClient(endpoint);
@@ -39,7 +39,7 @@ exports.riskElements = function(req, res) {
         console.log(error);
         res.json(500, {'message':'server_error','data':error});
       }
-      // console.log(data);
+      
       if(data){
           if(data.results.bindings.length>0) {
             results=data.results.bindings
@@ -52,7 +52,7 @@ exports.riskElements = function(req, res) {
                 );
               })
               .map(function(obj){
-                return obj.title.value;
+                return {'name':obj.title.value,'url':obj.uri.value};
               });
             return res.json(200, results);
           }
@@ -61,7 +61,6 @@ exports.riskElements = function(req, res) {
   });
 
 
-*/
 
 
 };

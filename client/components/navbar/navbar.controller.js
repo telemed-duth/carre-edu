@@ -8,7 +8,7 @@ angular.module('edumaterialApp')
     },{
       'title': 'MedlinePLUS',
       'link': '/medlineplus',
-      'user':true
+      'admin':true
     },{
       'title': 'BioPortal',
       'link': '/bioportal',
@@ -20,7 +20,7 @@ angular.module('edumaterialApp')
     },{
       'title': 'Wikipedia',
       'link': '/wikipedia',
-      'user':true
+      'admin':true
     }];
 
     $scope.togglesidebar=function(){
@@ -31,6 +31,9 @@ angular.module('edumaterialApp')
     $scope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
     $scope.query=Auth.searchQuery;
+    Auth.notifyNavbar=function(){
+      $scope.query=Auth.searchQuery;
+    };
     
     //async process user before setting to scope
     if(Auth.isLoggedIn && Auth.getCurrentUser().hasOwnProperty('$promise')) {
