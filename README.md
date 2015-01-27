@@ -6,9 +6,12 @@ carre-edu
 
 Educational material for carre-project ontology
 
-development demo => http://beta.carre-project.eu:8080
+Development url : http://beta.carre-project.eu:8080
 
-production demo => http://edu.carre-project.eu
+Code metrics url : http://beta.carre-project.eu:9999
+
+Production url : http://edu.carre-project.eu
+
 
 
 Technology stack
@@ -19,5 +22,5 @@ Technology stack
     
     Deployment : 2-container(app+db) docker with dokku-alt
     
-    Workflow : gruntjs,yeoman fullstack generator
+    Workflow : gruntjs,yeoman fullstack generator, plato
 
