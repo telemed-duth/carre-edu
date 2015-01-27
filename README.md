@@ -23,4 +23,9 @@ Technology stack
     Deployment : 2-container(app+db) docker with dokku-alt
     
     Workflow : gruntjs,yeoman fullstack generator, plato
-
+    
+    
+    
+MIT License (MIT)
+------------
+Copyright (c) 2014 Democritus University of Thrace (DUTH) , Greece
