@@ -26,6 +26,6 @@ Technology stack
     
     
     
-MIT License (MIT)
+[MIT License (MIT)](https://raw.githubusercontent.com/telemed-duth/carre-edu/master/LICENSE.txt)
 ------------
 Copyright (c) 2014 Democritus University of Thrace (DUTH) , Greece
