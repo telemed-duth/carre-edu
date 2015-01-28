@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('edumaterialApp')
-  .controller('MainCtrl', function ($scope, $http, Auth, $rootScope,$location,suggest, $sce, $timeout) {
+  .controller('MainCtrl', function ($scope, $http, Auth, $rootScope,$location,suggest, $sce, $timeout, medlineplus) {
     
     $scope.isLoggedIn=Auth.isLoggedIn;
     
@@ -15,6 +15,9 @@ angular.module('edumaterialApp')
       
     // };
     
+    
+    
+    
     $scope.onComplete=function(label){
       // if(label) {
       //   $scope.queryTerm=label;
@@ -27,8 +30,8 @@ angular.module('edumaterialApp')
       $scope.riskElements=data;
     });
   $scope.docSources = [
-    { label: 'MedlinePLUS', value: '/api/medlineplus/search/' },
-    { label: 'Wikipedia', value: '/api/wikipedia/search/' }
+    { label: 'MedlinePLUS', value: 'medlineplus' },
+    { label: 'Wikipedia', value: 'wikipedia' }
   ];
   $scope.curSource=$scope.docSources[1];
   
@@ -157,7 +160,40 @@ angular.module('edumaterialApp')
       Auth.searchQuery=$scope.queryTerm;
       Auth.notifyNavbar();
       if (!page) $scope.currentPage = 1;
-      $http.get($scope.curSource.value + encodeURI($scope.queryTerm) + '/' + ($scope.currentPage - 1) * $scope.itemsPerPage, {
+      switch ($scope.curSource.value) {
+        case 'medlineplus':
+          searchMedlinePlus();
+          break;
+        case 'wikipedia':
+          searchWikiPedia();
+          break;
+        
+        default:
+          searchWikiPedia();
+      }  
+      
+      
+
+    };
+
+
+    //Actual search function wrapper for my service
+    var searchMedlinePlus=function() {
+      //call the service
+      medlineplus.search(($scope.currentPage-1)*$scope.itemsPerPage,$scope.queryTerm).then(function(response){
+        $scope.results=response.data.list;
+        $scope.total=Number(response.data.count[0]);
+        $scope.pageCount=Math.ceil($scope.total/$scope.itemsPerPage);
+        $scope.currentPage=Math.ceil($scope.results.retstart[0]/$scope.itemsPerPage)+1;
+      });
+      
+    };    
+    
+    
+    //Actual search function wrapper for my service
+    var searchWikiPedia=function() {
+      //call the wikipedia 
+      $http.get('/api/wikipedia/search/' + encodeURI($scope.queryTerm) + '/' + ($scope.currentPage - 1) * $scope.itemsPerPage, {
         cache: true
       }).then(function(response) {
         $scope.results = response.data.search;
@@ -165,9 +201,15 @@ angular.module('edumaterialApp')
         $scope.pageCount = Math.ceil($scope.total / $scope.itemsPerPage);
         $scope.suggestion = response.data.searchinfo.suggestion;
       });
-
+      
     };
-
+    
+     //check if global search term is present
+    if(Auth.searchQuery){
+      $scope.medlineTerm=Auth.searchQuery;
+      $scope.searchTerm();
+    }
+    
 
     //perform initialization
     init();

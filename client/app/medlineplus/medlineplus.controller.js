@@ -18,13 +18,10 @@ angular.module('edumaterialApp')
     $scope.searchTerm=function() {
       //call the service
       medlineplus.search(($scope.curPagePagination-1)*$scope.maxPerPage,$scope.medlineTerm).then(function(response){
-        
         $scope.results=response.data;
         $scope.totalPagination=Number($scope.results.count[0]);
         $scope.pageCountPagination=Math.ceil($scope.totalPagination/$scope.maxPerPage);
         $scope.curPagePagination=Math.ceil($scope.results.retstart[0]/$scope.maxPerPage)+1;
-        
-        
       });
       
     };
