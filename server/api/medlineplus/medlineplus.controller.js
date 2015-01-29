@@ -64,14 +64,7 @@ exports.medlineQuery = function(req, res) {
             n.rank=d.$.rank;
             n.url=d.$.url;
             for (var i = 0,l=d.content.length; i < l; i++) {
-              
-              
-              //n[d.content[i].$.name]=d.content[i]._;
-              //modify to get only snippet and title
-              if(d.content[i].$.name==='title'||d.content[i].$.name==='snippet'){
-                n[d.content[i].$.name]=d.content[i]._;
-              }
-              
+              n[d.content[i].$.name]=d.content[i]._;
             }
             return n;
           });

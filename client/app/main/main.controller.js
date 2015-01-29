@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('edumaterialApp')
-  .controller('MainCtrl', function ($scope, $http, Auth, $rootScope,$location,suggest, $sce, $timeout, medlineplus) {
+  .controller('MainCtrl', function ($scope, $http, Auth, $rootScope,$location,suggest, $sce, $timeout, medlineplus, $window) {
     
     $scope.isLoggedIn=Auth.isLoggedIn;
     
@@ -103,32 +103,31 @@ angular.module('edumaterialApp')
       if (i>-1) {
 
         $scope.showArticle = true;
+        $scope.frameHeight=$window.innerHeight-50;
+        $scope.mobile=($window.innerWidth<700)?true:false; //set type to mobile if screen is less than 700px
         $scope.doc = $scope.results[i];
-        $scope.doc.iframe='';
         $scope.doc.rating=$scope.doc.rating||[];
-        var title = $scope.doc.title;
-        
+        $scope.doc.iframe='';
+        console.log($scope.doc);
         // animation & double scrollbar fix
         $timeout(function() {
-          $scope.doc.iframe = htmlSafe('http://en.wikipedia.org/wiki/' + encodeURI(title).split('%20').join('_'), true);
+          $scope.doc.iframe = renderContent();
           document.querySelector('body').style.overflowY = $scope.showArticle ? 'hidden' : 'visible';
         }, 900);
 
         //load the article
-        $http.get('/api/wikipedia/article/' + encodeURI(title), {
-          cache: true
-        }).then(function(response) {
-          //http://www.nlm.nih.gov/medlineplus
-          $scope.doc.fetched = response.data.text['*'];
-
-
-        }).then(function() {
-        });
+        // $http.get('/api/wikipedia/article/' + encodeURI(title), {
+        //   cache: true
+        // }).then(function(response) {
+        //   //http://www.nlm.nih.gov/medlineplus
+        //   $scope.doc.fetched = response.data.text['*'];
+        // }).then(function() {
+        // });
       }
       else {
         $scope.isCollapsed=false;
         $scope.doc={};
-        $scope.doc.iframe = htmlSafe('', false);
+        $scope.doc.iframe = '';
         $scope.showArticle = false;
         
         // double scrollbar fix
@@ -146,17 +145,33 @@ angular.module('edumaterialApp')
     
 
 
-    var htmlSafe = function(data, iframe) {
-      var sandbox = '';
-      if (iframe) {
-        if ($scope.curSource.label==='MedlinePLUS') sandbox = 'sandbox="allow-same-origin"';
-        data = '<iframe style="width:100%;" class="embed-responsive-item" src="' + data + '"' + sandbox + '></iframe>';
-      }
+    var renderContent = function() {
+      var data='';
+      switch ($scope.curSource.value) {
+        
+        case 'medlineplus':
+          if($scope.mobile){
+            //set the mobile html template
+            data='<div style="background:#ffffff;height:'+$scope.frameHeight+'px; overflow-y:auto;">'+
+            '<h2>'+$scope.doc.title+'</h2>'+
+            '<p>'+$scope.doc.FullSummary+
+            '</p></div>';
+            
+          } else {
+            data = '<iframe style="width:100%;height:'+$scope.frameHeight+'px;" class="embed-responsive-item" src="' + $scope.doc.url + '"sandbox="allow-same-origin"></iframe>';
+          }
+          break;
+        case 'wikipedia':
+          data = '<iframe style="width:100%;height:'+$scope.frameHeight+'px;" class="embed-responsive-item" src="http://en.wikipedia.org/wiki/'
+          +encodeURI($scope.doc.title).split('%20').join('_')+($scope.mobile?'?printable=yes':'')+'"sandbox="allow-same-origin"></iframe>';
+          break;
+      }  
       return $sce.trustAsHtml(data);
     }
 
     //perform search
     $scope.searchQuery = function(page) {
+      
       Auth.searchQuery=$scope.queryTerm;
       Auth.notifyNavbar();
       if (!page) $scope.currentPage = 1;
@@ -172,8 +187,6 @@ angular.module('edumaterialApp')
           searchWikiPedia();
       }  
       
-      
-
     };
 
 
@@ -184,7 +197,7 @@ angular.module('edumaterialApp')
         $scope.results=response.data.list;
         $scope.total=Number(response.data.count[0]);
         $scope.pageCount=Math.ceil($scope.total/$scope.itemsPerPage);
-        $scope.currentPage=Math.ceil($scope.results.retstart[0]/$scope.itemsPerPage)+1;
+        if(($scope.total>$scope.itemsPerPage)&&$scope.results.retstart) $scope.currentPage=Math.ceil($scope.results.retstart[0]/$scope.itemsPerPage)+1;
       });
       
     };    

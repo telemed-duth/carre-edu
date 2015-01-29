@@ -51,7 +51,8 @@
 <div class="container results">
     <hgroup ng-show="total>0" class="mb20">         
     <pagination ng-show="total>itemsPerPage" items-per-page="itemsPerPage" 
-                style="z-index: inherit; float:right; margin:0;" total-items="total" ng-model="currentPage" ng-change="searchQuery(true)" max-size="6" rotate="false"></pagination>
+          style="z-index: inherit; float:right; margin:0;" total-items="total" ng-model="currentPage" 
+          ng-change="searchQuery(true)" max-size="6" rotate="false"></pagination>
 
         <h3><strong class="text-danger">{{total}}</strong> results</h3>
 
