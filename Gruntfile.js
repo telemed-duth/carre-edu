@@ -33,6 +33,14 @@ module.exports = function (grunt) {
       client: require('./bower.json').appPath || 'client',
       dist: 'dist'
     },
+    run: {
+      metrics: {
+        options:{
+          wait:false
+        },
+        exec: './metrics',
+      }
+    },
     express: {
       options: {
         port: process.env.PORT || 9000
@@ -549,8 +557,9 @@ module.exports = function (grunt) {
       'wiredep',
       'autoprefixer',
       'express:dev',
+      'run:metrics',
       'wait',
-      'open',
+      // 'open',
       'watch'
     ]);
   });
