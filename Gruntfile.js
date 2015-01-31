@@ -46,7 +46,6 @@ module.exports = function (grunt) {
       options: {
         fileHeader:'# CHANGELOG',
         after: '2014-10-01',
-        before: '2015-01-31'
         logArguments: [
           '--pretty=* %h - %ad: %s',
           '--no-merges',
