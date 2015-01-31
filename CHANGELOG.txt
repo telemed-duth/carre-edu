@@ -1,5 +1,6 @@
 # CHANGELOG v0.2.0
 
+- * 53188db - 2015-02-01: CLI: update cli tool command 
 - * ac7d120 - 2015-02-01: CLI: fix no results on wikipedia and redirect to medlineplus 
 - * e2ce6a2 - 2015-02-01: CLI: fsdfsdfsdfsd 
 - * eb46766 - 2015-01-31: BUILD: fix bug when selecting a term autosearch 

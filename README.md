@@ -40,6 +40,7 @@ Next you should clone the repository at github, install all dependencies and run
     The commands for the above steps are self-explanatory :
             
     $ git clone https://github.com/telemed-duth/carre-edu.git
+    $ npm install -g bower grunt-cli
     $ npm install && bower install
     $ grunt serve
             
