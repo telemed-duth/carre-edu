@@ -1,6 +1,6 @@
 #!/bin/bash          
 echo Updating git repository....
-git add .;git add *
-echo -n "Commit message? "
+git add .
+echo -ne "\e[92mAdd to Changelog?\e[39m : "
 read -e MSG
-git commit -am"BUILD: $MSG";git push;
+git commit -am"CLI: $MSG";git push;
