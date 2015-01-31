@@ -41,6 +41,26 @@ module.exports = function (grunt) {
         exec: './metrics',
       }
     },
+    changelog: {
+    v1: {
+      options: {
+        fileHeader:'# CHANGELOG',
+        after: '2014-10-01',
+        before: '2015-01-31'
+        logArguments: [
+          '--pretty=* %h - %ad: %s',
+          '--no-merges',
+          '--date=short'
+        ],
+        template: '{{> features}}',
+        featureRegex: /^(.*)$/gim,
+        partials: {
+          features: '{{#if features}}{{#each features}}{{> feature}}{{/each}}{{else}}{{> empty}}{{/if}}\n',
+          feature: '- {{this}} {{this.date}}\n'
+        }
+      }
+    }
+  },
     express: {
       options: {
         port: process.env.PORT || 9000
@@ -165,7 +185,15 @@ module.exports = function (grunt) {
           ]
         }]
       },
-      server: '.tmp'
+      server: {
+        files:[{
+          dot: true,
+          src: [
+            '.tmp',
+            'report/*',
+          ]
+        }]
+      }
     },
 
     // Add vendor prefixed styles
@@ -551,6 +579,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
+      
       'env:all',
       'concurrent:server',
       'injector',
@@ -558,6 +587,7 @@ module.exports = function (grunt) {
       'autoprefixer',
       'express:dev',
       'run:metrics',
+      'changelog:v1',
       'wait',
       // 'open',
       'watch'
@@ -623,6 +653,7 @@ module.exports = function (grunt) {
     'cdnify',
     'cssmin',
     'uglify',
+    'changelog:v1',
     'rev',
     'usemin'
   ]);
