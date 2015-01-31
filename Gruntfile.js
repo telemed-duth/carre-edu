@@ -416,7 +416,7 @@ module.exports = function (grunt) {
       },
       deploy:{
         options: {
-            remote: 'production-server',
+            remote: 'production',
             branch: 'master'
           }
       },

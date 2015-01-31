@@ -20,7 +20,7 @@
                 <input type="text" ng-model="queryTerm" style="z-index: inherit;"
                 placeholder="Carre terms" typeahead="term for term in riskElements| filter:$viewValue | limitTo:8" 
                 class="form-control" typeahead-editable="true" typeahead-focus-first="false"
-                typeahead-on-select="onComplete()">
+                typeahead-on-select="onComplete($item, $model, $label)">
                 
                 <span class="input-group-btn">
                   <button class="btn btn-default" ng-click="searchQuery()" type="submit">
@@ -107,17 +107,17 @@
             
             <div class="clearfix row rating-container" collapse="!isCollapsed">
               
-              <!--<div class="col-xs-12 col-sm-12 col-md-4">-->
-              <!--  <div class="panel panel-default">-->
-              <!--    <div class="panel-heading">-->
-              <!--      <h3 class="panel-title">Extra Information</h3>-->
-              <!--    </div>-->
-              <!--    <div class="panel-body">-->
-              <!--      <h4>Coming soon!</h4>-->
-              <!--    </div>-->
-              <!--  </div>-->
-              <!--</div>-->
               <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Extra Information</h3>
+                  </div>
+                  <div class="panel-body">
+                    <h4>Coming soon!</h4>
+                  </div>
+                </div>
+              </div>
+              <div ng-if="isLoggedIn()" class="col-xs-12 col-sm-12 col-md-12">
 
                 <div class="panel panel-default">
                   <div class="panel-heading">

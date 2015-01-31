@@ -4,24 +4,12 @@ angular.module('edumaterialApp')
   .controller('MainCtrl', function ($scope, $http, Auth, $rootScope,$location,suggest, $sce, $timeout, medlineplus, $window) {
     
     $scope.isLoggedIn=Auth.isLoggedIn;
-    
-    // $scope.searchQuery=function(){
-    //   Auth.searchQuery=$scope.queryTerm;
-    //   Auth.notifyNavbar();
-    //   $scope.showSearch=false;
-    //   // console.log($location.$$path);
-    //   if($location.$$path!=='/home'&&$location.$$path!=='/'&&$location.$$path!=='/article') $state.forceReload();
-    //   else $location.path('/medlineplus');
-      
-    // };
+
     
     
     
-    
-    $scope.onComplete=function(label){
-      // if(label) {
-      //   $scope.queryTerm=label;
-      // }
+    //auto search when a term is selected
+    $scope.onComplete=function(item,model,label){
       $scope.searchQuery();
     };
     
@@ -29,11 +17,12 @@ angular.module('edumaterialApp')
     suggest.riskelements().then(function(data){
       $scope.riskElements=data;
     });
-  $scope.docSources = [
-    { label: 'MedlinePLUS', value: 'medlineplus' },
-    { label: 'Wikipedia', value: 'wikipedia' }
-  ];
-  $scope.curSource=$scope.docSources[1];
+    
+    $scope.docSources = [
+      { label: 'MedlinePLUS', value: 'medlineplus' },
+      { label: 'Wikipedia', value: 'wikipedia' }
+    ];
+    $scope.curSource=$scope.docSources[1];
   
   
   

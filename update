@@ -1,6 +1,5 @@
 #!/bin/bash          
 echo Updating git repository....
-grunt build
 git add .;git add *
 echo -n "Commit message? "
 read -e MSG
