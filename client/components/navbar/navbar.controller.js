@@ -65,9 +65,10 @@ angular.module('edumaterialApp')
     $scope.searchQuery=function(){
       Auth.searchQuery=$scope.query;
       $scope.showSearch=false;
-      console.log($location.$$path);
-      if($location.$$path!=='/home'&&$location.$$path!=='/') $state.forceReload();
-      else $location.path('/medlineplus');
+      $state.forceReload();
+      // console.log($location.$$path);
+      // if($location.$$path!=='/home'&&$location.$$path!=='/') $state.forceReload();
+      // else $location.path('/medlineplus');
       
     };
     

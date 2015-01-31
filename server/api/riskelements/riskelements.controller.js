@@ -14,11 +14,11 @@ exports.riskElements = function(req, res) {
   
 /* file import of risk elements for demo purposes */
   // console.log(ext_data.riskelements());
-  // return res.status(200).json(ext_data.riskelements());
+  return res.status(200).json(ext_data.riskelements());
 
 
   //  sparql query  to get the riskelements
-
+/*
   var query=
   "SELECT DISTINCT * WHERE {"+
   "?uri \"http://purl.org/dc/terms/title\" ?title ."+
@@ -59,7 +59,7 @@ exports.riskElements = function(req, res) {
           else return res.json(200, {'message':'no_results','data':data.results});
       } else return res.json(404, {'message':'dbpedia_error','data':null});
   });
-
+*/
 
 
 

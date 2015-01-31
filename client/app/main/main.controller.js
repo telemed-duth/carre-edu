@@ -108,7 +108,7 @@ angular.module('edumaterialApp')
         $scope.doc = $scope.results[i];
         $scope.doc.rating=$scope.doc.rating||[];
         $scope.doc.iframe='';
-        console.log($scope.doc);
+        // console.log($scope.doc);
         // animation & double scrollbar fix
         $timeout(function() {
           $scope.doc.iframe = renderContent();
@@ -194,10 +194,18 @@ angular.module('edumaterialApp')
     var searchMedlinePlus=function() {
       //call the service
       medlineplus.search(($scope.currentPage-1)*$scope.itemsPerPage,$scope.queryTerm).then(function(response){
-        $scope.results=response.data.list;
-        $scope.total=Number(response.data.count[0]);
-        $scope.pageCount=Math.ceil($scope.total/$scope.itemsPerPage);
-        if(($scope.total>$scope.itemsPerPage)&&$scope.results.retstart) $scope.currentPage=Math.ceil($scope.results.retstart[0]/$scope.itemsPerPage)+1;
+        if(response.data.message!=='no_results') {
+          $scope.results=response.data.list;
+          $scope.total=Number(response.data.count[0]);
+          $scope.pageCount=Math.ceil($scope.total/$scope.itemsPerPage);
+          if(($scope.total>$scope.itemsPerPage)&&$scope.results.retstart) $scope.currentPage=Math.ceil($scope.results.retstart[0]/$scope.itemsPerPage)+1;
+        } else { 
+          
+          //try wikipedia
+          $scope.curSource=$scope.docSources[1];
+          searchWikiPedia();
+        }
+          
       });
       
     };    
@@ -219,8 +227,8 @@ angular.module('edumaterialApp')
     
      //check if global search term is present
     if(Auth.searchQuery){
-      $scope.medlineTerm=Auth.searchQuery;
-      $scope.searchTerm();
+      $scope.queryTerm=Auth.searchQuery;
+      $scope.searchQuery();
     }
     
 
