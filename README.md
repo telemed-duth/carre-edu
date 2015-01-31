@@ -29,6 +29,7 @@ Technology stack
 
 Try your self!
 --------------
+Minimum Requirements: 1GB RAM + 3GB HDD
 The deployment is supported only on a unix* like machine (linux , Mac) and requires the following libraries to installed on your computer : 
 
 * NodeJS application sever
@@ -37,6 +38,8 @@ The deployment is supported only on a unix* like machine (linux , Mac) and requi
 
 Next you should clone the repository at github, install all dependencies and run the build script.
 
+You should take into considaration that the dependencies require ~3gb of space.
+
     The commands for the above steps are self-explanatory :
             
     $ git clone https://github.com/telemed-duth/carre-edu.git
@@ -44,7 +47,7 @@ Next you should clone the repository at github, install all dependencies and run
     $ npm install && bower install
     $ grunt serve
             
-	
+
 Now the system is running on the default port 8080 and can be accessed at http://localhost:8080 through a supported web browser. 
 
 
