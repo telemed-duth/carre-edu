@@ -44,7 +44,8 @@ module.exports = function (grunt) {
     changelog: {
     v1: {
       options: {
-        fileHeader:'# CHANGELOG',
+        fileHeader:'# CHANGELOG v<%= pkg.version%>',
+        dest:'CHANGELOG.txt',
         after: '2014-10-01',
         logArguments: [
           '--pretty=* %h - %ad: %s',

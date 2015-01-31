@@ -1,5 +1,6 @@
-# CHANGELOG
+# CHANGELOG v0.2.0
 
+- * 339b30d - 2015-01-31: fix change log 
 - * 2f25944 - 2015-01-31: add auto changelog generation! 
 - * 27f531d - 2015-01-31: add auto changelog generation! 
 - * 9d27bee - 2015-01-30:  remove npm-log 
