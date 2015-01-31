@@ -5,14 +5,6 @@ angular.module('edumaterialApp')
     
     $scope.isLoggedIn=Auth.isLoggedIn;
 
-    
-    
-    
-    //auto search when a term is selected
-    $scope.onComplete=function(item,model,label){
-      $scope.searchQuery();
-    };
-    
     $scope.riskElements=[];
     suggest.riskelements().then(function(data){
       $scope.riskElements=data;
@@ -70,12 +62,12 @@ angular.module('edumaterialApp')
       return suggest.for(val);
     };
 
-    $scope.onComplete = function(label) {
-      if (label) {
-        $scope.queryTerm = label;
-        $scope.searchQuery();
-      }
+
+    //auto search when a term is selected
+    $scope.onComplete=function(item,model,label){
+      $scope.searchQuery();
     };
+    
     // $scope.previewPanel='small';
     // $scope.togglePanel=function(){
     //   var height='400px';
@@ -206,10 +198,17 @@ angular.module('edumaterialApp')
       $http.get('/api/wikipedia/search/' + encodeURI($scope.queryTerm) + '/' + ($scope.currentPage - 1) * $scope.itemsPerPage, {
         cache: true
       }).then(function(response) {
-        $scope.results = response.data.search;
-        $scope.total = response.data.searchinfo.totalhits;
-        $scope.pageCount = Math.ceil($scope.total / $scope.itemsPerPage);
-        $scope.suggestion = response.data.searchinfo.suggestion;
+        if(response.data.search.length>0){
+          $scope.results = response.data.search;
+          $scope.total = response.data.searchinfo.totalhits;
+          $scope.pageCount = Math.ceil($scope.total / $scope.itemsPerPage);
+          $scope.suggestion = response.data.searchinfo.suggestion;
+        } else { 
+          
+          //try medlineplus
+          $scope.curSource=$scope.docSources[0];
+          searchMedlinePlus();
+        }
       });
       
     };

@@ -13,7 +13,7 @@
               <div class="input-group-btn">
                   
                 <select class="form-control" style="min-width:140px;z-index: inherit;" ng-model="curSource"
-                    ng-options="opt as opt.label for opt in docSources">
+                    ng-options="opt as opt.label for opt in docSources" ng-change="onComplete()">
                 </select>
               </div>
               
