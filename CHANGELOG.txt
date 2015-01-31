@@ -1,5 +1,6 @@
 # CHANGELOG v0.2.0
 
+- * 7742311 - 2015-02-01: CLI: add minimum requirements 
 - * 5306abb - 2015-02-01: CLI: update login to enable rating and some guidelines on readme file 
 - * 53188db - 2015-02-01: CLI: update cli tool command 
 - * ac7d120 - 2015-02-01: CLI: fix no results on wikipedia and redirect to medlineplus 

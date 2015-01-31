@@ -1,6 +1,5 @@
 #!/bin/bash          
 echo Updating git repository....
-grunt build
 git add .
 echo -ne "\e[92mAdd to Changelog?\e[39m : "
 read -e MSG
