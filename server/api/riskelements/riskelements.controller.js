@@ -5,7 +5,7 @@ var Riskelements = require('./riskelements.model');
 var SparqlClient = require('sparql-client');
 var util = require('util');
 var endpoint = 'http://carre.kmi.open.ac.uk/sparql';
-var ext_data=require('../../../ext_data/riskelements');
+var ext_data=require('../../ext_data/riskelements');
 
 
 // Get a single medline
