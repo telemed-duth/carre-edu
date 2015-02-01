@@ -1,5 +1,6 @@
 # CHANGELOG v0.2.0
 
+- * 7044aec - 2015-02-01: CLI: undefined search term bug fix , duplicate risk element 
 - * 48bba86 - 2015-02-01: CLI: fix bug created by a double quote and update cli tool not to build script twice 
 - * 7742311 - 2015-02-01: CLI: add minimum requirements 
 - * 5306abb - 2015-02-01: CLI: update login to enable rating and some guidelines on readme file 

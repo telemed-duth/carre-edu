@@ -146,7 +146,6 @@ angular.module('edumaterialApp')
 
     //perform search
     $scope.searchQuery = function() {
-      console.log($scope.queryTerm);
       if($scope.queryTerm!=undefined&&$scope.queryTerm!==''){
         Auth.searchQuery=$scope.queryTerm;
         Auth.notifyNavbar();
@@ -162,7 +161,6 @@ angular.module('edumaterialApp')
             searchWikiPedia();
         } 
       }
-      
     };
 
 
