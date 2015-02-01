@@ -11,7 +11,7 @@ angular.module('edumaterialApp')
         //Common Parameters
         'db':'healthTopics', // healthTopics ,healthTopicsSpanish 
         'rettype':'brief', // Retrieval type. Default:brief ,topic, all 
-        'retmax':10, //count results per page
+        'retmax':20, //count results per page
         'tool': 'carre-project-educational-aggregator', //
         'email': 'portokallidis@gmail.com', // Email address. If you choose to provide an email address
         //'server': null, // Name of the server with the file referenced by the file parameter. This is required when the file parameter is being used.

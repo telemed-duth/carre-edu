@@ -120,16 +120,10 @@ angular.module('edumaterialApp')
       }
 
     };
-    
-    $scope.articleInfo="ICD-10 : 230444";
-    $scope.articleRating="Information Quality";
-    
-
 
     var renderContent = function() {
       var data='';
       switch ($scope.curSource.value) {
-        
         case 'medlineplus':
           if($scope.mobile){
             //set the mobile html template
@@ -151,22 +145,23 @@ angular.module('edumaterialApp')
     }
 
     //perform search
-    $scope.searchQuery = function(page) {
-      
-      Auth.searchQuery=$scope.queryTerm;
-      Auth.notifyNavbar();
-      if (!page) $scope.currentPage = 1;
-      switch ($scope.curSource.value) {
-        case 'medlineplus':
-          searchMedlinePlus();
-          break;
-        case 'wikipedia':
-          searchWikiPedia();
-          break;
-        
-        default:
-          searchWikiPedia();
-      }  
+    $scope.searchQuery = function() {
+      console.log($scope.queryTerm);
+      if($scope.queryTerm!=undefined&&$scope.queryTerm!==''){
+        Auth.searchQuery=$scope.queryTerm;
+        Auth.notifyNavbar();
+        switch ($scope.curSource.value) {
+          case 'medlineplus':
+            searchMedlinePlus();
+            break;
+          case 'wikipedia':
+            searchWikiPedia();
+            break;
+          
+          default:
+            searchWikiPedia();
+        } 
+      }
       
     };
 
@@ -213,19 +208,9 @@ angular.module('edumaterialApp')
       
     };
     
-     //check if global search term is present
-    if(Auth.searchQuery){
-      $scope.queryTerm=Auth.searchQuery;
-      $scope.searchQuery();
-    }
-    
 
     //perform initialization
     init();
-  
-  
-  
-  
   
   
   

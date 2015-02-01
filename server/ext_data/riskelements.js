@@ -2,7 +2,6 @@ exports.riskelements=function(){
 	var data =[
 	'acute kidney injury',
 	'chronic kidney disease',
-	'acute kidney injury',
 	'death',
 	'ischemic heart disease',
 	'peripheral arterial disease',
