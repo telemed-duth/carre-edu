@@ -67,15 +67,6 @@ angular.module('edumaterialApp')
     $scope.onComplete=function(item,model,label){
       $scope.searchQuery();
     };
-    
-    // $scope.previewPanel='small';
-    // $scope.togglePanel=function(){
-    //   var height='400px';
-    //   if($scope.previewPanel==='big') height='50px';
-      
-      
-    //     document.querySelector('#document-preview').style.height = height;
-    // };
 
 
     //fetch whole article and rate it
