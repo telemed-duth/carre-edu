@@ -4,7 +4,7 @@ var passport = require('passport')
   , OpenIDStrategy = require('passport-openid').Strategy;
 
 passport.use(new OpenIDStrategy({
-    providerURL:'http://localhost:3000',
+    //providerURL:'https://carre.kmi.open.ac.uk/devices/accounts/login',
     returnURL: 'http://edu.carre-project.eu/auth/carre/callback',
     realm: 'http://edu.carre-project.eu/',
    profile: true

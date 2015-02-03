@@ -587,7 +587,6 @@ module.exports = function (grunt) {
       'autoprefixer',
       'express:dev',
       'run:metrics',
-      'changelog:v1',
       'wait',
       // 'open',
       'watch'

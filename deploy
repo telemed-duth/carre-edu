@@ -1,4 +1,3 @@
 #!/bin/bash          
 echo Pushing to production at athina.med.duth.gr
-grunt build
 grunt buildcontrol:deploy
