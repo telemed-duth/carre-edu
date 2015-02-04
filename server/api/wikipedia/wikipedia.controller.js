@@ -46,7 +46,7 @@ exports.search = function(req, res) {
     var queryParams={
       'action': 'query',
       // 'query':'srsearch='+term+'&list=search&srlimit=20&sroffset='+(offset||0)+'&[[category:Diseases]]'
-      'srsearch':'intitle:'+term,
+      'srsearch': term,
       'list':'search',
       'srlimit':20,
       'sroffset':offset||0
