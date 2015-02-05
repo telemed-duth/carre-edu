@@ -52,10 +52,10 @@ angular.module('edumaterialApp')
     }
 
     //did you mean? function
-    $scope.suggest = function(suggestion) {
-      $scope.queryTerm = suggestion;
-      $scope.searchQuery();
-    };
+    // $scope.suggest = function(suggestion) {
+    //   $scope.queryTerm = suggestion;
+    //   $scope.searchQuery();
+    // };
 
     //===autocomple helpers===//
     $scope.getSuggestions = function(val) {
@@ -124,12 +124,12 @@ angular.module('edumaterialApp')
             '</p></div>';
             
           } else {
-            data = '<iframe style="width:100%;height:'+$scope.frameHeight+'px;" class="embed-responsive-item" src="' + $scope.doc.url + '"sandbox="allow-same-origin"></iframe>';
+            data = '<base target="_blank" /><iframe style="width:100%;height:'+$scope.frameHeight+'px;" class="embed-responsive-item" src="' + $scope.doc.url + '"sandbox="allow-same-origin"></iframe>';
           }
           break;
         case 'wikipedia':
-          data = '<iframe style="width:100%;height:'+$scope.frameHeight+'px;" class="embed-responsive-item" src="http://en.wikipedia.org/wiki/'
-          +encodeURI($scope.doc.title).split('%20').join('_')+($scope.mobile?'?printable=yes':'')+'"sandbox="allow-same-origin"></iframe>';
+          data = '<base target="_blank" /><iframe style="width:100%;height:'+$scope.frameHeight+'px;" class="embed-responsive-item" src="http://en.wikipedia.org/wiki/'
+          +encodeURI($scope.doc.title).split('%20').join('_')+($scope.mobile?'?printable=yes':'')+'"></iframe>';
           break;
       }  
       return $sce.trustAsHtml(data);

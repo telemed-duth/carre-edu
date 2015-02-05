@@ -49,26 +49,27 @@
 
 
 <div class="container results">
-    <hgroup ng-show="total>0" class="mb20">         
+  
+  
+  
+  <div class="page-header">
+    <!--top pagination-->
     <pagination ng-show="total>itemsPerPage" items-per-page="itemsPerPage" 
-          style="z-index: inherit; float:right; margin:0;" total-items="total" ng-model="currentPage" 
+          style="z-index: inherit; float:right; margin:auto;" total-items="total" ng-model="currentPage" 
           ng-change="searchQuery(true)" max-size="6" rotate="false"></pagination>
-
-        <h3><strong class="text-danger">{{total}}</strong> results</h3>
+          
+    <!--total results-->
+    <h3 ng-show="total>0"><strong class="text-danger">{{total}}</strong> results</h3>
+  </div>
 
         
-    </hgroup>
     
-    <!--TOP Pagination-->
-    <div class="text-right">
-  
-    </div>
 
     <!-- Suggestions -->
-    <div ng-show="suggestion">
-        <h4>Did you mean <a href="" ng-click="suggest(suggestion)">{{suggestion}}</a>?</h4>
-        <hr>
-    </div>
+    <!--<div ng-show="suggestion">-->
+    <!--    <h4>Did you mean <a href="" ng-click="suggest(suggestion)">{{suggestion}}</a>?</h4>-->
+    <!--    <hr>-->
+    <!--</div>-->
 
     <!-- no results -->
     <div class="alert alert-warning" ng-hide="total>0">No results...</div>
@@ -83,9 +84,17 @@
       </div>
     
     </section>
+    
+    <!--bottom pagination-->
+    <pagination ng-show="total>itemsPerPage" items-per-page="itemsPerPage" 
+          style="z-index: inherit; float:right; margin:auto;" total-items="total" ng-model="currentPage" 
+          ng-change="searchQuery(true)" max-size="6" rotate="false"></pagination>
+        
 
 
 </div>
+
+<!--ARTICLE PREVIEW-->
 
     <div class="overlay overlay-door" ng-class="{'open':showArticle}">
         <div class="well preview-container">
@@ -142,7 +151,6 @@
             </div>
             
         </div>
-        
         <div style="position:relative; width:auto; height:auto; margin:auto; top:100px;" ng-hide="doc.iframe||!showArticle" class="spinner">
             <div class="bounce1"></div>
             <div class="bounce2"></div>

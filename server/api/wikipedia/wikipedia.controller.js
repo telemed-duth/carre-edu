@@ -46,7 +46,7 @@ exports.search = function(req, res) {
     var queryParams={
       'action': 'query',
       // 'query':'srsearch='+term+'&list=search&srlimit=20&sroffset='+(offset||0)+'&[[category:Diseases]]'
-      'srsearch': term,
+      'srsearch': term+' ICD-10 -intitle:ICD-',
       'list':'search',
       'srlimit':20,
       'sroffset':offset||0
