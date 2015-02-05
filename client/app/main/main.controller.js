@@ -159,18 +159,15 @@ angular.module('edumaterialApp')
     var searchMedlinePlus=function() {
       //call the service
       medlineplus.search(($scope.currentPage-1)*$scope.itemsPerPage,$scope.queryTerm).then(function(response){
-        console.log(response);
+
         if(!response.data.message) {
           $scope.results=response.data.list;
           $scope.total=Number(response.data.count[0]);
           $scope.pageCount=Math.ceil($scope.total/$scope.itemsPerPage);
           if(($scope.total>$scope.itemsPerPage)&&$scope.results.retstart) $scope.currentPage=Math.ceil($scope.results.retstart[0]/$scope.itemsPerPage)+1;
         } else { 
-          
-          // response=response.data;
-          //try wikipedia
-          $scope.curSource=$scope.docSources[1];
-          searchWikiPedia();
+          $scope.total = 0;
+          $scope.results = [];
         }
           
       });
@@ -184,16 +181,15 @@ angular.module('edumaterialApp')
       $http.get('/api/wikipedia/search/' + encodeURI($scope.queryTerm) + '/' + ($scope.currentPage - 1) * $scope.itemsPerPage, {
         cache: true
       }).then(function(response) {
+        
         if(response.data.search.length>0){
           $scope.results = response.data.search;
           $scope.total = response.data.searchinfo.totalhits;
           $scope.pageCount = Math.ceil($scope.total / $scope.itemsPerPage);
           $scope.suggestion = response.data.searchinfo.suggestion;
         } else { 
-          
-          //try medlineplus
-          $scope.curSource=$scope.docSources[0];
-          searchMedlinePlus();
+          $scope.total = 0;
+          $scope.results = [];
         }
       });
       
