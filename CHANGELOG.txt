@@ -1,5 +1,6 @@
 # CHANGELOG v0.2.0
 
+- * f9d28b2 - 2015-02-04: CLI: fix wikipedia crash bug 
 - * 1448945 - 2015-02-03: CLI: change update scripts , add openid fix 
 - * c7936ce - 2015-02-03: add openid auth-not working 
 - * f7801ec - 2015-02-01: CLI: remove console.log for undefined 

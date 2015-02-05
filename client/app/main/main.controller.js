@@ -159,13 +159,15 @@ angular.module('edumaterialApp')
     var searchMedlinePlus=function() {
       //call the service
       medlineplus.search(($scope.currentPage-1)*$scope.itemsPerPage,$scope.queryTerm).then(function(response){
-        if(response.data.message!=='no_results') {
+        console.log(response);
+        if(!response.data.message) {
           $scope.results=response.data.list;
           $scope.total=Number(response.data.count[0]);
           $scope.pageCount=Math.ceil($scope.total/$scope.itemsPerPage);
           if(($scope.total>$scope.itemsPerPage)&&$scope.results.retstart) $scope.currentPage=Math.ceil($scope.results.retstart[0]/$scope.itemsPerPage)+1;
         } else { 
           
+          // response=response.data;
           //try wikipedia
           $scope.curSource=$scope.docSources[1];
           searchWikiPedia();
