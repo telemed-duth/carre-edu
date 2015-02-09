@@ -1,0 +1,65 @@
+
+<!--ARTICLE PREVIEW-->
+
+    <div class="overlay overlay-door" ng-class="{'open':showArticle}">
+        <div class="well preview-container">
+            <div class="clearfix row preview-status">
+              
+              <div class="col-sm-6">
+                <button type="button" ng-click="toggleArticle(-1)" class="overlay overlay-close carre-btn">
+                    <span class="glyphicon glyphicon-circle-arrow-left"></span>
+                </button>
+              </div>
+
+              <div class="col-sm-6">
+                <button type="button" ng-click="isCollapsed=!isCollapsed" ng-class="{'active':isCollapsed}"class="overlay overlay-edit carre-btn">
+                    <span class="glyphicon glyphicon-edit"></span>
+                </button>
+              </div>
+              
+            </div>
+            
+            <div class="clearfix row rating-container" collapse="!isCollapsed">
+              
+              <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Extra Information</h3>
+                  </div>
+                  <div class="panel-body">
+                    <h4>Coming soon!</h4>
+                  </div>
+                </div>
+              </div>
+              <div ng-if="isLoggedIn()" class="col-xs-12 col-sm-12 col-md-12">
+
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Article Rating</h3>
+                  </div>
+                  <div class="panel-body">
+                    <div class="row">
+                      
+                      <div class="col-sm-4" ng-repeat="rate in rating track by $index">
+                        
+                        {{rate.name}} :  <rating class="rating" ng-model="doc.rating[$index].value" max="5"></rating>
+                        
+                      </div>
+                            
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+                
+                
+            </div>
+            
+        </div>
+        <div style="position:relative; width:auto; height:auto; margin:auto; top:100px;" ng-hide="doc.iframe||!showArticle" class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+        <div style="height:100%" class="embed-responsive embed-responsive-4by3" ng-bind-html="doc.iframe"></div>
+    </div>

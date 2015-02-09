@@ -6,65 +6,23 @@ var auth = require('../auth.service');
 
 var router = express.Router();
 
-router
+router.get('/', function(req, res, next) {
+  var callbackURL='http://beta.carre-project.eu:8080/auth/carre/callback';
+  var authorizationURL='https://carre.kmi.open.ac.uk/devices/accounts/login';
+  res.redirect(authorizationURL+'?next='+callbackURL);
+});
+router.get('/callback', function(req, res, next) {
   
-// Accept the OpenID identifier and redirect the user to their OpenID
-// provider for authentication.  When complete, the provider will redirect
-// the user back to the application at:
-//     /auth/openid/return
+  passport.authenticate('token', function (err, user, info) {
+    var error = err || info;
+    if (error) return res.json(401, error);
+    if (!user) return res.json(404, {message: 'Something went wrong, please try again.'});
 
-  .get('/',passport.authenticate('openid', {
-    identifier:'https://carre.kmi.open.ac.uk/users/nporto',
-    failureRedirect: '/signup',
-    session: false
-  }))
-  
-  
-// The OpenID provider has redirected the user back to the application.
-// Finish the authentication process by verifying the assertion.  If valid,
-// the user will be logged in.  Otherwise, authentication has failed.
-
-  .get('/callback', passport.authenticate('openid', {
-    failureRedirect: '/signup',
-    session: false
-    
-  }), auth.setTokenCookie);
-
+    var token = auth.signToken(user._id, user.role);
+    res.cookie('token', JSON.stringify(token));
+    res.redirect('/');
+  })(req, res, next)
+});
 
 
 module.exports = router;
-
-
-
-// app.post('/login/callback',
-//   passport.authenticate('saml', { failureRedirect: '/', failureFlash: true }),
-//   function(req, res) {
-//     res.redirect('/');
-//   }
-// );
-
-// app.get('/login',
-//   passport.authenticate('saml', { failureRedirect: '/', failureFlash: true }),
-//   function(req, res) {
-//     res.redirect('/');
-//   }
-// );
-
-
-
-// router
-//   .get('/', passport.authenticate('google', {
-//     failureRedirect: '/signup',
-//     scope: [
-//       'https://www.googleapis.com/auth/userinfo.profile',
-//       'https://www.googleapis.com/auth/userinfo.email'
-//     ],
-//     session: false
-//   }))
-
-//   .get('/callback', passport.authenticate('google', {
-//     failureRedirect: '/signup',
-//     session: false
-//   }), auth.setTokenCookie);
-
-// module.exports = router;

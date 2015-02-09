@@ -1,5 +1,6 @@
 # CHANGELOG v0.2.0
 
+- * bc6967b - 2015-02-05: CLI: ui and wikipedia query optimizations 
 - * c386a0f - 2015-02-05: CLI: fix no results endless loop bug 
 - * 3903b13 - 2015-02-05: CLI: fix medline plus bug 
 - * f9d28b2 - 2015-02-04: CLI: fix wikipedia crash bug 
