@@ -1,5 +1,6 @@
 # CHANGELOG v0.2.0
 
+- * 5e1606a - 2015-02-10: CLI: finalize authentication with the Open University authentication mechanism 
 - * a53305d - 2015-02-09: CLI: carre token authentication addon 
 - * bc6967b - 2015-02-05: CLI: ui and wikipedia query optimizations 
 - * c386a0f - 2015-02-05: CLI: fix no results endless loop bug 
