@@ -7,7 +7,8 @@ var auth = require('../auth.service');
 var router = express.Router();
 
 router.get('/', function(req, res, next) {
-  var callbackURL='http://beta.carre-project.eu:8080/auth/carre/callback';
+  var callbackURL= req.protocol + '://' + req.get('host') + '/auth/carre/callback';
+  console.log(callbackURL);
   var authorizationURL='https://carre.kmi.open.ac.uk/devices/accounts/login';
   res.redirect(authorizationURL+'?next='+callbackURL);
 });
