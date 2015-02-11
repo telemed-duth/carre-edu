@@ -5,8 +5,10 @@ var passport = require('passport'),
     strategyOptions = {
     // usernameHeader: 'x-custom-username',
     // tokenHeader:    'x-custom-token',        
-    usernameField:  'username',
-    tokenField:     'oauth_token'
+      usernameField:  'username',
+      tokenField:     'oauth_token',
+      passReqToCallback: true
+    
     
 };
 
@@ -32,13 +34,13 @@ var passport = require('passport'),
 // };
 
 exports.setup = function (User, config) {
-
+  
 passport.use(new TokenStrategy(strategyOptions,
-    function (username, token, done) {
+    function (req,username, token, done) {
       
       
       User.findOne({
-          'username': username
+          'name': username
         },
         function(err, user) {
           if (err) {
@@ -49,13 +51,16 @@ passport.use(new TokenStrategy(strategyOptions,
             user = new User({
               name: username,
               role: 'user',
-              username: username,
               provider: 'carre',
-              carre: {'oauth_token':token}
+              email: req.query.email,
+              carre: {
+                'oauth_token':token,
+                'graph':'https://carre.kmi.open.ac.uk/users/'+username
+              }
             });
             user.save(function(err) {
-              if (err) done(err);
-              return done(err, user);
+              if (err) return done(err);
+              else return done(err, user);
             });
           } else {
             return done(err, user);
