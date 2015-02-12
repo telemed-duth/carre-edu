@@ -47,6 +47,9 @@ angular.module('edumaterialApp')
       logout: function() {
         $cookieStore.remove('token');
         currentUser = {};
+        
+        //logout from carre devices too
+        window.location.href='https://carre.kmi.open.ac.uk/devices/accounts/logout?next='+$location.absUrl();
       },
 
       /**

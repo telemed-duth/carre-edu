@@ -1,5 +1,6 @@
 # CHANGELOG v0.2.0
 
+- * 288cb15 - 2015-02-12: CLI: use default icon when gravatar not exist 
 - * 3b62f15 - 2015-02-12: CLI: fix gravatar 
 - * 17e7828 - 2015-02-12: CLI: update authentication and gravatar generated pic 
 - * 8e233c7 - 2015-02-10: CLI: add newrelic profiler 
