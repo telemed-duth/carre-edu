@@ -45,7 +45,7 @@ angular.module('edumaterialApp')
         //set image
         if(user.provider==='google') $scope.user.img=user.google.picture;
         else if(user.provider==='twitter') $scope.user.img=user.twitter.profile_image_url;
-        else if(user.provider==='carre') $scope.user.img=user.carre.gravatar;
+        else if(user.provider==='carre') $scope.user.img=user.carre.gravatar||'http://gravatar.com/avatar/3bc777082e578f5d41124e1055227d00?d=mm&s=96&r=G';
         else $scope.user.img='http://gravatar.com/avatar/3bc777082e578f5d41124e1055227d00?d=mm&s=96&r=G';
         
       });
