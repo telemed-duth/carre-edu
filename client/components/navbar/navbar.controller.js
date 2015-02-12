@@ -39,15 +39,13 @@ angular.module('edumaterialApp')
     if(Auth.isLoggedIn && Auth.getCurrentUser().hasOwnProperty('$promise')) {
       $scope.getCurrentUser().$promise.then(function(user){
         $scope.user=user;
+        
         console.log(user);
   
         //set image
         if(user.provider==='google') $scope.user.img=user.google.picture;
         else if(user.provider==='twitter') $scope.user.img=user.twitter.profile_image_url;
-        else if(user.gravatar) {
-          console.log(user.gravatar);
-          $scope.user.img='http://gravatar.com/avatar/'+user.gravatar+'?d=mm&s=96&r=G';
-        }
+        else if(user.provider==='carre') $scope.user.img=user.carre.gravatar;
         else $scope.user.img='http://gravatar.com/avatar/3bc777082e578f5d41124e1055227d00?d=mm&s=96&r=G';
         
       });
