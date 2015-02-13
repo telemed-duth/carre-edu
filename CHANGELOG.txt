@@ -1,5 +1,6 @@
-# CHANGELOG v0.2.8
+# CHANGELOG v0.2.9
 
+- * bb557ba - 2015-02-13: CLI: update navbar link to CARRE devices 
 - * acbad64 - 2015-02-13: CLI: updated settings url when logged in as CARRE 
 - * 4910241 - 2015-02-13: CLI: finalize automated versioning system 
 - * 3ac05d1 - 2015-02-13: CLI: fix update no 3 

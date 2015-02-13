@@ -52,7 +52,7 @@ angular.module('edumaterialApp')
         switch ($scope.user.provider) {
           case 'carre':
             $scope.carreUser=true;
-            $scope.settingsUrl='https://carre.kmi.open.ac.uk/devices/accounts/settings';
+            $scope.settingsUrl='https://carre.kmi.open.ac.uk/devices';
             break;
           case 'local':
             $scope.settingsUrl='/settings';
