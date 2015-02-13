@@ -1,5 +1,6 @@
 # CHANGELOG v0.2.4
 
+- * 3b3b367 - 2015-02-13: CLI: update script 
 - * 7d7765a - 2015-02-13: CLI: update script fix 
 - * a7fb7fb - 2015-02-13: CLI: set defaults for the update script 
 - * 9345c27 - 2015-02-13: CLI: playing with versioning 
