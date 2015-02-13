@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/telemed-duth/carre-edu.svg?branch=master)](https://travis-ci.org/telemed-duth/carre-edu)
+[![Build Status](https://codeship.com/projects/8f8138f0-06cb-0132-1e81-36288a81fed8/status?branch=master)](https://travis-ci.org/telemed-duth/carre-edu)
 
 
 carre-edu

@@ -1,5 +1,6 @@
 # CHANGELOG v0.2.0
 
+- * d32bd1e - 2015-02-13: CLI: add Continuous deployment!! 
 - * 593fec0 - 2015-02-13: CLI: update travis and codeship test routines 
 - * 3dd9727 - 2015-02-13: CLI: codeship fix.. 
 - * 97d9840 - 2015-02-12: CLI: fix codeship build 
