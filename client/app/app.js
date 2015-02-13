@@ -1,5 +1,5 @@
 'use strict';
-
+var angular=angular;
 angular.module('edumaterialApp', [
   'ngCookies',
   'ngResource',

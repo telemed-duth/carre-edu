@@ -1,5 +1,6 @@
 # CHANGELOG v0.2.0
 
+- * 97d9840 - 2015-02-12: CLI: fix codeship build 
 - * 958ba59 - 2015-02-12: CLI: add logout function to carre authentication and fix testing failure 
 - * 288cb15 - 2015-02-12: CLI: use default icon when gravatar not exist 
 - * 3b62f15 - 2015-02-12: CLI: fix gravatar 

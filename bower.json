@@ -1,6 +1,6 @@
 {
   "name": "carre-edu",
-  "version": "0.0.2",
+  "version": "0.2.1",
   "dependencies": {
     "angular": ">=1.3.*",
     "json3": "~3.3.1",

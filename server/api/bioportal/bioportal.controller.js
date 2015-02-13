@@ -70,11 +70,11 @@ exports.getOntologies = function(req, res) {
           //testing results in console first
           // console.log(finalResults);
           //ok now do something with the results
-          return res.json(200, finalResults);
+          return res.status(200).json(finalResults);
         }
       //process.stdout.write(util.inspect(arguments, null, 20, true)+"\n");
       }
-    } else return res.json(500, {'message':'error','data':error});
+    } else return res.status(500).json({'message':'error','data':error});
   });
 };
 
@@ -83,7 +83,7 @@ exports.getOntologies = function(req, res) {
 exports.index = function(req, res) {
   Bioportal.find(function (err, bioportals) {
     if(err) { return handleError(res, err); }
-    return res.json(200, bioportals);
+    return  res.status(200).json(bioportals);
   });
 };
 
@@ -100,7 +100,7 @@ exports.show = function(req, res) {
 exports.create = function(req, res) {
   Bioportal.create(req.body, function(err, bioportal) {
     if(err) { return handleError(res, err); }
-    return res.json(201, bioportal);
+    return res.status(201).json(bioportal);
   });
 };
 
