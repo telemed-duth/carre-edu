@@ -28,7 +28,7 @@ do
         "No change")
             break
             ;;
-        *) echo "No change"; break ;;
+        *) echo "Invalid option"; break ;;
     esac
 done
 
@@ -37,4 +37,4 @@ grunt build;
 git add .
 echo -ne "\e[92mAdd to Changelog?\e[39m : "
 read -e MSG
-git commit -am"CLI: $MSG";git push --tags;
+git commit -am"CLI: $MSG";git push;git push --tags;
