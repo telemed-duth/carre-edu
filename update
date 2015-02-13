@@ -28,7 +28,7 @@ do
         "No change")
             break
             ;;
-        *) break;;
+        *) echo "No change"; break ;;
     esac
 done
 
