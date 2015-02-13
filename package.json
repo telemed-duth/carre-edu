@@ -103,7 +103,7 @@
     "node": "~0.10.0"
   },
   "scripts": {
-    "preinstall": "npm install -g bower grunt-cli;bower install",
+    "pretest": "npm install -g bower grunt-cli;bower install",
     "start": "./node_modules/forever/bin/forever -m 5 server/app.js",
     "test": "grunt test",
     "update-webdriver": "node node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update"
