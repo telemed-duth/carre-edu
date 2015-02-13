@@ -5,7 +5,7 @@ read -p "Create new tag for this version? (y/n)?" choice
 case "$choice" in 
   y|Y ) TAG=commit;;
   n|N ) TAG=only;;
-  * ) echo "invalid";;
+  * ) TAG=only;;
 esac
 
 PS3='Change version : '
@@ -28,7 +28,7 @@ do
         "No change")
             break
             ;;
-        *) echo invalid option;;
+        *) break;;
     esac
 done
 
@@ -37,4 +37,4 @@ grunt build;
 git add .
 echo -ne "\e[92mAdd to Changelog?\e[39m : "
 read -e MSG
-git commit -am"CLI: $MSG";git push;
+git commit -am"CLI: $MSG";git push --tags;

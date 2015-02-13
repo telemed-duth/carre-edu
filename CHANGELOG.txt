@@ -1,5 +1,6 @@
 # CHANGELOG v0.2.4
 
+- * 9345c27 - 2015-02-13: CLI: playing with versioning 
 - * 8c630fb - 2015-02-13: CLI: try to configure automated versioning 
 - * be830cf - 2015-02-13: CLI: update description and badges 
 - * b8c12c4 - 2015-02-13: CLI: fix codeship badge 
