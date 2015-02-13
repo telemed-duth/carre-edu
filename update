@@ -1,6 +1,39 @@
 #!/bin/bash          
 echo Updating git repository....
+
+read -p "Create new tag for this version? (y/n)?" choice
+case "$choice" in 
+  y|Y ) TAG=commit;;
+  n|N ) TAG=only;;
+  * ) echo "invalid";;
+esac
+
+PS3='Change version : '
+options=("Major 1.x.x" "Minor x.1.x" "Patch x.x.1" "No change")
+select opt in "${options[@]}"
+do
+    case $opt in
+        "Major 1.x.x")
+            grunt bump:major:$TAG
+            break
+            ;;
+        "Minor x.1.x")
+            grunt bump:minor:$TAG
+            break
+            ;;
+        "Patch x.x.1")
+            grunt bump:patch:$TAG
+            break
+            ;;
+        "No change")
+            break
+            ;;
+        *) echo invalid option;;
+    esac
+done
+
 grunt build;
+
 git add .
 echo -ne "\e[92mAdd to Changelog?\e[39m : "
 read -e MSG

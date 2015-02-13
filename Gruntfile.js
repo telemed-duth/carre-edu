@@ -42,25 +42,42 @@ module.exports = function (grunt) {
       }
     },
     changelog: {
-    v1: {
-      options: {
-        fileHeader:'# CHANGELOG v<%= pkg.version%>',
-        dest:'CHANGELOG.txt',
-        after: '2014-10-01',
-        logArguments: [
-          '--pretty=* %h - %ad: %s',
-          '--no-merges',
-          '--date=short'
-        ],
-        template: '{{> features}}',
-        featureRegex: /^(.*)$/gim,
-        partials: {
-          features: '{{#if features}}{{#each features}}{{> feature}}{{/each}}{{else}}{{> empty}}{{/if}}\n',
-          feature: '- {{this}} {{this.date}}\n'
+      v1: {
+        options: {
+          fileHeader:'# CHANGELOG v<%= pkg.version%>',
+          dest:'CHANGELOG.txt',
+          after: '2014-10-01',
+          logArguments: [
+            '--pretty=* %h - %ad: %s',
+            '--no-merges',
+            '--date=short'
+          ],
+          template: '{{> features}}',
+          featureRegex: /^(.*)$/gim,
+          partials: {
+            features: '{{#if features}}{{#each features}}{{> feature}}{{/each}}{{else}}{{> empty}}{{/if}}\n',
+            feature: '- {{this}} {{this.date}}\n'
+          }
         }
       }
-    }
-  },
+    },
+    bump: {
+      options: {
+        files: ['package.json','bower.json'],
+        updateConfigs: ['pkg'],
+        commit: false,
+        commitMessage: 'Release v%VERSION%',
+        commitFiles: ['package.json'],
+        createTag: true,
+        tagName: 'v%VERSION%',
+        tagMessage: 'Version %VERSION%',
+        push: false,
+        pushTo: 'upstream',
+        gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d',
+        globalReplace: false
+      }
+    },
+  
     express: {
       options: {
         port: process.env.PORT || 9000

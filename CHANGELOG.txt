@@ -1,5 +1,6 @@
-# CHANGELOG v0.2.0
+# CHANGELOG v0.2.2
 
+- * be830cf - 2015-02-13: CLI: update description and badges 
 - * b8c12c4 - 2015-02-13: CLI: fix codeship badge 
 - * 4959eef - 2015-02-13: CLI: replace preinstall--&gt; pretest npm scripts 
 - * c0fb9dd - 2015-02-13: CLI: fix codeship build try no.1 

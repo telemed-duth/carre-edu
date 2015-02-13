@@ -1,6 +1,6 @@
 {
   "name": "carre-edu",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "main": "server/app.js",
   "dependencies": {
     "body-parser": "^1.5.2",
@@ -47,6 +47,7 @@
     "grunt-asset-injector": "^0.1.0",
     "grunt-autoprefixer": "~0.7.2",
     "grunt-build-control": "DaftMonk/grunt-build-control",
+    "grunt-bump": "^0.1.0",
     "grunt-changelog": "^0.3.0",
     "grunt-concurrent": "~0.5.0",
     "grunt-contrib-clean": "~0.5.0",
