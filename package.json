@@ -1,6 +1,6 @@
 {
   "name": "carre-edu",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "main": "server/app.js",
   "dependencies": {
     "body-parser": "^1.5.2",
