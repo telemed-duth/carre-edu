@@ -1,6 +1,6 @@
 #!/bin/bash          
 echo Updating git repository....
-
+git pull;
 
 PS3='Create new tag for this version? (y/n): '
 options=("y" "n")

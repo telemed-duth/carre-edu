@@ -1,5 +1,6 @@
 # CHANGELOG v0.2.8
 
+- * acbad64 - 2015-02-13: CLI: updated settings url when logged in as CARRE 
 - * 4910241 - 2015-02-13: CLI: finalize automated versioning system 
 - * 3ac05d1 - 2015-02-13: CLI: fix update no 3 
 - * 3b3b367 - 2015-02-13: CLI: update script 
