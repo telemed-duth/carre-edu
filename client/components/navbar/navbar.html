@@ -49,8 +49,8 @@ typeahead="term for term in getSuggestions($viewValue)" typeahead-loading="loadi
               <img ng-src="{{user.img}}" class="img-circle">
           </a>
           <ul class="dropdown-menu with-arrow pull-right">
-              <li>
-                  <a href="/settings">
+              <li ng-show="settingsUrl">
+                  <a ng-href="{{settingsUrl}}">
                       <i class="glyphicon glyphicon-cog"></i>
                       <span>Settings</span>
                   </a>

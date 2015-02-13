@@ -48,6 +48,20 @@ angular.module('edumaterialApp')
         else if(user.provider==='carre') $scope.user.img=user.carre.gravatar||'http://gravatar.com/avatar/3bc777082e578f5d41124e1055227d00?d=mm&s=96&r=G';
         else $scope.user.img='http://gravatar.com/avatar/3bc777082e578f5d41124e1055227d00?d=mm&s=96&r=G';
         
+        //set settings url
+        switch ($scope.user.provider) {
+          case 'carre':
+            $scope.settingsUrl='https://carre.kmi.open.ac.uk/devices/accounts/settings';
+            break;
+          case 'local':
+            $scope.settingsUrl='/settings';
+            break;
+          
+          default:
+            $scope.settingsUrl='';
+        }
+        
+        
       });
     }
 
@@ -74,6 +88,7 @@ angular.module('edumaterialApp')
       // else $location.path('/medlineplus');
       
     };
+
     
 
   });

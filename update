@@ -1,28 +1,42 @@
 #!/bin/bash          
 echo Updating git repository....
 
-read -p "Create new tag for this version? (y/n)?" choice
-case "$choice" in 
-  y|Y ) TAG=commit;;
-  n|N ) TAG=only;;
-  * ) TAG=only;;
-esac
 
-PS3='Change version : '
+PS3='Create new tag for this version? (y/n): '
+options=("y" "n")
+select opt in "${options[@]}"
+do
+    case $opt in
+        "y")
+            TASK=""
+            break
+            ;;
+        "n")
+            TASK=":bump-only"
+            break
+            ;;
+        *) 
+            TASK=":bump-only" 
+            break 
+            ;;
+    esac
+done
+
+PS3='Change version (Semantic Versioning): '
 options=("Major 1.x.x" "Minor x.1.x" "Patch x.x.1" "No change")
 select opt in "${options[@]}"
 do
     case $opt in
         "Major 1.x.x")
-            grunt bump:major:$TAG
+            grunt bump:major$TASK
             break
             ;;
         "Minor x.1.x")
-            grunt bump:minor:$TAG
+            grunt bump:minor$TASK
             break
             ;;
         "Patch x.x.1")
-            grunt bump:patch:$TAG
+            grunt bump:patch$TASK
             break
             ;;
         "No change")
