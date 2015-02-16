@@ -1,5 +1,6 @@
 # CHANGELOG v0.2.9
 
+- * 72646f0 - 2015-02-16: CLI: update dependencies and add article,enrichment,rdf services 
 - * 17e9d87 - 2015-02-13: CLI: add change password for CARRE users 
 - * bb557ba - 2015-02-13: CLI: update navbar link to CARRE devices 
 - * acbad64 - 2015-02-13: CLI: updated settings url when logged in as CARRE 

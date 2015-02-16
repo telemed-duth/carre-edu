@@ -3,7 +3,7 @@
 describe('Service: enrichment', function () {
 
   // load the service's module
-  beforeEach(module('carreEduApp'));
+  beforeEach(module('edumaterialApp'));
 
   // instantiate service
   var enrichment;
