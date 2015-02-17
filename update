@@ -1,6 +1,14 @@
-#!/bin/bash          
-echo Updating git repository....
+#!/bin/bash    
+
+# stop executing if any command exits with non zero value
+set -e
+
+echo "Running tests..."
+grunt test;
+
+echo "Fetching changes from repo..."
 git pull;
+
 
 PS3='Create new tag for this version? (y/n): '
 options=("y" "n")
@@ -46,8 +54,10 @@ do
     esac
 done
 
-grunt build;
+echo "Creating build..."
+grunt build
 
+echo "Uploading to repository..."
 git add .
 echo -ne "\e[92mAdd to Changelog?\e[39m : "
 read -e MSG
