@@ -55,7 +55,10 @@
 }
 
 
-
+/**** Highlighting search terms ****/
+.qt1, .qt2, .qt3,.searchmatch {
+	color: #4393B9;
+}
 
 
 

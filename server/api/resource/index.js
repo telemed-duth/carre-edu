@@ -5,6 +5,7 @@ var controller = require('./resource.controller');
 
 var router = express.Router();
 
+router.post('/query', controller.query);
 router.get('/', controller.index);
 router.get('/:id', controller.show);
 router.post('/', controller.create);

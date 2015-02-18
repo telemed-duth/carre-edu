@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('edumaterialApp')
-  .controller('MainCtrl', function ($scope, $http, Auth, $rootScope,$location,suggest, $sce, $timeout, medlineplus, $window) {
+  .controller('MainCtrl', function ($scope, $http, Auth, $rootScope,$location,suggest, $sce, $timeout, medlineplus, $window,article) {
     
     $scope.isLoggedIn=Auth.isLoggedIn;
 
@@ -17,7 +17,7 @@ angular.module('edumaterialApp')
     $scope.curSource=$scope.docSources[1];
   
   
-  
+    article.all();
   /*****************************************************************/
   
   
@@ -50,6 +50,10 @@ angular.module('edumaterialApp')
         $scope.searchQuery();
       }
     }
+    
+    function plainText(text) {
+      return String(text).replace(/<[^>]+>/gm, '');
+    }
 
     //did you mean? function
     // $scope.suggest = function(suggestion) {
@@ -78,7 +82,9 @@ angular.module('edumaterialApp')
         $scope.frameHeight=$window.innerHeight-50;
         $scope.mobile=($window.innerWidth<700)?true:false; //set type to mobile if screen is less than 700px
         $scope.doc = $scope.results[i];
+        $scope.doc.pos=i;
         $scope.doc.rating=$scope.doc.rating||[];
+        
         $scope.doc.iframe='';
         // console.log($scope.doc);
         // animation & double scrollbar fix
@@ -86,7 +92,7 @@ angular.module('edumaterialApp')
           $scope.doc.iframe = renderContent();
           document.querySelector('body').style.overflowY = $scope.showArticle ? 'hidden' : 'visible';
         }, 900);
-
+        
         //load the article
         // $http.get('/api/wikipedia/article/' + encodeURI(title), {
         //   cache: true
@@ -114,6 +120,8 @@ angular.module('edumaterialApp')
 
     var renderContent = function() {
       var data='';
+      var rdfInsert={};
+      
       switch ($scope.curSource.value) {
         case 'medlineplus':
           if($scope.mobile){
@@ -126,14 +134,36 @@ angular.module('edumaterialApp')
           } else {
             data = '<base target="_blank" /><iframe style="width:100%;height:'+$scope.frameHeight+'px;" class="embed-responsive-item" src="' + $scope.doc.url + '"sandbox="allow-same-origin"></iframe>';
           }
+
           break;
         case 'wikipedia':
-          data = '<base target="_blank" /><iframe style="width:100%;height:'+$scope.frameHeight+'px;" class="embed-responsive-item" src="http://en.wikipedia.org/wiki/'
-          +encodeURI($scope.doc.title).split('%20').join('_')+($scope.mobile?'?printable=yes':'')+'"></iframe>';
+          $scope.doc.url='http://en.wikipedia.org/wiki/'+encodeURI($scope.doc.title).split('%20').join('_');
+          
+          data = '<base target="_blank" /><iframe style="width:100%;height:'+$scope.frameHeight+'px;" class="embed-responsive-item" src="'+$scope.doc.url+($scope.mobile?'?printable=yes':'')+'"></iframe>';
+
           break;
       }  
+      
+                
+      rdfInsert={
+        title:plainText($scope.doc.title),
+        snippet:plainText($scope.doc.FullSummary||$scope.doc.snippet),
+        date:new Date().toISOString(),
+        url:$scope.doc.url,
+        websource:$scope.curSource.value,
+        source:plainText($scope.doc.organizationName||''),
+        rank:$scope.doc.pos+1,
+        mesh:plainText($scope.doc.mesh||''),
+        lang:'English',
+        altTitle:plainText($scope.doc.altTitle||''),
+        categories:plainText($scope.doc.groupName||''),
+        wordcount:$scope.doc.wordcount||''
+      };
+      
+      console.log(rdfInsert);
+      article.insert(rdfInsert);
       return $sce.trustAsHtml(data);
-    }
+    };
 
     //perform search
     $scope.searchQuery = function() {

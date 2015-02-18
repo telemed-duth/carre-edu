@@ -1,7 +1,7 @@
 var passport = require('passport'),
     request = require('request-json'), 
     crypto = require('crypto'),
-    carreAPI = request.newClient('https://carre.kmi.open.ac.uk/ws/'),
+    carreAPI = request.createClient('https://carre.kmi.open.ac.uk/ws/'),
     TokenStrategy = require('passport-token').Strategy,
     strategyOptions = {
     // usernameHeader: 'x-custom-username',

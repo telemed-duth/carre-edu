@@ -3,38 +3,51 @@
 angular.module('edumaterialApp')
   .service('rdf', function ($http) {
     // AngularJS will instantiate a singleton by calling "new" on this function
-    var token=''; //hardcode until we find a more suitable solution
-    var api='https://carre.kmi.open.ac.uk:443/ws/';
     
-    
-    function q(query){
-      return $http.post(api+'query',{
-        'token':token,
+    //main post query
+    function query(query){
+      return $http.post('/api/resources/query',
+        {
         'sparql':query
-      }).$promise;
-    };
+        },
+        {
+        'cache':true,
+        ignoreLoadingBar: true
+        }
+      );
+    }
     
     //make find query
     function find(triples,selectArray){
       if(!selectArray) selectArray=['*'];
-      return q(
-        'SELECT '+selectArray.join(' ')+
-        'WHERE {'+
-          triples+
+      if(!triples) triples=['?s ?p ?o'];
+    
+      return query(
+        'SELECT '+selectArray.join(' ')+' '+
+        'FROM <https://carre.kmi.open.ac.uk/public> '+
+        'WHERE { '+
+          triples.join('.')+
         '}'
         );
-    };
+    }
     
     //make insert query
-    
     function insert(triples){
-      return q(
+      if(!triples||triples.length<1) return {error:'You have not specified any triples'};
+      return query(
         'INSERT DATA { '+
-          triples+
+          'GRAPH '+
+            '<https://carre.kmi.open.ac.uk/public> { '+
+              triples.join('.')+
+            '}'+
         '}'
       );
+    }
+    
+    return {
+      query:query,
+      find:find,
+      insert:insert
     };
-    
-    
     
   });
