@@ -1,5 +1,7 @@
-# CHANGELOG v0.2.9
+# CHANGELOG v0.2.10
 
+- * abb01d9 - 2015-02-19: remove .log files 
+- * 68bc6b3 - 2015-02-18: CLI: fix newrelic log 
 - * e410615 - 2015-02-18: CLI: article insert through api + token 
 - * 2e478f2 - 2015-02-17: CLI: update process got lifting 
 - * 39243cd - 2015-02-16: CLI: fix app name 

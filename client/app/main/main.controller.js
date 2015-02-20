@@ -54,6 +54,8 @@ angular.module('edumaterialApp')
     function plainText(text) {
       return String(text).replace(/<[^>]+>/gm, '');
     }
+    
+
 
     //did you mean? function
     // $scope.suggest = function(suggestion) {

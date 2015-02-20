@@ -9,7 +9,8 @@ angular.module('edumaterialApp', [
   'ui.bootstrap',
   'angular-loading-bar',
   'ui.utils',
-  'ui.select'
+  'ui.select',
+  'uuid4'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider

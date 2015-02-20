@@ -24,6 +24,7 @@ module.exports = function(config) {
       'client/bower_components/angular-loading-bar/build/loading-bar.js',
       'client/bower_components/angular-ui-utils/ui-utils.js',
       'client/bower_components/angular-ui-select/dist/select.js',
+      'client/bower_components/angular-uuid4/angular-uuid4.js',
       'client/app/app.js',
       'client/app/app.coffee',
       'client/app/**/*.js',

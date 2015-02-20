@@ -2,7 +2,22 @@
 
 angular.module('edumaterialApp')
   .service('rdf', function ($http) {
-    // AngularJS will instantiate a singleton by calling "new" on this function
+
+    
+    /****** private functions *******/
+    
+    function makeTriple(s,p,o){
+      //check if object is value
+      if(o.indexOf('^^')===-1) o='<'+o+'>'; 
+      return '<'+s+'>'+' '+'<'+p+'>'+' '+o;
+    }
+    
+    function parseTriples(arr){
+      return arr.map(function(triple){
+        return makeTriple(triple[0],triple[1],triple[2]);
+      }).join('.');
+    }
+    
     
     //main post query
     function query(query){
@@ -26,7 +41,7 @@ angular.module('edumaterialApp')
         'SELECT '+selectArray.join(' ')+' '+
         'FROM <https://carre.kmi.open.ac.uk/public> '+
         'WHERE { '+
-          triples.join('.')+
+          parseTriples(triples)+
         '}'
         );
     }
@@ -38,7 +53,7 @@ angular.module('edumaterialApp')
         'INSERT DATA { '+
           'GRAPH '+
             '<https://carre.kmi.open.ac.uk/public> { '+
-              triples.join('.')+
+              parseTriples(triples)+
             '}'+
         '}'
       );
