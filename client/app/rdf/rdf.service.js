@@ -6,10 +6,12 @@ angular.module('edumaterialApp')
     
     /****** private functions *******/
     
-    function makeTriple(s,p,o){
+    function makeTriple(s,p,o,a,b,c){
       //check if object is value
-      if(o.indexOf('^^')===-1) o='<'+o+'>'; 
-      return '<'+s+'>'+' '+'<'+p+'>'+' '+o;
+      if(s.indexOf('http')>=0&&!a) s='<'+s+'>';
+      if(p.indexOf('http')>=0&&!b) p='<'+p+'>';
+      if(o.indexOf('http')>=0&&!c) o='<'+o+'>';
+      return s+' '+p+' '+o;
     }
     
     function parseTriples(arr){
@@ -33,16 +35,34 @@ angular.module('edumaterialApp')
     }
     
     //make find query
-    function find(triples,selectArray){
+    function find(triples,selectArray,options){
       if(!selectArray) selectArray=['*'];
       if(!triples) triples=['?s ?p ?o'];
+      if(!options) options=['LIMIT 20'];
     
       return query(
         'SELECT '+selectArray.join(' ')+' '+
         'FROM <https://carre.kmi.open.ac.uk/public> '+
         'WHERE { '+
           parseTriples(triples)+
-        '}'
+        '} '+
+        options.join(' ')
+        );
+    }    
+    
+    //make modify query
+    function modify(triples,templateToDelete,templateToInsert){
+      if(!triples) triples=[];
+      if(!templateToInsert) templateToInsert=[];
+      if(!templateToDelete) templateToDelete=[];
+    
+      return query(
+        'MODIFY <https://carre.kmi.open.ac.uk/public> '+
+        'DELETE { '+parseTriples(templateToDelete)+' } '+
+        'INSERT { '+parseTriples(templateToInsert)+' } '+
+        'WHERE { '+
+          parseTriples(triples)+
+        '} '
         );
     }
     
@@ -62,7 +82,8 @@ angular.module('edumaterialApp')
     return {
       query:query,
       find:find,
-      insert:insert
+      insert:insert,
+      modify:modify
     };
     
   });

@@ -17,7 +17,6 @@ angular.module('edumaterialApp')
     $scope.curSource=$scope.docSources[1];
   
   
-    article.all();
   /*****************************************************************/
   
   

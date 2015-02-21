@@ -1,5 +1,6 @@
-# CHANGELOG v0.2.10
+# CHANGELOG v0.2.11
 
+- * 1e9511a - 2015-02-20: CLI: add rating and enrichment service 
 - * abb01d9 - 2015-02-19: remove .log files 
 - * 68bc6b3 - 2015-02-18: CLI: fix newrelic log 
 - * e410615 - 2015-02-18: CLI: article insert through api + token 
