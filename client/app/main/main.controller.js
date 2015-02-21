@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('edumaterialApp')
-  .controller('MainCtrl', function ($scope, $http, Auth, $rootScope,$location,suggest, $sce, $timeout, medlineplus, $window,article) {
+  .controller('MainCtrl', function ($scope, $http, Auth, $rootScope,$location,suggest, $sce,main,$timeout, medlineplus, $window) {
     
     $scope.isLoggedIn=Auth.isLoggedIn;
 
@@ -85,23 +85,16 @@ angular.module('edumaterialApp')
         $scope.doc = $scope.results[i];
         $scope.doc.pos=i;
         $scope.doc.rating=$scope.doc.rating||[];
-        
         $scope.doc.iframe='';
-        // console.log($scope.doc);
+
+        
         // animation & double scrollbar fix
         $timeout(function() {
           $scope.doc.iframe = renderContent();
           document.querySelector('body').style.overflowY = $scope.showArticle ? 'hidden' : 'visible';
-        }, 900);
+          }, 900);
         
-        //load the article
-        // $http.get('/api/wikipedia/article/' + encodeURI(title), {
-        //   cache: true
-        // }).then(function(response) {
-        //   //http://www.nlm.nih.gov/medlineplus
-        //   $scope.doc.fetched = response.data.text['*'];
-        // }).then(function() {
-        // });
+
       }
       else {
         $scope.isCollapsed=false;
@@ -119,9 +112,53 @@ angular.module('edumaterialApp')
 
     };
 
+
+    var processData = function(){
+            
+      //article desc      
+      main.setArticle({
+        title:plainText($scope.doc.title),
+        snippet:plainText($scope.doc.FullSummary||$scope.doc.snippet),
+        date:new Date().toISOString(),
+        url:$scope.doc.url,
+        websource:$scope.curSource.value,
+        source:plainText($scope.doc.organizationName||''),
+        mesh:plainText($scope.doc.mesh||''),
+        lang:'English',
+        altTitle:plainText($scope.doc.altTitle||''),
+        categories:plainText($scope.doc.groupName||''),
+        wordcount:$scope.doc.wordcount||''
+      });
+              
+        
+      //rank node info
+      main.setRank({
+        position:$scope.doc.pos,
+        total:$scope.total,
+        date:new Date().toISOString(),
+        query:$scope.queryTerm
+      });
+      
+              
+        /*** Enrichment stuff ***/
+        
+        //load the article
+        // $http.get('/api/wikipedia/article/' + encodeURI(title), {
+        //   cache: true
+        // }).then(function(response) {
+        //   //http://www.nlm.nih.gov/medlineplus
+        //   $scope.doc.fetched = response.data.text['*'];
+        // }).then(function() {
+        // });
+        
+        
+      //start parallel processing :)
+      main.start();
+      
+    };
+
     var renderContent = function() {
       var data='';
-      var rdfInsert={};
       
       switch ($scope.curSource.value) {
         case 'medlineplus':
@@ -145,24 +182,11 @@ angular.module('edumaterialApp')
           break;
       }  
       
-                
-      rdfInsert={
-        title:plainText($scope.doc.title),
-        snippet:plainText($scope.doc.FullSummary||$scope.doc.snippet),
-        date:new Date().toISOString(),
-        url:$scope.doc.url,
-        websource:$scope.curSource.value,
-        source:plainText($scope.doc.organizationName||''),
-        rank:$scope.doc.pos+1,
-        mesh:plainText($scope.doc.mesh||''),
-        lang:'English',
-        altTitle:plainText($scope.doc.altTitle||''),
-        categories:plainText($scope.doc.groupName||''),
-        wordcount:$scope.doc.wordcount||''
-      };
       
-      console.log(rdfInsert);
-      article.insert(rdfInsert);
+      //start processing data **find another way to call this function cause is a bit misleading here
+      processData();
+
+      //return iframes to the view
       return $sce.trustAsHtml(data);
     };
 

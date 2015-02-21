@@ -4,6 +4,15 @@ angular.module('edumaterialApp')
   .service('rdf', function ($http) {
 
     
+    
+    //prefixes
+    var prefixes={
+      edu:'https://carre.kmi.open.ac.uk/ontology/educational.owl',
+      rdftype:'http://www.w3.org/1999/02/22-rdf-syntax-ns#type',
+      dc:'http://purl.org/dc/elements/1.1/',
+      publicUri:'https://carre.kmi.open.ac.uk/public/educational/'
+    }
+    
     /****** private functions *******/
     
     function makeTriple(s,p,o,a,b,c){
@@ -83,7 +92,10 @@ angular.module('edumaterialApp')
       query:query,
       find:find,
       insert:insert,
-      modify:modify
+      modify:modify,
+      
+      pre:prefixes
+      
     };
     
   });

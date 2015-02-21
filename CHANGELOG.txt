@@ -1,5 +1,7 @@
 # CHANGELOG v0.2.11
 
+- * e89fda6 - 2015-02-21: remove apache conf 
+- * 81a0608 - 2015-02-21: CLI: add modify views per article to rdf 
 - * 1e9511a - 2015-02-20: CLI: add rating and enrichment service 
 - * abb01d9 - 2015-02-19: remove .log files 
 - * 68bc6b3 - 2015-02-18: CLI: fix newrelic log 
