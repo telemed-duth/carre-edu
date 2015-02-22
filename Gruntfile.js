@@ -51,8 +51,13 @@ module.exports = function (grunt) {
             '--no-merges',
             '--date=short'
           ],
-          dest: 'release-notes/VERSION-<%= pkg.version %>.txt',
-          template: '{{date}}\n\n{{> features}}{{> fixes}}'
+          dest: 'release-notes/<%= package.version %>.txt',
+          template: '{{date}}\n\n{{> features}}{{> fixes}}',
+          featureRegex: /^(.*)$/gim,
+          partials: {
+            features: '{{#if features}}{{#each features}}{{> feature}}{{/each}}{{else}}{{> empty}}{{/if}}\n',
+            feature: '- {{this}} {{this.date}}\n'
+          }
         }
       }
     },
