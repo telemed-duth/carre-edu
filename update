@@ -10,7 +10,7 @@ echo "Fetching changes from repo..."
 git pull;
 
 
-PS3='Create new tag for this version? (y/n): '
+PS3='Create new tag for this version? (y/N): '
 options=("y" "n")
 select opt in "${options[@]}"
 do
@@ -54,13 +54,14 @@ do
     esac
 done
 
-echo "Creating build..."
-grunt build
 
 echo "Uploading to repository..."
 git add .
 echo -ne "\e[92mAdd to Changelog?\e[39m : "
 read -e MSG
 git commit -am"CLI: $MSG";
+grunt changelog:v1;
+git commit -am"update changelog";
+
+git push --tags --always --abbrev=1 --dirty=-d;
 git push
-git push --tags
