@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('edumaterialApp')
-  .controller('MainCtrl', function ($scope, $http, Auth, $rootScope,$location,suggest, $sce,main,$timeout, medlineplus, $window) {
+  .controller('MainCtrl', function ($scope, $http, Auth ,$location,suggest, $sce,main,$timeout, medlineplus, $window) {
     
     $scope.isLoggedIn=Auth.isLoggedIn;
 
@@ -37,6 +37,7 @@ angular.module('edumaterialApp')
     },{
       name:'Validity',value:0
     }];
+    Auth.rating_criteria=$scope.rating;
 
     function init() {
       //load from state or instantiate
@@ -97,6 +98,10 @@ angular.module('edumaterialApp')
 
       }
       else {
+        //when article closed add rating (if user is loggedIn)
+        if($scope.isLoggedIn)       main.setRating($scope.doc.rating);
+        
+        
         $scope.isCollapsed=false;
         $scope.doc={};
         $scope.doc.iframe = '';
@@ -111,8 +116,7 @@ angular.module('edumaterialApp')
       }
 
     };
-
-
+    
     var processData = function(){
             
       //article desc      

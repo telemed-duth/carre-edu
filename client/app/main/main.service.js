@@ -29,10 +29,12 @@ angular.module('edumaterialApp')
   };
   
   return {
-    setRank:function(rank){curRank=rank},
     setArticle:function(article){curArticle=article},
     article:function(){return curArticle},
+    setRank:function(rank){curRank=rank},
     rank:function(){return curRank},
+    setRating:function(r){curArticle.rating=r; rating.insert(curArticle)},
+    rating:function(){return curArticle.rating},
     start:start
   }
       
