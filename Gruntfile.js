@@ -44,7 +44,7 @@ module.exports = function (grunt) {
     changelog: {
       v1: {
         options: {
-          fileHeader:'# CHANGELOG v<%= pkg.version%> on {{date}}',
+          fileHeader:'# CHANGELOG v<%= pkg.version%>',
           after: '2014-10-01',
           logArguments: [
             '--pretty=* %h - %ad: %s',
@@ -52,12 +52,7 @@ module.exports = function (grunt) {
             '--date=short'
           ],
           dest: 'release-notes/VERSION-<%= pkg.version %>.txt',
-          template: '{{date}}\n\n{{> features}}{{> fixes}}',
-          featureRegex: /^(.*)$/gim,
-          partials: {
-            features: '{{#if features}}{{#each features}}{{> feature}}{{/each}}{{else}}{{> empty}}{{/if}}\n',
-            feature: '- {{this}} {{this.date}}\n'
-          }
+          template: '{{date}}\n\n{{> features}}{{> fixes}}'
         }
       }
     },
