@@ -1,5 +1,6 @@
-# CHANGELOG v0.2.12
+# CHANGELOG v0.2.13
 
+- * 76415f2 - 2015-02-22: CLI: insert/modify dynamic rating criteria 
 - * 7b1d546 - 2015-02-22: CLI: add rank and refactor main service 
 - * e89fda6 - 2015-02-21: remove apache conf 
 - * 81a0608 - 2015-02-21: CLI: add modify views per article to rdf 

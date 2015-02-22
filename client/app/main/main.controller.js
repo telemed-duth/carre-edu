@@ -99,7 +99,10 @@ angular.module('edumaterialApp')
       }
       else {
         //when article closed add rating (if user is loggedIn)
-        if($scope.isLoggedIn)       main.setRating($scope.doc.rating);
+        if($scope.isLoggedIn) {
+          main.setRating($scope.doc.rating);
+         console.log(main.userRated);
+        }
         
         
         $scope.isCollapsed=false;
@@ -157,7 +160,7 @@ angular.module('edumaterialApp')
         
         
       //start parallel processing :)
-      main.start();
+      main.editArticle();
       
     };
 

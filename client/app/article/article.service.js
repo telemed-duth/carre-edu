@@ -1,17 +1,47 @@
 'use strict';
 
 angular.module('edumaterialApp')
-  .service('article', function (rdf,uuid4,enrichment,rank) {
+  .service('article', function (rdf,uuid4,enrichment,rank,Auth) {
     var ratedArticles=[];
+    var userRatedArticles=[];
     var curArticle={};
+    var user={};
+    
+    //auto fetch user rated articles when a carre user is logged in
+    if(Auth.isLoggedIn) {
+      user=Auth.getCurrentUser();
+      if(user.carre) getUserRatedArticles();
+    }
+    
     //public functions
     
-    function all(){
-      rdf.find([['?s','?p','?o']]).success(function(results){
+    function getUserRatedArticles(){
+      rdf.find(
+        [ 
+          [ '?s', rdf.pre.edu+'#title', '?title' ],
+          [ '?rating', rdf.pre.edu+'#for_article', '?s' ],
+          [ '?rating', rdf.pre.edu+'#rated_by_user', user.carre.graph  ],
+        ],
+        ['?title'],
+        ['LIMIT 1000']).success(function(results){
+        userRatedArticles=results.data;
+        console.log(ratedArticles);
+      });
+    }
+    
+    function getRatedArticles(){
+      rdf.find(
+        [ 
+          [ '?s', rdf.pre.edu+'#title', '?title' ],
+          [ '?rating', rdf.pre.edu+'#for_article', '?s' ],
+          [ '?rating', rdf.pre.edu+'#rated_by_user', user.carre.graph  ],
+        ],
+        ['?title'],
+        ['LIMIT 1000']).success(function(results){
         ratedArticles=results.data;
         console.log(ratedArticles);
       });
-    };
+    }
     
     function processArticle(article){
       curArticle=article;
@@ -103,7 +133,10 @@ angular.module('edumaterialApp')
 
 
     return {
-      rated:all(),
+      getUserRated:getUserRatedArticles,
+      getRated:getRatedArticles,
+      userRated:function(){return userRatedArticles},
+      rated:function(){return ratedArticles},
       insert:processArticle,
       getCurrent:function(){return curArticle}
     };

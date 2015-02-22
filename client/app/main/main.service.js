@@ -5,7 +5,7 @@ angular.module('edumaterialApp')
   var curArticle={};
   var curRank={};
   
-  function start(){
+  function editArticle(){
     
       $q.all([
       
@@ -28,6 +28,59 @@ angular.module('edumaterialApp')
       });
   };
   
+  function fetchArticles(){
+     $q.all([
+      
+      
+      // add more parallel request
+        article.insert(curArticle).then(function(){
+          curArticle.id = article.getCurrent().id;
+          curRank.article_id=curArticle.id;
+          return rank.insert(curRank);
+        },function(err){
+          console.log(err);
+        })
+        
+      ])
+      .then(function(responses) {
+        //process the results
+        console.log(responses[0].data.data);
+        
+      
+      });
+  }
+  
+  function exampleQuery(){
+    
+    var exQuery=
+'PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> '+
+'PREFIX edu: <https://carre.kmi.open.ac.uk/ontology/educational.owl#> '+
+'PREFIX rdftype: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> '+
+'PREFIX dc: <http://purl.org/dc/elements/1.1/> '+
+'PREFIX users: <https://carre.kmi.open.ac.uk/users/> '+
+
+'SELECT ?title ?url ?views (count(?rating) as ?ratings) '+
+'WHERE '+
+'{ '+
+  '?s rdf:type edu:object. '+
+  '?s edu:title ?title. '+
+  '?s edu:url ?url. '+
+  '?s edu:views ?views. '+
+  '?rating rdf:type edu:rating. '+
+  '?rating edu:for_article ?s. '+
+'} '
+
+'LIMIT 100';
+    
+    rdf.query(exQuery).success(function(data){
+      console.log('Example Query : ');
+      console.log(data);
+    }).error(function(err){
+       console.log(err);
+    }); 
+    
+  }
+  
   return {
     setArticle:function(article){curArticle=article},
     article:function(){return curArticle},
@@ -35,7 +88,10 @@ angular.module('edumaterialApp')
     rank:function(){return curRank},
     setRating:function(r){curArticle.rating=r; rating.insert(curArticle)},
     rating:function(){return curArticle.rating},
-    start:start
+    editArticle:editArticle,
+    fetchArticles:fetchArticles,
+    exampleQuery:exampleQuery
+    
   }
       
   
