@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('edumaterialApp')
-  .controller('MainCtrl', function ($scope, $http, Auth ,$location,suggest, $sce,main,$timeout, medlineplus, $window) {
+  .controller('MainCtrl', function ($scope, $http, Auth ,$location,suggest, $sce,main,$timeout, medlineplus, $window,article,rating) {
     
     $scope.isLoggedIn=Auth.isLoggedIn;
 
@@ -9,6 +9,8 @@ angular.module('edumaterialApp')
     suggest.riskelements().then(function(data){
       $scope.riskElements=data;
     });
+
+    
     
     $scope.docSources = [
       { label: 'MedlinePLUS', value: 'medlineplus' },
@@ -25,17 +27,17 @@ angular.module('edumaterialApp')
     $scope.currentPage = 1;
     
     $scope.rating=[{
-      name:'Depth of Coverage',value:0
+      rdftype:'depth_of_coverage', name:'Depth of Coverage',value:0
     },{
-      name:'Comprehensiveness',value:0
+      rdftype:'comprehensiveness', name:'Comprehensiveness',value:0
     },{
-      name:'Relevancy',value:0
+      rdftype:'relevancy', name:'Relevancy',value:0
     },{
-      name:'Accuracy',value:0
+      rdftype:'accuracy', name:'Accuracy',value:0
     },{
-      name:'Educational level',value:0
+      rdftype:'educational_level', name:'Educational level',value:0
     },{
-      name:'Validity',value:0
+      rdftype:'validity', name:'Validity',value:0
     }];
     Auth.rating_criteria=$scope.rating;
 
@@ -146,6 +148,28 @@ angular.module('edumaterialApp')
         query:$scope.queryTerm
       });
       
+        
+      rating.load({url:$scope.doc.url}).then(function(res){
+        var rating=res.data.data[0];
+        
+        console.log( rating);
+        $scope.doc.rating=[];
+        for (var i = 0; i < 6; i++) {
+          $scope.doc.rating[i]={
+            value:0
+          };
+        }
+        
+          $scope.doc.rating[0].value=rating.depth_of_coverage.value;
+          $scope.doc.rating[1].value=rating.comprehensiveness.value;
+          $scope.doc.rating[2].value=rating.relevancy.value;
+          $scope.doc.rating[3].value=rating.accuracy.value;
+          $scope.doc.rating[4].value=rating.educational_level.value;
+          $scope.doc.rating[5].value=rating.validity.value;
+   
+        console.log($scope.doc.rating);
+      });
+        
               
         /*** Enrichment stuff ***/
         
@@ -249,6 +273,24 @@ angular.module('edumaterialApp')
           $scope.total = response.data.searchinfo.totalhits;
           $scope.pageCount = Math.ceil($scope.total / $scope.itemsPerPage);
           $scope.suggestion = response.data.searchinfo.suggestion;
+          
+          
+          //calculated rating for aggregated results
+          article.getRated($scope.results).then(function(data) {
+            console.log(data.data.data);
+            for(var i=0,l=data.data.data; i<l.length; i++){
+              
+              for (var j = 0; j < $scope.results.length; j++) {
+                if($scope.results[j].title===l[i].title.value) {
+                  
+                  
+                  $scope.results[j].avgRating=l[i].ratingavg.value;
+                }
+              }
+            }
+          
+          });
+          
         } else { 
           $scope.total = 0;
           $scope.results = [];

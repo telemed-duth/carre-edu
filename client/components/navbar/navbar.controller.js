@@ -39,8 +39,6 @@ angular.module('edumaterialApp')
     if(Auth.isLoggedIn && Auth.getCurrentUser().hasOwnProperty('$promise')) {
       $scope.getCurrentUser().$promise.then(function(user){
         $scope.user=user;
-        
-        console.log(user);
   
         //set image
         if(user.provider==='google') $scope.user.img=user.google.picture;

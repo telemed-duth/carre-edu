@@ -8,11 +8,14 @@ angular.module('edumaterialApp')
     var user={};
     
     //auto fetch user rated articles when a carre user is logged in
-    if(Auth.isLoggedIn) {
-      user=Auth.getCurrentUser();
-      if(user.carre) getUserRatedArticles();
+    if(Auth.getCurrentUser().$promise){
+      
+      Auth.getCurrentUser().$promise.then(function(d){
+        user=d;
+        //if(user.carre) getUserRatedArticles();
+      });
+      
     }
-    
     //public functions
     
     function getUserRatedArticles(){
@@ -22,25 +25,44 @@ angular.module('edumaterialApp')
           [ '?rating', rdf.pre.edu+'#for_article', '?s' ],
           [ '?rating', rdf.pre.edu+'#rated_by_user', user.carre.graph  ],
         ],
-        ['?title'],
+        ['?title ?rating'],
         ['LIMIT 1000']).success(function(results){
         userRatedArticles=results.data;
-        console.log(ratedArticles);
+        console.log(userRatedArticles);
       });
     }
+
+    function getRatedArticles(articles){
+      console.log('Rated articles fetching');
+      var exQuery=
+      'SELECT ?title (AVG(?ratingval) as ?ratingavg) '+
+      'WHERE {';
+      
+          for (var i = 0; i < articles.length; i++) {
+            //add wikipedia url
+            articles[i].url=articles.url||'http://en.wikipedia.org/wiki/'+encodeURI(articles[i].title).split('%20').join('_');
+            
+            exQuery+='{ ?s <'+rdf.pre.edu+'#url> <'+articles[i].url+'> }';
+            if(i<(articles.length - 1)) exQuery+=' UNION '; 
+          }
+          
+        exQuery+=' .'+
+        '?s <'+rdf.pre.edu+'#title> ?title . '+ 
+        '?rating <'+rdf.pre.rdftype+'> <'+rdf.pre.edu+'#rating> . '+ 
+        '?rating <'+rdf.pre.edu+'#for_article> ?s . '+ 
+        '?rating ?any ?ratingval . '+
+        'FILTER (datatype(?ratingval) = xsd:integer) '+
+      '} '+
+      'GROUP BY ?title LIMIT 20';
     
-    function getRatedArticles(){
-      rdf.find(
-        [ 
-          [ '?s', rdf.pre.edu+'#title', '?title' ],
-          [ '?rating', rdf.pre.edu+'#for_article', '?s' ],
-          [ '?rating', rdf.pre.edu+'#rated_by_user', user.carre.graph  ],
-        ],
-        ['?title'],
-        ['LIMIT 1000']).success(function(results){
-        ratedArticles=results.data;
-        console.log(ratedArticles);
-      });
+      return rdf.query(exQuery).success(function(data){
+          // console.log('Rated Articles are:');
+          // ratedArticles=data.data;
+          // console.log(ratedArticles);
+      }).error(function(err){
+         console.log(err);
+      }); 
+
     }
     
     function processArticle(article){

@@ -9,8 +9,8 @@ angular.module('edumaterialApp')
     
       $q.all([
       
-      
       // add more parallel request
+      
         article.insert(curArticle).then(function(){
           curArticle.id = article.getCurrent().id;
           curRank.article_id=curArticle.id;
@@ -19,10 +19,11 @@ angular.module('edumaterialApp')
           console.log(err);
         })
         
+        
       ])
       .then(function(responses) {
         //process the results
-        console.log(responses[0].data.data);
+        console.log(responses[0].data.data[0]);
         
       
       });
@@ -72,7 +73,7 @@ angular.module('edumaterialApp')
 
 'LIMIT 100';
     
-    rdf.query(exQuery).success(function(data){
+    return rdf.query(exQuery).success(function(data){
       console.log('Example Query : ');
       console.log(data);
     }).error(function(err){

@@ -2,19 +2,19 @@
 
 angular.module('edumaterialApp')
   .service('rating', function (rdf,uuid4,Auth) {
-    var user = Auth.getCurrentUser()?(Auth.getCurrentUser().carre?Auth.getCurrentUser().carre.graph:Auth.getCurrentUser().email):'guest_user';
     var articleRating={};
+    var user=Auth.getCurrentUser();
+    user.carre=user.carre||{};
+    user.carre.graph=user.carre.graph||rdf.pre.users+'guestUser';
     
      function processRating(article){
-       
-          console.log(article);
 
       //check if this url already exists
       return rdf.find(
         [ 
           [ '?id', rdf.pre.rdftype, rdf.pre.edu+'#rating' ],
           [ '?id', rdf.pre.edu+'#for_article', rdf.pre.publicUri+article.id ],
-          [ '?id', rdf.pre.edu+'#rated_by_user', user  ],
+          [ '?id', rdf.pre.edu+'#rated_by_user', user.carre.graph  ],
         ],
         ['?id'],
         ['LIMIT 1']
@@ -25,7 +25,8 @@ angular.module('edumaterialApp')
             rating.date=new Date().toISOString();
             
           if(results.data.length>0) { //if exists
-            rating.id=results.data[0].id.value.substring(53);
+            rating.id=results.data[0].id.value.substring(55);
+            console.log(rating.id);
             //update the query , total and order 
             modifyRating(rating);
             
@@ -40,6 +41,26 @@ angular.module('edumaterialApp')
           console.log(err);
           return false;
         });
+    }    
+    
+     function loadRating(article){
+
+      //check if this url already exists
+      return rdf.find(
+        [ 
+          [ '?id', rdf.pre.rdftype, rdf.pre.edu+'#rating' ],
+          [ '?article', rdf.pre.edu+'#url', article.url ],
+          [ '?id', rdf.pre.edu+'#for_article', '?article'],
+          [ '?id', rdf.pre.edu+'#rated_by_user', user.carre.graph  ],
+          [ '?id', rdf.pre.edu+'#depth_of_coverage', '?depth_of_coverage' ],
+          [ '?id', rdf.pre.edu+'#comprehensiveness', '?comprehensiveness' ],
+          [ '?id', rdf.pre.edu+'#relevancy', '?relevancy' ],
+          [ '?id', rdf.pre.edu+'#accuracy', '?accuracy' ],
+          [ '?id', rdf.pre.edu+'#educational_level', '?educational_level' ],
+          [ '?id', rdf.pre.edu+'#validity', '?validity' ]
+        ],
+        ['?depth_of_coverage ?comprehensiveness ?relevancy ?accuracy ?educational_level ?validity']
+      );
     }
     
     function modifyRating(rating){
@@ -54,14 +75,15 @@ angular.module('edumaterialApp')
       //modify view
       
       oldtriples.push( [ rdf.pre.publicUri+'rating/'+rating.id, rdf.pre.edu+'#date', '?date' ] );
-      for (var i,rc=Auth.rating_criteria;i<rc.length;i++){
+      for (var i=0,rc=Auth.rating_criteria;i<rc.length;i++){
+        if(!rating.rates[i])  rating.rates[i]={value:0};
         oldtriples.push([ 
           rdf.pre.publicUri+'rating/'+rating.id, 
           rdf.pre.edu+'#'+rc[i].name.replace(/\s+/g, '_').toLowerCase(), 
-          '?r'  
-          ]);
+          '?ra'+i
+        ]);
       }
-    
+      console.log(oldtriples);
       
       newtriples.push( [ rdf.pre.publicUri+'rating/'+rating.id, rdf.pre.edu+'#date', '"'+rating.date+'"^^xsd:date' ] );
       for (var i=0,rc=Auth.rating_criteria;i<rc.length;i++){
@@ -75,7 +97,7 @@ angular.module('edumaterialApp')
           ]);
       }
     
-      console.log(newtriples);
+      // console.log(newtriples);
       rdf.modify(oldtriples,oldtriples,newtriples).success(function(results){
         
         console.log(results);
@@ -95,7 +117,7 @@ angular.module('edumaterialApp')
       //unique metadata
       triples.push( [ rdf.pre.publicUri+'rating/'+rating.id, rdf.pre.rdftype, rdf.pre.edu+'#rating' ] );
       triples.push( [ rdf.pre.publicUri+'rating/'+rating.id, rdf.pre.edu+'#for_article', rdf.pre.publicUri+rating.article_id ] );
-      triples.push( [ rdf.pre.publicUri+'rating/'+rating.id, rdf.pre.edu+'#rated_by_user', user  ] );
+      triples.push( [ rdf.pre.publicUri+'rating/'+rating.id, rdf.pre.edu+'#rated_by_user', user.carre.graph  ] );
       
       //updatable metadata
       triples.push( [ rdf.pre.publicUri+'rating/'+rating.id, rdf.pre.edu+'#date', '"'+rating.date+'"^^xsd:date' ] );
@@ -126,7 +148,8 @@ angular.module('edumaterialApp')
 
 
     return {
-      insert:processRating
+      insert:processRating,
+      load:loadRating
     };
     
     
