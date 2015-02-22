@@ -62,5 +62,5 @@ read -e MSG
 git commit -am"CLI: $MSG";
 grunt changelog:v1 && git add .;
 git commit -am"update changelog";
-git push "origin/master";
-git push --tags --always --abbrev=1 --dirty=-d
+git push origin;
+git push origin --tags --always --abbrev=1 --dirty=-d
