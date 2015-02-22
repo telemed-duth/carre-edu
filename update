@@ -56,8 +56,8 @@ done
 
 
 echo "Uploading to repository..."
-git add .
+git add --all release-notes/
 echo -ne "\e[92mAdd to Changelog?\e[39m : "
 read -e MSG
 git commit -am"CLI: $MSG";
-grunt changelog:v1 && git add . && git commit -am"update changelog" && git push && git push --tags
+grunt changelog:v1 && git add --all release-notes/ && git commit -am"update changelog" && git push && git push --tags
