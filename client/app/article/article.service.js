@@ -40,7 +40,7 @@ angular.module('edumaterialApp')
       
           for (var i = 0; i < articles.length; i++) {
             //add wikipedia url
-            articles[i].url=articles.url||'http://en.wikipedia.org/wiki/'+encodeURI(articles[i].title).split('%20').join('_');
+            articles[i].url=articles[i].url||'http://en.wikipedia.org/wiki/'+encodeURI(articles[i].title).split('%20').join('_');
             
             exQuery+='{ ?s <'+rdf.pre.edu+'#url> <'+articles[i].url+'> }';
             if(i<(articles.length - 1)) exQuery+=' UNION '; 

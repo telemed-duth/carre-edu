@@ -1,5 +1,6 @@
-# CHANGELOG v0.3.0
+# CHANGELOG v0.3.1
 
+- * 76ecdf5 - 2015-02-22: CLI: bug fixes for multiple rating triples, rating based on 2-way rdf function 
 - * 2c4be4f - 2015-02-22: CLI: fetching user and other rated articles 
 - * 76415f2 - 2015-02-22: CLI: insert/modify dynamic rating criteria 
 - * 7b1d546 - 2015-02-22: CLI: add rank and refactor main service 

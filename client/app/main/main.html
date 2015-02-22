@@ -79,7 +79,7 @@
       <div class="list-group">
         <a href="" ng-click="toggleArticle($index)" class="list-group-item" ng-repeat="doc in results track by $index">
          
-            <h4 class="list-group-item-heading">{{doc.title}} <span class="label label-info">{{doc.avgRating | number:1 }}</span></h4>
+            <h4 class="list-group-item-heading">{{doc.title|strip}} <span class="label label-info">{{doc.avgRating|number:1 }}</span></h4>
             <p class="list-group-item-text" ng-bind-html="doc.snippet"></p>
         </a>
       </div>

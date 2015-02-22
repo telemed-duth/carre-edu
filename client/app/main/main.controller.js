@@ -81,7 +81,7 @@ angular.module('edumaterialApp')
     $scope.toggleArticle = function(i) {
 
       if (i>-1) {
-
+        console.log($scope.results[i]);
         $scope.showArticle = true;
         $scope.frameHeight=$window.innerHeight-50;
         $scope.mobile=($window.innerWidth<700)?true:false; //set type to mobile if screen is less than 700px
@@ -100,12 +100,11 @@ angular.module('edumaterialApp')
 
       }
       else {
-        //when article closed add rating (if user is loggedIn)
-        if($scope.isLoggedIn) {
-          main.setRating($scope.doc.rating);
-         console.log(main.userRated);
-        }
         
+        //when article closed add rating (if user is loggedIn)
+        if($scope.isLoggedIn()) {
+          main.setRating($scope.doc.rating);
+        }
         
         $scope.isCollapsed=false;
         $scope.doc={};
@@ -114,7 +113,6 @@ angular.module('edumaterialApp')
         
         // double scrollbar fix
         $timeout(function() {
-          // var style = document.querySelector('body').style.overflowY;
           document.querySelector('body').style.overflowY = $scope.showArticle ? 'hidden' : 'visible';
         }, 100);
 
@@ -148,27 +146,28 @@ angular.module('edumaterialApp')
         query:$scope.queryTerm
       });
       
+      if($scope.isLoggedIn()){
         
-      rating.load({url:$scope.doc.url}).then(function(res){
-        var rating=res.data.data[0];
-        
-        console.log( rating);
-        $scope.doc.rating=[];
-        for (var i = 0; i < 6; i++) {
-          $scope.doc.rating[i]={
-            value:0
-          };
-        }
-        
+        rating.load({url:$scope.doc.url}).then(function(res){
+          var rating=res.data.data[0];
+          
+          $scope.doc.rating=[];
+          for (var i = 0; i < 6; i++) {
+            $scope.doc.rating[i]={
+              value:0
+            };
+          }
+          
           $scope.doc.rating[0].value=rating.depth_of_coverage.value;
           $scope.doc.rating[1].value=rating.comprehensiveness.value;
           $scope.doc.rating[2].value=rating.relevancy.value;
           $scope.doc.rating[3].value=rating.accuracy.value;
           $scope.doc.rating[4].value=rating.educational_level.value;
           $scope.doc.rating[5].value=rating.validity.value;
-   
-        console.log($scope.doc.rating);
-      });
+     
+        });
+        
+      }
         
               
         /*** Enrichment stuff ***/
@@ -193,10 +192,11 @@ angular.module('edumaterialApp')
       
       switch ($scope.curSource.value) {
         case 'medlineplus':
+          
           if($scope.mobile){
             //set the mobile html template
             data='<div style="background:#ffffff;height:'+$scope.frameHeight+'px; overflow-y:auto;">'+
-            '<h2>'+$scope.doc.title+'</h2>'+
+            '<h2>'+plainText($scope.doc.title)+'</h2>'+
             '<p>'+$scope.doc.FullSummary+
             '</p></div>';
             
@@ -205,7 +205,9 @@ angular.module('edumaterialApp')
           }
 
           break;
+          
         case 'wikipedia':
+          
           $scope.doc.url='http://en.wikipedia.org/wiki/'+encodeURI($scope.doc.title).split('%20').join('_');
           
           data = '<base target="_blank" /><iframe style="width:100%;height:'+$scope.frameHeight+'px;" class="embed-responsive-item" src="'+$scope.doc.url+($scope.mobile?'?printable=yes':'')+'"></iframe>';
@@ -235,7 +237,7 @@ angular.module('edumaterialApp')
             break;
           
           default:
-            searchWikiPedia();
+            console.log('no source selected');
         } 
       }
     };
@@ -245,12 +247,17 @@ angular.module('edumaterialApp')
     var searchMedlinePlus=function() {
       //call the service
       medlineplus.search(($scope.currentPage-1)*$scope.itemsPerPage,$scope.queryTerm).then(function(response){
-
+        
         if(!response.data.message) {
           $scope.results=response.data.list;
           $scope.total=Number(response.data.count[0]);
           $scope.pageCount=Math.ceil($scope.total/$scope.itemsPerPage);
-          if(($scope.total>$scope.itemsPerPage)&&$scope.results.retstart) $scope.currentPage=Math.ceil($scope.results.retstart[0]/$scope.itemsPerPage)+1;
+          if(($scope.total>$scope.itemsPerPage)&&$scope.results.retstart) {
+            $scope.currentPage=Math.ceil($scope.results.retstart[0]/$scope.itemsPerPage)+1;
+          }
+          console.log($scope.results);
+          calculateRatedArticles();
+          
         } else { 
           $scope.total = 0;
           $scope.results = [];
@@ -274,22 +281,7 @@ angular.module('edumaterialApp')
           $scope.pageCount = Math.ceil($scope.total / $scope.itemsPerPage);
           $scope.suggestion = response.data.searchinfo.suggestion;
           
-          
-          //calculated rating for aggregated results
-          article.getRated($scope.results).then(function(data) {
-            console.log(data.data.data);
-            for(var i=0,l=data.data.data; i<l.length; i++){
-              
-              for (var j = 0; j < $scope.results.length; j++) {
-                if($scope.results[j].title===l[i].title.value) {
-                  
-                  
-                  $scope.results[j].avgRating=l[i].ratingavg.value;
-                }
-              }
-            }
-          
-          });
+          calculateRatedArticles();
           
         } else { 
           $scope.total = 0;
@@ -303,6 +295,21 @@ angular.module('edumaterialApp')
     //perform initialization
     init();
   
+    var calculateRatedArticles=function(){
+                
+      //calculated rating for aggregated results
+      article.getRated($scope.results).then(function(data) {
+        console.log(data.data.data);
+        for(var i=0,l=data.data.data; i<l.length; i++){
+          for (var j = 0; j < $scope.results.length; j++) {
+            if(plainText($scope.results[j].title).trim()===l[i].title.value.trim()) {
+              $scope.results[j].avgRating=l[i].ratingavg.value;
+            }
+          }
+        }
+      });
+      
+    };
   
   
   });
