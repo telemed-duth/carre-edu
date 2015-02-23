@@ -5,17 +5,9 @@ angular.module('edumaterialApp')
     var ratedArticles=[];
     var userRatedArticles=[];
     var curArticle={};
-    var user={};
+    var user=Auth.getCurrentUser()||{carre:{ graph:rdf.pre.users+'guestuser'}};
     
-    //auto fetch user rated articles when a carre user is logged in
-    if(Auth.getCurrentUser().$promise){
-      
-      Auth.getCurrentUser().$promise.then(function(d){
-        user=d;
-        //if(user.carre) getUserRatedArticles();
-      });
-      
-    }
+
     //public functions
     
     function getUserRatedArticles(){

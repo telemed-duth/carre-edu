@@ -4,7 +4,21 @@ angular.module('edumaterialApp')
   .controller('MainCtrl', function ($scope, $http, Auth ,$location,suggest, $sce,main,$timeout, medlineplus, $window,article,rating) {
     
     $scope.isLoggedIn=Auth.isLoggedIn;
-
+    $scope.user=Auth.user=Auth.getCurrentUser();
+    //auto fetch user rated articles when a carre user is logged in
+    
+    // if($scope.isLoggedIn()){
+    //   Auth.getCurrentUser().then(function(d){
+        
+        
+    //   console.log();
+    //     $scope.user=d;
+    //     Auth.user=d;
+    //     //if(user.carre) getUserRatedArticles();
+    //   });
+      
+    // }
+    
     $scope.riskElements=[];
     suggest.riskelements().then(function(data){
       $scope.riskElements=data;

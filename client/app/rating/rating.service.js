@@ -3,12 +3,10 @@
 angular.module('edumaterialApp')
   .service('rating', function (rdf,uuid4,Auth) {
     var articleRating={};
-    var user=Auth.getCurrentUser();
-    user.carre=user.carre||{};
-    user.carre.graph=user.carre.graph||rdf.pre.users+'guestUser';
+    var user=Auth.getCurrentUser()||{carre:{ graph:rdf.pre.users+'guestuser'}};
     
      function processRating(article){
-
+       
       //check if this url already exists
       return rdf.find(
         [ 
