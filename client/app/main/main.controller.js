@@ -172,12 +172,14 @@ angular.module('edumaterialApp')
             };
           }
           if(rating) {
-          $scope.doc.rating[0].value=rating.depth_of_coverage.value;
-          $scope.doc.rating[1].value=rating.comprehensiveness.value;
-          $scope.doc.rating[2].value=rating.relevancy.value;
-          $scope.doc.rating[3].value=rating.accuracy.value;
-          $scope.doc.rating[4].value=rating.educational_level.value;
-          $scope.doc.rating[5].value=rating.validity.value;
+            if(rating.depth_of_coverage) {
+              $scope.doc.rating[0].value=rating.depth_of_coverage.value;
+              $scope.doc.rating[1].value=rating.comprehensiveness.value;
+              $scope.doc.rating[2].value=rating.relevancy.value;
+              $scope.doc.rating[3].value=rating.accuracy.value;
+              $scope.doc.rating[4].value=rating.educational_level.value;
+              $scope.doc.rating[5].value=rating.validity.value;
+            }
           }
      
         });

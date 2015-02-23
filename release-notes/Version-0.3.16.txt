@@ -2,6 +2,7 @@
 
 2015-02-23
 
+- * 423501f - 2015-02-23: CLI: fix error when no document request 
 - * 8d6b9f9 - 2015-02-23: CLI: fix double commit update script 
 - * defdb38 - 2015-02-23: update changelog 
 - * 4e440c9 - 2015-02-23: CLI: update node version to 0.12 

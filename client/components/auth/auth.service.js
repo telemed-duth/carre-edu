@@ -104,6 +104,7 @@ angular.module('edumaterialApp')
        * @return {Object} user
        */
       getCurrentUser: function() {
+        Auth.currentUser=currentUser;
         return currentUser;
       },
 

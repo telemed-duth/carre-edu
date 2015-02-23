@@ -42,7 +42,7 @@ angular.module('edumaterialApp')
     }    
     
      function loadRating(article){
-
+      console.log(user);
       //check if this url already exists
       return rdf.find(
         [ 
