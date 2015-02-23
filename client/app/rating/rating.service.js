@@ -24,7 +24,7 @@ angular.module('edumaterialApp')
             rating.rates=article.rating;
             rating.date=new Date().toISOString();
             
-          if(results.data.length>0) { //if exists
+          if(results.data[0] && results.data[0].id) { //if exists
             rating.id=results.data[0].id.value.substring(55);
             console.log(rating.id);
             //update the query , total and order 
