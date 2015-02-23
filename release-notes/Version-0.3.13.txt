@@ -2,6 +2,8 @@
 
 2015-02-23
 
+- * 9e8b67b - 2015-02-23: CLI: fix production rating service 
+- * 8f5b75a - 2015-02-23: update changelog 
 - * abbc37f - 2015-02-23: CLI: possible fix for production url 
 - * d5221fd - 2015-02-23: update changelog 
 - * 21741b8 - 2015-02-23: CLI: fix medlineplus iframe load 
