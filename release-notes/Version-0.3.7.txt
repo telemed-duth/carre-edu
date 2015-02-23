@@ -1,7 +1,11 @@
-# CHANGELOG v0.3.5
+# CHANGELOG v0.3.7
 
 2015-02-23
 
+- * a672a90 - 2015-02-23: CLI: fix bump 
+- * b12506a - 2015-02-23: update changelog 
+- * fd3979e - 2015-02-23: CLI: try semantic versioning 
+- * 9102496 - 2015-02-23: update changelog 
 - * 592c183 - 2015-02-23: CLI: testing bash script 
 - * 367f79e - 2015-02-23: CLI: revert back to default changelog 
 - * 63e5ef8 - 2015-02-23: CLI: fixes #try to changelog 

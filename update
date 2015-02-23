@@ -16,17 +16,14 @@ select opt in "${options[@]}"
 do
     case $opt in
         "y")
-            TASK=":bump-only"
+            export TASK=":bump"
             break
             ;;
         "n")
-            TASK=":bump-only"
+            export TASK=":bump-only"
             break
             ;;
-        *) 
-            TASK=":bump-only" 
-            break 
-            ;;
+        *) echo "Invalid option"; break ;;
     esac
 done
 
@@ -60,5 +57,4 @@ git add --all release-notes/
 echo -ne "\e[92mAdd to Changelog?\e[39m : "
 read -e MSG
 git commit -am"CLI: $MSG";
-
-grunt changelog:v1 && grunt bump:bump-commit
+grunt changelog:v1 && git add --all release-notes/ && git commit -am"update changelog" && git push && git push --tags
