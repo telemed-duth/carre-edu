@@ -56,8 +56,10 @@ angular.module('edumaterialApp')
       'GROUP BY ?title LIMIT 20';
     
       return rdf.query(exQuery).success(function(data){
-          // console.log('Rated Articles are:');
-          // ratedArticles=data.data;
+          console.log('Rated Articles are:');
+          ratedArticles=data.data;
+
+          return data.data;
           // console.log(ratedArticles);
       }).error(function(err){
          console.log(err);

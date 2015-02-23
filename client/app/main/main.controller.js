@@ -299,7 +299,8 @@ angular.module('edumaterialApp')
                 
       //calculated rating for aggregated results
       article.getRated($scope.results).then(function(data) {
-        console.log(data.data.data);
+        
+        console.log(data);
         for(var i=0,l=data.data.data; i<l.length; i++){
           for (var j = 0; j < $scope.results.length; j++) {
             if(plainText($scope.results[j].title).trim()===l[i].title.value.trim()) {
