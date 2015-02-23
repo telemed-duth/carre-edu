@@ -117,7 +117,10 @@ angular.module('edumaterialApp')
         
         //when article closed add rating (if user is loggedIn)
         if($scope.isLoggedIn()) {
-          main.setRating($scope.doc.rating);
+          main.setRating($scope.doc.rating).then(function(ratingId){
+            // console.log(e);
+            calculateRatedArticles();
+          });
         }
         
         $scope.isCollapsed=false;

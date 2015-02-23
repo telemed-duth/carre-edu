@@ -52,14 +52,18 @@
   
   
   
-  <div class="page-header">
+  <div>
     <!--top pagination-->
-    <pagination ng-show="total>itemsPerPage" items-per-page="itemsPerPage" 
-          style="z-index: inherit; float:right; margin:auto;" total-items="total" ng-model="currentPage" 
-          ng-change="searchQuery(true)" max-size="6" rotate="false"></pagination>
-          
-    <!--total results-->
-    <h3 ng-show="total>0"><strong class="text-danger">{{total}}</strong> results</h3>
+    <div class="col-sm-8 pull-right">
+      <pagination ng-show="total>itemsPerPage" items-per-page="itemsPerPage" 
+            style="z-index: inherit; float:right; margin:auto;" total-items="total" ng-model="currentPage" 
+            ng-change="searchQuery(true)" max-size="4" rotate="true"></pagination>
+    </div>
+    
+    <div class="col-sm-4 pull-left">
+      <!--total results-->
+      <h3 ng-show="total>0"><strong class="text-danger">{{total}}</strong> results</h3>
+    </div>
   </div>
 
         
@@ -89,7 +93,7 @@
     <!--bottom pagination-->
     <pagination ng-show="total>itemsPerPage" items-per-page="itemsPerPage" 
           style="z-index: inherit; float:right; margin:auto;" total-items="total" ng-model="currentPage" 
-          ng-change="searchQuery(true)" max-size="6" rotate="false">
+          ng-change="searchQuery(true)" max-size="3" rotate="true">
     </pagination>
         
 

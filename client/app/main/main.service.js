@@ -87,7 +87,7 @@ angular.module('edumaterialApp')
     article:function(){return curArticle},
     setRank:function(rank){curRank=rank},
     rank:function(){return curRank},
-    setRating:function(r){curArticle.rating=r; rating.insert(curArticle)},
+    setRating:function(r){curArticle.rating=r; return rating.insert(curArticle)},
     rating:function(){return curArticle.rating},
     editArticle:editArticle,
     fetchArticles:fetchArticles,

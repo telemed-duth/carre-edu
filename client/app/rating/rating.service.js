@@ -26,15 +26,15 @@ angular.module('edumaterialApp')
             rating.id=results.data[0].id.value.substring(55);
             console.log(rating.id);
             //update the query , total and order 
-            modifyRating(rating);
+            return modifyRating(rating);
             
             
           }
           else { //create new
             rating.id=uuid4.generate();
-            insertRating(rating);
+            return insertRating(rating);
           }
-          return rating.id;
+          // return rating.id;
         }).error(function(err){
           console.log(err);
           return false;
@@ -95,7 +95,7 @@ angular.module('edumaterialApp')
       }
     
       // console.log(newtriples);
-      rdf.modify(oldtriples,oldtriples,newtriples).success(function(results){
+      return rdf.modify(oldtriples,oldtriples,newtriples).success(function(results){
         
         console.log(results);
       }).error(function(error){
@@ -132,7 +132,7 @@ angular.module('edumaterialApp')
       }
       console.log(triples);
       
-      rdf.insert(triples).success(function(results){
+      return rdf.insert(triples).success(function(results){
         
         
         console.log(results);
