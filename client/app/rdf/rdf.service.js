@@ -18,9 +18,13 @@ angular.module('edumaterialApp')
     
     function makeTriple(s,p,o,a,b,c){
       //check if object is value
-      if(s.indexOf('http')>=0&&!a) s='<'+s+'>';
-      if(p.indexOf('http')>=0&&!b) p='<'+p+'>';
-      if(o.indexOf('http')>=0&&!c) o='<'+o+'>';
+      // s=String(s).replace(/<[^>]+>/gm, '');
+      // p=String(p).replace(/<[^>]+>/gm, '');
+      // o=String(o).replace(/<[^>]+>/gm, '');
+    
+      if(s&&s.indexOf('http')>=0&&!a) s='<'+s+'>';
+      if(p&&p.indexOf('http')>=0&&!b) p='<'+p+'>';
+      if(o&&o.indexOf('http')>=0&&!c) o='<'+o+'>';
       return s+' '+p+' '+o;
     }
     

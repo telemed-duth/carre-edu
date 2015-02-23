@@ -1,6 +1,6 @@
 {
   "name": "edumaterial",
-  "version": "0.3.12",
+  "version": "0.3.13",
   "main": "server/app.js",
   "dependencies": {
     "body-parser": "^1.12.0",

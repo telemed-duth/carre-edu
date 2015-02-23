@@ -157,13 +157,14 @@ angular.module('edumaterialApp')
               value:0
             };
           }
-          
+          if(rating) {
           $scope.doc.rating[0].value=rating.depth_of_coverage.value;
           $scope.doc.rating[1].value=rating.comprehensiveness.value;
           $scope.doc.rating[2].value=rating.relevancy.value;
           $scope.doc.rating[3].value=rating.accuracy.value;
           $scope.doc.rating[4].value=rating.educational_level.value;
           $scope.doc.rating[5].value=rating.validity.value;
+          }
      
         });
         
@@ -190,13 +191,15 @@ angular.module('edumaterialApp')
     var renderContent = function() {
       var data='';
       
+      $scope.doc.title=plainText($scope.doc.title);
       switch ($scope.curSource.value) {
+        
         case 'medlineplus':
           
           if($scope.mobile){
             //set the mobile html template
             data='<div style="background:#ffffff;height:'+$scope.frameHeight+'px; overflow-y:auto;">'+
-            '<h2>'+plainText($scope.doc.title)+'</h2>'+
+            '<h2>'+$scope.doc.title+'</h2>'+
             '<p>'+$scope.doc.FullSummary+
             '</p></div>';
             

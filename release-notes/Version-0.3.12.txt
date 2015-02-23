@@ -2,6 +2,7 @@
 
 2015-02-23
 
+- * d5221fd - 2015-02-23: update changelog 
 - * 21741b8 - 2015-02-23: CLI: fix medlineplus iframe load 
 - * d09eeae - 2015-02-23: update changelog 
 - * b5dda7e - 2015-02-23: CLI: Add tag feature 
