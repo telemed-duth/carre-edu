@@ -57,7 +57,7 @@
     <div class="col-sm-8 pull-right">
       <pagination ng-show="total>itemsPerPage" items-per-page="itemsPerPage" 
             style="z-index: inherit; float:right; margin:auto;" total-items="total" ng-model="currentPage" 
-            ng-change="searchQuery(true)" max-size="4" rotate="true"></pagination>
+            ng-change="searchQuery(true)" max-size="4" rotate="false"></pagination>
     </div>
     
     <div class="col-sm-4 pull-left">
@@ -93,7 +93,7 @@
     <!--bottom pagination-->
     <pagination ng-show="total>itemsPerPage" items-per-page="itemsPerPage" 
           style="z-index: inherit; float:right; margin:auto;" total-items="total" ng-model="currentPage" 
-          ng-change="searchQuery(true)" max-size="3" rotate="true">
+          ng-change="searchQuery(true)" max-size="3" rotate="false">
     </pagination>
         
 

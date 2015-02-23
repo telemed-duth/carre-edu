@@ -4,9 +4,12 @@ angular.module('edumaterialApp')
   .controller('SignupCtrl', function ($scope, Auth, $location, $window) {
     $scope.user = {};
     $scope.errors = {};
+    
+    
 
     $scope.register = function(form) {
       $scope.submitted = true;
+      
 
       if(form.$valid) {
         Auth.createUser({
@@ -30,7 +33,11 @@ angular.module('edumaterialApp')
         });
       }
     };
+    
 
+    $scope.registerOauth = function() {
+      $window.location.href = 'https://carre.kmi.open.ac.uk/devices/accounts/register?next=http://edu.carre-project.eu';
+    };
     $scope.loginOauth = function(provider) {
       $window.location.href = '/auth/' + provider;
     };
