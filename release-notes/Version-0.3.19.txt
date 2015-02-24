@@ -2,6 +2,7 @@
 
 2015-02-24
 
+- * d5ea72c - 2015-02-24: CLI: reform signup and login template 
 - * fad34d4 - 2015-02-23: CLI: ui fix 
 - * 3963e2b - 2015-02-23: CLI: remove other login options 
 - * 720693a - 2015-02-23: CLI: fix user and rating load error 
