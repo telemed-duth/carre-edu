@@ -58,7 +58,7 @@ angular.module('edumaterialApp')
           
           return $http.get(url,{'cache':true});
       
-        };
+        }
         
         function ontologies(){
                    //construct url
@@ -72,7 +72,7 @@ angular.module('edumaterialApp')
           '&include=name,acronym';
           
           return $http.get(url, {'cache':true});
-        };
+        }
       
       //Make public
       return {

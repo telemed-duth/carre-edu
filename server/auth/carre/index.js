@@ -20,7 +20,7 @@ router.get('/callback', function(req, res, next) {
     
     //get profile
     request('https://carre.kmi.open.ac.uk/ws/userProfile?token='+token, function (error, response, profile) {
-      if (!error && response.statusCode == 200) {
+      if (!error && response.statusCode === 200) {
       
       //add params to passport-token
       req.params.username=profile.username;

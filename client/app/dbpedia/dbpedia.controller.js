@@ -5,7 +5,7 @@ angular.module('edumaterialApp')
     
     //initialize setup vars
       
-      $scope.itemsPerPage = 10
+      $scope.itemsPerPage = 10;
       $scope.currentPage = 1;
       
     function init(){

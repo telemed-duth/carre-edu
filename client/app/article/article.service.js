@@ -35,7 +35,7 @@ angular.module('edumaterialApp')
             articles[i].url=articles[i].url||'http://en.wikipedia.org/wiki/'+encodeURI(articles[i].title).split('%20').join('_');
             
             exQuery+='{ ?s <'+rdf.pre.edu+'#url> <'+articles[i].url+'> }';
-            if(i<(articles.length - 1)) exQuery+=' UNION '; 
+            if(i<(articles.length - 1)) { exQuery+=' UNION '; } 
           }
           
         exQuery+=' .'+
@@ -110,7 +110,7 @@ angular.module('edumaterialApp')
         
         console.log(results);
       }).error(function(error){
-        console.log('Error :')
+        console.log('Error :');
         console.log(error);
       });
     } 
@@ -142,7 +142,7 @@ angular.module('edumaterialApp')
       
         console.log(results);
       }).error(function(error){
-        console.log('Error :')
+        console.log('Error :');
         console.log(error);
       });
     }
