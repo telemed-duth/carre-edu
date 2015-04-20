@@ -4,8 +4,8 @@ var _ = require('lodash');
 var Riskelements = require('./riskelements.model');
 var SparqlClient = require('sparql-client');
 var util = require('util');
-var endpoint = 'http://carre.kmi.open.ac.uk/sparql';
-var ext_data=require('../../ext_data/riskelements');
+var endpoint = 'http://carre.kmi.open.ac.uk:8890/sparql';
+// var ext_data=require('../../ext_data/riskelements');
 
 
 // Get a single medline
@@ -14,17 +14,16 @@ exports.riskElements = function(req, res) {
   
 /* file import of risk elements for demo purposes */
   // console.log(ext_data.riskelements());
-  return res.status(200).json(ext_data.riskelements());
+  //return res.status(200).json(ext_data.riskelements());
 
 
   //  sparql query  to get the riskelements
-/*
+
   var query=
-  "SELECT DISTINCT * WHERE {"+
-  "?uri \"http://purl.org/dc/terms/title\" ?title ."+
-  "  ?uri \"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\" \"http://rdfs.org/sioc/ns#Item\" ."+
-  "  ?uri \"http://www.w3.org/1999/02/22-rdf-syntax-ns#type\" \"http://xmlns.com/foaf/0.1/Document\" ."+
-  "} LIMIT 500";
+  "SELECT DISTINCT ?uri ?title WHERE {" +
+  " { ?uri <http://carre.kmi.open.ac.uk/ontology/risk.owl#has_risk_element_name> ?title }" +
+  " UNION { ?uri <http://carre.kmi.open.ac.uk/ontology/risk.owl#risk_element_name> ?title }" + 
+  " } LIMIT 500";
   var results=[];
   var client = new SparqlClient(endpoint);
   //console.log("Query to " + endpoint);
@@ -59,7 +58,7 @@ exports.riskElements = function(req, res) {
           else return res.json(200, {'message':'no_results','data':data.results});
       } else return res.json(404, {'message':'dbpedia_error','data':null});
   });
-*/
+
 
 
 

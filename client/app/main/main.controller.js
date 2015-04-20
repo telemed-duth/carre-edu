@@ -87,6 +87,10 @@ angular.module('edumaterialApp')
 
     //auto search when a term is selected
     $scope.onComplete=function(item,model,label){
+      console.log(item);
+      if (item.url) {
+        $scope.riskElement=item;
+      } else $scope.riskElement={name:null,url:null};
       $scope.searchQuery();
     };
 
@@ -103,6 +107,7 @@ angular.module('edumaterialApp')
         $scope.doc.pos=i;
         $scope.doc.rating=$scope.doc.rating||[];
         $scope.doc.iframe='';
+        $scope.doc.riskElement=$scope.riskElement.url;
 
         
         // animation & double scrollbar fix
@@ -151,7 +156,8 @@ angular.module('edumaterialApp')
         lang:'English',
         altTitle:plainText($scope.doc.altTitle||''),
         categories:plainText($scope.doc.groupName||''),
-        wordcount:$scope.doc.wordcount||''
+        wordcount:$scope.doc.wordcount||'',
+        risk:$scope.doc.riskElement
       });
               
         
