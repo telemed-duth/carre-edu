@@ -109,7 +109,7 @@ angular.module('edumaterialApp')
       if(article.riskElement) newtriples.push( [ article.riskElement, 'http://carre.kmi.open.ac.uk/ontology/risk.owl#has_educational_material', rdf.pre.publicUri+article.id  ] );
     
       rdf.modify(oldtriples,oldtriples,newtriples).success(function(results){
-        
+        console.log(newtriples);
         console.log(results);
       }).error(function(error){
         console.log('Error :');
@@ -142,7 +142,7 @@ angular.module('edumaterialApp')
         
         
         //if you insert the article start the enrichment process
-      
+        console.log(triples);
         console.log(results);
       }).error(function(error){
         console.log('Error :');

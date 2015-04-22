@@ -229,7 +229,7 @@ angular.module('edumaterialApp')
             '</p></div>';
             
           } else {
-            data = '<base target="_blank" /><iframe style="width:100%;height:'+$scope.frameHeight+'px;" class="embed-responsive-item" src="' + $scope.doc.url + '"sandbox="allow-same-origin"></iframe>';
+            data = '<base target="_blank" /><iframe style="width:100%;height:'+$scope.frameHeight+'px;" class="embed-responsive-item" src="' + $scope.doc.url.replace('http://','https://') + '"sandbox="allow-same-origin"></iframe>';
           }
 
           break;
@@ -238,7 +238,7 @@ angular.module('edumaterialApp')
           
           $scope.doc.url='http://en.wikipedia.org/wiki/'+encodeURI($scope.doc.title).split('%20').join('_');
           
-          data = '<base target="_blank" /><iframe style="width:100%;height:'+$scope.frameHeight+'px;" class="embed-responsive-item" src="'+$scope.doc.url+($scope.mobile?'?printable=yes':'')+'"></iframe>';
+          data = '<base target="_blank" /><iframe style="width:100%;height:'+$scope.frameHeight+'px;" class="embed-responsive-item" src="'+$scope.doc.url.replace('http://','https://')+($scope.mobile?'?printable=yes':'')+'"></iframe>';
 
           break;
       }  
