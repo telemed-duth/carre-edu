@@ -11,7 +11,7 @@ angular.module('edumaterialApp')
       rdftype:'http://www.w3.org/1999/02/22-rdf-syntax-ns#type',
       dc:'http://purl.org/dc/elements/1.1/',
       publicUri:'http://carre.kmi.open.ac.uk/public/educational/',
-      users:'http://carre.kmi.open.ac.uk/users/'
+      users:'https://carre.kmi.open.ac.uk/users/'
     }
     
     /****** private functions *******/
