@@ -7,5 +7,6 @@ module.exports = {
   mongo: {
     uri: 'mongodb://localhost/edumaterial-dev'
   },
+  rdfToken: process.env.RDF_TOKEN,
   seedDB: true
 };

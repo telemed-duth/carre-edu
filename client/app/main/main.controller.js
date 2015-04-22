@@ -157,7 +157,7 @@ angular.module('edumaterialApp')
         altTitle:plainText($scope.doc.altTitle||''),
         categories:plainText($scope.doc.groupName||''),
         wordcount:$scope.doc.wordcount||'',
-        risk:$scope.doc.riskElement
+        riskElement:$scope.doc.riskElement
       });
               
         

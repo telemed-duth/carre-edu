@@ -76,7 +76,6 @@ exports.EndPointquery = function(req, res) {
 exports.query = function(req, res) {
 
   var endpoint='https://carre.kmi.open.ac.uk:443/ws/';
-  
   var options={
     method:'POST',
     url:endpoint+'query',
@@ -95,6 +94,7 @@ exports.query = function(req, res) {
   // console.log(sparql);
   // console.log(token);
     //now run query
+  // console.log('THE API TOKEN is : '+config.rdfToken);
 
 
 };

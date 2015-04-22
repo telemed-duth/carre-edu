@@ -60,6 +60,9 @@ angular.module('edumaterialApp')
     }
     
     function processArticle(article){
+      
+      console.log('processArticle: '+article.riskElement);
+      
       curArticle=article;
       //check if this url already exists
       return rdf.find(
@@ -100,8 +103,11 @@ angular.module('edumaterialApp')
     
     function modifyArticleViews(article){
       
+      console.log('insertArticle: '+article.riskElement);
+      
       var oldtriples=[];
       var newtriples=[];
+      
       
       //modify views
       oldtriples.push( [ rdf.pre.publicUri+article.id, rdf.pre.edu+'#views', '"'+article.views+'"^^xsd:nonNegativeInteger'  ] );
@@ -118,6 +124,8 @@ angular.module('edumaterialApp')
     } 
     
     function insertArticle(article){
+      
+      console.log('insertArticle: '+article.riskElement);
       
       var triples=[];
       
