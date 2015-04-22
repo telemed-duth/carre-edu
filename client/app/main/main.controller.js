@@ -88,7 +88,7 @@ angular.module('edumaterialApp')
     //auto search when a term is selected
     $scope.onComplete=function(item,model,label){
       console.log(item);
-      if (item.url) {
+      if (item) {
         $scope.riskElement=item;
       } else $scope.riskElement={name:null,url:null};
       $scope.searchQuery();
