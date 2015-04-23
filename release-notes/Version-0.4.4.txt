@@ -2,6 +2,7 @@
 
 2015-04-23
 
+- * 90bdda8 - 2015-04-23: CLI: disable google analytics 
 - * 4bc4fc0 - 2015-04-23: add cache control 
 - * ab60111 - 2015-04-22:  fix https users url 
 - * eca3a43 - 2015-04-22: change https-&gt;http rdf data 
