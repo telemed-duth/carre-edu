@@ -42,8 +42,8 @@ module.exports = function(app) {
   }));
   
   if ('production' === env) {
-    app.use(favicon(path.join(config.root, 'public', 'favicon.ico')));
-    app.use(express.static(path.join(config.root, 'public')));
+    app.use(favicon(path.join(config.root, 'public', 'favicon.ico'),{maxAge: '1y'}));
+    app.use(express.static(path.join(config.root, 'public'),{maxAge: '1d'}));
     app.set('appPath', config.root + '/public');
     app.use(morgan('dev'));
   }
