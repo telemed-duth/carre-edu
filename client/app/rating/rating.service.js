@@ -87,7 +87,7 @@ angular.module('edumaterialApp')
         
         //check if rating exists otherwise populate with 0
         if(rating.rates[i])  {
-          if(rating.rates[i].value>0){
+          if(rating.rates[i].value==0){
             newtriples.push([ 
               rdf.pre.publicUri+'rating/'+rating.id, 
               rdf.pre.edu+'#'+rc[i].name.replace(/\s+/g, '_').toLowerCase(), 
