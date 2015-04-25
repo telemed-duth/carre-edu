@@ -73,8 +73,10 @@ angular.module('edumaterialApp')
       
       oldtriples.push( [ rdf.pre.publicUri+'rating/'+rating.id, rdf.pre.edu+'#date', '?date' ] );
       for (var i=0,rc=Auth.rating_criteria;i<rc.length;i++){
-        if(!rating.rates[i])  rating.rates[i]={value:0};
-        oldtriples.push([ 
+        //check if rating exists otherwise populate with 0
+        if(rating.rates[i])  {
+          if(rating.rates[i].value!==0){
+            oldtriples.push([ 
           rdf.pre.publicUri+'rating/'+rating.id, 
           rdf.pre.edu+'#'+rc[i].name.replace(/\s+/g, '_').toLowerCase(), 
           '?ra'+i
@@ -87,7 +89,7 @@ angular.module('edumaterialApp')
         
         //check if rating exists otherwise populate with 0
         if(rating.rates[i])  {
-          if(rating.rates[i].value==0){
+          if(rating.rates[i].value!==0){
             newtriples.push([ 
               rdf.pre.publicUri+'rating/'+rating.id, 
               rdf.pre.edu+'#'+rc[i].name.replace(/\s+/g, '_').toLowerCase(), 
