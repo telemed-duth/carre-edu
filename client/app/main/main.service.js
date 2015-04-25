@@ -6,7 +6,8 @@ angular.module('edumaterialApp')
   var curRank={};
   
   function editArticle(){
-    
+        console.log('editArticle called!')
+
       $q.all([
       
       // add more parallel request
@@ -14,6 +15,8 @@ angular.module('edumaterialApp')
         article.insert(curArticle).then(function(){
           curArticle.id = article.getCurrent().id;
           curRank.article_id=curArticle.id;
+          curRank.article_risk=article.getCurrent().riskElement;
+
           return rank.insert(curRank);
         },function(err){
           console.log(err);
@@ -30,6 +33,7 @@ angular.module('edumaterialApp')
   };
   
   function fetchArticles(){
+    console.log('fetchArticles called!')
      $q.all([
       
       
@@ -37,6 +41,7 @@ angular.module('edumaterialApp')
         article.insert(curArticle).then(function(){
           curArticle.id = article.getCurrent().id;
           curRank.article_id=curArticle.id;
+          curRank.article_risk=article.getCurrent().riskElement;
           return rank.insert(curRank);
         },function(err){
           console.log(err);

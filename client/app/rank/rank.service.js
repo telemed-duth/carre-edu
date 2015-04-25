@@ -28,6 +28,10 @@ angular.module('edumaterialApp')
             rank.id=uuid4.generate();
             insertRank(rank);
           }
+          
+          //link the current risk element with the article
+          insertRiskElement(rank);
+          
           return rank.id;
         }).error(function(err){
           console.log(err);
@@ -76,6 +80,23 @@ angular.module('edumaterialApp')
       triples.push( [ rdf.pre.publicUri+'rank/'+rank.id, rdf.pre.edu+'#date', '"'+rank.date+'"^^xsd:date' ] );
       triples.push( [ rdf.pre.publicUri+'rank/'+rank.id, rdf.pre.edu+'#total', '"'+rank.total+'"^^xsd:nonNegativeInteger'  ] );
       triples.push( [ rdf.pre.publicUri+'rank/'+rank.id, rdf.pre.edu+'#position', '"'+rank.position+'"^^xsd:nonNegativeInteger'  ] );
+        
+      rdf.insert(triples).success(function(results){
+        
+        
+        console.log(results);
+      }).error(function(error){
+        console.log('Error :')
+        console.log(error);
+      });
+    }
+    
+    function insertRiskElement(rank){
+      
+      console.log('Insert Risk Element called!');
+      var triples=[];
+      if(rank.article_risk) triples.push( [ rank.article_risk, 'http://carre.kmi.open.ac.uk/ontology/risk.owl#has_educational_material', rdf.pre.publicUri+rank.article_id  ] );
+
         
       rdf.insert(triples).success(function(results){
         

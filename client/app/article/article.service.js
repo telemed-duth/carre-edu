@@ -61,8 +61,6 @@ angular.module('edumaterialApp')
     
     function processArticle(article){
       
-      console.log('processArticle: '+article.riskElement);
-      
       curArticle=article;
       //check if this url already exists
       return rdf.find(
@@ -103,8 +101,6 @@ angular.module('edumaterialApp')
     
     function modifyArticleViews(article){
       
-      console.log('insertArticle: '+article.riskElement);
-      
       var oldtriples=[];
       var newtriples=[];
       
@@ -112,8 +108,7 @@ angular.module('edumaterialApp')
       //modify views
       oldtriples.push( [ rdf.pre.publicUri+article.id, rdf.pre.edu+'#views', '"'+article.views+'"^^xsd:nonNegativeInteger'  ] );
       newtriples.push( [ rdf.pre.publicUri+article.id, rdf.pre.edu+'#views', '"'+(article.views+1)+'"^^xsd:nonNegativeInteger'  ] );
-      if(article.riskElement) newtriples.push( [ article.riskElement, 'http://carre.kmi.open.ac.uk/ontology/risk.owl#has_educational_material', rdf.pre.publicUri+article.id  ] );
-    
+      
       rdf.modify(oldtriples,oldtriples,newtriples).success(function(results){
         console.log(newtriples);
         console.log(results);
@@ -124,8 +119,6 @@ angular.module('edumaterialApp')
     } 
     
     function insertArticle(article){
-      
-      console.log('insertArticle: '+article.riskElement);
       
       var triples=[];
       
@@ -144,7 +137,6 @@ angular.module('edumaterialApp')
       if(article.source) triples.push( [ rdf.pre.publicUri+article.id, rdf.pre.edu+'#source', '"'+article.source+'"^^xsd:string' ] );
       if(article.websource) triples.push( [ rdf.pre.publicUri+article.id,  rdf.pre.edu+'#websource', '"'+article.websource+'"^^xsd:string'  ] );
       if(article.altTitle) triples.push( [ rdf.pre.publicUri+article.id, rdf.pre.edu+'#alternative_title', '"'+article.altTitle+'"^^xsd:string'  ] );
-      if(article.riskElement) triples.push( [ article.riskElement, 'http://carre.kmi.open.ac.uk/ontology/risk.owl#has_educational_material', rdf.pre.publicUri+article.id  ] );
         
       rdf.insert(triples).success(function(results){
         

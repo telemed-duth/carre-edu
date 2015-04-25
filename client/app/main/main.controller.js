@@ -177,18 +177,16 @@ angular.module('edumaterialApp')
           $scope.doc.rating=[];
           for (var i = 0; i < 6; i++) {
             $scope.doc.rating[i]={
-              value:0
+              //value:0
             };
           }
           if(rating) {
-            if(rating.depth_of_coverage) {
-              $scope.doc.rating[0].value=rating.depth_of_coverage.value;
-              $scope.doc.rating[1].value=rating.comprehensiveness.value;
-              $scope.doc.rating[2].value=rating.relevancy.value;
-              $scope.doc.rating[3].value=rating.accuracy.value;
-              $scope.doc.rating[4].value=rating.educational_level.value;
-              $scope.doc.rating[5].value=rating.validity.value;
-            }
+            $scope.doc.rating[0].value=rating.depth_of_coverage.value||0;
+            $scope.doc.rating[1].value=rating.comprehensiveness.value||0;
+            $scope.doc.rating[2].value=rating.relevancy.value||0;
+            $scope.doc.rating[3].value=rating.accuracy.value||0;
+            $scope.doc.rating[4].value=rating.educational_level.value||0;
+            $scope.doc.rating[5].value=rating.validity.value||0;
           }
      
         });

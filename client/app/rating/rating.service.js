@@ -23,7 +23,7 @@ angular.module('edumaterialApp')
             rating.date=new Date().toISOString();
             
           if(results.data[0] && results.data[0].id) { //if exists
-            rating.id=results.data[0].id.value.substring(55);
+            rating.id=results.data[0].id.value.substring(54);
             console.log(rating.id);
             //update the query , total and order 
             return modifyRating(rating);
@@ -86,15 +86,18 @@ angular.module('edumaterialApp')
       for (var i=0,rc=Auth.rating_criteria;i<rc.length;i++){
         
         //check if rating exists otherwise populate with 0
-        if(!rating.rates[i])  rating.rates[i]={value:0};
-        newtriples.push([ 
-          rdf.pre.publicUri+'rating/'+rating.id, 
-          rdf.pre.edu+'#'+rc[i].name.replace(/\s+/g, '_').toLowerCase(), 
-          '"'+rating.rates[i].value+'"^^xsd:nonNegativeInteger'  
-          ]);
+        if(rating.rates[i])  {
+          if(rating.rates[i].value>0){
+            newtriples.push([ 
+              rdf.pre.publicUri+'rating/'+rating.id, 
+              rdf.pre.edu+'#'+rc[i].name.replace(/\s+/g, '_').toLowerCase(), 
+              '"'+rating.rates[i].value+'"^^xsd:nonNegativeInteger'  
+              ]);
+          }
+        }
       }
     
-      // console.log(newtriples);
+      console.log(newtriples);
       return rdf.modify(oldtriples,oldtriples,newtriples).success(function(results){
         
         console.log(results);
@@ -123,14 +126,16 @@ angular.module('edumaterialApp')
       for (var i=0,rc=Auth.rating_criteria;i<rc.length;i++){
         
         //check if rating exists otherwise populate with 0
-        if(!rating.rates[i])  rating.rates[i]={value:0};
-        triples.push([ 
-          rdf.pre.publicUri+'rating/'+rating.id, 
-          rdf.pre.edu+'#'+rc[i].name.replace(/\s+/g, '_').toLowerCase(), 
-          '"'+rating.rates[i].value+'"^^xsd:nonNegativeInteger'  
-          ]);
+        if(rating.rates[i])  {
+          if(rating.rates[i].value>0){
+            triples.push([ 
+              rdf.pre.publicUri+'rating/'+rating.id, 
+              rdf.pre.edu+'#'+rc[i].name.replace(/\s+/g, '_').toLowerCase(), 
+              '"'+rating.rates[i].value+'"^^xsd:nonNegativeInteger'  
+              ]);
+          }
+        }
       }
-      console.log(triples);
       
       return rdf.insert(triples).success(function(results){
         
