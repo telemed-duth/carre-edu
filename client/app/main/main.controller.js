@@ -173,11 +173,13 @@ angular.module('edumaterialApp')
         
         rating.load({url:$scope.doc.url}).then(function(res){
           var rating=res.data.data[0];
+          console.log('Rating Object is ');
+          console.log(rating);
           
           $scope.doc.rating=[];
           for (var i = 0; i < 6; i++) {
             $scope.doc.rating[i]={
-              //value:0
+              value:0
             };
           }
           if(rating) {

@@ -71,7 +71,7 @@ angular.module('edumaterialApp')
           
           console.log(results.data);
           if(results.data.length>0) { //if exists
-            article.id=results.data[0].id.value.substring(48);
+            article.id=results.data[0].id.value.substring(47);
             article.views=Number(results.data[0].views.value);
             
             //update the views

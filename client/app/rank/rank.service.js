@@ -17,7 +17,7 @@ angular.module('edumaterialApp')
       ).success(function(results){
         
           if(results.data.length>0) { //if exists
-            rank.id=results.data[0].id.value.substring(53);
+            rank.id=results.data[0].id.value.substring(52);
             
             //update the query , total and order 
             modifyRank(rank);

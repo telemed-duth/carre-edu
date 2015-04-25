@@ -6,6 +6,9 @@ angular.module('edumaterialApp')
     var user=Auth.getCurrentUser()||{carre:{ graph:rdf.pre.users+'guestuser'}};
     
      function processRating(article){
+      
+     var ratingsum=article.rating.reduce( function(total, rating){ return total + Number(rating.value) }, 0);
+     console.log('Rating Sum is : '+ratingsum);
        
       //check if this url already exists
       return rdf.find(
@@ -21,11 +24,12 @@ angular.module('edumaterialApp')
             rating.article_id=article.id;
             rating.rates=article.rating;
             rating.date=new Date().toISOString();
-            
+          if(ratingsum===0) return false;
           if(results.data[0] && results.data[0].id) { //if exists
             rating.id=results.data[0].id.value.substring(54);
             console.log(rating.id);
             //update the query , total and order 
+            
             return modifyRating(rating);
             
             
@@ -42,6 +46,8 @@ angular.module('edumaterialApp')
     }    
     
      function loadRating(article){
+       
+       console.log('Load Rating Called for article: '+article.url+ ' by user '+user.carre.graph );
       //check if this url already exists
       return rdf.find(
         [ 
@@ -73,10 +79,8 @@ angular.module('edumaterialApp')
       
       oldtriples.push( [ rdf.pre.publicUri+'rating/'+rating.id, rdf.pre.edu+'#date', '?date' ] );
       for (var i=0,rc=Auth.rating_criteria;i<rc.length;i++){
-        //check if rating exists otherwise populate with 0
-        if(rating.rates[i])  {
-          if(rating.rates[i].value!==0){
-            oldtriples.push([ 
+        if(!rating.rates[i])  rating.rates[i]={value:0};
+        oldtriples.push([ 
           rdf.pre.publicUri+'rating/'+rating.id, 
           rdf.pre.edu+'#'+rc[i].name.replace(/\s+/g, '_').toLowerCase(), 
           '?ra'+i
@@ -88,15 +92,12 @@ angular.module('edumaterialApp')
       for (var i=0,rc=Auth.rating_criteria;i<rc.length;i++){
         
         //check if rating exists otherwise populate with 0
-        if(rating.rates[i])  {
-          if(rating.rates[i].value!==0){
-            newtriples.push([ 
-              rdf.pre.publicUri+'rating/'+rating.id, 
-              rdf.pre.edu+'#'+rc[i].name.replace(/\s+/g, '_').toLowerCase(), 
-              '"'+rating.rates[i].value+'"^^xsd:nonNegativeInteger'  
-              ]);
-          }
-        }
+        if(!rating.rates[i])  rating.rates[i]={value:0};
+        newtriples.push([ 
+          rdf.pre.publicUri+'rating/'+rating.id, 
+          rdf.pre.edu+'#'+rc[i].name.replace(/\s+/g, '_').toLowerCase(), 
+          '"'+rating.rates[i].value+'"^^xsd:nonNegativeInteger'  
+          ]);
       }
     
       console.log(newtriples);
@@ -128,15 +129,12 @@ angular.module('edumaterialApp')
       for (var i=0,rc=Auth.rating_criteria;i<rc.length;i++){
         
         //check if rating exists otherwise populate with 0
-        if(rating.rates[i])  {
-          if(rating.rates[i].value>0){
-            triples.push([ 
-              rdf.pre.publicUri+'rating/'+rating.id, 
-              rdf.pre.edu+'#'+rc[i].name.replace(/\s+/g, '_').toLowerCase(), 
-              '"'+rating.rates[i].value+'"^^xsd:nonNegativeInteger'  
-              ]);
-          }
-        }
+        if(!rating.rates[i])  rating.rates[i]={value:0};
+        triples.push([ 
+          rdf.pre.publicUri+'rating/'+rating.id, 
+          rdf.pre.edu+'#'+rc[i].name.replace(/\s+/g, '_').toLowerCase(), 
+          '"'+rating.rates[i].value+'"^^xsd:nonNegativeInteger'  
+          ]);
       }
       
       return rdf.insert(triples).success(function(results){
