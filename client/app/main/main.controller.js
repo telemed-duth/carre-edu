@@ -166,7 +166,8 @@ angular.module('edumaterialApp')
         position:$scope.doc.pos,
         total:$scope.total,
         date:new Date().toISOString(),
-        query:$scope.queryTerm
+        query:$scope.queryTerm,
+        article_risk:$scope.doc.riskElement
       });
       
       if($scope.isLoggedIn()){
