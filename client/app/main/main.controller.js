@@ -87,10 +87,10 @@ angular.module('edumaterialApp')
 
     //auto search when a term is selected
     $scope.onComplete=function(item,model,label){
-      console.log(item);
+
       if (item) {
         $scope.riskElement=item;
-      } else $scope.riskElement={name:null,url:null};
+      }
       $scope.searchQuery();
     };
 
@@ -99,7 +99,6 @@ angular.module('edumaterialApp')
     $scope.toggleArticle = function(i) {
 
       if (i>-1) {
-        console.log($scope.results[i]);
         $scope.showArticle = true;
         $scope.frameHeight=$window.innerHeight-50;
         $scope.mobile=($window.innerWidth<700)?true:false; //set type to mobile if screen is less than 700px
@@ -108,7 +107,6 @@ angular.module('edumaterialApp')
         $scope.doc.rating=$scope.doc.rating||[];
         $scope.doc.iframe='';
         $scope.doc.riskElement=$scope.riskElement.url;
-
         
         // animation & double scrollbar fix
         $timeout(function() {
@@ -160,7 +158,7 @@ angular.module('edumaterialApp')
         riskElement:$scope.doc.riskElement
       });
               
-        
+      console.log($scope.doc.riskElement);
       //rank node info
       main.setRank({
         position:$scope.doc.pos,
@@ -284,7 +282,6 @@ angular.module('edumaterialApp')
           if(($scope.total>$scope.itemsPerPage)&&$scope.results.retstart) {
             $scope.currentPage=Math.ceil($scope.results.retstart[0]/$scope.itemsPerPage)+1;
           }
-          console.log($scope.results);
           calculateRatedArticles();
           
         } else { 
