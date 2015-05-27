@@ -112,7 +112,7 @@ angular.module('edumaterialApp')
         $scope.doc.pos=i;
         $scope.doc.rating=$scope.doc.rating||[];
         $scope.doc.iframe='';
-        $scope.doc.riskElement=$scope.riskElement.url;
+        $scope.doc.riskElement=$scope.riskElement?$scope.riskElement.url:'';
         
         // animation & double scrollbar fix
         $timeout(function() {
