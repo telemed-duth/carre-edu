@@ -5,6 +5,12 @@ angular.module('edumaterialApp')
     
     $scope.isLoggedIn=Auth.isLoggedIn;
     $scope.user=Auth.user=Auth.getCurrentUser();
+    
+    
+    //set BETA
+    var beta=false;
+    
+    
     //auto fetch user rated articles when a carre user is logged in
     
     // if($scope.isLoggedIn()){
@@ -326,7 +332,7 @@ angular.module('edumaterialApp')
       //calculated rating for aggregated results
       article.getRated($scope.results).then(function(data) {
         
-        console.log(data);
+        // console.log(data);
         for(var i=0,l=data.data.data; i<l.length; i++){
           for (var j = 0; j < $scope.results.length; j++) {
             if(plainText($scope.results[j].title).trim()===l[i].title.value.trim()) {
@@ -334,9 +340,32 @@ angular.module('edumaterialApp')
             }
           }
         }
+        console.log('started test func')
+        if(beta) $scope.start();
       });
       
     };
+
+    $scope.start=function(){
+      
+        var left = ($scope.results.length>20)?20:$scope.results.length;
+        var ticker = function() {
+          console.log('At '+left)
+          //run these commands
+          $scope.toggleArticle(left-1)
+          $timeout(function(){$scope.toggleArticle(-1)},4000)
+
+          left -= 1
+          if (left >= 0) {
+            $timeout(ticker,5000);
+            console.log('At '+left)
+          }
+        }
+                    
+
+        ticker();
+        
+    }
   
   
   });
