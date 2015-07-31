@@ -1,7 +1,8 @@
 # CHANGELOG v0.4.6
 
-2015-05-27
+2015-07-31
 
+- * 752929d - 2015-05-27: CLI: update dependencies 
 - * 36104dc - 2015-05-27: CLI: fix no carre risk element selected query 
 - * 198af9f - 2015-05-27: CLI: add beta variable for crawler 
 - * 82a19fd - 2015-04-26: fix bug when change source about risk element 
