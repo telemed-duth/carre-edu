@@ -1,4 +1,4 @@
-# CHANGELOG v0.4.6
+# CHANGELOG v0.4.7
 
 2015-07-31
 
