@@ -2,6 +2,7 @@
 
 2015-07-31
 
+- * f742a2a - 2015-07-31: CLI: redeploy 
 - * c8abaed - 2015-07-31: CLI: redeploy 
 - * 9b388fe - 2015-07-31: CLI: 
 - * 752929d - 2015-05-27: CLI: update dependencies 
