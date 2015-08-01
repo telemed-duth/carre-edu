@@ -1,6 +1,6 @@
 {
   "name": "edumaterial",
-  "version": "0.4.8",
+  "version": "0.4.9",
   "dependencies": {
     "angular": "~1.4.0",
     "json3": "~3.3.1",

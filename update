@@ -4,7 +4,7 @@
 set -e
 
 echo "Running tests..."
-grunt test;
+#grunt test;
 
 echo "Fetching changes from repo..."
 git pull;
