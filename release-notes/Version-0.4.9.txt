@@ -2,6 +2,8 @@
 
 2015-08-01
 
+- * 75f4f80 - 2015-08-01: new 
+- * a78a243 - 2015-08-01: CLI: update dependencies 
 - * caac8dd - 2015-08-01: fix update 
 - * b11daed - 2015-07-31: CLI: just try to redeploy 
 - * f742a2a - 2015-07-31: CLI: redeploy 
