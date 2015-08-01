@@ -485,7 +485,6 @@ module.exports = function (grunt) {
         singleRun: true
       }
     },
-
     mochaTest: {
       options: {
         reporter: 'spec'

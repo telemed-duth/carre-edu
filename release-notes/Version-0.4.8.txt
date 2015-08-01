@@ -1,7 +1,8 @@
 # CHANGELOG v0.4.8
 
-2015-07-31
+2015-08-01
 
+- * b11daed - 2015-07-31: CLI: just try to redeploy 
 - * f742a2a - 2015-07-31: CLI: redeploy 
 - * c8abaed - 2015-07-31: CLI: redeploy 
 - * 9b388fe - 2015-07-31: CLI: 
