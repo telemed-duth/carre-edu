@@ -1,0 +1,370 @@
+[
+  {
+    "Source":"Acute kidney injury",
+    "Target":"Chronic kidney disease"
+  },
+  {
+    "Source":"Acute kidney injury",
+    "Target":"Death"
+  },
+  {
+    "Source":"Age",
+    "Target":"Ischemic heart disease"
+  },
+  {
+    "Source":"Age",
+    "Target":"Peripheral arterial disease"
+  },
+  {
+    "Source":"Age AND Atrial fibrillation",
+    "Target":"Stroke"
+  },
+  {
+    "Source":"Age AND Ischemic heart disease",
+    "Target":"Death due to cardiovascular disease"
+  },
+  {
+    "Source":"Age AND Ischemic heart disease",
+    "Target":"Stroke"
+  },
+  {
+    "Source":"Age AND Heart failure",
+    "Target":"Stroke"
+  },
+  {
+    "Source":"Age AND Hypertension",
+    "Target":"Stroke"
+  },
+  {
+    "Source":"Anemia AND Acute myocardial infarction",
+    "Target":"Death"
+  },
+  {
+    "Source":"Ischemic heart disease OR stroke",
+    "Target":"Peripheral vascular disease"
+  },
+  {
+    "Source":"Chronic kidney disease",
+    "Target":"Ischemic heart disease OR Heart failure OR  Stroke OR Peripheral arterial disease"
+  },
+  {
+    "Source":"Chronic kidney disease",
+    "Target":"Death"
+  },
+  {
+    "Source":"Chronic kidney disease",
+    "Target":"Death:  all cause"
+  },
+  {
+    "Source":"Chronic kidney disease",
+    "Target":"Hospitalization"
+  },
+  {
+    "Source":"Chronic kidney disease",
+    "Target":"Peripheral arterial disease"
+  },
+  {
+    "Source":"Chronic kidney disease AND (Hypertension OR Heart failure) ",
+    "Target":"Hyperkalemia"
+  },
+  {
+    "Source":"Chronic obstructive pulmonary disease",
+    "Target":"Death: cardiovascular"
+  },
+  {
+    "Source":"Ischemic heart disease AND Chronic kidney disease",
+    "Target":"Death"
+  },
+  {
+    "Source":"Depression",
+    "Target":"Stroke"
+  },
+  {
+    "Source":"Depression",
+    "Target":"Ischemic heart disease"
+  },
+  {
+    "Source":"Diabetes",
+    "Target":"Ischemic heart disease"
+  },
+  {
+    "Source":"Diabetes",
+    "Target":"Ischemic heart disease OR Stroke"
+  },
+  {
+    "Source":"Diabetes",
+    "Target":"Death: due to cardiovascular disease"
+  },
+  {
+    "Source":"Diabetes",
+    "Target":"Peripheral vascular disease"
+  },
+  {
+    "Source":"Diabetes: disease control",
+    "Target":"Ischemic heart disease"
+  },
+  {
+    "Source":"Diabetes: disease control",
+    "Target":"Ischemic heart disease OR Stroke"
+  },
+  {
+    "Source":"Diabetes: disease control",
+    "Target":"Heart failure"
+  },
+  {
+    "Source":"Diabetic nephropathy",
+    "Target":"Acute myocardial infarction OR Ischemic stroke"
+  },
+  {
+    "Source":"Drugs: _-blockers",
+    "Target":"Diabetes"
+  },
+  {
+    "Source":"Drugs: contrast agents: coronary angiography",
+    "Target":"Acute kidney injury"
+  },
+  {
+    "Source":"Drugs: diuretics",
+    "Target":"Diabetes"
+  },
+  {
+    "Source":"Drugs: renin-angiotensin system dual blockade (any)",
+    "Target":"Hyperkalemia"
+  },
+  {
+    "Source":"Drugs: renin-angiotensin system dual blockade (any)",
+    "Target":"Hypotension"
+  },
+  {
+    "Source":"Drugs: renin-angiotensin system dual blockade (any) AND Heart failure",
+    "Target":"Acute kidney injury"
+  },
+  {
+    "Source":"Drugs: statins AND Chronic kidney disease stage 1 to 3",
+    "Target":"Chronic kidney disease = stage 5"
+  },
+  {
+    "Source":"Drugs: statins",
+    "Target":"Diabetes"
+  },
+  {
+    "Source":"Drugs: statins AND Chronic kidney disease stage 1 to 3",
+    "Target":"Stroke"
+  },
+  {
+    "Source":"Drugs: statins AND  Chronic kidney disease stage 1 to 3",
+    "Target":"Death"
+  },
+  {
+    "Source":"Drugs: Statins in Chronic kidney disease stage 1 to 3",
+    "Target":"Myocardial Infraction"
+  },
+  {
+    "Source":"Dyslipidemia",
+    "Target":"Ischemic stroke"
+  },
+  {
+    "Source":"Dyslipidemia",
+    "Target":"Cancer"
+  },
+  {
+    "Source":"Dyslipidemia",
+    "Target":"Ischemic heart disease"
+  },
+  {
+    "Source":"Dyslipidemia",
+    "Target":"Heart failure"
+  },
+  {
+    "Source":"Dyslipidemia",
+    "Target":"Peripheral arterial disease"
+  },
+  {
+    "Source":"Hyperkalemia AND Chronic kidney disease",
+    "Target":"Death"
+  },
+  {
+    "Source":"Exercise AND Chronic kidney disease",
+    "Target":"Systolic Blood Pressure"
+  },
+  {
+    "Source":"Hypertension",
+    "Target":"Death: cardiovascular"
+  },
+  {
+    "Source":"Hypertension",
+    "Target":"Chronic kidney disease"
+  },
+  {
+    "Source":"Hypertension",
+    "Target":"Death: cardiovascular"
+  },
+  {
+    "Source":"Hypertension",
+    "Target":"Heart failure"
+  },
+  {
+    "Source":"Hypertension",
+    "Target":"Peripheral arterial disease"
+  },
+  {
+    "Source":"Hyperuricemia",
+    "Target":"Stroke"
+  },
+  {
+    "Source":"Left ventricular hypertrophy",
+    "Target":"Acute myocardial infarction OR Ischemic stroke OR Heart failure OR Death: cardiovascular"
+  },
+  {
+    "Source":"Left ventricular hypertrophy",
+    "Target":"Death: cardiovascular"
+  },
+  {
+    "Source":"Left ventricular hypertrophy",
+    "Target":"Heart failure"
+  },
+  {
+    "Source":"Left ventricular hypertrophy",
+    "Target":"Hypertension"
+  },
+  {
+    "Source":"Left ventricular hypertrophy",
+    "Target":"Stroke"
+  },
+  {
+    "Source":"Ischemic heart disease: family history",
+    "Target":"Ischemic heart disease"
+  },
+  {
+    "Source":"Ischemic heart disease: family history ",
+    "Target":"Stroke"
+  },
+  {
+    "Source":"Obesity: central",
+    "Target":"Acute myocardial infarction OR Old myocardial infarction"
+  },
+  {
+    "Source":"Obesity: central",
+    "Target":"Diabetes"
+  },
+  {
+    "Source":"Obesity: central",
+    "Target":"Dyslipidemia: HDL cholesterol serum concentration"
+  },
+  {
+    "Source":"Obesity: central",
+    "Target":"Dyslipidemia: Triclycerides serum concentration"
+  },
+  {
+    "Source":"Obesity: central",
+    "Target":"Hypertension"
+  },
+  {
+    "Source":"Obesity",
+    "Target":"Asthma"
+  },
+  {
+    "Source":"Obesity",
+    "Target":"Atrial fibrillation"
+  },
+  {
+    "Source":"Obesity",
+    "Target":"Cancer: colorectal cancer"
+  },
+  {
+    "Source":"Obesity",
+    "Target":"Cancer: gastric cardiac cancer"
+  },
+  {
+    "Source":"Obesity",
+    "Target":"Cancer: pancreatic cancer"
+  },
+  {
+    "Source":"Obesity",
+    "Target":"Ischemic heart disease"
+  },
+  {
+    "Source":"Obesity",
+    "Target":"Death: cardiovascular"
+  },
+  {
+    "Source":"Obesity",
+    "Target":"Diabetes"
+  },
+  {
+    "Source":"Obesity",
+    "Target":"Cholelithiasis"
+  },
+  {
+    "Source":"Obesity",
+    "Target":"Heart failure"
+  },
+  {
+    "Source":"Obesity",
+    "Target":"Osteoarthritis"
+  },
+  {
+    "Source":"Obesity",
+    "Target":"Stroke"
+  },
+  {
+    "Source":"Obstructive sleep apnoea",
+    "Target":"Death: cardiovascular"
+  },
+  {
+    "Source":"Obstructive sleep apnoea",
+    "Target":"Diabetes"
+  },
+  {
+    "Source":"Obstructive sleep apnoea",
+    "Target":"Hypertension"
+  },
+  {
+    "Source":"Obstructive sleep apnoea",
+    "Target":"Ischemic heart disease"
+  },
+  {
+    "Source":"Obstructive sleep apnoea",
+    "Target":"Stroke"
+  },
+  {
+    "Source":"Physical activity AND Chronic kidney disease",
+    "Target":"Death"
+  },
+  {
+    "Source":"Physical Activity",
+    "Target":"Ischemic heart disease"
+  },
+  {
+    "Source":"Physical activity",
+    "Target":"Stroke"
+  },
+  {
+    "Source":"Physical Activity",
+    "Target":"Diabetes"
+  },
+  {
+    "Source":"Smoking",
+    "Target":"Albuminuria"
+  },
+  {
+    "Source":"Smoking",
+    "Target":"Death: cardiovascular"
+  },
+  {
+    "Source":"Smoking",
+    "Target":"Chronic kidney disease"
+  },
+  {
+    "Source":"Smoking",
+    "Target":"Ischemic heart disease"
+  },
+  {
+    "Source":"Smoking",
+    "Target":"Peripheral Arterial Disease"
+  },
+  {
+    "Source":"Smoking",
+    "Target":"Stroke"
+  }
+]

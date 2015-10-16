@@ -434,7 +434,7 @@ module.exports = function (grunt) {
       deploy:{
         options: {
             remote: 'production',
-            branch: 'master'
+            branch: 'deploy'
           }
       },
       stage:{
@@ -473,8 +473,8 @@ module.exports = function (grunt) {
         }
       },
       dist: [
-        'imagemin',
-        'svgmin'
+        // 'imagemin',
+        // 'svgmin'
       ]
     },
 

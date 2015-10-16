@@ -1,7 +1,8 @@
 # CHANGELOG v0.4.10
 
-2015-08-01
+2015-10-16
 
+- * b0813c6 - 2015-08-01: CLI: update static dependencies 
 - * 62e76ba - 2015-08-01: new stuff 
 - * 53efa7e - 2015-08-01: CLI: without css minified 
 - * 75f4f80 - 2015-08-01: new 

@@ -1,0 +1,93 @@
+Source,Target
+Acute kidney injury,Chronic kidney disease
+Acute kidney injury,Death
+Age,Ischemic heart disease
+Age,Peripheral arterial disease
+Age AND Atrial fibrillation,Stroke
+Age AND Ischemic heart disease,Death due to cardiovascular disease
+Age AND Ischemic heart disease,Stroke
+Age AND Heart failure,Stroke
+Age AND Hypertension,Stroke
+Anemia AND Acute myocardial infarction,Death
+Ischemic heart disease OR stroke,Peripheral vascular disease
+Chronic kidney disease,Ischemic heart disease OR Heart failure OR  Stroke OR Peripheral arterial disease
+Chronic kidney disease,Death
+Chronic kidney disease,Death:  all cause
+Chronic kidney disease,Hospitalization
+Chronic kidney disease,Peripheral arterial disease
+Chronic kidney disease AND (Hypertension OR Heart failure) ,Hyperkalemia
+Chronic obstructive pulmonary disease,Death: cardiovascular
+Ischemic heart disease AND Chronic kidney disease,Death
+Depression,Stroke
+Depression,Ischemic heart disease
+Diabetes,Ischemic heart disease
+Diabetes,Ischemic heart disease OR Stroke
+Diabetes,Death: due to cardiovascular disease
+Diabetes,Peripheral vascular disease
+Diabetes: disease control,Ischemic heart disease
+Diabetes: disease control,Ischemic heart disease OR Stroke
+Diabetes: disease control,Heart failure
+Diabetic nephropathy,Acute myocardial infarction OR Ischemic stroke
+Drugs: _-blockers,Diabetes
+Drugs: contrast agents: coronary angiography,Acute kidney injury
+Drugs: diuretics,Diabetes
+Drugs: renin-angiotensin system dual blockade (any),Hyperkalemia
+Drugs: renin-angiotensin system dual blockade (any),Hypotension
+Drugs: renin-angiotensin system dual blockade (any) AND Heart failure,Acute kidney injury
+Drugs: statins AND Chronic kidney disease stage 1 to 3,Chronic kidney disease = stage 5
+Drugs: statins,Diabetes
+Drugs: statins AND Chronic kidney disease stage 1 to 3,Stroke
+Drugs: statins AND  Chronic kidney disease stage 1 to 3,Death
+Drugs: Statins in Chronic kidney disease stage 1 to 3,Myocardial Infraction
+Dyslipidemia,Ischemic stroke
+Dyslipidemia,Cancer
+Dyslipidemia,Ischemic heart disease
+Dyslipidemia,Heart failure
+Dyslipidemia,Peripheral arterial disease
+Hyperkalemia AND Chronic kidney disease,Death
+Exercise AND Chronic kidney disease,Systolic Blood Pressure
+Hypertension,Death: cardiovascular
+Hypertension,Chronic kidney disease
+Hypertension,Death: cardiovascular
+Hypertension,Heart failure
+Hypertension,Peripheral arterial disease
+Hyperuricemia,Stroke
+Left ventricular hypertrophy,Acute myocardial infarction OR Ischemic stroke OR Heart failure OR Death: cardiovascular
+Left ventricular hypertrophy,Death: cardiovascular
+Left ventricular hypertrophy,Heart failure
+Left ventricular hypertrophy,Hypertension
+Left ventricular hypertrophy,Stroke
+Ischemic heart disease: family history,Ischemic heart disease
+Ischemic heart disease: family history ,Stroke
+Obesity: central,Acute myocardial infarction OR Old myocardial infarction
+Obesity: central,Diabetes
+Obesity: central,Dyslipidemia: HDL cholesterol serum concentration
+Obesity: central,Dyslipidemia: Triclycerides serum concentration
+Obesity: central,Hypertension
+Obesity,Asthma
+Obesity,Atrial fibrillation
+Obesity,Cancer: colorectal cancer
+Obesity,Cancer: gastric cardiac cancer
+Obesity,Cancer: pancreatic cancer
+Obesity,Ischemic heart disease
+Obesity,Death: cardiovascular
+Obesity,Diabetes
+Obesity,Cholelithiasis
+Obesity,Heart failure
+Obesity,Osteoarthritis
+Obesity,Stroke
+Obstructive sleep apnoea,Death: cardiovascular
+Obstructive sleep apnoea,Diabetes
+Obstructive sleep apnoea,Hypertension
+Obstructive sleep apnoea,Ischemic heart disease
+Obstructive sleep apnoea,Stroke
+Physical activity AND Chronic kidney disease,Death
+Physical Activity,Ischemic heart disease
+Physical activity,Stroke
+Physical Activity,Diabetes
+Smoking,Albuminuria
+Smoking,Death: cardiovascular
+Smoking,Chronic kidney disease
+Smoking,Ischemic heart disease
+Smoking,Peripheral Arterial Disease
+Smoking,Stroke
