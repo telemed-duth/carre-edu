@@ -2,6 +2,7 @@
 
 2015-10-16
 
+- * d35b24d - 2015-10-16: add dist to deploy 
 - * b0813c6 - 2015-08-01: CLI: update static dependencies 
 - * 62e76ba - 2015-08-01: new stuff 
 - * 53efa7e - 2015-08-01: CLI: without css minified 
