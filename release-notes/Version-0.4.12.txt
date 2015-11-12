@@ -2,6 +2,7 @@
 
 2015-11-12
 
+- * 6173ecf - 2015-11-12: CLI: bump node version and force push for dokku 
 - * 0cfa8be - 2015-11-12: CLI: bump bootstrap version to 3.2.x 
 - * b0813c6 - 2015-08-01: CLI: update static dependencies 
 - * 62e76ba - 2015-08-01: new stuff 

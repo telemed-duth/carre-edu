@@ -1,10 +1,10 @@
 node_modules
 public
 report
+*.log
 .tmp
 .idea
 client/bower_components
 dist
 /server/config/local.env.js
 .c9
-/newrelic_agent.log
