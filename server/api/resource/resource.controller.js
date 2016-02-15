@@ -75,7 +75,7 @@ exports.EndPointquery = function(req, res) {
 // api request
 exports.query = function(req, res) {
 
-  var endpoint='https://carre.kmi.open.ac.uk:443/ws/';
+  var endpoint='https://carre.kmi.open.ac.uk/ws/';
   var options={
     method:'POST',
     url:endpoint+'query',
@@ -85,8 +85,8 @@ exports.query = function(req, res) {
   
   request(options,function (error, response, body) {
     if (!error && response.statusCode === 200) {
-      console.log('REQ: '+req.body.sparql);
-      console.log('RES: '+body);
+      // console.log('REQ: '+req.body.sparql);
+      // console.log('RES: '+body);
       return res.status(200).json({data:body});
     } 
     else res.status(500).json({data:error});    

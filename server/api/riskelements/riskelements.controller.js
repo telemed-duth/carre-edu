@@ -20,7 +20,7 @@ exports.riskElements = function(req, res) {
   //  sparql query  to get the riskelements
 
   var query=
-  "SELECT DISTINCT ?uri ?title WHERE {" +
+  "SELECT DISTINCT ?uri ?title FROM <http://carre.kmi.open.ac.uk/riskdata> WHERE {" +
   " { ?uri <http://carre.kmi.open.ac.uk/ontology/risk.owl#has_risk_element_name> ?title }" +
   " UNION { ?uri <http://carre.kmi.open.ac.uk/ontology/risk.owl#risk_element_name> ?title }" + 
   " } LIMIT 500";

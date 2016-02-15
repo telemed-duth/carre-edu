@@ -28,7 +28,7 @@ angular.module('edumaterialApp')
       console.log('Rated articles fetching');
       var exQuery=
       'SELECT ?title (AVG(?ratingval) as ?ratingavg) '+
-      'WHERE {';
+      'FROM <http://carre.kmi.open.ac.uk/public> WHERE {';
       
           for (var i = 0; i < articles.length; i++) {
             //add wikipedia url
