@@ -38,8 +38,6 @@ exports.setup = function (User, config) {
   
 passport.use(new TokenStrategy(strategyOptions,
     function (req,username, token, done) {
-      
-      
       User.findOne({
           'name': username
         },

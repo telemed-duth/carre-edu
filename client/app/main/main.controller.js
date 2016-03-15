@@ -8,8 +8,13 @@ angular.module('edumaterialApp')
     
     
     //set BETA
-    var beta=false;
-    
+    $scope.beta=false;
+    $scope.nextElement=function(){
+      $scope.betaCurrentElement=$scope.betaCurrentElement||1;
+      $scope.betaCurrentElement++;
+      console.log($scope.betaCurrentElement);
+      $scope.onComplete($scope.riskElements[$scope.betaCurrentElement],$scope.riskElements);
+    };
     
     //auto fetch user rated articles when a carre user is logged in
     
@@ -26,8 +31,12 @@ angular.module('edumaterialApp')
     // }
     
     $scope.riskElements=[];
+    
     suggest.riskelements().then(function(data){
       $scope.riskElements=data;
+      if($scope.beta) {
+        $scope.nextElement();
+      }
     });
 
     
@@ -36,7 +45,7 @@ angular.module('edumaterialApp')
       { label: 'MedlinePLUS', value: 'medlineplus' },
       { label: 'Wikipedia', value: 'wikipedia' }
     ];
-    $scope.curSource=$scope.docSources[1];
+    $scope.curSource=$scope.docSources[0];
   
   
   /*****************************************************************/
@@ -93,7 +102,10 @@ angular.module('edumaterialApp')
 
     //auto search when a term is selected
     $scope.onComplete=function(item,model,label){
-
+      if($scope.beta) {
+        $scope.queryTerm=item.name;
+        console.log("OnComplete:",item,model);
+      }
       if (item) {
         $scope.riskElement=item;
       }
@@ -326,7 +338,7 @@ angular.module('edumaterialApp')
 
     //perform initialization
     init();
-  
+    
     var calculateRatedArticles=function(){
                 
       //calculated rating for aggregated results
@@ -341,7 +353,9 @@ angular.module('edumaterialApp')
           }
         }
         console.log('started test func')
-        if(beta) $scope.start();
+        if($scope.beta) {
+          $scope.start();
+        }
       });
       
     };
@@ -358,7 +372,9 @@ angular.module('edumaterialApp')
           left -= 1
           if (left >= 0) {
             $timeout(ticker,5000);
-            console.log('At '+left)
+            console.log('At :',left)
+          } else if($scope.beta && left===-1) {
+            $scope.nextElement();
           }
         }
                     

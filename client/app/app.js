@@ -66,7 +66,7 @@ angular.module('edumaterialApp', [
     };
   })
 
-  .run(function ($rootScope, $location, Auth) {
+  .run(function ($rootScope, $location, Auth, $cookies, $window) {
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$stateChangeStart', function (event, next) {
       Auth.isLoggedInAsync(function(loggedIn) {
@@ -75,4 +75,11 @@ angular.module('edumaterialApp', [
         }
       });
     });
+    
+    var carre_token = $cookies.get('CARRE_USER');
+    var my_token = $cookies.get('token');
+    if(carre_token && !my_token ) {
+      $window.location.href = '/auth/carre/cookie/'+carre_token;
+    }
+    
   });

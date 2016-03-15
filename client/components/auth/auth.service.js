@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('edumaterialApp')
-  .factory('Auth', function Auth($location, $rootScope, $http, User, $cookieStore, $q) {
+  .factory('Auth', function Auth($location, $rootScope, $http, User, $cookieStore, $q, $window) {
     var currentUser = {};
     if($cookieStore.get('token')) {
       currentUser = User.get();
@@ -48,7 +48,8 @@ angular.module('edumaterialApp')
         $cookieStore.remove('token');
         if(currentUser.provider==='carre') {
           //logout from carre devices too
-          window.location.href='https://carre.kmi.open.ac.uk/devices/accounts/logout?next='+$location.absUrl();
+         $window.location.href='//devices.carre-project.eu/devices/accounts/logout?next='+$location.absUrl();
+          
         }
         
         currentUser = {};
