@@ -2,6 +2,7 @@
 
 2016-03-15
 
+- * 0446a07 - 2016-03-15: CLI: update CARRE authentication cookie 
 - * 74342c3 - 2016-02-15: CLI: Change default graph for educational material 
 - * f9b7578 - 2015-11-12: CLI: deploy to own mini PaaS 
 - * 6173ecf - 2015-11-12: CLI: bump node version and force push for dokku 
