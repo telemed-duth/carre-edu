@@ -82,4 +82,17 @@ angular.module('edumaterialApp', [
       $window.location.href = '/auth/carre/cookie/'+carre_token;
     }
     
+    
+    // handle language
+    if($location.search().lang) {
+      $rootScope.LANG = $location.search().lang;
+    }
+    
+    
+    // handle embedded
+    if($location.search().embed) {
+      $rootScope.isEmbedded = true;
+    }
+    
+    
   });

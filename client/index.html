@@ -43,11 +43,11 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-      <div ng-include="'components/navbar/navbar.html'"></div>
+      <div ng-hide="isEmbedded" ng-include="'components/navbar/navbar.html'"></div>
       
       <div ui-view=""></div>
             
-      <div ng-include="'components/footer/footer.html'"></div>
+      <div ng-hide="isEmbedded" ng-include="'components/footer/footer.html'"></div>
 
 
     <!--[if lt IE 9]>

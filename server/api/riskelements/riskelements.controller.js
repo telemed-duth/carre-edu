@@ -16,14 +16,14 @@ exports.riskElements = function(req, res) {
   // console.log(ext_data.riskelements());
   //return res.status(200).json(ext_data.riskelements());
 
-
+  var lang = req.params.lang || "en";
   //  sparql query  to get the riskelements
 
   var query=
   "SELECT DISTINCT ?uri ?title FROM <http://carre.kmi.open.ac.uk/riskdata> WHERE {" +
   " { ?uri <http://carre.kmi.open.ac.uk/ontology/risk.owl#has_risk_element_name> ?title }" +
   " UNION { ?uri <http://carre.kmi.open.ac.uk/ontology/risk.owl#risk_element_name> ?title }" + 
-  " } LIMIT 500";
+  " FILTER (lang(?title)='"+lang+"')  } LIMIT 500";
   var results=[];
   var client = new SparqlClient(endpoint);
   //console.log("Query to " + endpoint);

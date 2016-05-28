@@ -88,11 +88,6 @@ angular.module('edumaterialApp')
       
     };
     
-    // check if it is embeded
-    if($location.search().embed) {
-      $scope.isEmbedded = true;
-    }
-    
     
 
   });
