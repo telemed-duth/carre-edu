@@ -1,6 +1,6 @@
-# CHANGELOG v0.5.0
+# CHANGELOG v0.6.0
 
-2016-05-28
+2016-06-10
 
 - * 317b28c - 2016-05-28:  update language 
 - * 8b4cb8e - 2016-05-27: CLI: add embedable version fix 

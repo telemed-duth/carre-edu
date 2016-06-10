@@ -8,8 +8,14 @@ angular.module('edumaterialApp')
         templateUrl: 'app/main/main.html',
         controller: 'MainCtrl'
       })
-      .state('main.preview', {
-        url: '/article/{doc.title}',
-        templateUrl: 'app/main/article_view.html'
-      });
+      .state('search', {
+        url: '/search/:searchquery?',
+        templateUrl: 'app/main/main.html',
+        controller: 'MainCtrl'
+      })
+      .state('article', {
+        url: '/article/:eduid?',
+        templateUrl: 'app/main/main.html',
+        controller: 'MainCtrl'
+      })
   });

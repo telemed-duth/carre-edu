@@ -59,8 +59,25 @@ angular.module('edumaterialApp')
 
     }
     
+
+    function getEducationalObject(id){
+      console.log('fecth object by id');
+      //check if this url already exists
+      var eduid='http://carre.kmi.open.ac.uk/public/educational/'+id;
+      return rdf.find(
+        [ 
+          [eduid,rdf.pre.edu+'#url','?url'],
+          [eduid,rdf.pre.edu+'#title','?title'],
+          [eduid,rdf.pre.edu+'#snippet','?snippet'],
+        ],
+        ['?url ?title ?snippet'],
+        ['LIMIT 100']
+      );
+          
+
+    }
+    
     function processArticle(article){
-      
       curArticle=article;
       //check if this url already exists
       return rdf.find(
@@ -152,6 +169,7 @@ angular.module('edumaterialApp')
 
 
     return {
+      getById: getEducationalObject,
       getUserRated:getUserRatedArticles,
       getRated:getRatedArticles,
       userRated:function(){return userRatedArticles},

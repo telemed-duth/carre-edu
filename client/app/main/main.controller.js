@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('edumaterialApp')
-  .controller('MainCtrl', function ($scope, $http, Auth ,$location,suggest, $sce,main,$timeout, medlineplus, $window,article,rating) {
+  .controller('MainCtrl', function ($scope, $http, Auth ,$location,$state,suggest, $sce,main,$timeout, medlineplus, $window,article,rating) {
     
     $scope.isLoggedIn=Auth.isLoggedIn;
     $scope.user=Auth.user=Auth.getCurrentUser();
@@ -74,6 +74,27 @@ angular.module('edumaterialApp')
       //load from state or instantiate
       $scope.total = 0;
       $scope.results = [];
+      
+      
+      if($state.params.searchquery) {
+        //search
+        $scope.queryTerm = $state.params.searchquery;
+        $timeout(function(){$scope.searchQuery();},50);
+      }
+      
+      if($state.params.eduid) {
+        //search
+        article.getById($state.params.eduid).then(function(res){
+          console.debug(res);
+          $scope.results = [{
+            title:res.data.data[0].title.value,
+            url:res.data.data[0].url.value,
+            snippet:res.data.data[0].snippet.value,
+          }]
+          calculateRatedArticles(true);
+        })
+      }
+      
 
       //check if global search term is present
       if (Auth.searchQuery) {
@@ -115,7 +136,7 @@ angular.module('edumaterialApp')
 
     //fetch whole article and rate it
     $scope.toggleArticle = function(i) {
-
+      
       if (i>-1) {
         $scope.showArticle = true;
         $scope.frameHeight=$window.innerHeight-50;
@@ -339,7 +360,7 @@ angular.module('edumaterialApp')
     //perform initialization
     init();
     
-    var calculateRatedArticles=function(){
+    var calculateRatedArticles=function(single){
                 
       //calculated rating for aggregated results
       article.getRated($scope.results).then(function(data) {
@@ -352,6 +373,9 @@ angular.module('edumaterialApp')
             }
           }
         }
+          
+        if(single) $timeout(function(){ $scope.toggleArticle(0); },100);
+        
         console.log('started test func')
         if($scope.beta) {
           $scope.start();
