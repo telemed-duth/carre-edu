@@ -3,8 +3,8 @@ FROM mhart/alpine-node:4
 WORKDIR /src
 COPY . ./
 
-ENV PORT 5000
-ENV CARRE_ENTRY_SYSTEM_LANGUAGE en
+ENV PORT 80
+ENV NODE_ENV production
 
-EXPOSE 5000
+EXPOSE 80
 CMD ["npm", "start"]
