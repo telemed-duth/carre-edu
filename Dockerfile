@@ -1,0 +1,10 @@
+FROM mhart/alpine-node:4
+
+WORKDIR /src
+COPY . ./
+
+ENV PORT 5000
+ENV CARRE_ENTRY_SYSTEM_LANGUAGE en
+
+EXPOSE 5000
+CMD ["npm", "start"]

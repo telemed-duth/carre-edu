@@ -1,9 +1,9 @@
 #!/bin/bash          
 echo Pushing to production at athina.med.duth.gr
-grunt build
-cd dist;git init
+cd dist
+git init
 git remote add production dokku@athina.med.duth.gr:carre-educational-aggregator
-git config --global user.email "portokallidis@gmail.com"
-git config --global user.name "Nick Portokallidis"
+git add .
+git commit -am"deploy new version"
+git push -f production master
 cd ..
-grunt buildcontrol:deploy

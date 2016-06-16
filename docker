@@ -1,0 +1,9 @@
+#!/bin/bash
+echo "Update docker image"
+cd dist
+git init
+git remote add docker git@github.com:carre-project/carre-edu-docker.git
+git add .
+git commit -am"docker image update"
+git push -f docker master
+cd ..

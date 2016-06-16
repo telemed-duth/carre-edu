@@ -1,7 +1,8 @@
 # CHANGELOG v0.6.0
 
-2016-06-10
+2016-06-16
 
+- * f859f92 - 2016-06-10: CLI: add article and search route 
 - * 317b28c - 2016-05-28:  update language 
 - * 8b4cb8e - 2016-05-27: CLI: add embedable version fix 
 - * 7ca6f68 - 2016-05-27: add embed 

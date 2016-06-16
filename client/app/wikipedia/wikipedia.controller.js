@@ -73,7 +73,7 @@ angular.module('edumaterialApp')
         
         // animation & double scrollbar fix
         $timeout(function() {
-          $scope.doc.iframe = htmlSafe('http://en.wikipedia.org/wiki/' + encodeURI(title).split('%20').join('_'), true);
+          $scope.doc.iframe = htmlSafe('http://'+Auth.language+'.wikipedia.org/wiki/' + encodeURI(title).split('%20').join('_'), true);
           document.querySelector('body').style.overflowY = $scope.showArticle ? 'hidden' : 'visible';
         }, 900);
 

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('edumaterialApp')
-  .factory('suggest', function ($http) {
+  .factory('suggest', function ($http,Auth) {
     // Service logic
     var getSuggestions=function(val){
       if(val.length>2) {
@@ -12,7 +12,7 @@ angular.module('edumaterialApp')
     };    
     
     var sparqlRiskElements=function(){
-        return $http.get('/api/riskelements', {cache:true,ignoreLoadingBar: true}).then(function(response){
+        return $http.get('/api/riskelements/'+Auth.language, {cache:true,ignoreLoadingBar: true}).then(function(response){
           if(response.data.length>1) return response.data; else return [];
         });
     };

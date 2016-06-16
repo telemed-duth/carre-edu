@@ -1,0 +1,6 @@
+#!/bin/bash
+echo "Build release"
+grunt build
+cd dist
+npm install --production
+NODE_ENV=production node server/app.js && cd ..

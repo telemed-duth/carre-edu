@@ -1,7 +1,5 @@
 'use strict';
 
-var _ = require('lodash');
-var Bioportal = require('./bioportal.model');
 var request = require('request');
 
 
@@ -77,59 +75,3 @@ exports.getOntologies = function(req, res) {
     } else return res.status(500).json({'message':'error','data':error});
   });
 };
-
-
-// Get list of bioportals
-exports.index = function(req, res) {
-  Bioportal.find(function (err, bioportals) {
-    if(err) { return handleError(res, err); }
-    return  res.status(200).json(bioportals);
-  });
-};
-
-// Get a single bioportal
-exports.show = function(req, res) {
-  Bioportal.findById(req.params.id, function (err, bioportal) {
-    if(err) { return handleError(res, err); }
-    if(!bioportal) { return res.send(404); }
-    return res.json(bioportal);
-  });
-};
-
-// Creates a new bioportal in the DB.
-exports.create = function(req, res) {
-  Bioportal.create(req.body, function(err, bioportal) {
-    if(err) { return handleError(res, err); }
-    return res.status(201).json(bioportal);
-  });
-};
-
-// Updates an existing bioportal in the DB.
-exports.update = function(req, res) {
-  if(req.body._id) { delete req.body._id; }
-  Bioportal.findById(req.params.id, function (err, bioportal) {
-    if (err) { return handleError(res, err); }
-    if(!bioportal) { return res.send(404); }
-    var updated = _.merge(bioportal, req.body);
-    updated.save(function (err) {
-      if (err) { return handleError(res, err); }
-      return res.json(200, bioportal);
-    });
-  });
-};
-
-// Deletes a bioportal from the DB.
-exports.destroy = function(req, res) {
-  Bioportal.findById(req.params.id, function (err, bioportal) {
-    if(err) { return handleError(res, err); }
-    if(!bioportal) { return res.send(404); }
-    bioportal.remove(function(err) {
-      if(err) { return handleError(res, err); }
-      return res.send(204);
-    });
-  });
-};
-
-function handleError(res, err) {
-  return res.send(500, err);
-}

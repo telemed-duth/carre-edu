@@ -11,7 +11,7 @@ angular.module('edumaterialApp')
         //Common Parameters
         'db':'healthTopics', // healthTopics ,healthTopicsSpanish 
         'rettype':'brief', // Retrieval type. Default:brief ,topic, all 
-        'retmax':20, //count results per page
+        'retmax':10, //count results per page
         'tool': 'carre-project-educational-aggregator', //
         'email': 'portokallidis@gmail.com', // Email address. If you choose to provide an email address
         //'server': null, // Name of the server with the file referenced by the file parameter. This is required when the file parameter is being used.
@@ -19,7 +19,7 @@ angular.module('edumaterialApp')
       };
       
       //search api implementation
-      function search(retstart,query) {
+      function search(retstart,query,limit) {
         
         //field searching to implement on client side
         //title ,alt-title,mesh,full-summary,group
@@ -30,7 +30,7 @@ angular.module('edumaterialApp')
           '&retstart='+(retstart||0)+
           '&db='+settings.db+
           '&rettype='+settings.rettype+
-          '&retmax='+settings.retmax+
+          '&retmax='+(limit||settings.retmax)+
           '&tool='+settings.tool+
           '&email='+settings.email;
           

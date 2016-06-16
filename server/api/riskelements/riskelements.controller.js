@@ -1,9 +1,6 @@
 'use strict';
 
-var _ = require('lodash');
-var Riskelements = require('./riskelements.model');
 var SparqlClient = require('sparql-client');
-var util = require('util');
 var endpoint = 'http://carre.kmi.open.ac.uk:8890/sparql';
 // var ext_data=require('../../ext_data/riskelements');
 
@@ -63,58 +60,3 @@ exports.riskElements = function(req, res) {
 
 
 };
-
-// Get list of riskelementss
-exports.index = function(req, res) {
-  Riskelements.find(function (err, riskelementss) {
-    if(err) { return handleError(res, err); }
-    return res.json(200, riskelementss);
-  });
-};
-
-// Get a single riskelements
-exports.show = function(req, res) {
-  Riskelements.findById(req.params.id, function (err, riskelements) {
-    if(err) { return handleError(res, err); }
-    if(!riskelements) { return res.send(404); }
-    return res.json(riskelements);
-  });
-};
-
-// Creates a new riskelements in the DB.
-exports.create = function(req, res) {
-  Riskelements.create(req.body, function(err, riskelements) {
-    if(err) { return handleError(res, err); }
-    return res.json(201, riskelements);
-  });
-};
-
-// Updates an existing riskelements in the DB.
-exports.update = function(req, res) {
-  if(req.body._id) { delete req.body._id; }
-  Riskelements.findById(req.params.id, function (err, riskelements) {
-    if (err) { return handleError(res, err); }
-    if(!riskelements) { return res.send(404); }
-    var updated = _.merge(riskelements, req.body);
-    updated.save(function (err) {
-      if (err) { return handleError(res, err); }
-      return res.json(200, riskelements);
-    });
-  });
-};
-
-// Deletes a riskelements from the DB.
-exports.destroy = function(req, res) {
-  Riskelements.findById(req.params.id, function (err, riskelements) {
-    if(err) { return handleError(res, err); }
-    if(!riskelements) { return res.send(404); }
-    riskelements.remove(function(err) {
-      if(err) { return handleError(res, err); }
-      return res.send(204);
-    });
-  });
-};
-
-function handleError(res, err) {
-  return res.send(500, err);
-}

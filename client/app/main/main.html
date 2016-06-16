@@ -1,8 +1,8 @@
 <header class="hero-unit" id="banner">
-  <div ng-hide="isLoggedIn()" class="container">
-    <h2>CARRE Educational Resources</h2>
-    <p><a style="color:white" href="/login">Login</a> to enable rating</p>
-  </div>
+  <!--<div ng-hide="isLoggedIn()" class="container">-->
+  <!--  <h2>CARRE Educational Resources</h2>-->
+  <!--  <p><a style="color:white" href="/login">Login</a> to enable rating</p>-->
+  <!--</div>-->
   
   <div class="container">
     	<form ng-submit="searchQuery()">
@@ -48,38 +48,36 @@
 <!--<input style="z-index: inherit;" type="text" ng-model="queryTerm" placeholder="Type terms" typeahead="term for term in getSuggestions($viewValue)" typeahead-loading="loading" class="form-control" typeahead-on-select="onComplete($label)">-->
 
 
-<div class="container results">
+<div class="results">
   
+  <div class="col-md-10 col-md-offset-1 col-sm-12">
   
-  
-  <div>
-    <!--top pagination-->
-    <div style="padding-left:0" class="col-sm-8 pull-right">
-      <pagination ng-show="total>itemsPerPage" items-per-page="itemsPerPage" 
-            style="z-index: inherit; float:right; margin:auto;" total-items="total" ng-model="currentPage" 
-            ng-change="searchQuery(true)" max-size="3" rotate="false"></pagination>
+    <div class="row">
+      <!--top pagination-->
+      <div class="col-sm-8 pull-right">
+        <pagination ng-show="total>itemsPerPage" items-per-page="itemsPerPage" 
+              style="z-index: inherit; float:right; margin:auto;" total-items="total" ng-model="currentPage" 
+              ng-change="searchQuery(true)" max-size="3" rotate="false"></pagination>
+      </div>
+      
+      <div class="col-sm-4 pull-left">
+        <!--total results-->
+        <h3 ng-show="total>0"><strong class="text-danger">{{total}}</strong> results</h3>
+      </div>
     </div>
-    
-    <div class="col-sm-4 pull-left">
-      <!--total results-->
-      <h3 ng-show="total>0"><strong class="text-danger">{{total}}</strong> results</h3>
-    </div>
-  </div>
-
-        
-    
-
-    <!-- Suggestions -->
-    <!--<div ng-show="suggestion">-->
-    <!--    <h4>Did you mean <a href="" ng-click="suggest(suggestion)">{{suggestion}}</a>?</h4>-->
-    <!--    <hr>-->
-    <!--</div>-->
-
-    <!-- no results -->
-    <div class="alert alert-warning" ng-hide="total>0">No results...</div>
-
-    <section class="col-xs-12 col-sm-6 col-md-12">
-        
+  
+          
+    <div class="row">
+      <div class="col-xs-12">
+      <!-- Suggestions -->
+      <!--<div ng-show="suggestion">-->
+      <!--    <h4>Did you mean <a href="" ng-click="suggest(suggestion)">{{suggestion}}</a>?</h4>-->
+      <!--    <hr>-->
+      <!--</div>-->
+  
+      <!-- no results -->
+      <div class="alert alert-warning" ng-hide="total>0||results.length>0">No results...</div>
+      
       <div class="list-group">
         <a href="" ng-click="toggleArticle($index)" class="list-group-item" ng-repeat="doc in results track by $index">
             
@@ -87,16 +85,11 @@
             <p class="list-group-item-text" ng-bind-html="doc.snippet"></p>
         </a>
       </div>
+      
+      </div>
+    </div
     
-    </section>
-    
-    <!--bottom pagination-->
-    <pagination ng-show="total>itemsPerPage" items-per-page="itemsPerPage" 
-          style="z-index: inherit; float:right; margin:auto;" total-items="total" ng-model="currentPage" 
-          ng-change="searchQuery(true)" max-size="3" rotate="false">
-    </pagination>
-        
-
+  </div>
 
 </div>
 
@@ -164,5 +157,5 @@
             <div class="bounce2"></div>
             <div class="bounce3"></div>
         </div>
-        <div style="height:100%" class="embed-responsive embed-responsive-4by3" ng-bind-html="doc.iframe"></div>
+        <div style="height:100%;left:7px" class="embed-responsive embed-responsive-4by3" ng-bind-html="doc.iframe"></div>
     </div>

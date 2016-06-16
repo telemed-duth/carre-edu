@@ -1,9 +1,6 @@
 'use strict';
 
-var _ = require('lodash');
-var Dbpedia = require('./dbpedia.model');
 var SparqlClient = require('sparql-client');
-var util = require('util');
 var endpoint = 'http://dbpedia.org/sparql';
 
 
@@ -94,60 +91,3 @@ exports.dbpediaQuery = function(req, res) {
 
 
 };
-
-
-
-// Get list of dbpedias
-exports.index = function(req, res) {
-  Dbpedia.find(function (err, dbpedias) {
-    if(err) { return handleError(res, err); }
-    return res.json(200, dbpedias);
-  });
-};
-
-// Get a single dbpedia
-exports.show = function(req, res) {
-  Dbpedia.findById(req.params.id, function (err, dbpedia) {
-    if(err) { return handleError(res, err); }
-    if(!dbpedia) { return res.send(404); }
-    return res.json(dbpedia);
-  });
-};
-
-// Creates a new dbpedia in the DB.
-exports.create = function(req, res) {
-  Dbpedia.create(req.body, function(err, dbpedia) {
-    if(err) { return handleError(res, err); }
-    return res.json(201, dbpedia);
-  });
-};
-
-// Updates an existing dbpedia in the DB.
-exports.update = function(req, res) {
-  if(req.body._id) { delete req.body._id; }
-  Dbpedia.findById(req.params.id, function (err, dbpedia) {
-    if (err) { return handleError(res, err); }
-    if(!dbpedia) { return res.send(404); }
-    var updated = _.merge(dbpedia, req.body);
-    updated.save(function (err) {
-      if (err) { return handleError(res, err); }
-      return res.json(200, dbpedia);
-    });
-  });
-};
-
-// Deletes a dbpedia from the DB.
-exports.destroy = function(req, res) {
-  Dbpedia.findById(req.params.id, function (err, dbpedia) {
-    if(err) { return handleError(res, err); }
-    if(!dbpedia) { return res.send(404); }
-    dbpedia.remove(function(err) {
-      if(err) { return handleError(res, err); }
-      return res.send(204);
-    });
-  });
-};
-
-function handleError(res, err) {
-  return res.send(500, err);
-}

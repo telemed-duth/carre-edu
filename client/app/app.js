@@ -4,7 +4,6 @@ angular.module('edumaterialApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'btford.socket-io',
   'ui.router',
   'ui.bootstrap',
   'angular-loading-bar',
@@ -84,8 +83,9 @@ angular.module('edumaterialApp', [
     
     
     // handle language
+    Auth.language = "en";
     if($location.search().lang) {
-      $rootScope.LANG = $location.search().lang;
+      Auth.language = $location.search().lang;
     }
     
     

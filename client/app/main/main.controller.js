@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('edumaterialApp')
-  .controller('MainCtrl', function ($scope, $http, Auth ,$location,$state,suggest, $sce,main,$timeout, medlineplus, $window,article,rating) {
+  .controller('MainCtrl', function ($scope, $http, Auth, $location, $state, suggest, $sce, main, $timeout, medlineplus, $window, article, rating) {
     
     $scope.isLoggedIn=Auth.isLoggedIn;
     $scope.user=Auth.user=Auth.getCurrentUser();
@@ -42,17 +42,17 @@ angular.module('edumaterialApp')
     
     
     $scope.docSources = [
-      { label: 'MedlinePLUS', value: 'medlineplus' },
       { label: 'Wikipedia', value: 'wikipedia' }
     ];
     $scope.curSource=$scope.docSources[0];
+    if(Auth.language==='en') $scope.docSources.push({ label: 'MedlinePLUS', value: 'medlineplus' });
   
   
   /*****************************************************************/
   
   
       //initialize setup vars
-    $scope.itemsPerPage = 20
+    $scope.itemsPerPage = 10;
     $scope.currentPage = 1;
     
     $scope.rating=[{
@@ -140,7 +140,7 @@ angular.module('edumaterialApp')
       if (i>-1) {
         $scope.showArticle = true;
         $scope.frameHeight=$window.innerHeight-50;
-        $scope.mobile=($window.innerWidth<700)?true:false; //set type to mobile if screen is less than 700px
+        $scope.mobile=true;//($window.innerWidth<700)?true:false; //set type to mobile if screen is less than 700px
         $scope.doc = $scope.results[i];
         $scope.doc.pos=i;
         $scope.doc.rating=$scope.doc.rating||[];
@@ -152,8 +152,6 @@ angular.module('edumaterialApp')
           $scope.doc.iframe = renderContent();
           document.querySelector('body').style.overflowY = $scope.showArticle ? 'hidden' : 'visible';
           }, 900);
-        
-
       }
       else {
         
@@ -190,7 +188,7 @@ angular.module('edumaterialApp')
         websource:$scope.curSource.value,
         source:plainText($scope.doc.organizationName||''),
         mesh:plainText($scope.doc.mesh||''),
-        lang:'English',
+        lang:Auth.language,
         altTitle:plainText($scope.doc.altTitle||''),
         categories:plainText($scope.doc.groupName||''),
         wordcount:$scope.doc.wordcount||'',
@@ -274,7 +272,7 @@ angular.module('edumaterialApp')
           
         case 'wikipedia':
           
-          $scope.doc.url='http://en.wikipedia.org/wiki/'+encodeURI($scope.doc.title).split('%20').join('_');
+          $scope.doc.url='http://'+Auth.language+'.wikipedia.org/wiki/'+encodeURI($scope.doc.title).split('%20').join('_');
           
           data = '<base target="_blank" /><iframe style="width:100%;height:'+$scope.frameHeight+'px;" class="embed-responsive-item" src="'+$scope.doc.url.replace('http://','https://')+($scope.mobile?'?printable=yes':'')+'"></iframe>';
 
@@ -312,7 +310,7 @@ angular.module('edumaterialApp')
     //Actual search function wrapper for my service
     var searchMedlinePlus=function() {
       //call the service
-      medlineplus.search(($scope.currentPage-1)*$scope.itemsPerPage,$scope.queryTerm).then(function(response){
+      medlineplus.search(($scope.currentPage-1)*$scope.itemsPerPage,$scope.queryTerm,$scope.itemsPerPage).then(function(response){
         
         if(!response.data.message) {
           $scope.results=response.data.list;
@@ -336,7 +334,7 @@ angular.module('edumaterialApp')
     //Actual search function wrapper for my service
     var searchWikiPedia=function() {
       //call the wikipedia 
-      $http.get('/api/wikipedia/search/' + encodeURI($scope.queryTerm) + '/' + ($scope.currentPage - 1) * $scope.itemsPerPage, {
+      $http.get('/api/wikipedia/search/' + encodeURI($scope.queryTerm) + '/' +$scope.itemsPerPage+ '/' + ($scope.currentPage - 1) * $scope.itemsPerPage+'/'+Auth.language, {
         cache: true
       }).then(function(response) {
         

@@ -1,7 +1,5 @@
 'use strict';
 
-var _ = require('lodash');
-var Medlineplus = require('./medlineplus.model');
 var parseString = require('xml2js').parseString;
 var request = require('request');
 
@@ -90,62 +88,3 @@ exports.medlineQuery = function(req, res) {
 
 
 
-
-
-//boilerplate
-
-
-// Get list of medlinepluss
-exports.index = function(req, res) {
-  Medlineplus.find(function (err, medlinepluss) {
-    if(err) { return handleError(res, err); }
-    return res.json(200, medlinepluss);
-  });
-};
-
-// Get a single medlineplus
-exports.show = function(req, res) {
-  Medlineplus.findById(req.params.id, function (err, medlineplus) {
-    if(err) { return handleError(res, err); }
-    if(!medlineplus) { return res.send(404); }
-    return res.json(medlineplus);
-  });
-};
-
-// Creates a new medlineplus in the DB.
-exports.create = function(req, res) {
-  Medlineplus.create(req.body, function(err, medlineplus) {
-    if(err) { return handleError(res, err); }
-    return res.json(201, medlineplus);
-  });
-};
-
-// Updates an existing medlineplus in the DB.
-exports.update = function(req, res) {
-  if(req.body._id) { delete req.body._id; }
-  Medlineplus.findById(req.params.id, function (err, medlineplus) {
-    if (err) { return handleError(res, err); }
-    if(!medlineplus) { return res.send(404); }
-    var updated = _.merge(medlineplus, req.body);
-    updated.save(function (err) {
-      if (err) { return handleError(res, err); }
-      return res.json(200, medlineplus);
-    });
-  });
-};
-
-// Deletes a medlineplus from the DB.
-exports.destroy = function(req, res) {
-  Medlineplus.findById(req.params.id, function (err, medlineplus) {
-    if(err) { return handleError(res, err); }
-    if(!medlineplus) { return res.send(404); }
-    medlineplus.remove(function(err) {
-      if(err) { return handleError(res, err); }
-      return res.send(204);
-    });
-  });
-};
-
-function handleError(res, err) {
-  return res.send(500, err);
-}

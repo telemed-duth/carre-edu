@@ -3,9 +3,6 @@
 # stop executing if any command exits with non zero value
 set -e
 
-echo "Running tests..."
-grunt test;
-
 echo "Fetching changes from repo..."
 git pull;
 
