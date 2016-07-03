@@ -19,7 +19,7 @@ angular.module('edumaterialApp')
         ],
         ['?id'],
         ['LIMIT 1']
-      ).success(function(results){
+      ).then(function(results){
         var rating={};
             rating.article_id=article.id;
             rating.rates=article.rating;
@@ -39,7 +39,7 @@ angular.module('edumaterialApp')
             return insertRating(rating);
           }
           // return rating.id;
-        }).error(function(err){
+        }).catch(function(err){
           console.log(err);
           return false;
         });
@@ -101,10 +101,10 @@ angular.module('edumaterialApp')
       }
     
       console.log(newtriples);
-      return rdf.modify(oldtriples,oldtriples,newtriples).success(function(results){
+      return rdf.modify(oldtriples,oldtriples,newtriples).then(function(results){
         
         console.log(results);
-      }).error(function(error){
+      }).catch(function(error){
         console.log('Error :')
         console.log(error);
       });
@@ -137,11 +137,11 @@ angular.module('edumaterialApp')
           ]);
       }
       
-      return rdf.insert(triples).success(function(results){
+      return rdf.insert(triples).then(function(results){
         
         
         console.log(results);
-      }).error(function(error){
+      }).catch(function(error){
         console.log('Error :')
         console.log(error);
       });

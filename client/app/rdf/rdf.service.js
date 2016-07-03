@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('edumaterialApp')
-  .service('rdf', function ($http) {
+  .service('rdf', function ($http,$q) {
 
     
     
@@ -82,7 +82,9 @@ angular.module('edumaterialApp')
     
     //make insert query
     function insert(triples){
-      if(!triples||triples.length<1) return {error:'You have not specified any triples'};
+      if(!triples||triples.length<1) {
+        return $q.reject({error:'You have not specified any triples',data:triples});
+      }
       return query(
         'INSERT DATA { '+
           'GRAPH '+

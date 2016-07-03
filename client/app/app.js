@@ -2,12 +2,10 @@
 var angular=angular;
 angular.module('edumaterialApp', [
   'ngCookies',
-  'ngResource',
   'ngSanitize',
   'ui.router',
   'ui.bootstrap',
   'angular-loading-bar',
-  'ui.utils',
   'ui.select',
   'uuid4'
 ])
@@ -16,12 +14,12 @@ angular.module('edumaterialApp', [
       .otherwise('/');
 
     $locationProvider.html5Mode(true);
-    $httpProvider.interceptors.push('authInterceptor');
+    // $httpProvider.interceptors.push('authInterceptor');
   })
   
   //make loading bar not show for requests smaller than 500ms
   .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
-    cfpLoadingBarProvider.latencyThreshold = 500;
+    cfpLoadingBarProvider.latencyThreshold = 300;
   }])
   
   //make force reload function for ui-router
@@ -39,31 +37,31 @@ angular.module('edumaterialApp', [
   })
   
   //make web tokens interceptor
-  .factory('authInterceptor', function ($rootScope, $q, $cookieStore, $location) {
-    return {
-      // Add authorization token to headers
-      request: function (config) {
-        config.headers = config.headers || {};
-        if ($cookieStore.get('token')) {
-          config.headers.Authorization = 'Bearer ' + $cookieStore.get('token');
-        }
-        return config;
-      },
+  // .factory('authInterceptor', function ($rootScope, $q, $cookieStore, $location) {
+  //   return {
+  //     // Add authorization token to headers
+  //     request: function (config) {
+  //       config.headers = config.headers || {};
+  //       if ($cookieStore.get('CARRE_USER')) {
+  //         config.headers.Authorization = 'Bearer ' + $cookieStore.get('CARRE_USER');
+  //       }
+  //       return config;
+  //     },
 
-      // Intercept 401s and redirect you to login
-      responseError: function(response) {
-        if(response.status === 401) {
-          $location.path('/login');
-          // remove any stale tokens
-          $cookieStore.remove('token');
-          return $q.reject(response);
-        }
-        else {
-          return $q.reject(response);
-        }
-      }
-    };
-  })
+  //     // Intercept 401s and redirect you to login
+  //     responseError: function(response) {
+  //       if(response.status === 401) {
+  //         $location.path('/login');
+  //         // remove any stale tokens
+  //         $cookieStore.remove('CARRE_USER');
+  //         return $q.reject(response);
+  //       }
+  //       else {
+  //         return $q.reject(response);
+  //       }
+  //     }
+  //   };
+  // })
 
   .run(function ($rootScope, $location, Auth, $cookies, $window) {
     // Redirect to login if route requires auth and you're not logged in
@@ -75,12 +73,11 @@ angular.module('edumaterialApp', [
       });
     });
     
-    var carre_token = $cookies.get('CARRE_USER');
-    var my_token = $cookies.get('token');
-    if(carre_token && !my_token ) {
-      $window.location.href = '/auth/carre/cookie/'+carre_token;
-    }
-    
+    // var carre_token = $cookies.get('CARRE_USER');
+    // if(carre_token) {
+    //   console.debug(carre_token);
+      
+    // }
     
     // handle language
     Auth.language = "en";
@@ -88,11 +85,12 @@ angular.module('edumaterialApp', [
       Auth.language = $location.search().lang;
     }
     
-    
     // handle embedded
     if($location.search().embed) {
       $rootScope.isEmbedded = true;
     }
     
+    
+  }).constant('CONFIG',{
     
   });

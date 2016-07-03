@@ -20,6 +20,9 @@ var all = {
   
   // Get the token for the RDF USER
   rdfToken: process.env.RDF_TOKEN,
+  
+  // Get the token for the RDF USER
+  api_url: process.env.CARRE_API_URL || 'https://carre.kmi.open.ac.uk/ws/',
 
   // Secret for session, you will want to change this and make it an environment variable
   secrets: {

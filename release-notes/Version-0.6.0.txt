@@ -1,7 +1,8 @@
 # CHANGELOG v0.6.0
 
-2016-06-16
+2016-07-03
 
+- * 2c55a1c - 2016-06-16: new version 
 - * 3164e83 - 2016-06-16: remove for now authentication 
 - * f859f92 - 2016-06-10: CLI: add article and search route 
 - * 317b28c - 2016-05-28:  update language 

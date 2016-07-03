@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('edumaterialApp')
-  .service('main', function ($q,article,rdf,rank,rating,enrichment) {
+  .service('main', function ($q,article,rdf,rank,rating) {
   var curArticle={};
   var curRank={};
   
@@ -26,7 +26,7 @@ angular.module('edumaterialApp')
       ])
       .then(function(responses) {
         //process the results
-        console.log(responses[0].data.data[0]);
+        console.log("Responses : ",responses);
         
       
       });
@@ -78,10 +78,10 @@ angular.module('edumaterialApp')
 
 'LIMIT 100';
     
-    return rdf.query(exQuery).success(function(data){
+    return rdf.query(exQuery).then(function(data){
       console.log('Example Query : ');
       console.log(data);
-    }).error(function(err){
+    }).catch(function(err){
        console.log(err);
     }); 
     

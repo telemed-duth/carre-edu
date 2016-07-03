@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('edumaterialApp')
-  .service('article', function (rdf,uuid4,enrichment,rank,Auth) {
+  .service('article', function (rdf,uuid4,rank,Auth) {
     var ratedArticles=[];
     var userRatedArticles=[];
     var curArticle={};
@@ -18,7 +18,7 @@ angular.module('edumaterialApp')
           [ '?rating', rdf.pre.edu+'#rated_by_user', user.carre.graph  ],
         ],
         ['?title ?rating'],
-        ['LIMIT 1000']).success(function(results){
+        ['LIMIT 1000']).then(function(results){
         userRatedArticles=results.data;
         console.log(userRatedArticles);
       });
@@ -47,13 +47,13 @@ angular.module('edumaterialApp')
       '} '+
       'GROUP BY ?title LIMIT 20';
     
-      return rdf.query(exQuery).success(function(data){
+      return rdf.query(exQuery).then(function(data){
           console.log('Rated Articles are:');
           ratedArticles=data.data;
 
           return data.data;
           // console.log(ratedArticles);
-      }).error(function(err){
+      }).catch(function(err){
          console.log(err);
       }); 
 
@@ -84,7 +84,7 @@ angular.module('edumaterialApp')
         [ ['?id',rdf.pre.edu+'#url',article.url] , ['?id',rdf.pre.edu+'#views','?views'] ],
         ['?id ?views'],
         ['LIMIT 1']
-      ).success(function(results){
+      ).then(function(results){
           
           console.log(results.data);
           if(results.data.length>0) { //if exists
@@ -110,7 +110,7 @@ angular.module('edumaterialApp')
             insertArticle(article);
           }
           curArticle.id=article.id;
-        }).error(function(err){
+        }).catch(function(err){
           console.log(err);
           return false;
         });
@@ -126,10 +126,10 @@ angular.module('edumaterialApp')
       oldtriples.push( [ rdf.pre.publicUri+article.id, rdf.pre.edu+'#views', '"'+article.views+'"^^xsd:nonNegativeInteger'  ] );
       newtriples.push( [ rdf.pre.publicUri+article.id, rdf.pre.edu+'#views', '"'+(article.views+1)+'"^^xsd:nonNegativeInteger'  ] );
       
-      rdf.modify(oldtriples,oldtriples,newtriples).success(function(results){
+      rdf.modify(oldtriples,oldtriples,newtriples).then(function(results){
         console.log(newtriples);
         console.log(results);
-      }).error(function(error){
+      }).catch(function(error){
         console.log('Error :');
         console.log(error);
       });
@@ -155,13 +155,13 @@ angular.module('edumaterialApp')
       if(article.websource) triples.push( [ rdf.pre.publicUri+article.id,  rdf.pre.edu+'#websource', '"'+article.websource+'"^^xsd:string'  ] );
       if(article.altTitle) triples.push( [ rdf.pre.publicUri+article.id, rdf.pre.edu+'#alternative_title', '"'+article.altTitle+'"^^xsd:string'  ] );
         
-      rdf.insert(triples).success(function(results){
+      rdf.insert(triples).then(function(results){
         
         
         //if you insert the article start the enrichment process
         console.log(triples);
         console.log(results);
-      }).error(function(error){
+      }).catch(function(error){
         console.log('Error :');
         console.log(error);
       });

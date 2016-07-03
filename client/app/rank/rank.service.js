@@ -14,7 +14,7 @@ angular.module('edumaterialApp')
         ],
         ['?id'],
         ['LIMIT 1']
-      ).success(function(results){
+      ).then(function(results){
         
           if(results.data.length>0) { //if exists
             rank.id=results.data[0].id.value.substring(52);
@@ -33,7 +33,7 @@ angular.module('edumaterialApp')
           insertRiskElement(rank);
           
           return rank.id;
-        }).error(function(err){
+        },function(err){
           console.log(err);
           return false;
         });
@@ -57,10 +57,10 @@ angular.module('edumaterialApp')
       newtriples.push( [ rdf.pre.publicUri+'rank/'+rank.id, rdf.pre.edu+'#total', '"'+rank.total+'"^^xsd:nonNegativeInteger'  ] );
       newtriples.push( [ rdf.pre.publicUri+'rank/'+rank.id, rdf.pre.edu+'#total', '"'+rank.position+'"^^xsd:nonNegativeInteger'  ] );
     
-      rdf.modify(oldtriples,oldtriples,newtriples).success(function(results){
+      rdf.modify(oldtriples,oldtriples,newtriples).then(function(results){
         
         console.log(results);
-      }).error(function(error){
+      }).catch(function(error){
         console.log('Error :')
         console.log(error);
       });
@@ -81,11 +81,11 @@ angular.module('edumaterialApp')
       triples.push( [ rdf.pre.publicUri+'rank/'+rank.id, rdf.pre.edu+'#total', '"'+rank.total+'"^^xsd:nonNegativeInteger'  ] );
       triples.push( [ rdf.pre.publicUri+'rank/'+rank.id, rdf.pre.edu+'#position', '"'+rank.position+'"^^xsd:nonNegativeInteger'  ] );
         
-      rdf.insert(triples).success(function(results){
+      rdf.insert(triples).then(function(results){
         
         
         console.log(results);
-      }).error(function(error){
+      }).catch(function(error){
         console.log('Error :')
         console.log(error);
       });
@@ -98,11 +98,11 @@ angular.module('edumaterialApp')
       if(rank.article_risk) triples.push( [ rank.article_risk, 'http://carre.kmi.open.ac.uk/ontology/risk.owl#has_educational_material', rdf.pre.publicUri+rank.article_id  ] );
 
         
-      rdf.insert(triples).success(function(results){
+      rdf.insert(triples).then(function(results){
         
         
         console.log(results);
-      }).error(function(error){
+      }).catch(function(error){
         console.log('Error :')
         console.log(error);
       });

@@ -5,22 +5,6 @@ angular.module('edumaterialApp')
     $scope.menu = [{
       'title': 'Home',
       'link': '/'
-    },{
-      'title': 'MedlinePLUS',
-      'link': '/medlineplus',
-      'admin':true
-    },{
-      'title': 'BioPortal',
-      'link': '/bioportal',
-      'admin':true
-    },{
-      'title': 'DBpedia',
-      'link': '/dbpedia',
-      'admin':true
-    },{
-      'title': 'Wikipedia',
-      'link': '/wikipedia',
-      'admin':true
     }];
 
     $scope.togglesidebar=function(){

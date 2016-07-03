@@ -1,11 +1,12 @@
 'use strict';
 
 angular.module('edumaterialApp')
-  .factory('Auth', function Auth($location, $rootScope, $http, User, $cookieStore, $q, $window) {
+  .factory('Auth', function Auth($location, $rootScope, $http, $cookies, $q, $window) {
     var currentUser = {};
-    if($cookieStore.get('token')) {
-      currentUser = User.get();
-    }
+    // if($cookies.get('CARRE_USER')) {
+    //   // currentUser = User.get();
+    //   console.debug("CARRE USER exists:",$cookies.get('CARRE_USER'))
+    // }
 
     return {
 
@@ -25,8 +26,8 @@ angular.module('edumaterialApp')
           password: user.password
         }).
         success(function(data) {
-          $cookieStore.put('token', data.token);
-          currentUser = User.get();
+          $cookies.put('token', data.token);
+          // currentUser = User.get();
           deferred.resolve(data);
           return cb();
         }).
@@ -45,7 +46,7 @@ angular.module('edumaterialApp')
        * @param  {Function}
        */
       logout: function() {
-        $cookieStore.remove('token');
+        $cookies.remove('token');
         if(currentUser.provider==='carre') {
           //logout from carre devices too
          $window.location.href='//devices.carre-project.eu/devices/accounts/logout?next='+$location.absUrl();
@@ -54,49 +55,6 @@ angular.module('edumaterialApp')
         
         currentUser = {};
         
-      },
-
-      /**
-       * Create a new user
-       *
-       * @param  {Object}   user     - user info
-       * @param  {Function} callback - optional
-       * @return {Promise}
-       */
-      createUser: function(user, callback) {
-        var cb = callback || angular.noop;
-
-        return User.save(user,
-          function(data) {
-            $cookieStore.put('token', data.token);
-            currentUser = User.get();
-            return cb(user);
-          },
-          function(err) {
-            this.logout();
-            return cb(err);
-          }.bind(this)).$promise;
-      },
-
-      /**
-       * Change password
-       *
-       * @param  {String}   oldPassword
-       * @param  {String}   newPassword
-       * @param  {Function} callback    - optional
-       * @return {Promise}
-       */
-      changePassword: function(oldPassword, newPassword, callback) {
-        var cb = callback || angular.noop;
-
-        return User.changePassword({ id: currentUser._id }, {
-          oldPassword: oldPassword,
-          newPassword: newPassword
-        }, function(user) {
-          return cb(user);
-        }, function(err) {
-          return cb(err);
-        }).$promise;
       },
 
       /**
@@ -148,7 +106,7 @@ angular.module('edumaterialApp')
        * Get auth token
        */
       getToken: function() {
-        return $cookieStore.get('token');
+        return $cookies.get('token');
       }
     };
   });

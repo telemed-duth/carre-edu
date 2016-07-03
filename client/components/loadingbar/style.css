@@ -1,0 +1,24 @@
+/*
+ * override the default CSS as an example
+ */
+
+/*loading bar*/
+
+#loading-bar .bar{
+  display: none;
+  /*height:2px;*/
+  /*background-color:#FFFFFF;*/
+  /*top:50px;*/
+}
+#loading-bar-spinner .spinner-icon {
+  border-top-color:  #FFFFFF;
+  border-left-color: #FFFFFF;
+  position: fixed;
+  top:56px;
+}
+#loading-bar .peg {
+  -moz-box-shadow: #FFFFFF 1px 0 6px 1px;
+  -ms-box-shadow: #FFFFFF 1px 0 6px 1px;
+  -webkit-box-shadow: #FFFFFF 1px 0 6px 1px;
+  box-shadow: #FFFFFF 1px 0 6px 1px;
+}
