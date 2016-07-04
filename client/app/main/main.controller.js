@@ -4,8 +4,14 @@ angular.module('edumaterialApp')
   .controller('MainCtrl', function ($scope, $http, Auth, $location, $state, suggest, $sce, main, $timeout, medlineplus, $window, article, rating) {
     
     $scope.isLoggedIn=Auth.isLoggedIn;
-    $scope.user=Auth.user=Auth.getCurrentUser();
-    
+    //async process user before setting to scope
+    if(Auth.token) {
+      // console.debug(Auth.token);
+      Auth.getCurrentUser().then(function(){
+        $scope.user = Auth.getCurrentUser();
+      });
+    } else $scope.user = {};
+
     
     //set BETA
     $scope.beta=false;

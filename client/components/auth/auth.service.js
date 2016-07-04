@@ -5,6 +5,7 @@ angular.module('edumaterialApp')
     var currentUser = {};
     var token = $cookies.get(CONFIG.token_name) || false;
     authenticate();
+    console.log("CONFIGURATION: ", CONFIG);
     
     function authenticate() {
       if(token&&!currentUser.username) {
@@ -48,7 +49,6 @@ angular.module('edumaterialApp')
        * @return {Object} user
        */
       getCurrentUser: function() {
-        Auth.currentUser=currentUser;
         return currentUser;
       },
 
@@ -94,8 +94,7 @@ angular.module('edumaterialApp')
       /**
        * Get auth token
        */
-      getToken: function() {
-        return $cookies.get(CONFIG.token_name);
-      }
+      token: token
+      
     };
   });

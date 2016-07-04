@@ -1,14 +1,21 @@
 'use strict';
 
 angular.module('edumaterialApp')
-  .service('article', function (rdf,uuid4,rank,Auth) {
+  .service('article', function (rdf,uuid4,rank,Auth,CONFIG) {
     var ratedArticles=[];
     var userRatedArticles=[];
     var curArticle={};
-    var user=Auth.getCurrentUser()||{graphName :rdf.pre.users+'guestuser'};
+    var user={};
+    //async process user before setting to scope
+    if(Auth.token) {
+      // console.debug(Auth.token);
+      Auth.getCurrentUser().then(function(){
+        user = Auth.getCurrentUser();
+      });
+    } else user = {};
+    if(!user.hasOwnProperty('username')) user.graphName=rdf.pre.users+'guestuser'
     
-
-    //public functions
+    //'+CONFIG.subgraph_url+' functions
     
     function getUserRatedArticles(){
       rdf.find(
@@ -28,7 +35,7 @@ angular.module('edumaterialApp')
       console.log('Rated articles fetching');
       var exQuery=
       'SELECT ?title (AVG(?ratingval) as ?ratingavg) '+
-      'FROM <http://carre.kmi.open.ac.uk/public> WHERE {';
+      'FROM <http://'+CONFIG.graph_url+'/'+CONFIG.subgraph_url+'> WHERE {';
       
           for (var i = 0; i < articles.length; i++) {
             //add wikipedia url
@@ -63,7 +70,7 @@ angular.module('edumaterialApp')
     function getEducationalObject(id){
       console.log('fecth object by id');
       //check if this url already exists
-      var eduid='http://carre.kmi.open.ac.uk/public/educational/'+id;
+      var eduid='http://'+CONFIG.graph_url+'/'+CONFIG.subgraph_url+'/educational/'+id;
       return rdf.find(
         [ 
           [eduid,rdf.pre.edu+'#url','?url'],

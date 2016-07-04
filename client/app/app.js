@@ -116,7 +116,10 @@ angular.module('edumaterialApp', [
     
     
   }).constant('CONFIG',{
-    "api_url":"https://carre.kmi.open.ac.uk/ws/",
-    "token_name":"CARRE_USER",
-    "auth_url":"https://devices.carre-project.eu/devices/accounts/"
+    "language":window.CARRE_EDU_CONFIGURATION.language,
+    "api_url":window.CARRE_EDU_CONFIGURATION.api_url,
+    "token_name":window.CARRE_EDU_CONFIGURATION.token_name,
+    "auth_url":window.CARRE_EDU_CONFIGURATION.auth_url,
+    "graph_url":window.CARRE_EDU_CONFIGURATION.graph_url,
+    "subgraph_url":window.CARRE_EDU_CONFIGURATION.subgraph_url,
   });

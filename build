@@ -1,6 +1,7 @@
 #!/bin/bash
 echo "Build release"
+rm -rf dist
 grunt build
 cd dist
 npm install --production
-NODE_ENV=production npm start && cd ..
+cd ..

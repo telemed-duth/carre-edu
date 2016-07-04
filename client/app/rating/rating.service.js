@@ -3,10 +3,17 @@
 angular.module('edumaterialApp')
   .service('rating', function (rdf,uuid4,Auth) {
     var articleRating={};
-    var user={graphName:rdf.pre.users+'guestuser'};
-    Auth.getCurrentUser().then(function(data){
-      user = Auth.getCurrentUser();
-    });
+    var user={};
+    //async process user before setting to scope
+    if(Auth.token) {
+      // console.debug(Auth.token);
+      Auth.getCurrentUser().then(function(){
+        user = Auth.getCurrentUser();
+      });
+    } else user = {};
+
+    if(!user.username) user.graphName=rdf.pre.users+'guestuser'
+    
      function processRating(article){
       
      var ratingsum=article.rating.reduce( function(total, rating){ return total + Number(rating.value) }, 0);

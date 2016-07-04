@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('edumaterialApp')
-  .service('rank', function (rdf,uuid4) {
+  .service('rank', function (rdf,uuid4, CONFIG) {
     
     function processRank(rank){
       
@@ -95,7 +95,7 @@ angular.module('edumaterialApp')
       
       console.log('Insert Risk Element called!');
       var triples=[];
-      if(rank.article_risk) triples.push( [ rank.article_risk, 'http://carre.kmi.open.ac.uk/ontology/risk.owl#has_educational_material', rdf.pre.publicUri+rank.article_id  ] );
+      if(rank.article_risk) triples.push( [ rank.article_risk, 'http://'+CONFIG.graph_url+'/ontology/risk.owl#has_educational_material', rdf.pre.publicUri+rank.article_id  ] );
 
         
       rdf.insert(triples).then(function(results){

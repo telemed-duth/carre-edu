@@ -12,6 +12,7 @@ angular.module('edumaterialApp')
     };
     $scope.isCollapsed = true;
     $scope.isLoggedIn = Auth.isLoggedIn;
+    $scope.login = Auth.login;
     $scope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
     $scope.query=Auth.searchQuery;
@@ -19,20 +20,16 @@ angular.module('edumaterialApp')
       $scope.query=Auth.searchQuery;
     };
     //async process user before setting to scope
-    if(Auth.isLoggedInAsync) {
+    if(Auth.token) {
+      // console.debug(Auth.token);
       Auth.getCurrentUser().then(function(){
         $scope.user = Auth.getCurrentUser();
       });
-    } else if(Auth.isLoggedIn()){
-      $scope.user = Auth.getCurrentUser();
-    } else {
-      $scope.user = {};
-      
-    }
+    } else $scope.user = {};
 
     $scope.logout = function() {
+      $scope.user={};
       Auth.logout();
-      $location.path('/login');
     };
 
     $scope.isActive = function(route) {

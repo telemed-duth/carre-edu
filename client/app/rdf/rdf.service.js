@@ -1,17 +1,17 @@
 'use strict';
 
 angular.module('edumaterialApp')
-  .service('rdf', function ($http,$q) {
+  .service('rdf', function ($http,$q, CONFIG) {
 
     
     
     //prefixes
     var prefixes={
-      edu:'http://carre.kmi.open.ac.uk/ontology/educational.owl',
+      edu:'http://'+CONFIG.graph_url+'/ontology/educational.owl',
       rdftype:'http://www.w3.org/1999/02/22-rdf-syntax-ns#type',
       dc:'http://purl.org/dc/elements/1.1/',
-      publicUri:'http://carre.kmi.open.ac.uk/public/educational/',
-      users:'https://carre.kmi.open.ac.uk/users/'
+      publicUri:'http://'+CONFIG.graph_url+'/'+CONFIG.subgraph_url+'/educational/',
+      users:'https://'+CONFIG.graph_url+'/users/'
     }
     
     /****** private functions *******/
@@ -60,7 +60,7 @@ angular.module('edumaterialApp')
     
       return query(
         'SELECT '+selectArray.join(' ')+' '+
-        'FROM <http://carre.kmi.open.ac.uk/public> '+
+        'FROM <http://'+CONFIG.graph_url+'/'+CONFIG.subgraph_url+'> '+
         'WHERE { '+
           parseTriples(triples)+
         '} '+
@@ -75,7 +75,7 @@ angular.module('edumaterialApp')
       if(!templateToDelete) templateToDelete=[];
     
       return query(
-        'MODIFY <http://carre.kmi.open.ac.uk/public> '+
+        'MODIFY <http://'+CONFIG.graph_url+'/'+CONFIG.subgraph_url+'> '+
         'DELETE { '+parseTriples(templateToDelete)+' } '+
         'INSERT { '+parseTriples(templateToInsert)+' } '+
         'WHERE { '+
@@ -92,7 +92,7 @@ angular.module('edumaterialApp')
       return query(
         'INSERT DATA { '+
           'GRAPH '+
-            '<http://carre.kmi.open.ac.uk/public> { '+
+            '<http://'+CONFIG.graph_url+'/'+CONFIG.subgraph_url+'> { '+
               parseTriples(triples)+
             '}'+
         '}'
