@@ -16,19 +16,12 @@ The User Application is a web application accessible at http://edu.carre-project
 Public URL's
 -------
 
-Development url : http://beta.carre-project.eu:8080
-
-Code metrics url : http://beta.carre-project.eu:9999
-
 Production url : http://edu.carre-project.eu
 
 Testing and Deployment services
 ---------
 [![Build Status](https://travis-ci.org/telemed-duth/carre-edu.svg?branch=master)](https://travis-ci.org/telemed-duth/carre-edu)
-[![Build Status](https://codeship.com/projects/8f8138f0-06cb-0132-1e81-36288a81fed8/status?branch=master)](https://codeship.com/projects/31184)
 [![Code Climate](https://codeclimate.com/github/telemed-duth/carre-edu/badges/gpa.svg)](https://codeclimate.com/github/telemed-duth/carre-edu)
-[![Test Coverage](https://codeclimate.com/github/telemed-duth/carre-edu/badges/coverage.svg)](https://codeclimate.com/github/telemed-duth/carre-edu)
-
 
 Technology stack
 ----------------
@@ -49,7 +42,6 @@ Minimum Requirements: 1GB RAM + 3GB HDD
 The deployment is supported only on a unix* like machine (linux , Mac) and requires the following libraries to installed on your computer : 
 
 * NodeJS application sever
-* MongoDB database server
 * Git version control system
 
 Next you should clone the repository at github, install all dependencies and run the build script.

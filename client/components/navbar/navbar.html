@@ -5,13 +5,13 @@
 typeahead="term for term in getSuggestions($viewValue)" typeahead-loading="loading" typeahead-on-select="searchQuery()" typeahead-template-url="customTemplate.html"
 -->
 
-<div class="search-input search-input-unfold" ng-class="{'open':showSearch}">
-  <form id="search-form" ng-submit="searchQuery()" role="search">
-    <input tabindex="0" autocomplete="off" ng-model="query" 
-    autocorrect="off" id="search-input" placeholder="Search..." type="text">
-    <div ng-click="showSearch=!showSearch" class="close">&times;</div>
-  </form>
-</div>
+<!--<div class="search-input search-input-unfold" ng-class="{'open':showSearch}">-->
+<!--  <form id="search-form" ng-submit="searchQuery()" role="search">-->
+<!--    <input tabindex="0" autocomplete="off" ng-model="query" -->
+<!--    autocorrect="off" id="search-input" placeholder="Search..." type="text">-->
+<!--    <div ng-click="showSearch=!showSearch" class="close">&times;</div>-->
+<!--  </form>-->
+<!--</div>-->
 
 
 
@@ -36,12 +36,12 @@ typeahead="term for term in getSuggestions($viewValue)" typeahead-loading="loadi
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <!--search functions-->
-        <li ng-show="isLoggedIn()">
-          <a class="btn-search" ng-click="showSearch=!showSearch" href="">
-            <span class="label label-lg label-default" ng-bind='query'></span> 
-            <span> <i class="glyphicon glyphicon-search"></i> </span>
-          </a>
-        </li>
+        <!--<li>-->
+        <!--  <a class="btn-search" ng-click="showSearch=!showSearch" href="">-->
+        <!--    <span class="label label-lg label-default" ng-bind='query'></span> -->
+        <!--    <span> <i class="glyphicon glyphicon-search"></i> </span>-->
+        <!--  </a>-->
+        <!--</li>-->
         <!--User functions-->    
         
         <li ng-show="user.username" class="dropdown" uib-dropdown>
