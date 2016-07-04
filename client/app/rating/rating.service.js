@@ -7,11 +7,10 @@ angular.module('edumaterialApp')
     //async process user before setting to scope
     if(Auth.token) {
       // console.debug(Auth.token);
-      Auth.getCurrentUser().then(function(){
-        user = Auth.getCurrentUser();
-      });
+      if(Auth.getCurrentUser().$promise) Auth.getCurrentUser().then(function(){ user = Auth.getCurrentUser(); });
+      else user = Auth.getCurrentUser();
     } else user = {};
-
+    
     if(!user.username) user.graphName=rdf.pre.users+'guestuser'
     
      function processRating(article){

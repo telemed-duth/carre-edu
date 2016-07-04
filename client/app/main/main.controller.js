@@ -5,12 +5,14 @@ angular.module('edumaterialApp')
     
     $scope.isLoggedIn=Auth.isLoggedIn;
     //async process user before setting to scope
+    var user={};
+    //async process user before setting to scope
     if(Auth.token) {
       // console.debug(Auth.token);
-      Auth.getCurrentUser().then(function(){
-        $scope.user = Auth.getCurrentUser();
-      });
-    } else $scope.user = {};
+      if(Auth.getCurrentUser().$promise) Auth.getCurrentUser().then(function(){ user = Auth.getCurrentUser(); });
+      else user = Auth.getCurrentUser();
+    } else user = {};
+    $scope.user = user;
 
     
     //set BETA
