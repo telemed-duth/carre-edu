@@ -3,8 +3,10 @@
 angular.module('edumaterialApp')
   .service('rating', function (rdf,uuid4,Auth) {
     var articleRating={};
-    var user=Auth.getCurrentUser()||{carre:{ graph:rdf.pre.users+'guestuser'}};
-    
+    var user={graphName:rdf.pre.users+'guestuser'};
+    Auth.getCurrentUser().then(function(data){
+      user = Auth.getCurrentUser();
+    });
      function processRating(article){
       
      var ratingsum=article.rating.reduce( function(total, rating){ return total + Number(rating.value) }, 0);
@@ -15,7 +17,7 @@ angular.module('edumaterialApp')
         [ 
           [ '?id', rdf.pre.rdftype, rdf.pre.edu+'#rating' ],
           [ '?id', rdf.pre.edu+'#for_article', rdf.pre.publicUri+article.id ],
-          [ '?id', rdf.pre.edu+'#rated_by_user', user.carre.graph  ],
+          [ '?id', rdf.pre.edu+'#rated_by_user', user.graphName  ],
         ],
         ['?id'],
         ['LIMIT 1']
@@ -47,14 +49,14 @@ angular.module('edumaterialApp')
     
      function loadRating(article){
        
-       console.log('Load Rating Called for article: '+article.url+ ' by user '+user.carre.graph );
+       console.log('Load Rating Called for article: '+article.url+ ' by user '+user.graphName );
       //check if this url already exists
       return rdf.find(
         [ 
           [ '?id', rdf.pre.rdftype, rdf.pre.edu+'#rating' ],
           [ '?article', rdf.pre.edu+'#url', article.url ],
           [ '?id', rdf.pre.edu+'#for_article', '?article'],
-          [ '?id', rdf.pre.edu+'#rated_by_user', user.carre.graph  ],
+          [ '?id', rdf.pre.edu+'#rated_by_user', user.graphName  ],
           [ '?id', rdf.pre.edu+'#depth_of_coverage', '?depth_of_coverage' ],
           [ '?id', rdf.pre.edu+'#comprehensiveness', '?comprehensiveness' ],
           [ '?id', rdf.pre.edu+'#relevancy', '?relevancy' ],
@@ -120,7 +122,7 @@ angular.module('edumaterialApp')
       //unique metadata
       triples.push( [ rdf.pre.publicUri+'rating/'+rating.id, rdf.pre.rdftype, rdf.pre.edu+'#rating' ] );
       triples.push( [ rdf.pre.publicUri+'rating/'+rating.id, rdf.pre.edu+'#for_article', rdf.pre.publicUri+rating.article_id ] );
-      triples.push( [ rdf.pre.publicUri+'rating/'+rating.id, rdf.pre.edu+'#rated_by_user', user.carre.graph  ] );
+      triples.push( [ rdf.pre.publicUri+'rating/'+rating.id, rdf.pre.edu+'#rated_by_user', user.graphName  ] );
       
       //updatable metadata
       triples.push( [ rdf.pre.publicUri+'rating/'+rating.id, rdf.pre.edu+'#date', '"'+rating.date+'"^^xsd:date' ] );

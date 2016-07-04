@@ -18,34 +18,16 @@ angular.module('edumaterialApp')
     Auth.notifyNavbar=function(){
       $scope.query=Auth.searchQuery;
     };
-    
     //async process user before setting to scope
-    if(Auth.isLoggedIn && Auth.getCurrentUser().hasOwnProperty('$promise')) {
-      $scope.getCurrentUser().$promise.then(function(user){
-        $scope.user=user;
-  
-        //set image
-        if(user.provider==='google') $scope.user.img=user.google.picture;
-        else if(user.provider==='twitter') $scope.user.img=user.twitter.profile_image_url;
-        else if(user.provider==='carre') $scope.user.img=user.carre.gravatar||'http://gravatar.com/avatar/3bc777082e578f5d41124e1055227d00?d=mm&s=96&r=G';
-        else $scope.user.img='http://gravatar.com/avatar/3bc777082e578f5d41124e1055227d00?d=mm&s=96&r=G';
-        
-        //set settings url
-        switch ($scope.user.provider) {
-          case 'carre':
-            $scope.carreUser=true;
-            $scope.settingsUrl='https://carre.kmi.open.ac.uk/devices';
-            break;
-          case 'local':
-            $scope.settingsUrl='/settings';
-            break;
-          
-          default:
-            $scope.settingsUrl='';
-        }
-        
-        
+    if(Auth.isLoggedInAsync) {
+      Auth.getCurrentUser().then(function(){
+        $scope.user = Auth.getCurrentUser();
       });
+    } else if(Auth.isLoggedIn()){
+      $scope.user = Auth.getCurrentUser();
+    } else {
+      $scope.user = {};
+      
     }
 
     $scope.logout = function() {

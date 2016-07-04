@@ -37,6 +37,10 @@ angular.module('edumaterialApp')
     
     //main post query
     function query(query){
+      if(query.indexOf('undefined')>=0) {
+        console.error("SPARQL query -- Undefined");
+        console.debug(query);
+      }
       return $http.post('/api/resources/query',
         {
         'sparql':query

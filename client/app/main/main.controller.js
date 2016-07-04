@@ -34,6 +34,7 @@ angular.module('edumaterialApp')
     
     suggest.riskelements().then(function(data){
       $scope.riskElements=data;
+      console.log($scope.riskElements)
       if($scope.beta) {
         $scope.nextElement();
       }

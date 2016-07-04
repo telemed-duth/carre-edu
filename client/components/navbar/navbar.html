@@ -33,7 +33,6 @@ typeahead="term for term in getSuggestions($viewValue)" typeahead-loading="loadi
             <a ng-hide="(item.admin&&!isAdmin())||(item.user&&!isLoggedIn())" ng-href="{{item.link}}">{{item.title}}</a>
         </li>
         <li ng-show="isAdmin()" ng-class="{active: isActive('/admin')}"><a href="/admin">Admin</a></li>
-        <li ng-show="carreUser"><a href="https://carre.kmi.open.ac.uk/devices">CARRE Devices</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <!--search functions-->
@@ -46,8 +45,8 @@ typeahead="term for term in getSuggestions($viewValue)" typeahead-loading="loadi
         <!--User functions-->
         <li ng-show="isLoggedIn()" class="dropdown text-normal">
           <a id="avatar" class="dropdown-toggle nav-profile" data-toggle="dropdown">
-                  <span>{{ user.name }}</span>
-              <img ng-src="{{user.img}}" class="img-circle">
+              <span>{{ user.username }}</span>
+              <img gravatar-src="user.email" class="img-circle">
           </a>
           <ul class="dropdown-menu with-arrow pull-right">
               <li>

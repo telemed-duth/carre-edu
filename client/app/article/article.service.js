@@ -5,7 +5,7 @@ angular.module('edumaterialApp')
     var ratedArticles=[];
     var userRatedArticles=[];
     var curArticle={};
-    var user=Auth.getCurrentUser()||{carre:{ graph:rdf.pre.users+'guestuser'}};
+    var user=Auth.getCurrentUser()||{graphName :rdf.pre.users+'guestuser'};
     
 
     //public functions
@@ -15,7 +15,7 @@ angular.module('edumaterialApp')
         [ 
           [ '?s', rdf.pre.edu+'#title', '?title' ],
           [ '?rating', rdf.pre.edu+'#for_article', '?s' ],
-          [ '?rating', rdf.pre.edu+'#rated_by_user', user.carre.graph  ],
+          [ '?rating', rdf.pre.edu+'#rated_by_user', user.graphName  ],
         ],
         ['?title ?rating'],
         ['LIMIT 1000']).then(function(results){

@@ -17,11 +17,12 @@ exports.query = function(req, res) {
   
   request(options,function (error, response, body) {
     if (!error && response.statusCode === 200) {
-      // console.log('REQ: '+req.body.sparql);
-      // console.log('RES: '+body);
       return res.status(200).json({data:body});
     } 
-    else res.status(500).json({data:error});    
+    else {
+      console.log('REQ: '+req.body.sparql);
+      res.status(500).json({data:error});
+    }    
   });
   
 };

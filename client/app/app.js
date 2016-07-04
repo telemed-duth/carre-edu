@@ -7,20 +7,44 @@ angular.module('edumaterialApp', [
   'ui.bootstrap',
   'angular-loading-bar',
   'ui.select',
-  'uuid4'
+  'uuid4',
+  'ui.gravatar'
 ])
-  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider,$compileProvider) {
     $urlRouterProvider
       .otherwise('/');
 
     $locationProvider.html5Mode(true);
     // $httpProvider.interceptors.push('authInterceptor');
+    
+    // Disable log
+    $compileProvider.debugInfoEnabled(false);
   })
   
   //make loading bar not show for requests smaller than 500ms
   .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
     cfpLoadingBarProvider.latencyThreshold = 300;
   }])
+  // gravatar configuration
+  .config([
+  'gravatarServiceProvider', function(gravatarServiceProvider) {
+    gravatarServiceProvider.defaults = {
+      size     : 100,
+      "default": 'mm'  // Mystery man as default for missing avatars
+    };
+
+    // Use https endpoint
+    gravatarServiceProvider.secure = true;
+
+    // Force protocol
+    // gravatarServiceProvider.protocol = 'carre-protocol';
+
+    // Override URL generating function
+    // gravatarServiceProvider.urlFunc = function(options) {
+    //   // Code to generate custom URL
+    // };
+  }
+])
   
   //make force reload function for ui-router
   .config(function($provide) {
@@ -92,5 +116,7 @@ angular.module('edumaterialApp', [
     
     
   }).constant('CONFIG',{
-    
+    "api_url":"https://carre.kmi.open.ac.uk/ws/",
+    "token_name":"CARRE_USER",
+    "auth_url":"https://devices.carre-project.eu/devices/accounts/"
   });

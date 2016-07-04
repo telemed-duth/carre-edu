@@ -13,7 +13,9 @@ angular.module('edumaterialApp')
     
     var sparqlRiskElements=function(){
         return $http.get('/api/resources/elements/risk_element/'+Auth.language, {cache:true,ignoreLoadingBar: true}).then(function(response){
-          if(response.data.length>1) return response.data; else return [];
+          if(response.data.data.length>1) {
+            return response.data.data; 
+          } else return [];
         });
     };
     
