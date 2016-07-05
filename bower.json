@@ -1,6 +1,6 @@
 {
   "name": "edumaterial",
-  "version": "0.8.1",
+  "version": "0.9.0",
   "dependencies": {
     "angular": "^1.5.7",
     "angular-cookies": "^1.5.7",
@@ -10,7 +10,6 @@
     "angular-ui-router": "^0.3.1",
     "angular-loading-bar": "^0.9.0",
     "angular-uuid4": "^0.3.1",
-    "angular-ui-select": "^0.18.0",
     "angular-gravatar": "^0.4.2"
   }
 }

@@ -6,7 +6,6 @@ angular.module('edumaterialApp', [
   'ui.router',
   'ui.bootstrap',
   'angular-loading-bar',
-  'ui.select',
   'uuid4',
   'ui.gravatar'
 ])

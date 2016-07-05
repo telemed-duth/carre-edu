@@ -1,6 +1,6 @@
-# CHANGELOG v0.8.1
+# CHANGELOG v0.9.0
 
-2016-07-05
+2016-07-06
 
 - * 25a4981 - 2016-07-05: CLI: remove global search and fix pagination 
 - * cf7034e - 2016-07-05: CLI: clean version 
