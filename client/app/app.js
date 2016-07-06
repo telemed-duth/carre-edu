@@ -3,6 +3,7 @@ var angular=angular;
 angular.module('edumaterialApp', [
   'ngCookies',
   'ngSanitize',
+  'ngAnimate',
   'ui.router',
   'ui.bootstrap',
   'angular-loading-bar',

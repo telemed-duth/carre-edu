@@ -1,16 +1,13 @@
 'use strict';
 
 angular.module('edumaterialApp')
-  .controller('NavbarCtrl', function ($scope, $location, Auth,$state,suggest,$rootScope) {
+  .controller('NavbarCtrl', function ($scope, $location, Auth,$state,$window) {
     $scope.menu = [{
       'title': 'Home',
       'link': '/'
     }];
-
-    $scope.togglesidebar=function(){
-      $rootScope.toggle_sidebar=!$rootScope.toggle_sidebar;
-    };
-    $scope.isCollapsed = true;
+    
+    $scope.isCollapsed = $window.innerWidth<768;
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.login = Auth.login;
     $scope.isAdmin = Auth.isAdmin;
@@ -36,21 +33,4 @@ angular.module('edumaterialApp')
       return route === $location.path();
     };
     
-    //===autocomple helpers===//
-    $scope.getSuggestions=function(val) {
-      return suggest.for(val);
-    };
-    
-    $scope.searchQuery=function(){
-      Auth.searchQuery=$scope.query;
-      $scope.showSearch=false;
-      $state.forceReload();
-      // console.log($location.$$path);
-      // if($location.$$path!=='/home'&&$location.$$path!=='/') $state.forceReload();
-      // else $location.path('/medlineplus');
-      
-    };
-    
-    
-
   });

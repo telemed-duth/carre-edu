@@ -1,20 +1,5 @@
 <div class="navbar navbar-default navbar-static-top" ng-controller="NavbarCtrl">
-  
-<!--top awesome search bar-->
-<!--    
-typeahead="term for term in getSuggestions($viewValue)" typeahead-loading="loading" typeahead-on-select="searchQuery()" typeahead-template-url="customTemplate.html"
--->
-
-<!--<div class="search-input search-input-unfold" ng-class="{'open':showSearch}">-->
-<!--  <form id="search-form" ng-submit="searchQuery()" role="search">-->
-<!--    <input tabindex="0" autocomplete="off" ng-model="query" -->
-<!--    autocorrect="off" id="search-input" placeholder="Search..." type="text">-->
-<!--    <div ng-click="showSearch=!showSearch" class="close">&times;</div>-->
-<!--  </form>-->
-<!--</div>-->
-
-
-
+ 
 <!--typical navbar-->
   <div class="container">
     <div class="navbar-header">
@@ -24,10 +9,10 @@ typeahead="term for term in getSuggestions($viewValue)" typeahead-loading="loadi
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="#" ng-click="togglesidebar()" class="navbar-brand">  <img style="margin-top:-9px" src="CARRE-FooterLogo.png" width="36" height="40" alt="CARRE">
+      <a href="#" class="navbar-brand">  <img style="margin-top:-9px" src="CARRE-FooterLogo.png" width="36" height="40" alt="CARRE">
       </a>
     </div>
-    <div collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
+    <div uib-collapse="isCollapsed" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
             <a ng-hide="(item.admin&&!isAdmin())||(item.user&&!isLoggedIn())" ng-href="{{item.link}}">{{item.title}}</a>
@@ -35,13 +20,6 @@ typeahead="term for term in getSuggestions($viewValue)" typeahead-loading="loadi
         <li ng-show="isAdmin()" ng-class="{active: isActive('/admin')}"><a href="/admin">Admin</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <!--search functions-->
-        <!--<li>-->
-        <!--  <a class="btn-search" ng-click="showSearch=!showSearch" href="">-->
-        <!--    <span class="label label-lg label-default" ng-bind='query'></span> -->
-        <!--    <span> <i class="glyphicon glyphicon-search"></i> </span>-->
-        <!--  </a>-->
-        <!--</li>-->
         <!--User functions-->    
         
         <li ng-show="user.username" class="dropdown" uib-dropdown>
@@ -65,7 +43,3 @@ typeahead="term for term in getSuggestions($viewValue)" typeahead-loading="loadi
     </div>
   </div>
 </div>
-
-<script type="text/ng-template" id="customTemplate.html">
-  <a><span bind-html-unsafe="match.label | typeaheadHighlight:query"></span></a>
-</script>
