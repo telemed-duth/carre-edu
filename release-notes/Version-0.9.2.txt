@@ -2,6 +2,7 @@
 
 2016-07-14
 
+- * 329edb9 - 2016-07-14: CLI: fix resource query 
 - * c246c65 - 2016-07-14: CLI: add translations 
 - * e645f98 - 2016-07-06: new update 
 - * dcd48e5 - 2016-07-06: CLI: remove unnecessary dependency on ui-select 
