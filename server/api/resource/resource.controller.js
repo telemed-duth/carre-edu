@@ -46,15 +46,15 @@ exports.elements = function(req, res) {
       // console.log('RES: '+body);
       var riskelements = [];
       if(Object.prototype.toString.call(body) === '[object Array]') {
-      body.foreEach(function(elem){
-        if(elem.predicate.indexOf('has_risk_element_name')>=0) {
-          riskelements.push({
-            name:elem.object,
-            url:elem.subject
-          })
-        }
-      })
-      
+        body.forEach(function(elem){
+          if(elem.predicate.indexOf('has_risk_element_name')>=0) {
+            riskelements.push({
+              name:elem.object,
+              url:elem.subject
+            })
+          }
+        })
+        
       }
       // riskelements {name:acute....,url:http://carre...}
       return res.status(200).json({data:riskelements});
