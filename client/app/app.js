@@ -104,10 +104,13 @@ angular.module('edumaterialApp', [
     // }
     
     // handle language
-    Auth.language = "en";
-    if($location.search().lang) {
-      Auth.language = $location.search().lang;
-    }
+    
+    var availableLangs = ['el','en','lt'];
+    var passedLanguage = $location.search().lang
+    if( passedLanguage && availableLangs.indexOf(passedLanguage)>=0) {
+      Auth.language = passedLanguage;
+      
+    } else Auth.language = window.CARRE_EDU_CONFIGURATION.language.substring(0,2) || "en"
     
     // handle embedded
     if($location.search().embed) {
@@ -116,7 +119,7 @@ angular.module('edumaterialApp', [
     
     
   }).constant('CONFIG',{
-    "language":window.CARRE_EDU_CONFIGURATION.language,
+    "language":window.CARRE_EDU_CONFIGURATION.language.substring(0,2),
     "api_url":window.CARRE_EDU_CONFIGURATION.api_url,
     "token_name":window.CARRE_EDU_CONFIGURATION.token_name,
     "auth_url":window.CARRE_EDU_CONFIGURATION.auth_url,

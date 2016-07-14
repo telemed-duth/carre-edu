@@ -14,9 +14,6 @@
     </div>
     <div uib-collapse="isCollapsed" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
-            <a ng-hide="(item.admin&&!isAdmin())||(item.user&&!isLoggedIn())" ng-href="{{item.link}}">{{item.title}}</a>
-        </li>
         <li ng-show="isAdmin()" ng-class="{active: isActive('/admin')}"><a href="/admin">Admin</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -32,13 +29,13 @@
             <li>
                 <a href="" ng-click="logout()">
                     <i class="glyphicon glyphicon-log-out"></i>
-                    <span>Log Out</span>
+                    <span>{{'login'|translate}}</span>
                 </a>
             </li>
           </ul>
         </li>
         
-        <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/login')}"><a href ng-click="login()">Login</a></li>
+        <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/login')}"><a href ng-click="login()">{{'logout'|translate}}</a></li>
       </ul>
     </div>
   </div>

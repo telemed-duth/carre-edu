@@ -2,10 +2,6 @@
 
 angular.module('edumaterialApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth,$state,$window) {
-    $scope.menu = [{
-      'title': 'Home',
-      'link': '/'
-    }];
     
     $scope.isCollapsed = $window.innerWidth<768;
     $scope.isLoggedIn = Auth.isLoggedIn;

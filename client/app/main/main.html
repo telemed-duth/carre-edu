@@ -18,8 +18,7 @@
                 </select>
               </div>
               
-                <input type="text" ng-model="queryTerm" style="z-index: inherit;"
-                placeholder="Carre terms" uib-typeahead="term.name for term in riskElements| filter:$viewValue | limitTo:8" 
+                <input type="text" ng-model="queryTerm" style="z-index: inherit;" uib-typeahead="term.name for term in riskElements| filter:$viewValue | limitTo:8" 
                 class="form-control" typeahead-editable="true" typeahead-focus-first="false"
                 typeahead-on-select="onComplete($item, $model, $label)">
                 
@@ -63,7 +62,7 @@
       
       <div class="col-sm-4 pull-left">
         <!--total results-->
-        <h3 ng-show="total>0"><strong class="text-danger">{{total}}</strong> results</h3>
+        <h3 ng-show="total>0"><strong class="text-danger">{{total}}</strong> {{'total_results'|translate}}</h3>
       </div>
     </div>
   
@@ -77,7 +76,7 @@
       <!--</div>-->
   
       <!-- no results -->
-      <div class="alert alert-warning" ng-hide="total>0||results.length>0">No results...</div>
+      <div class="alert alert-warning" ng-hide="total>0||results.length>0">{{'no_results'|translate}}</div>
       
       <div class="list-group">
         <a href="" ng-click="toggleArticle($index)" class="list-group-item" ng-repeat="doc in results track by $index">
@@ -103,13 +102,13 @@
               
               <div class="col-sm-6">
                 <button type="button" ng-click="toggleArticle(-1)" class="overlay overlay-close carre-btn">
-                    <span class="glyphicon glyphicon-circle-arrow-left"></span> <span>Back</span>
+                    <span class="glyphicon glyphicon-circle-arrow-left"></span> <span>{{'back_button'|translate}}</span>
                 </button>
               </div>
 
               <div class="col-sm-6">
                 <button ng-show="isLoggedIn()" type="button" ng-click="isCollapsed=!isCollapsed" ng-class="{'active':isCollapsed}"class="overlay overlay-edit carre-btn">
-                    <span>Rating</span> <span class="glyphicon glyphicon-edit"></span>
+                    <span>{{'rating_button'|translate}}</span> <span class="glyphicon glyphicon-edit"></span>
                 </button>
               </div>
               
@@ -132,14 +131,14 @@
 
                 <div class="panel panel-default">
                   <div class="panel-heading">
-                    <h3 class="panel-title">Article Rating</h3>
+                    <h3 class="panel-title">{{'rating_title'|translate}}</h3>
                   </div>
                   <div class="panel-body">
                     <div class="row">
                       
                       <div class="col-sm-4" ng-repeat="rate in rating track by $index">
                         
-                        {{rate.name}} :  <uib-rating class="rating" ng-model="doc.rating[$index].value" max="5"></uib-rating>
+                        {{rate.rdftype|translate}} :  <uib-rating class="rating" ng-model="doc.rating[$index].value" max="5"></uib-rating>
                         
                       </div>
                             

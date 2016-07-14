@@ -45,7 +45,8 @@ exports.elements = function(req, res) {
       
       // console.log('RES: '+body);
       var riskelements = [];
-      body.forEach(function(elem){
+      if(Object.prototype.toString.call(body) === '[object Array]') {
+      body.foreEach(function(elem){
         if(elem.predicate.indexOf('has_risk_element_name')>=0) {
           riskelements.push({
             name:elem.object,
@@ -54,6 +55,7 @@ exports.elements = function(req, res) {
         }
       })
       
+      }
       // riskelements {name:acute....,url:http://carre...}
       return res.status(200).json({data:riskelements});
     } 
