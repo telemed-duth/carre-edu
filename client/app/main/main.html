@@ -55,7 +55,9 @@
     <div class="row">
       <!--top pagination-->
       <div class="col-sm-8 pull-right">
-        <uib-pagination ng-show="total>itemsPerPage" items-per-page="itemsPerPage" 
+        <uib-pagination ng-show="total>itemsPerPage" items-per-page="itemsPerPage"  
+              previous-text="{{'pagination_prev'|translate}}" 
+              next-text="{{'pagination_next'|translate}}"
               style="z-index: inherit; float:right; margin:auto;" total-items="total" ng-model="currentPage" 
               ng-change="searchQuery(true)" max-size="3" rotate="false"></uib-pagination>
       </div>

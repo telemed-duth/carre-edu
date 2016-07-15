@@ -19,7 +19,10 @@ angular.module('edumaterialApp')
         
         'home_page':'Home',
         'login':'Log in',
-        'logout':'Log out'
+        'logout':'Log out',
+        
+        "pagination_next":"Next",
+        "pagination_prev":"Previous"
       },
       
       'el':{
@@ -38,7 +41,10 @@ angular.module('edumaterialApp')
         
         'home_page':'Αρχική',
         'login':'Σύνδεση',
-        'logout':'Αποσύνδεση'
+        'logout':'Αποσύνδεση',
+        
+        "pagination_next":"Επόμενα",
+        "pagination_prev":"Προηγούμενα"
       },
       
       'lt':{
@@ -57,7 +63,10 @@ angular.module('edumaterialApp')
         
         'home_page':'Titulinis puslapis',
         'login':'Prisijungti',
-        'logout':'Atsijungti'
+        'logout':'Atsijungti',
+        
+        "pagination_next":"Kitas",
+        "pagination_prev":"Ankstesnis"
       },
       
       
