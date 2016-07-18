@@ -1,7 +1,8 @@
 # CHANGELOG v0.9.4
 
-2016-07-15
+2016-07-18
 
+- * e2c10a0 - 2016-07-18: add maintainer and fix urldecode 
 - * 56d3ba2 - 2016-07-15: CLI: fix language 
 - * 0514f10 - 2016-07-15: CLI: fix login/logout 
 - * 0d87c20 - 2016-07-15: add translation service 
