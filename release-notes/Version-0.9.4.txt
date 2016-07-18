@@ -2,6 +2,7 @@
 
 2016-07-15
 
+- * 56d3ba2 - 2016-07-15: CLI: fix language 
 - * 0514f10 - 2016-07-15: CLI: fix login/logout 
 - * 0d87c20 - 2016-07-15: add translation service 
 - * 329edb9 - 2016-07-14: CLI: fix resource query 

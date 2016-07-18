@@ -1,5 +1,7 @@
 FROM mhart/alpine-node:4
 
+MAINTAINER Nick Portokallidis <portokallidis@gmail.com>
+
 WORKDIR /src
 COPY . ./
 

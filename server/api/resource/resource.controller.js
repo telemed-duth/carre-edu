@@ -12,7 +12,7 @@ exports.query = function(req, res) {
     method:'POST',
     url:endpoint+'query',
     json:true,
-    body:{token:config.rdfToken,sparql:req.body.sparql}
+    body:{token:config.rdfToken,sparql:decodeURIComponent(req.body.sparql)}
   };
   
   request(options,function (error, response, body) {
