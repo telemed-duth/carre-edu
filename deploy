@@ -5,6 +5,8 @@ git remote add production dokku@athina.med.duth.gr:carre-educational-aggregator
 git remote add docker git@github.com:carre-project/carre-edu-docker.git
 git add .
 git commit -am"deploy new version"
+git tag -a 0.2 -m "0.2 version"
 git push -f production master
 git push -f docker master
+git push --tags docker master
 cd ..
