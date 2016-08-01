@@ -2,6 +2,7 @@
 
 2016-07-23
 
+- * 69416a9 - 2016-07-23: CLI: add title 
 - * ed82a0f - 2016-07-18: add maintainer and fix urldecode 
 - * e2c10a0 - 2016-07-18: add maintainer and fix urldecode 
 - * 56d3ba2 - 2016-07-15: CLI: fix language 
