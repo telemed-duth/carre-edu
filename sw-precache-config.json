@@ -1,0 +1,21 @@
+{
+  "staticFileGlobs": [
+    "dist/public/app/*",
+    "dist/public/manifest_icons/*",
+    "dist/public/fonts/*",
+    "dist/public/*"
+  ],
+  "stripPrefix": "dist/public/",
+  "runtimeCaching": [{
+    "urlPattern": "/api/(.*)",
+    "handler": "networkFirst",
+    "options":{
+      "debug":false,
+      "cache": {
+        "maxEntries": 100,
+        "name":"api-cache"
+      }
+      
+    }
+  }]
+}
