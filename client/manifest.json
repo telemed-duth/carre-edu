@@ -1,8 +1,8 @@
 {
   "name": "CARRE Educational Aggregator",
   "short_name": "CARREedu",
-  "theme_color": "#db3034",
-  "background_color": "#fab51e",
+  "theme_color": "#4393B9",
+  "background_color": "#F8F8F8",
   "display": "standalone",
   "Scope": "/",
   "start_url": "/",

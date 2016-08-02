@@ -1,6 +1,6 @@
-# CHANGELOG v0.9.5
+# CHANGELOG v0.10.0
 
-2016-08-02
+2016-08-03
 
 - * 311ada3 - 2016-08-01: add manifest 
 - * 69416a9 - 2016-07-23: CLI: add title 

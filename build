@@ -4,4 +4,8 @@ rm -rf dist
 grunt build
 cd dist
 npm install --production
+cd public && mkdir fonts && cp assets/fonts/* fonts/ && cd ..
 cd ..
+# add service worker
+sw-precache --config=sw-precache-config.json
+mv service-worker.js dist/public/service-worker.js

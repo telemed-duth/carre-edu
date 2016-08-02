@@ -2,6 +2,7 @@
 
 angular.module('edumaterialApp')
   .factory('Auth', function Auth($location, $rootScope, $http, $cookies, $q, $window,CONFIG) {
+
     var currentUser = {};
     var token = $cookies.get(CONFIG.token_name) || false;
     authenticate();

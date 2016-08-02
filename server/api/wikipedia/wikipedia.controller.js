@@ -35,6 +35,32 @@ var wiki = {
 }
 
 
+
+exports.proxy = function(req, res) {
+  
+  var title = req.params.title;
+  var lang = req.params.lang;
+  
+  var url = 'https://'+lang+'.wikipedia.org/wiki/'+title+"?printable=yes";
+  
+  var params={
+    url:url
+  };
+  
+  var search="\/w\/load\.php";
+  var replacement = "https://"+lang+".wikipedia.org/w/load.php";
+  
+  request(params, function (error, response, body) {
+    if (!error && response.statusCode === 200) {
+      var result=body.replace(new RegExp(search, 'g'), replacement)
+      .replace('<script async="" src="https://en.wikipedia.org/w/load.php?debug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;printable=1&amp;skin=vector"></script>','');
+      return res.send(result);
+    } 
+  });
+
+};
+
+
 //Autocomplete suggestions on search terms
 exports.autocomplete = function(req, res) {
   

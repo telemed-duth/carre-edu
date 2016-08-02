@@ -281,9 +281,9 @@ angular.module('edumaterialApp')
           
         case 'wikipedia':
           
-          $scope.doc.url='http://'+Auth.language+'.wikipedia.org/wiki/'+encodeURI($scope.doc.title).split('%20').join('_');
+          $scope.doc.url='/api/wikipedia/proxy/'+Auth.language+'/'+encodeURI($scope.doc.title).split('%20').join('_');
           
-          data = '<base target="_blank" /><iframe style="width:100%;height:'+$scope.frameHeight+'px;" class="embed-responsive-item" src="'+$scope.doc.url.replace('http://','https://')+($scope.mobile?'?printable=yes':'')+'"></iframe>';
+          data = '<base target="_blank" /><iframe style="width:100%;height:'+$scope.frameHeight+'px;" class="embed-responsive-item" src="'+$scope.doc.url+'"></iframe>';
 
           break;
       }  

@@ -1,6 +1,6 @@
 {
   "name": "edumaterial",
-  "version": "0.9.5",
+  "version": "0.10.0",
   "main": "server/app.js",
   "dependencies": {
     "body-parser": "^1.12.4",
@@ -66,7 +66,7 @@
     "node": "~0.12.x"
   },
   "scripts": {
-    "start": "node server/app.js",
+    "start": "/bin/bash ./env.sh && node server/app.js",
     "test": ""
   },
   "private": true

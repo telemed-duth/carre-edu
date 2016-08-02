@@ -374,6 +374,8 @@ module.exports = function (grunt) {
             'bower_components/**/*',
             'assets/images/{,*/}*.{webp}',
             'assets/fonts/**/*',
+            'manifest_icons/**/*',
+            'manifest.json',
             'index.html'
           ]
         }, {
@@ -389,6 +391,7 @@ module.exports = function (grunt) {
             'nginx.conf.sigil',
             'Procfile',
             'Dockerfile',
+            'env.sh',
             'server/**/*'
           ]
         }]

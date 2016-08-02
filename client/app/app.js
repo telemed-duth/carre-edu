@@ -11,6 +11,8 @@ angular.module('edumaterialApp', [
   'ui.gravatar'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider,$compileProvider) {
+    
+    
     $urlRouterProvider
       .otherwise('/');
 
@@ -58,6 +60,7 @@ angular.module('edumaterialApp', [
         };
         return $delegate;
     });
+    
   })
   
   //make web tokens interceptor
@@ -87,7 +90,7 @@ angular.module('edumaterialApp', [
   //   };
   // })
 
-  .run(function ($rootScope, $location, Auth, $cookies, $window) {
+  .run(function ($rootScope, $location, Auth, $cookies, $window,$http) {
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$stateChangeStart', function (event, next) {
       Auth.isLoggedInAsync(function(loggedIn) {
@@ -117,7 +120,6 @@ angular.module('edumaterialApp', [
       $rootScope.isEmbedded = true;
     }
     
-    
   }).constant('CONFIG',{
     "language":window.CARRE_EDU_CONFIGURATION.language.substring(0,2),
     "api_url":window.CARRE_EDU_CONFIGURATION.api_url,
@@ -126,3 +128,15 @@ angular.module('edumaterialApp', [
     "graph_url":window.CARRE_EDU_CONFIGURATION.graph_url,
     "subgraph_url":window.CARRE_EDU_CONFIGURATION.subgraph_url,
   });
+  
+// ServiceWorker stuff
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+    // Registration was successful
+    console.log('ServiceWorker registration successful with scope: ',    registration.scope);
+    
+  }).catch(function(err) {
+    // registration failed :(
+    console.log('ServiceWorker registration failed: ', err);
+  });
+}

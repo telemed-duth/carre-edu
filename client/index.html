@@ -15,6 +15,7 @@
     <!-- build:css(client) app/vendor.css -->
       <!-- bower:css -->
       <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
+      <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
       <!-- endbower -->
     <!-- endbuild -->
     
@@ -28,9 +29,15 @@
       <!-- endinjector -->
     <!-- endbuild -->
     
-        <base target="_blank" /><!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-  <script type="text/javascript" src="api/config.js"></script>
+    <script type="text/javascript">
+      window.CARRE_EDU_CONFIGURATION = 'CARRE_EDU_CONFIGURATION_REPLACE_OBJECT';
+      window.CARRE_EDU_CONFIGURATION = window.CARRE_EDU_CONFIGURATION!=='CARRE_EDU_CONFIGURATION_REPLACE_OBJECT'?window.CARRE_EDU_CONFIGURATION:
+      {language:"en",api_url:"https://devices.carre-project.eu/ws/",token_name:"CARRE_USER",subgraph_url:"public",auth_url:"https://devices.carre-project.eu/devices/accounts/",graph_url:"carre.kmi.open.ac.uk"};
+
+    </script>
+
+    <base target="_blank" /><!-- Latest compiled and minified CSS -->
+
   </head>
   <body ng-app="edumaterialApp">
     <!--[if lt IE 7]>
@@ -43,14 +50,15 @@
       <div ui-view=""></div>
             
       <div ng-hide="isEmbedded" ng-include="'components/footer/footer.html'"></div>
-
-
+      
+      
     <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
     <script src="bower_components/json3/lib/json3.min.js"></script>
     <![endif]-->
     <!-- build:js({client,node_modules}) app/vendor.js -->
       <!-- bower:js -->
+      <script src="bower_components/jquery/dist/jquery.js"></script>
       <script src="bower_components/angular/angular.js"></script>
       <script src="bower_components/angular-cookies/angular-cookies.js"></script>
       <script src="bower_components/angular-animate/angular-animate.js"></script>

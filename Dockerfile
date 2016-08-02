@@ -1,4 +1,4 @@
-FROM mhart/alpine-node:4
+FROM node:4.4.7-slim
 
 MAINTAINER Nick Portokallidis <portokallidis@gmail.com>
 
