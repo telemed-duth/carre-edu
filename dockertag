@@ -1,0 +1,10 @@
+#!/bin/bash          
+cd dist
+git init
+git remote add docker git@github.com:carre-project/carre-edu-docker.git
+git add .
+echo -ne "\e[92mDocker image version?\e[39m : "
+read -e MSG
+git tag -a $MSG -m "$MSG version"
+git push --tags docker master
+cd ..
