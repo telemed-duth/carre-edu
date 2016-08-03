@@ -1,0 +1,247 @@
+# CHANGELOG v0.10.2
+
+2016-08-03
+
+- * 24520e5 - 2016-08-03: CLI: add env settings 
+- * 38e0c15 - 2016-08-03: CLI: add offline cache support with service workers 
+- * 311ada3 - 2016-08-01: add manifest 
+- * 69416a9 - 2016-07-23: CLI: add title 
+- * ed82a0f - 2016-07-18: add maintainer and fix urldecode 
+- * e2c10a0 - 2016-07-18: add maintainer and fix urldecode 
+- * 56d3ba2 - 2016-07-15: CLI: fix language 
+- * 0514f10 - 2016-07-15: CLI: fix login/logout 
+- * 0d87c20 - 2016-07-15: add translation service 
+- * 329edb9 - 2016-07-14: CLI: fix resource query 
+- * c246c65 - 2016-07-14: CLI: add translations 
+- * e645f98 - 2016-07-06: new update 
+- * dcd48e5 - 2016-07-06: CLI: remove unnecessary dependency on ui-select 
+- * 25a4981 - 2016-07-05: CLI: remove global search and fix pagination 
+- * cf7034e - 2016-07-05: CLI: clean version 
+- * 5c87a9e - 2016-07-04: new version migration completed 
+- * 3c2a4a4 - 2016-07-04: finish clean version 
+- * 53b37af - 2016-07-04: migrate to angular 1.5 
+- * 2c55a1c - 2016-06-16: new version 
+- * 3164e83 - 2016-06-16: remove for now authentication 
+- * f859f92 - 2016-06-10: CLI: add article and search route 
+- * 317b28c - 2016-05-28:  update language 
+- * 8b4cb8e - 2016-05-27: CLI: add embedable version fix 
+- * 7ca6f68 - 2016-05-27: add embed 
+- * f197245 - 2016-03-15: CLI: update medlineplus https api url 
+- * 0446a07 - 2016-03-15: CLI: update CARRE authentication cookie 
+- * 74342c3 - 2016-02-15: CLI: Change default graph for educational material 
+- * f9b7578 - 2015-11-12: CLI: deploy to own mini PaaS 
+- * 6173ecf - 2015-11-12: CLI: bump node version and force push for dokku 
+- * 0cfa8be - 2015-11-12: CLI: bump bootstrap version to 3.2.x 
+- * b0813c6 - 2015-08-01: CLI: update static dependencies 
+- * 62e76ba - 2015-08-01: new stuff 
+- * 53efa7e - 2015-08-01: CLI: without css minified 
+- * 75f4f80 - 2015-08-01: new 
+- * a78a243 - 2015-08-01: CLI: update dependencies 
+- * caac8dd - 2015-08-01: fix update 
+- * b11daed - 2015-07-31: CLI: just try to redeploy 
+- * f742a2a - 2015-07-31: CLI: redeploy 
+- * c8abaed - 2015-07-31: CLI: redeploy 
+- * 9b388fe - 2015-07-31: CLI: 
+- * 752929d - 2015-05-27: CLI: update dependencies 
+- * 36104dc - 2015-05-27: CLI: fix no carre risk element selected query 
+- * 198af9f - 2015-05-27: CLI: add beta variable for crawler 
+- * 82a19fd - 2015-04-26: fix bug when change source about risk element 
+- * 4884a45 - 2015-04-26: fix risk element for medlineplus 
+- * af62253 - 2015-04-25: fixed ratinggrunt serve 
+- * 9d9e2e5 - 2015-04-25: rating fix 
+- * 7a5b27a - 2015-04-25: rating fix 
+- * e646619 - 2015-04-25: rating fix 
+- * c95d0be - 2015-04-23: add imagesgit status 
+- * 5e8b9fb - 2015-04-23: fix images 
+- * 4a00bae - 2015-04-23: endorse images for better cache results 
+- * 90bdda8 - 2015-04-23: CLI: disable google analytics 
+- * 4bc4fc0 - 2015-04-23: add cache control 
+- * ab60111 - 2015-04-22:  fix https users url 
+- * eca3a43 - 2015-04-22: change https-&gt;http rdf data 
+- * 254255d - 2015-04-22: CLI: FIX : wikipedia&lt;-&gt;medlineplus search query 
+- * 8b4197c - 2015-04-22: fix change from wikipedia to medlineplus 
+- * c6d8ac5 - 2015-04-22: CLI: fix images in https 
+- * 3c9142d - 2015-04-22: fix https images in footer 
+- * 9ec7303 - 2015-04-22: CLI: update security protocol via ssl/https 
+- * 7564167 - 2015-04-22: fix https in images 
+- * d3d8bd3 - 2015-04-22: fix https in iframes 
+- * 079f61f - 2015-04-20: CLI: Dereferenced and linked educational material to risk elements 
+- * ccc1c54 - 2015-04-01: update dependencies 
+- * 736a302 - 2015-04-01: update dependencies 
+- * 331b5f2 - 2015-03-27: update dependencies and fix some jshint issues 
+- * f78eb3e - 2015-02-24: CLI: makeup articles list mobile view 
+- * d5ea72c - 2015-02-24: CLI: reform signup and login template 
+- * fad34d4 - 2015-02-23: CLI: ui fix 
+- * 3963e2b - 2015-02-23: CLI: remove other login options 
+- * 720693a - 2015-02-23: CLI: fix user and rating load error 
+- * 423501f - 2015-02-23: CLI: fix error when no document request 
+- * 8d6b9f9 - 2015-02-23: CLI: fix double commit update script 
+- * defdb38 - 2015-02-23: update changelog 
+- * 4e440c9 - 2015-02-23: CLI: update node version to 0.12 
+- * 83c89db - 2015-02-23: update changelog 
+- * 9e8b67b - 2015-02-23: CLI: fix production rating service 
+- * 8f5b75a - 2015-02-23: update changelog 
+- * abbc37f - 2015-02-23: CLI: possible fix for production url 
+- * d5221fd - 2015-02-23: update changelog 
+- * 21741b8 - 2015-02-23: CLI: fix medlineplus iframe load 
+- * d09eeae - 2015-02-23: update changelog 
+- * b5dda7e - 2015-02-23: CLI: Add tag feature 
+- * a58ff7c - 2015-02-23: Release v0.3.8 
+- * a672a90 - 2015-02-23: CLI: fix bump 
+- * b12506a - 2015-02-23: update changelog 
+- * fd3979e - 2015-02-23: CLI: try semantic versioning 
+- * 9102496 - 2015-02-23: update changelog 
+- * 592c183 - 2015-02-23: CLI: testing bash script 
+- * 367f79e - 2015-02-23: CLI: revert back to default changelog 
+- * 63e5ef8 - 2015-02-23: CLI: fixes #try to changelog 
+- * ec3f05e - 2015-02-23: update changelog 
+- * 6f37940 - 2015-02-23: CLI: fixes #bash script try 
+- * cc57573 - 2015-02-23: CLI: fixes #bash script 
+- * 3cf340d - 2015-02-23: CLI: fixes #update script 
+- * 32c0601 - 2015-02-23: CLI: fixes # update bash script 
+- * 12ce821 - 2015-02-23: CLI: optimize update bash script 
+- * 19011ea - 2015-02-23: CLI: fix medlineplus bug results rating 
+- * 76ecdf5 - 2015-02-22: CLI: bug fixes for multiple rating triples, rating based on 2-way rdf function 
+- * 2c4be4f - 2015-02-22: CLI: fetching user and other rated articles 
+- * 76415f2 - 2015-02-22: CLI: insert/modify dynamic rating criteria 
+- * 7b1d546 - 2015-02-22: CLI: add rank and refactor main service 
+- * e89fda6 - 2015-02-21: remove apache conf 
+- * 81a0608 - 2015-02-21: CLI: add modify views per article to rdf 
+- * 1e9511a - 2015-02-20: CLI: add rating and enrichment service 
+- * abb01d9 - 2015-02-19: remove .log files 
+- * 68bc6b3 - 2015-02-18: CLI: fix newrelic log 
+- * e410615 - 2015-02-18: CLI: article insert through api + token 
+- * 2e478f2 - 2015-02-17: CLI: update process got lifting 
+- * 39243cd - 2015-02-16: CLI: fix app name 
+- * 72646f0 - 2015-02-16: CLI: update dependencies and add article,enrichment,rdf services 
+- * 17e9d87 - 2015-02-13: CLI: add change password for CARRE users 
+- * bb557ba - 2015-02-13: CLI: update navbar link to CARRE devices 
+- * acbad64 - 2015-02-13: CLI: updated settings url when logged in as CARRE 
+- * 4910241 - 2015-02-13: CLI: finalize automated versioning system 
+- * 3ac05d1 - 2015-02-13: CLI: fix update no 3 
+- * 3b3b367 - 2015-02-13: CLI: update script 
+- * 7d7765a - 2015-02-13: CLI: update script fix 
+- * a7fb7fb - 2015-02-13: CLI: set defaults for the update script 
+- * 9345c27 - 2015-02-13: CLI: playing with versioning 
+- * 8c630fb - 2015-02-13: CLI: try to configure automated versioning 
+- * be830cf - 2015-02-13: CLI: update description and badges 
+- * b8c12c4 - 2015-02-13: CLI: fix codeship badge 
+- * 4959eef - 2015-02-13: CLI: replace preinstall--&gt; pretest npm scripts 
+- * c0fb9dd - 2015-02-13: CLI: fix codeship build try no.1 
+- * 9c33807 - 2015-02-13: CLI: add codeship badge and fix deployment to dokku 
+- * d32bd1e - 2015-02-13: CLI: add Continuous deployment!! 
+- * 593fec0 - 2015-02-13: CLI: update travis and codeship test routines 
+- * 3dd9727 - 2015-02-13: CLI: codeship fix.. 
+- * 97d9840 - 2015-02-12: CLI: fix codeship build 
+- * 958ba59 - 2015-02-12: CLI: add logout function to carre authentication and fix testing failure 
+- * 288cb15 - 2015-02-12: CLI: use default icon when gravatar not exist 
+- * 3b62f15 - 2015-02-12: CLI: fix gravatar 
+- * 17e7828 - 2015-02-12: CLI: update authentication and gravatar generated pic 
+- * 8e233c7 - 2015-02-10: CLI: add newrelic profiler 
+- * 5e1606a - 2015-02-10: CLI: finalize authentication with the Open University authentication mechanism 
+- * a53305d - 2015-02-09: CLI: carre token authentication addon 
+- * bc6967b - 2015-02-05: CLI: ui and wikipedia query optimizations 
+- * c386a0f - 2015-02-05: CLI: fix no results endless loop bug 
+- * 3903b13 - 2015-02-05: CLI: fix medline plus bug 
+- * f9d28b2 - 2015-02-04: CLI: fix wikipedia crash bug 
+- * 1448945 - 2015-02-03: CLI: change update scripts , add openid fix 
+- * c7936ce - 2015-02-03: add openid auth-not working 
+- * f7801ec - 2015-02-01: CLI: remove console.log for undefined 
+- * 7044aec - 2015-02-01: CLI: undefined search term bug fix , duplicate risk element 
+- * 48bba86 - 2015-02-01: CLI: fix bug created by a double quote and update cli tool not to build script twice 
+- * 7742311 - 2015-02-01: CLI: add minimum requirements 
+- * 5306abb - 2015-02-01: CLI: update login to enable rating and some guidelines on readme file 
+- * 53188db - 2015-02-01: CLI: update cli tool command 
+- * ac7d120 - 2015-02-01: CLI: fix no results on wikipedia and redirect to medlineplus 
+- * e2ce6a2 - 2015-02-01: CLI: fsdfsdfsdfsd 
+- * eb46766 - 2015-01-31: BUILD: fix bug when selecting a term autosearch 
+- * 6273437 - 2015-01-31: fix bug in riskelements hardcoded data 
+- * 106e590 - 2015-01-31: fix medlineplus no results bug and redirect to wikipedia 
+- * d6287cd - 2015-01-31: add autogenerated version to changelog 
+- * 339b30d - 2015-01-31: fix change log 
+- * 2f25944 - 2015-01-31: add auto changelog generation! 
+- * 27f531d - 2015-01-31: add auto changelog generation! 
+- * 9d27bee - 2015-01-30:  remove npm-log 
+- * e1a3935 - 2015-01-30: add code metrics to grunt workflow 
+- * 1cec316 - 2015-01-29: fix medlineplus and wikipedia mobile view 
+- * bdae6f3 - 2015-01-28: integrate medlineplus to new environment-currently only list is working 
+- * 5f14bae - 2015-01-27: deployment instructions 
+- * 780b56b - 2015-01-27: add license file link to readme 
+- * 5752f9b - 2015-01-27: add license file 
+- * a525c63 - 2015-01-27: add code metrics url 
+- * 0ef6e70 - 2015-01-27: add code metrics generator and server! 
+- * 4f2c9d8 - 2015-01-25: fix preview transition 
+- * ab317d8 - 2015-01-25: add rating module 
+- * c22802d - 2015-01-25: add sliding panel to article view 
+- * d835d16 - 2015-01-24: fix preview window left-right buttons 
+- * 2dc4acb - 2015-01-24: add article preview 
+- * 47c53bf - 2015-01-24: update development url 
+- * 8eb55c6 - 2015-01-23: use global header and footer 
+- * f428bf8 - 2015-01-23: remove sidebar from master 
+- * 7e83afc - 2015-01-23: add new dev url 
+- * 310fef1 - 2015-01-23: add new sidebar 
+- * d483726 - 2015-01-23: delete collection 
+- * 24921f3 - 2015-01-23: add rdash 
+- * 92fc9e7 - 2015-01-21:  update version to 0.0.2 
+- * 850b4b3 - 2015-01-21: update npm dependencies 
+- * 025e4c0 - 2015-01-21: fix livereload for c9 
+- * 4f59de6 - 2014-12-18: add .c9 to .gitignore 
+- * db94669 - 2014-12-18: add carre auth dir 
+- * 48e928b - 2014-12-18: add oauth carre authentication 
+- * 4e7d9ba - 2014-12-05: change riskelements source 
+- * 3382cbf - 2014-11-27: BUILD: add rating to medlineplus 
+- * cf455b9 - 2014-11-25: BUILD: change color on global search , make more precise wikipedia search , fix home page when not logged in 
+- * e9f2908 - 2014-11-24: BUILD: add carre risk elements fetch from sparql , global search finished, changed home to medlineplus 
+- * 93c5bf6 - 2014-11-24: BUILD: fix css close on global search , fix reload on same page when global search works 
+- * 7ff8245 - 2014-11-24: BUILD: add autocomplete suggestions to global search 
+- * 5601327 - 2014-11-24: BUILD: minor css fix 
+- * 06506d7 - 2014-11-24: BUILD: fix css 
+- * 1c02f8e - 2014-11-24: BUILD: 
+- * c6a60c5 - 2014-11-24: BUILD: fix search 
+- * a96035c - 2014-11-24: BUILD: apply global search function 
+- * ad7a43c - 2014-11-24: BUILD: add awesome top unfolding search bar html/css 
+- * c3d12e6 - 2014-11-24: BUILD: async article load for wikipedia 
+- * 6d2a07a - 2014-11-23: BUILD: add suggestions and fetch article in wikipedia 
+- * d2c34fc - 2014-11-23: BUILD: add wikipedia suggestion, add search function with pagination to wikipedia 
+- * 9ec55df - 2014-11-23: BUILD: add generic avatar 
+- * 6f0f459 - 2014-11-23: BUILD: more async fix 
+- * 8e3357d - 2014-11-22: BUILD: fix async login fetch 
+- * e7ba0d5 - 2014-11-22: BUILD: add avatar to social logins 
+- * 1158e95 - 2014-11-22: BUILD: add facebook login, fix socials for new domain, change login style 
+- * 7be9aae - 2014-11-21: add wikipedia apis 
+- * 207efe2 - 2014-11-19: BUILD: fix socket blow up 
+- * e48978b - 2014-11-19: BUILD: wikipedia api structure 
+- * cd4e84d - 2014-11-19: add wikipedia api boilerplate 
+- * 4b82b37 - 2014-11-17: BUILD: medlineplus service api created+medlineplus tab facelift with pagination , dbpedia add images, all requests are cached per session fix 
+- * 231b732 - 2014-11-15: BUILD: fix pagination on dbpedia 
+- * 1f7aec6 - 2014-11-15: BUILD: dbpedia :facelift,add pagination and multilanguage support 
+- * 6ef251c - 2014-11-14: BUILD: add bash scripts for automation 
+- * 945e474 - 2014-11-14: Add travis-ci badge for automated testing 
+- * 750c031 - 2014-11-14: fix karma test unit by adding dependencies to karma config ,add testing for propsFilter , add configuration for automated testing 
+- * 50c56c7 - 2014-11-14:  login,signup facelift 
+- * 6eb8f63 - 2014-11-14: add social accounts 
+- * 795204f - 2014-11-14: now fix for sure forever 
+- * 72a4b68 - 2014-11-14: fix dokku forever init without globals 
+- * b2baa16 - 2014-11-14: fix forever installation 
+- * 6f06386 - 2014-11-13: fix dokku forever init without globals 
+- * 0d80d77 - 2014-11-13: bioportal explorer completed 
+- * 3e03405 - 2014-11-13: f 
+- * a966b21 - 2014-11-13: f 
+- * 8667eba - 2014-11-13: fix setup 
+- * 2df79e9 - 2014-11-13: add forever production auto restart functions 
+- * 75386b7 - 2014-11-13: fix pagination usability for mobile , add multiple select , fix bioportal ontology search 
+- * 58fc98f - 2014-11-12: add bioportal ontologies autocomplete 
+- * 72b9f41 - 2014-11-12: add bioportal ontologies api 
+- * 1b114a4 - 2014-11-12: fix breaking lines 
+- * 985d023 - 2014-11-12: fix heading format 
+- * c663190 - 2014-11-12: fix line break 
+- * bd27b2b - 2014-11-12: add development demo 
+- * f6d9e68 - 2014-11-12: create readme file 
+- * ecf22b5 - 2014-11-12: add loadingbar,bioportal api,dbpedia sparql,compare menu 
+- * 9ec9372 - 2014-11-07: first upload including dbpedia 
+- * 2ce1b6d - 2014-11-04: fixed production db url 
+- * c19d54f - 2014-11-04: first github commit 
+
+FIXES:
+
+  (none)

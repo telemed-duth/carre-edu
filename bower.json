@@ -1,6 +1,6 @@
 {
   "name": "edumaterial",
-  "version": "0.10.1",
+  "version": "0.10.2",
   "dependencies": {
     "angular": "^1.5.7",
     "angular-cookies": "^1.5.7",
