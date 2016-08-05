@@ -281,9 +281,10 @@ angular.module('edumaterialApp')
           
         case 'wikipedia':
           
-          $scope.doc.url='/api/wikipedia/proxy/'+Auth.language+'/'+encodeURI($scope.doc.title).split('%20').join('_');
+          $scope.doc.iframeurl='/api/wikipedia/proxy/'+Auth.language+'/'+encodeURI($scope.doc.title).split('%20').join('_');
+          $scope.doc.url='http://'+Auth.language+'.wikipedia.org/wiki/'+encodeURI($scope.doc.title).split('%20').join('_');
           
-          data = '<base target="_blank" /><iframe style="width:100%;height:'+$scope.frameHeight+'px;" class="embed-responsive-item" src="'+$scope.doc.url+'"></iframe>';
+          data = '<base target="_blank" /><iframe style="width:100%;height:'+$scope.frameHeight+'px;" class="embed-responsive-item" src="'+$scope.doc.iframeurl+'"></iframe>';
 
           break;
       }  
@@ -372,7 +373,6 @@ angular.module('edumaterialApp')
       //calculated rating for aggregated results
       article.getRated($scope.results).then(function(data) {
         
-        console.log(data);
         for(var i=0,l=data.data; i<l.length; i++){
           for (var j = 0; j < $scope.results.length; j++) {
             if(plainText($scope.results[j].title).trim()===l[i].title.value.trim()) {
@@ -383,10 +383,10 @@ angular.module('edumaterialApp')
           
         if(single) $timeout(function(){ $scope.toggleArticle(0); },100);
         
-        console.log('started test func')
         if($scope.beta) {
           $scope.start();
         }
+        
       });
       
     };

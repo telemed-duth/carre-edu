@@ -4,7 +4,7 @@ LANG=${LANGUAGE:-en}
 API=${API_URL:-https://devices.carre-project.eu/ws/} 
 AUTH=${AUTH_URL:-https://devices.carre-project.eu/devices/accounts/} 
 GRAPH=${GRAPH_URL:-carre.kmi.open.ac.uk} 
-SUBGRAPH=${SUBGRAPH_URL:-public} 
+SUBGRAPH=${SUBGRAPH_URL:-edudata} 
 TOKENNAME=${TOKEN_NAME:-CARRE_USER} 
 
 REPLACE_OBJECT="{language:\"$LANG\",api_url:\"$API\",token_name:\"$TOKENNAME\",subgraph_url:\"$SUBGRAPH\",auth_url:\"$AUTH\",graph_url:\"$GRAPH\"}"

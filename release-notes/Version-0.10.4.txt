@@ -1,6 +1,6 @@
-# CHANGELOG v0.10.3
+# CHANGELOG v0.10.4
 
-2016-08-04
+2016-08-05
 
 - * 7a82792 - 2016-08-03: CLI: fix update process 
 - * f91bece - 2016-08-03: CLI: add dockertag script 
