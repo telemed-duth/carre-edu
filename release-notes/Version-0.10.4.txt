@@ -2,6 +2,7 @@
 
 2016-08-24
 
+- * bdab381 - 2016-08-24: add new release 
 - * 06ce3bb - 2016-08-05: CLI: fix bug with edudata graph 
 - * 7a82792 - 2016-08-03: CLI: fix update process 
 - * f91bece - 2016-08-03: CLI: add dockertag script 

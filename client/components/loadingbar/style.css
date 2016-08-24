@@ -3,7 +3,6 @@
  */
 
 /*loading bar*/
-
 #loading-bar .bar{
   display: none;
   /*height:2px;*/
@@ -14,7 +13,20 @@
   border-top-color:  #FFFFFF;
   border-left-color: #FFFFFF;
   position: fixed;
-  top:56px;
+  /*top:56px;*/
+  width: 24px;
+  height: 24px;
+
+  border:  solid 2px transparent;
+  border-top-color:  #dd0000 /*#18BC9C*/;
+  border-left-color: #dd0000 /*#18BC9C*/;
+  border-radius: 50%;
+
+  -webkit-animation: loading-bar-spinner 400ms linear infinite;
+  -moz-animation:    loading-bar-spinner 400ms linear infinite;
+  -ms-animation:     loading-bar-spinner 400ms linear infinite;
+  -o-animation:      loading-bar-spinner 400ms linear infinite;
+  animation:         loading-bar-spinner 400ms linear infinite;
 }
 #loading-bar .peg {
   -moz-box-shadow: #FFFFFF 1px 0 6px 1px;

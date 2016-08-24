@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('edumaterialApp')
-  .controller('NavbarCtrl', function ($scope, $location, Auth,$state,$window) {
+  .controller('NavbarCtrl', function ($scope, $location, Auth,$state,$window,$timeout) {
     
     $scope.isCollapsed = $window.innerWidth<768;
     $scope.isLoggedIn = Auth.isLoggedIn;
@@ -14,14 +14,17 @@ angular.module('edumaterialApp')
     };
     //async process user before setting to scope
     if(Auth.token) {
-      // console.debug(Auth.token);
-      if(Auth.getCurrentUser.then) {
-        Auth.getCurrentUser().then(function(){
+      
+      $timeout(function(){
+        if(Auth.getCurrentUser.then) {
+          Auth.getCurrentUser().then(function(){
+            $scope.user = Auth.getCurrentUser();
+          });
+        } else {
           $scope.user = Auth.getCurrentUser();
-        });
-      } else {
-        $scope.user = Auth.getCurrentUser();
-      }
+        }
+      },100)
+      
     } else $scope.user = {};
 
     $scope.logout = function() {
