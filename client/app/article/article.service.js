@@ -20,11 +20,11 @@ angular.module('edumaterialApp')
     function getUserRatedArticles(){
       rdf.find(
         [ 
-          [ '?s', rdf.pre.edu+'#title', '?title' ],
+          [ '?s', rdf.pre.edu+'#url', '?url' ],
           [ '?rating', rdf.pre.edu+'#for_article', '?s' ],
           [ '?rating', rdf.pre.edu+'#rated_by_user', user.graphName  ],
         ],
-        ['?title ?rating'],
+        ['?url ?rating'],
         ['LIMIT 1000']).then(function(results){
         userRatedArticles=results.data;
         console.log(userRatedArticles);
@@ -34,32 +34,32 @@ angular.module('edumaterialApp')
     function getRatedArticles(articles){
       console.log('Rated articles fetching');
       var exQuery=
-      'SELECT ?title (AVG(?ratingval) as ?ratingavg) '+
+      'SELECT ?url (AVG(?ratingval) as ?ratingavg) '+
       'FROM <http://'+CONFIG.graph_url+'/'+CONFIG.subgraph_url+'> WHERE {';
       
           for (var i = 0; i < articles.length; i++) {
             //add wikipedia url
-            articles[i].url=articles[i].url||'http://'+Auth.language+'.wikipedia.org/wiki/'+encodeURI(articles[i].title).split('%20').join('_');
+            articles[i].url=articles[i].url||'http://'+Auth.language+'.wikipedia.org/wiki/'+encodeURIComponent(articles[i].title).split('%20').join('_');
             
             exQuery+='{ ?s <'+rdf.pre.edu+'#url> <'+articles[i].url+'> }';
             if(i<(articles.length - 1)) { exQuery+=' UNION '; } 
           }
           
         exQuery+=' .'+
-        '?s <'+rdf.pre.edu+'#title> ?title . '+ 
+        '?s <'+rdf.pre.edu+'#url> ?url . '+ 
         '?rating <'+rdf.pre.rdftype+'> <'+rdf.pre.edu+'#rating> . '+ 
         '?rating <'+rdf.pre.edu+'#for_article> ?s . '+ 
         '?rating ?any ?ratingval . '+
-        'FILTER (datatype(?ratingval) = xsd:integer) '+
+        'FILTER (datatype(?ratingval) = xsd:nonNegativeInteger) '+
       '} '+
-      'GROUP BY ?title LIMIT 20';
+      'GROUP BY ?url LIMIT 20';
     
       return rdf.query(exQuery).then(function(data){
           console.log('Rated Articles are:');
           ratedArticles=data.data;
+          console.log(ratedArticles);
 
-          return data.data;
-          // console.log(ratedArticles);
+          return ratedArticles;
       }).catch(function(err){
          console.log(err);
       }); 
@@ -85,6 +85,7 @@ angular.module('edumaterialApp')
     }
     
     function processArticle(article){
+      article.riskElement = article.riskElement
       curArticle=article;
       //check if this url already exists
       return rdf.find(
@@ -92,11 +93,12 @@ angular.module('edumaterialApp')
         ['?id ?views'],
         ['LIMIT 1']
       ).then(function(results){
-          
-          console.log(results.data);
-          if(results.data.length>0) { //if exists
-            article.id=results.data[0].id.value.substring(47);
-            article.views=Number(results.data[0].views.value);
+          var elem={};
+          if(results.data.data.length>0) { //if exists
+          elem = results.data.data[0];
+          console.log("Article exists: ",elem.id);
+            article.id=elem.id.value.split(CONFIG.graph_url+"/"+CONFIG.subgraph_url+"/educational/")[1];
+            article.views=Number(elem.views.value);
             
             //update the views
             modifyArticleViews({
@@ -109,6 +111,8 @@ angular.module('edumaterialApp')
             
           }
           else { 
+            
+            console.log("Article NOT exists: ",results.data.data);
             
             //create new
             article.id=uuid4.generate();
@@ -153,8 +157,8 @@ angular.module('edumaterialApp')
       
       //optional metadata
       if(article.date) triples.push( [ rdf.pre.publicUri+article.id, rdf.pre.edu+'#date_accepted', '"'+article.date+'"^^xsd:date' ] );
-      if(article.title) triples.push( [ rdf.pre.publicUri+article.id,  rdf.pre.edu+'#title', '"'+article.title+'"^^xsd:string'  ] );
-      if(article.snippet) triples.push( [ rdf.pre.publicUri+article.id,  rdf.pre.edu+'#snippet', '"'+article.snippet+'"^^xsd:string'  ] );
+      if(article.title) triples.push( [ rdf.pre.publicUri+article.id,  rdf.pre.edu+'#title', '"'+encodeURIComponent(article.title)+'"^^xsd:string'  ] );
+      if(article.snippet) triples.push( [ rdf.pre.publicUri+article.id,  rdf.pre.edu+'#snippet', '"'+encodeURIComponent(article.snippet)+'"^^xsd:string'  ] );
       if(article.lang) triples.push( [ rdf.pre.publicUri+article.id, rdf.pre.edu+'#language', '"'+article.lang+'"^^xsd:string'  ] );
       if(article.wordcount) triples.push( [ rdf.pre.publicUri+article.id,  rdf.pre.edu+'#wordcount', '"'+article.wordcount+'"^^xsd:nonNegativeInteger'  ] );
       if(article.categories) triples.push( [ rdf.pre.publicUri+article.id, rdf.pre.edu+'#categories', '"'+article.categories+'"^^xsd:string'  ] );

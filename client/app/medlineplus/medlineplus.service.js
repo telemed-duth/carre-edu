@@ -26,7 +26,7 @@ angular.module('edumaterialApp')
         
           //construct url
           var url=settings.apiurl+
-          'term='+encodeURI(query)+
+          'term='+encodeURIComponent(query)+
           '&retstart='+(retstart||0)+
           '&db='+settings.db+
           '&rettype='+settings.rettype+

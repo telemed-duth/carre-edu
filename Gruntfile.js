@@ -269,6 +269,15 @@ module.exports = function (grunt) {
         dest: '<%= yeoman.dist %>/public'
       }
     },
+  
+    stripDebug: {
+        dist: {
+            files: {
+                '.tmp/concat/app/app.js': '.tmp/concat/app/app.js'
+            }
+        }
+    },
+    
 
     // Performs rewrites based on rev and the useminPrepare configuration
     usemin: {
@@ -576,6 +585,7 @@ module.exports = function (grunt) {
     'autoprefixer',
     'ngtemplates',
     'concat',
+    'stripDebug',
     'ngAnnotate',
     'copy:dist',
     //'cdnify',

@@ -127,6 +127,7 @@ angular.module('edumaterialApp', [
     "auth_url":window.CARRE_EDU_CONFIGURATION.auth_url,
     "graph_url":window.CARRE_EDU_CONFIGURATION.graph_url,
     "subgraph_url":window.CARRE_EDU_CONFIGURATION.subgraph_url,
+    "debug":window.CARRE_EDU_CONFIGURATION.debug
   });
   
 // ServiceWorker stuff

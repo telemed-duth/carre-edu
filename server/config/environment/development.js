@@ -7,6 +7,7 @@ module.exports = {
   mongo: {
     uri: 'mongodb://localhost/edumaterial-dev'
   },
-  rdfToken: process.env.RDF_TOKEN,
-  seedDB: true
+  api_url: process.env.API_URL || 'https://devices.duth.carre-project.eu/ws/',
+  debug:process.env.DEBUG_MODE||true,
+  seedDB: false
 };

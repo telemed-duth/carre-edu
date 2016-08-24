@@ -41,8 +41,7 @@ exports.proxy = function(req, res) {
   var title = req.params.title;
   var lang = req.params.lang;
   
-  var url = 'https://'+lang+'.wikipedia.org/wiki/'+title+"?printable=yes";
-  
+  var url = 'https://'+lang+'.wikipedia.org/wiki/'+encodeURIComponent(title)+"?printable=yes";
   var params={
     url:url
   };
@@ -51,7 +50,16 @@ exports.proxy = function(req, res) {
   var replacement = "https://"+lang+".wikipedia.org/w/load.php";
   
   request(params, function (error, response, body) {
-    if (!error && response.statusCode === 200) {
+    if(error){
+      
+      console.log('==========WIKI PROXY ERROR===========');
+      console.log('REQ: '+req.body);
+      console.log('RES: ',error,body)
+      return res.status(response.statusCode).send(body);
+    } else {
+      
+      console.log('==========WIKI PROXY OUTPUT===========');
+      console.log(url);
       var result=body.replace(new RegExp(search, 'g'), replacement)
       .replace('<script async="" src="https://en.wikipedia.org/w/load.php?debug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;printable=1&amp;skin=vector"></script>','');
       return res.send(result);

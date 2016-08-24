@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('edumaterialApp')
-  .controller('MainCtrl', function ($scope, $http, Auth, $location, $state, suggest, $sce, main, $timeout, medlineplus, $window, article, rating) {
+  .controller('MainCtrl', function (CONFIG,$scope, $http, Auth, $location, $state, suggest, $sce, main, $timeout, medlineplus, $window, article, rating) {
     
     $scope.isLoggedIn=Auth.isLoggedIn;
     //async process user before setting to scope
@@ -210,7 +210,7 @@ angular.module('edumaterialApp')
         position:$scope.doc.pos,
         total:$scope.total,
         date:new Date().toISOString(),
-        query:$scope.queryTerm,
+        query:encodeURIComponent($scope.queryTerm),
         article_risk:$scope.doc.riskElement
       });
       
@@ -244,7 +244,7 @@ angular.module('edumaterialApp')
         /*** Enrichment stuff ***/
         
         //load the article
-        // $http.get('/api/wikipedia/article/' + encodeURI(title), {
+        // $http.get('/api/wikipedia/article/' + encodeURIComponent(title), {
         //   cache: true
         // }).then(function(response) {
         //   //http://www.nlm.nih.gov/medlineplus
@@ -281,8 +281,8 @@ angular.module('edumaterialApp')
           
         case 'wikipedia':
           
-          $scope.doc.iframeurl='/api/wikipedia/proxy/'+Auth.language+'/'+encodeURI($scope.doc.title).split('%20').join('_');
-          $scope.doc.url='http://'+Auth.language+'.wikipedia.org/wiki/'+encodeURI($scope.doc.title).split('%20').join('_');
+          $scope.doc.iframeurl='/api/wikipedia/proxy/'+Auth.language+'/'+encodeURIComponent($scope.doc.title).split('%20').join('_');
+          //$scope.doc.url='http://'+Auth.language+'.wikipedia.org/wiki/'+encodeURIComponent($scope.doc.title).split('%20').join('_');
           
           data = '<base target="_blank" /><iframe style="width:100%;height:'+$scope.frameHeight+'px;" class="embed-responsive-item" src="'+$scope.doc.iframeurl+'"></iframe>';
 
@@ -322,6 +322,10 @@ angular.module('edumaterialApp')
       //call the service
       medlineplus.search(($scope.currentPage-1)*$scope.itemsPerPage,$scope.queryTerm,$scope.itemsPerPage).then(function(response){
         
+        if(CONFIG.debug) {
+          console.log("---medlineplus Results---",response);
+        }
+        
         if(!response.data.message) {
           $scope.results=response.data.list;
           $scope.total=Number(response.data.count[0]);
@@ -344,10 +348,12 @@ angular.module('edumaterialApp')
     //Actual search function wrapper for my service
     var searchWikiPedia=function() {
       //call the wikipedia 
-      $http.get('/api/wikipedia/search/' + encodeURI($scope.queryTerm) + '/' +$scope.itemsPerPage+ '/' + ($scope.currentPage - 1) * $scope.itemsPerPage+'/'+Auth.language, {
+      $http.get('/api/wikipedia/search/' + encodeURIComponent($scope.queryTerm) + '/' +$scope.itemsPerPage+ '/' + ($scope.currentPage - 1) * $scope.itemsPerPage+'/'+Auth.language, {
         cache: true
       }).then(function(response) {
-        
+        if(CONFIG.debug) {
+          console.log("---Wikipedia Results---",response);
+        }
         if(response.data.search.length>0){
           $scope.results = response.data.search;
           $scope.total = response.data.searchinfo.totalhits;
@@ -375,7 +381,7 @@ angular.module('edumaterialApp')
         
         for(var i=0,l=data.data; i<l.length; i++){
           for (var j = 0; j < $scope.results.length; j++) {
-            if(plainText($scope.results[j].title).trim()===l[i].title.value.trim()) {
+            if($scope.results[j].url===l[i].url.value) {
               $scope.results[j].avgRating=l[i].ratingavg.value;
             }
           }

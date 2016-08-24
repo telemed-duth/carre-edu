@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('edumaterialApp')
-  .service('rating', function (rdf,uuid4,Auth) {
+  .service('rating', function (rdf,uuid4,Auth,CONFIG) {
     var articleRating={};
     var user={};
     //async process user before setting to scope
@@ -11,13 +11,14 @@ angular.module('edumaterialApp')
       else user = Auth.getCurrentUser();
     } else user = {};
     
-    if(!user.username) user.graphName=rdf.pre.users+'guestuser'
+    if(!user.username) user.graphName=rdf.pre.users+'guestuser';
     
      function processRating(article){
       
      var ratingsum=article.rating.reduce( function(total, rating){ return total + Number(rating.value) }, 0);
      console.log('Rating Sum is : '+ratingsum);
-       
+     if(ratingsum===0) return false;  
+     
       //check if this url already exists
       return rdf.find(
         [ 
@@ -28,14 +29,16 @@ angular.module('edumaterialApp')
         ['?id'],
         ['LIMIT 1']
       ).then(function(results){
+        
+        var elem = results.data.data[0];
+        
         var rating={};
             rating.article_id=article.id;
             rating.rates=article.rating;
             rating.date=new Date().toISOString();
-          if(ratingsum===0) return false;
-          if(results.data[0] && results.data[0].id) { //if exists
-            rating.id=results.data[0].id.value.substring(54);
-            console.log(rating.id);
+          if(elem && elem.id) { //if exists
+            rating.id=elem.id.value.split(CONFIG.graph_url+"/"+CONFIG.subgraph_url+"/educational/rating/")[1];
+            console.log("Rating ID: ", rating.id);
             //update the query , total and order 
             
             return modifyRating(rating);
@@ -43,6 +46,8 @@ angular.module('edumaterialApp')
             
           }
           else { //create new
+          
+            console.log("Rating NOT exists: ");
             rating.id=uuid4.generate();
             return insertRating(rating);
           }

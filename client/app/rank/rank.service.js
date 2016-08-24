@@ -15,9 +15,11 @@ angular.module('edumaterialApp')
         ['?id'],
         ['LIMIT 1']
       ).then(function(results){
-        
+        var elem = {};
           if(results.data.length>0) { //if exists
-            rank.id=results.data[0].id.value.substring(52);
+          
+            elem = results.data.data[0];
+            rank.id = elem.id.value.split(CONFIG.graph_url+"/"+CONFIG.subgraph_url+"/educational/rank/")[1];
             
             //update the query , total and order 
             modifyRank(rank);
