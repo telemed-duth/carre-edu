@@ -111,11 +111,11 @@ angular.module('edumaterialApp', [
     // handle language
     
     var availableLangs = ['el','en','lt'];
-    var passedLanguage = $location.search().lang
+    var passedLanguage = $location.search().lang;
     if( passedLanguage && availableLangs.indexOf(passedLanguage)>=0) {
       Auth.language = passedLanguage;
       
-    } else Auth.language = window.CARRE_EDU_CONFIGURATION.language.substring(0,2) || "en"
+    } else Auth.language = $cookies.get('CARRE_LANG') || window.CARRE_EDU_CONFIGURATION.language.substring(0,2) || "en"
     
     // handle embedded
     if($location.search().embed) {

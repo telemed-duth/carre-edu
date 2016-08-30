@@ -1,7 +1,8 @@
 # CHANGELOG v0.11.0
 
-2016-08-26
+2016-08-30
 
+- * 3253f94 - 2016-08-30: datetime 
 - * a051a74 - 2016-08-24: CLI: Add  multiple deployments&quot; 
 - * 4bafa90 - 2016-08-24:  restore stripdebug 
 - * 108503c - 2016-08-24: fix login 
