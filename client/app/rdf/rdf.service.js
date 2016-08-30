@@ -37,10 +37,10 @@ angular.module('edumaterialApp')
     
     //main post query
     function query(query){
-      if(CONFIG.debug) {
-        console.debug("---SPARQL QUERY---");
-        console.debug(query);
-      }
+      
+      console.debug("---SPARQL QUERY---");
+      console.debug(query);
+        
       if(query.indexOf('undefined')>=0) {
         console.error("SPARQL query -- Undefined");
         console.debug(query);

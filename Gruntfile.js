@@ -25,7 +25,7 @@ module.exports = function (grunt) {
 
   // Define the configuration for all the tasks
   grunt.initConfig({
-
+    
     // Project settings
     pkg: grunt.file.readJSON('package.json'),
     yeoman: {
@@ -269,15 +269,6 @@ module.exports = function (grunt) {
         dest: '<%= yeoman.dist %>/public'
       }
     },
-  
-    stripDebug: {
-        dist: {
-            files: {
-                '.tmp/concat/app/app.js': '.tmp/concat/app/app.js'
-            }
-        }
-    },
-    
 
     // Performs rewrites based on rev and the useminPrepare configuration
     usemin: {
@@ -323,6 +314,15 @@ module.exports = function (grunt) {
 
     // Allow the use of non-minsafe AngularJS files. Automatically makes it
     // minsafe compatible so Uglify does not destroy the ng references
+    
+    uglify: {
+        options: {
+          mangle: false,
+          compress: {
+            drop_console: false
+          }
+        }
+    },
     ngAnnotate: {
       dist: {
         files: [{
@@ -539,7 +539,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('serve', function (target) {
     if (target === 'dist') {
-      return grunt.task.run(['build', 'env:all', 'env:prod', 'express:prod','express-keepalive' ]);
+      return grunt.task.run(['env:all', 'env:prod', 'express:prod','express-keepalive' ]);
     }
 
     if (target === 'debug') {
@@ -585,7 +585,6 @@ module.exports = function (grunt) {
     'autoprefixer',
     'ngtemplates',
     'concat',
-    'stripDebug',
     'ngAnnotate',
     'copy:dist',
     //'cdnify',
@@ -595,7 +594,7 @@ module.exports = function (grunt) {
     'rev',
     'usemin'
   ]);
-
+  
   grunt.registerTask('default', [
     'newer:jshint',
     'build'

@@ -1,0 +1,50 @@
+#!/bin/bash
+v=$1
+V=${v:-main}
+
+# env=$2
+tmp=$2
+env=${tmp:-dev}
+
+
+if [ $V == "main" ]; then 
+domain=$(echo "devices.carre-project.eu")
+else 
+domain=$(echo "devices.$V.carre-project.eu")
+    if [ $V == "duth" ]; then CARRE_LANG=el;
+    elif [ $V == "vulsk"]; then CARRE_LANG=lt;
+    fi
+fi    
+
+
+b=$(echo RDF_TOKEN_$V)
+export RDF_TOKEN=$(eval echo \${$b})
+export LANG=${CARRE_LANG:-en} 
+export API_URL=$(eval echo "https://\${domain}/ws/")
+export AUTH_URL=$(eval echo "https://\${domain}/devices/accounts/")
+export GRAPH=${GRAPH_URL:-carre.kmi.open.ac.uk} 
+export SUBGRAPH=${SUBGRAPH_URL:-edudata} 
+export TOKENNAME=${TOKEN_NAME:-CARRE_USER} 
+
+function run {
+    if [[ $env = "dist" ]]; then
+    ./build
+    REPLACE_OBJECT="{language:\"$LANG\",api_url:\"$API_URL\",token_name:\"$TOKENNAME\",subgraph_url:\"$SUBGRAPH\",auth_url:\"$AUTH_URL\",graph_url:\"$GRAPH\"}"
+    cd dist/public
+    sed "s|'CARRE_EDU_CONFIGURATION_REPLACE_OBJECT'|$REPLACE_OBJECT|" index.html >new.html
+    echo "Loaded configuration: "$REPLACE_OBJECT
+    mv new.html index.html
+    cd .. && cd ..
+    grunt serve:dist
+    else
+    grunt serve
+    fi
+}
+
+echo "Running [$env] with [$V] deployment :"
+echo "  --RDF_TOKEN=$RDF_TOKEN"
+echo "  --API_URL=$API_URL"
+echo "  --AUTH_URL=$AUTH_URL"
+echo "  --LANG=$LANG"
+
+run

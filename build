@@ -3,7 +3,6 @@ echo "Build release"
 rm -rf dist
 grunt build
 cd dist
-npm install --production
 cd public && mkdir fonts && cp assets/fonts/* fonts/ && cd ..
 cd ..
 # add service worker

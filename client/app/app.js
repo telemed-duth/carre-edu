@@ -8,7 +8,8 @@ angular.module('edumaterialApp', [
   'ui.bootstrap',
   'angular-loading-bar',
   'uuid4',
-  'ui.gravatar'
+  'ui.gravatar',
+  'ngOnload'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider,$compileProvider) {
     
@@ -91,14 +92,15 @@ angular.module('edumaterialApp', [
   // })
 
   .run(function ($rootScope, $location, Auth, $cookies, $window,$http) {
+    
     // Redirect to login if route requires auth and you're not logged in
-    $rootScope.$on('$stateChangeStart', function (event, next) {
-      Auth.isLoggedInAsync(function(loggedIn) {
-        if (next.authenticate && !loggedIn) {
-          $location.path('/login');
-        }
-      });
-    });
+    // $rootScope.$on('$stateChangeStart', function (event, next) {
+    //   Auth.isLoggedInAsync(function(loggedIn) {
+    //     if (next.authenticate && !loggedIn) {
+    //       $location.path('/login');
+    //     }
+    //   });
+    // });
     
     // var carre_token = $cookies.get('CARRE_USER');
     // if(carre_token) {
@@ -121,13 +123,13 @@ angular.module('edumaterialApp', [
     }
     
   }).constant('CONFIG',{
+    "currentUser":{},
     "language":window.CARRE_EDU_CONFIGURATION.language.substring(0,2),
     "api_url":window.CARRE_EDU_CONFIGURATION.api_url,
     "token_name":window.CARRE_EDU_CONFIGURATION.token_name,
     "auth_url":window.CARRE_EDU_CONFIGURATION.auth_url,
     "graph_url":window.CARRE_EDU_CONFIGURATION.graph_url,
-    "subgraph_url":window.CARRE_EDU_CONFIGURATION.subgraph_url,
-    "debug":window.CARRE_EDU_CONFIGURATION.debug
+    "subgraph_url":window.CARRE_EDU_CONFIGURATION.subgraph_url
   });
   
 // ServiceWorker stuff

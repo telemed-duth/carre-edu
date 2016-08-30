@@ -17,7 +17,6 @@ angular.module('edumaterialApp')
       
      var ratingsum=article.rating.reduce( function(total, rating){ return total + Number(rating.value) }, 0);
      console.log('Rating Sum is : '+ratingsum);
-     if(ratingsum===0) return false;  
      
       //check if this url already exists
       return rdf.find(
@@ -29,6 +28,8 @@ angular.module('edumaterialApp')
         ['?id'],
         ['LIMIT 1']
       ).then(function(results){
+        
+        if(ratingsum===0) return false;
         
         var elem = results.data.data[0];
         
@@ -101,7 +102,7 @@ angular.module('edumaterialApp')
       }
       console.log(oldtriples);
       
-      newtriples.push( [ rdf.pre.publicUri+'rating/'+rating.id, rdf.pre.edu+'#date', '"'+rating.date+'"^^xsd:date' ] );
+      newtriples.push( [ rdf.pre.publicUri+'rating/'+rating.id, rdf.pre.edu+'#date', '"'+rating.date+'"^^xsd:dateTime' ] );
       for (var i=0,rc=Auth.rating_criteria;i<rc.length;i++){
         
         //check if rating exists otherwise populate with 0
@@ -136,7 +137,7 @@ angular.module('edumaterialApp')
       triples.push( [ rdf.pre.publicUri+'rating/'+rating.id, rdf.pre.edu+'#rated_by_user', user.graphName  ] );
       
       //updatable metadata
-      triples.push( [ rdf.pre.publicUri+'rating/'+rating.id, rdf.pre.edu+'#date', '"'+rating.date+'"^^xsd:date' ] );
+      triples.push( [ rdf.pre.publicUri+'rating/'+rating.id, rdf.pre.edu+'#date', '"'+rating.date+'"^^xsd:dateTime' ] );
       
       //dynamic rating criteria
       for (var i=0,rc=Auth.rating_criteria;i<rc.length;i++){

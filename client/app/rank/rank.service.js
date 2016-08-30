@@ -55,7 +55,7 @@ angular.module('edumaterialApp')
     
       
       //updatable metadata
-      newtriples.push( [ rdf.pre.publicUri+'rank/'+rank.id, rdf.pre.edu+'#date', '"'+rank.date+'"^^xsd:date' ] );
+      newtriples.push( [ rdf.pre.publicUri+'rank/'+rank.id, rdf.pre.edu+'#date', '"'+rank.date+'"^^xsd:dateTime' ] );
       newtriples.push( [ rdf.pre.publicUri+'rank/'+rank.id, rdf.pre.edu+'#total', '"'+rank.total+'"^^xsd:nonNegativeInteger'  ] );
       newtriples.push( [ rdf.pre.publicUri+'rank/'+rank.id, rdf.pre.edu+'#total', '"'+rank.position+'"^^xsd:nonNegativeInteger'  ] );
     
@@ -79,7 +79,7 @@ angular.module('edumaterialApp')
       triples.push( [ rdf.pre.publicUri+'rank/'+rank.id, rdf.pre.edu+'#query', '"'+rank.query+'"^^xsd:string'  ] );
       
       //updatable metadata
-      triples.push( [ rdf.pre.publicUri+'rank/'+rank.id, rdf.pre.edu+'#date', '"'+rank.date+'"^^xsd:date' ] );
+      triples.push( [ rdf.pre.publicUri+'rank/'+rank.id, rdf.pre.edu+'#date', '"'+rank.date+'"^^xsd:dateTime' ] );
       triples.push( [ rdf.pre.publicUri+'rank/'+rank.id, rdf.pre.edu+'#total', '"'+rank.total+'"^^xsd:nonNegativeInteger'  ] );
       triples.push( [ rdf.pre.publicUri+'rank/'+rank.id, rdf.pre.edu+'#position', '"'+rank.position+'"^^xsd:nonNegativeInteger'  ] );
         

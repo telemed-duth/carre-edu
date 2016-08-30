@@ -156,7 +156,7 @@ angular.module('edumaterialApp')
       triples.push( [ rdf.pre.publicUri+article.id, rdf.pre.edu+'#views', '"'+article.views+'"^^xsd:nonNegativeInteger'  ] );
       
       //optional metadata
-      if(article.date) triples.push( [ rdf.pre.publicUri+article.id, rdf.pre.edu+'#date_accepted', '"'+article.date+'"^^xsd:date' ] );
+      if(article.date) triples.push( [ rdf.pre.publicUri+article.id, rdf.pre.edu+'#date_accepted', '"'+article.date+'"^^xsd:dateTime' ] );
       if(article.title) triples.push( [ rdf.pre.publicUri+article.id,  rdf.pre.edu+'#title', '"'+encodeURIComponent(article.title)+'"^^xsd:string'  ] );
       if(article.snippet) triples.push( [ rdf.pre.publicUri+article.id,  rdf.pre.edu+'#snippet', '"'+encodeURIComponent(article.snippet)+'"^^xsd:string'  ] );
       if(article.lang) triples.push( [ rdf.pre.publicUri+article.id, rdf.pre.edu+'#language', '"'+article.lang+'"^^xsd:string'  ] );

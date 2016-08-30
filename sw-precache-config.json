@@ -12,7 +12,7 @@
     "options":{
       "debug":false,
       "cache": {
-        "maxEntries": 100,
+        "maxEntries": 1000,
         "name":"api-cache"
       }
       

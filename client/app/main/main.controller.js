@@ -322,9 +322,7 @@ angular.module('edumaterialApp')
       //call the service
       medlineplus.search(($scope.currentPage-1)*$scope.itemsPerPage,$scope.queryTerm,$scope.itemsPerPage).then(function(response){
         
-        if(CONFIG.debug) {
-          console.log("---medlineplus Results---",response);
-        }
+        console.log("---medlineplus Results---",response);
         
         if(!response.data.message) {
           $scope.results=response.data.list;
@@ -351,9 +349,9 @@ angular.module('edumaterialApp')
       $http.get('/api/wikipedia/search/' + encodeURIComponent($scope.queryTerm) + '/' +$scope.itemsPerPage+ '/' + ($scope.currentPage - 1) * $scope.itemsPerPage+'/'+Auth.language, {
         cache: true
       }).then(function(response) {
-        if(CONFIG.debug) {
-          console.log("---Wikipedia Results---",response);
-        }
+        
+        console.log("---Wikipedia Results---",response);
+        
         if(response.data.search.length>0){
           $scope.results = response.data.search;
           $scope.total = response.data.searchinfo.totalhits;

@@ -5,18 +5,13 @@ angular.module('edumaterialApp')
 
     var currentUser = {};
     var token = $cookies.get(CONFIG.token_name) || false;
-    authenticate();
+    
     console.log("CONFIGURATION: ", CONFIG);
     
-    function authenticate() {
-      if(token&&!currentUser.username) {
-        currentUser=$http.get(CONFIG.api_url+'/userProfile?token='+token,{"cache":true}).then(function(res){
-          currentUser = res.data;
-          console.debug("CARRE USER exists:",currentUser);
-        },function(err) { console.error("Authentication error: ",err); this.logout(); });
-        console.debug("CARRE token exists:",$cookies.get('CARRE_USER'))
-      }
+    function authenticate(){
+      return $http.get(CONFIG.api_url+'/userProfile?token='+token,{"cache":true});
     }
+
     
     return {
 
@@ -28,7 +23,7 @@ angular.module('edumaterialApp')
        * @return {Promise}
        */
        
-      authenticate : authenticate,
+      'authenticate' : authenticate,
       
       login: function(user, callback) {
         $window.location.href=CONFIG.auth_url+'login?next='+$location.absUrl();
@@ -66,16 +61,16 @@ angular.module('edumaterialApp')
        * Waits for currentUser to resolve before checking if user is logged in
        */
       isLoggedInAsync: function(cb) {
-        if(currentUser.hasOwnProperty('$promise')) {
-          currentUser.$promise.then(function() {
-            cb(true);
-          }).catch(function() {
-            cb(false);
-          });
-        } else if(currentUser.hasOwnProperty('username')) {
-          cb(true);
+        if(token && !currentUser.username) {
+          authenticate().then(function(res){
+            currentUser = res.data;
+            cb(currentUser)
+          })
+        } else if(token && currentUser.username){
+          cb(currentUser)
         } else {
-          cb(false);
+          currentUser = {username:null};
+          cb(currentUser);
         }
       },
 
