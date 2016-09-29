@@ -2,6 +2,7 @@
 
 2016-08-30
 
+- * b5347b7 - 2016-08-30: add support for language cookie 
 - * 3253f94 - 2016-08-30: datetime 
 - * a051a74 - 2016-08-24: CLI: Add  multiple deployments&quot; 
 - * 4bafa90 - 2016-08-24:  restore stripdebug 

@@ -3,13 +3,27 @@
 angular.module('edumaterialApp')
   .factory('Auth', function Auth($location, $rootScope, $http, $cookies, $q, $window,CONFIG) {
 
-    var currentUser = {};
+    var currentUser = {"guest":true};
     var token = $cookies.get(CONFIG.token_name) || false;
     
     console.log("CONFIGURATION: ", CONFIG);
     
     function authenticate(){
-      return $http.get(CONFIG.api_url+'/userProfile?token='+token,{"cache":true});
+      return $http.get(CONFIG.api_url+'/userProfile?token='+token,{"cache":true})
+      .then(function(res){
+        if(!res.data.username || res.data.username.indexOf("demo")) logout();
+        return res;
+      },function(err){
+        if(err) logout();
+      });
+    }
+    
+    function login(user, callback) {
+      $window.location.href=CONFIG.auth_url+'login?next='+$location.absUrl();
+    }
+    function logout() {
+      currentUser = {};
+      $window.location.href=CONFIG.auth_url+'logout?next='+$location.absUrl();
     }
 
     
@@ -25,19 +39,14 @@ angular.module('edumaterialApp')
        
       'authenticate' : authenticate,
       
-      login: function(user, callback) {
-        $window.location.href=CONFIG.auth_url+'login?next='+$location.absUrl();
-      },
+      login: login,
 
       /**
        * Delete access token and user info
        *
        * @param  {Function}
        */
-      logout: function() {
-        currentUser = {};
-        $window.location.href=CONFIG.auth_url+'logout?next='+$location.absUrl();
-      },
+      logout: logout,
 
       /**
        * Gets all available info on authenticated user
@@ -69,7 +78,7 @@ angular.module('edumaterialApp')
         } else if(token && currentUser.username){
           cb(currentUser)
         } else {
-          currentUser = {username:null};
+          currentUser = {"guest":true};
           cb(currentUser);
         }
       },
